@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
 		B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */; };
-		B0AECE581ED0D48F00097AE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE571ED0D48F00097AE1 /* ViewController.swift */; };
+		B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */; };
 		B0AECE5B1ED0D48F00097AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE591ED0D48F00097AE1 /* Main.storyboard */; };
 		B0AECE5D1ED0D48F00097AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE5C1ED0D48F00097AE1 /* Assets.xcassets */; };
 		B0AECE601ED0D48F00097AE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE5E1ED0D48F00097AE1 /* LaunchScreen.storyboard */; };
+		E2DB245DFC34F3F085473315 /* Pods_Bell_Cleaners.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		313228CE79C036D91D2725D8 /* Pods-Bell Cleaners.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bell Cleaners.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners.debug.xcconfig"; sourceTree = "<group>"; };
+		933F98BE6AB5CBD0D743EA74 /* Pods-Bell Cleaners.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bell Cleaners.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners.release.xcconfig"; sourceTree = "<group>"; };
+		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0AECE521ED0D48F00097AE1 /* Bell Cleaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Cleaners.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0AECE571ED0D48F00097AE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellCleanersVC.swift; sourceTree = "<group>"; };
 		B0AECE5A1ED0D48F00097AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0AECE5C1ED0D48F00097AE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0AECE5F1ED0D48F00097AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0AECE611ED0D48F00097AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0AECE6D1ED0E08F00097AE1 /* Bell Cleaners.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bell Cleaners.entitlements"; sourceTree = "<group>"; };
+		E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bell_Cleaners.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +36,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DB245DFC34F3F085473315 /* Pods_Bell_Cleaners.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E13D63DF47A87CB93EAB1DC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				313228CE79C036D91D2725D8 /* Pods-Bell Cleaners.debug.xcconfig */,
+				933F98BE6AB5CBD0D743EA74 /* Pods-Bell Cleaners.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B0AECE491ED0D48F00097AE1 = {
 			isa = PBXGroup;
 			children = (
 				B0AECE541ED0D48F00097AE1 /* Bell Cleaners */,
 				B0AECE531ED0D48F00097AE1 /* Products */,
+				3E13D63DF47A87CB93EAB1DC /* Pods */,
+				C05E197BCAA5DADDDE86E4C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +73,56 @@
 		B0AECE541ED0D48F00097AE1 /* Bell Cleaners */ = {
 			isa = PBXGroup;
 			children = (
-				B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */,
-				B0AECE571ED0D48F00097AE1 /* ViewController.swift */,
 				B0AECE591ED0D48F00097AE1 /* Main.storyboard */,
+				B0AECE6B1ED0D8E000097AE1 /* Model */,
+				B0AECE6A1ED0D8D200097AE1 /* View */,
+				B0AECE691ED0D8C500097AE1 /* Controller */,
+				B0AECE6C1ED0D96600097AE1 /* Supporting Files */,
+			);
+			path = "Bell Cleaners";
+			sourceTree = "<group>";
+		};
+		B0AECE691ED0D8C500097AE1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		B0AECE6A1ED0D8D200097AE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		B0AECE6B1ED0D8E000097AE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B0AECE6C1ED0D96600097AE1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */,
 				B0AECE5C1ED0D48F00097AE1 /* Assets.xcassets */,
 				B0AECE5E1ED0D48F00097AE1 /* LaunchScreen.storyboard */,
 				B0AECE611ED0D48F00097AE1 /* Info.plist */,
+				B05749361ED12C970076310B /* GoogleService-Info.plist */,
+				B0AECE6D1ED0E08F00097AE1 /* Bell Cleaners.entitlements */,
 			);
-			path = "Bell Cleaners";
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C05E197BCAA5DADDDE86E4C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0AECE641ED0D48F00097AE1 /* Build configuration list for PBXNativeTarget "Bell Cleaners" */;
 			buildPhases = (
+				6541D3E83B813DB14C867027 /* [CP] Check Pods Manifest.lock */,
 				B0AECE4E1ED0D48F00097AE1 /* Sources */,
 				B0AECE4F1ED0D48F00097AE1 /* Frameworks */,
 				B0AECE501ED0D48F00097AE1 /* Resources */,
+				CAE15A52889CA878ECAA646B /* [CP] Embed Pods Frameworks */,
+				DEE7A5B2CA5B94E3084E3DBF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -98,6 +162,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 775A96F2SV;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -125,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0AECE601ED0D48F00097AE1 /* LaunchScreen.storyboard in Resources */,
+				B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */,
 				B0AECE5D1ED0D48F00097AE1 /* Assets.xcassets in Resources */,
 				B0AECE5B1ED0D48F00097AE1 /* Main.storyboard in Resources */,
 			);
@@ -132,12 +202,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6541D3E83B813DB14C867027 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CAE15A52889CA878ECAA646B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEE7A5B2CA5B94E3084E3DBF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B0AECE4E1ED0D48F00097AE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0AECE581ED0D48F00097AE1 /* ViewController.swift in Sources */,
+				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
 				B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,8 +377,10 @@
 		};
 		B0AECE651ED0D48F00097AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 313228CE79C036D91D2725D8 /* Pods-Bell Cleaners.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Bell Cleaners/Bell Cleaners.entitlements";
 				DEVELOPMENT_TEAM = 775A96F2SV;
 				INFOPLIST_FILE = "Bell Cleaners/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -272,8 +392,10 @@
 		};
 		B0AECE661ED0D48F00097AE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 933F98BE6AB5CBD0D743EA74 /* Pods-Bell Cleaners.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Bell Cleaners/Bell Cleaners.entitlements";
 				DEVELOPMENT_TEAM = 775A96F2SV;
 				INFOPLIST_FILE = "Bell Cleaners/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -302,6 +424,7 @@
 				B0AECE661ED0D48F00097AE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
