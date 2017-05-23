@@ -19,22 +19,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+//        if #available(iOS 10.0, *) {
+//            // For iOS 10 display notification (sent via APNS)
+//            let center = UNUserNotificationCenter.current()
+//            center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+//                // Enable or disable features based on authorization.
+//            }
+//        } else {
+//            let settings: UIUserNotificationSettings =
+//                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//            application.registerUserNotificationSettings(settings)
+//        }
+//        
+//        application.registerForRemoteNotifications()
+//        
+//        FirebaseApp.configure()
         
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-                // Enable or disable features based on authorization.
-            }
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
+        let navigationBarAppearance = UINavigationBar.appearance()
         
-        application.registerForRemoteNotifications()
+        navigationBarAppearance.tintColor = UIColor.white
+        navigationBarAppearance.barTintColor = bellColor
+        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
         
-        FirebaseApp.configure()
+        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
 
@@ -47,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        disconnect()
+//        disconnect()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -57,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        connectToFCM()
+//        connectToFCM()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -68,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let refreshedToken = InstanceID.instanceID().token()
         print("InstanceID token: \(String(describing: refreshedToken))")
         
-        connectToFCM()
+//        connectToFCM()
     }
     
     func connectToFCM() {
