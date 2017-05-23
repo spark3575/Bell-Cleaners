@@ -36,12 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        
 //        FirebaseApp.configure()
         
-        let navigationBarAppearance = UINavigationBar.appearance()
-        
-        navigationBarAppearance.tintColor = UIColor.white
-        navigationBarAppearance.barTintColor = bellColor
-        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
-        
         UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
