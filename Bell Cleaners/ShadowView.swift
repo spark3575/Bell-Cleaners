@@ -21,7 +21,7 @@ class ShadowView: UIView {
         setup()
     }
     
-    func setup() {
+    private func setup() {
         layer.shadowColor = layerShadowColor
         layer.shadowOffset = layerShadowOffset
         layer.shadowOpacity = layerShadowOpacity
