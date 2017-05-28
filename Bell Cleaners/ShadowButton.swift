@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ShadowButton: UIButton {    
+class ShadowButton: UIButton {
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()
@@ -32,6 +33,6 @@ class MapButton: ShadowButton {}
 
 class DirectionsButton: ShadowButton {}
 
-class LoginButton: ShadowButton {}
+class SignInButton: ShadowButton {}
 
 class SignUpButton: ShadowButton {}

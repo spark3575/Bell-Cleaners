@@ -9,6 +9,7 @@
 import UIKit
 
 class ShadowView: UIView {
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()

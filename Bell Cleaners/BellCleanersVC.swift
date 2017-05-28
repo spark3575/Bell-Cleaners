@@ -9,6 +9,7 @@
 import UIKit
 
 class BellCleanersVC: UIViewController {
+    
     @IBOutlet weak var bellLogoButton: BellLogoButton!
     @IBOutlet weak var callBellButton: CallBellButton!
     
@@ -30,11 +31,11 @@ class BellCleanersVC: UIViewController {
         bellLogoButton.imageView?.contentMode = .scaleAspectFit
     }
     
-    @IBAction func bellPressed(_ sender: BellLogoButton) {
+    @IBAction func didTapBell(_ sender: BellLogoButton) {
         shakeAndPlaySound()
     }
     
-    @IBAction func callBellPressed(_ sender: CallBellButton) {
+    @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
     }
 }

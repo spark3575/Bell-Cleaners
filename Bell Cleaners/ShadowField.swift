@@ -8,8 +8,8 @@
 
 import UIKit
 
-@IBDesignable
 class ShadowField: UITextField {
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()
@@ -31,7 +31,8 @@ class ShadowField: UITextField {
     }
 }
 
-class emailShadowField: ShadowField {
+class EmailField: ShadowField {
+    
     func validate(field: UITextField) -> String? {
         guard let trimmedText = field.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             return nil
@@ -55,4 +56,4 @@ class emailShadowField: ShadowField {
     }
 }
 
-class passwordShadowField: ShadowField {}
+class PasswordField: ShadowField {}

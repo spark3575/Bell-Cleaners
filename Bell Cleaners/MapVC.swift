@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var callBellButton: CallBellButton!
     
@@ -43,7 +44,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     private var userLatitude = userLat
     private var userLongitude = userLon
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {        
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
         func setupAuthorizeWhenInUse() {
             manager.startUpdatingLocation()
             manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -72,7 +74,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             }
         }
         
-        let alertDeniedAccess = PresentAlert()
+        let alertAccessDenied = PresentAlert()
         
         switch status {
         case .notDetermined:
@@ -82,18 +84,18 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         case .authorizedAlways:
             manager.startUpdatingLocation()
         case .restricted, .denied:
-            alertDeniedAccess.presentAlert(fromController: self, title: locationServiceAlertTitle,
-                         message: locationServiceAlertMessage,
+            alertAccessDenied.presentMapAlert(fromController: self, title: locationAlertTitle,
+                         message: locationAlertMessage,
                          actionTitle: okAlertActionTitle)
         }
     }
     
-    @IBAction func directionsPressed(_ sender: DirectionsButton) {
+    @IBAction func didTapDirections(_ sender: DirectionsButton) {
         locationManager = CLLocationManager()
         locationManager.delegate = self
     }
     
-    @IBAction func callBellPressed(_ sender: CallBellButton) {
+    @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
     }
 }

@@ -55,7 +55,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <action selector="bellPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zUM-sM-xS6"/>
+                                            <action selector="didTapBell:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LmR-Wy-QoK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -176,7 +176,7 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                         <connections>
-                                            <action selector="callBellPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PdD-EJ-3sU"/>
+                                            <action selector="didTapCallBell:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iKK-Dn-aVu"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1242" y="81"/>
+            <point key="canvasLocation" x="758" y="80"/>
         </scene>
         <!--Access AccountVC-->
         <scene sceneID="YVn-KT-I2i">
@@ -495,7 +495,6 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                         <connections>
-                                            <action selector="directionsPressed:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="paU-55-D8b"/>
                                             <segue destination="vjV-Qa-jUl" kind="show" identifier="MapVC" id="8Uf-Hb-fqD"/>
                                         </connections>
                                     </button>
@@ -515,8 +514,7 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                         <connections>
-                                            <action selector="callBellPressed:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="bnv-kE-zBX"/>
-                                            <action selector="callBellPressed:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="gcO-LN-xOb"/>
+                                            <action selector="didTapCallBell:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="DnN-ZT-XZm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -547,7 +545,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="5YO-52-zmQ" userLabel="email &amp; pass">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="100"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rTF-Qh-z7O" customClass="emailShadowField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rTF-Qh-z7O" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -557,8 +555,9 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••••" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-LS-JK9" customClass="passwordShadowField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••••" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-LS-JK9" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                                        <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
@@ -570,21 +569,21 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XB0-pj-N9p" userLabel="login &amp; signup">
                                                 <rect key="frame" x="0.0" y="112" width="280" height="100"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-HI-Lzq" customClass="LoginButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-HI-Lzq" customClass="SignInButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="SPc-I8-r3E"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                        <state key="normal" title="Login">
+                                                        <state key="normal" title="Sign In">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <variation key="heightClass=regular-widthClass=regular">
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                         </variation>
                                                         <connections>
-                                                            <action selector="loginPressed:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="Q1n-MK-gTk"/>
+                                                            <action selector="didTapSignIn:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="Tqw-Zw-Hqt"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2u-V2-ubY" customClass="SignUpButton" customModule="Bell_Cleaners" customModuleProvider="target">
@@ -598,7 +597,7 @@
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                         </variation>
                                                         <connections>
-                                                            <action selector="SignUpButton:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="DEq-OZ-tOv"/>
+                                                            <action selector="didTapSignUp:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="N1X-N1-vmd"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -685,7 +684,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSt-C1-NOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3008" y="79"/>
+            <point key="canvasLocation" x="2333" y="79"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="osL-lQ-1Jq">
@@ -703,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goX-F2-e4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3919" y="80"/>
+            <point key="canvasLocation" x="3126" y="79"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="ZfA-9g-c6T">
@@ -882,7 +881,7 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                         <connections>
-                                            <action selector="directionsPressed:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="R2w-5z-xLN"/>
+                                            <action selector="didTapDirections:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="Mk9-mZ-Rae"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JA-dP-iCI" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
@@ -901,7 +900,7 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                         <connections>
-                                            <action selector="callBellPressed:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="EPB-ki-DBH"/>
+                                            <action selector="didTapCallBell:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="US5-9c-zjb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -941,7 +940,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kak-OA-qxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2139" y="80"/>
+            <point key="canvasLocation" x="1549" y="79"/>
         </scene>
     </scenes>
     <resources>
@@ -950,6 +949,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="muU-TC-1nj"/>
-        <segue reference="8Uf-Hb-fqD"/>
+        <segue reference="lJL-me-ucU"/>
     </inferredMetricsTieBreakers>
 </document>
