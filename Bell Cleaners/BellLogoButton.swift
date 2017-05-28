@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 
 class BellLogoButton: ShadowButton {
-
     func shake() {
         let shake = CABasicAnimation(keyPath: animationKeyPath)
         shake.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)

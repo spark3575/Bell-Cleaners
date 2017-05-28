@@ -11,7 +11,6 @@ import MapKit
 import CoreLocation
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var callBellButton: CallBellButton!
     
@@ -44,8 +43,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     private var userLatitude = userLat
     private var userLongitude = userLon
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {        
         func setupAuthorizeWhenInUse() {
             manager.startUpdatingLocation()
             manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -74,11 +72,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             }
         }
         
-        func presentAlert(title: String, message: String, actionTitle: String) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
-            present(alert, animated: true)
-        }
+        let alertDeniedAccess = PresentAlert()
         
         switch status {
         case .notDetermined:
@@ -88,10 +82,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         case .authorizedAlways:
             manager.startUpdatingLocation()
         case .restricted, .denied:
-            // If user denied your app access to Location Services, but can grant access from Settings.app
-            presentAlert(title: locationServiceAlertTitle,
+            alertDeniedAccess.presentAlert(fromController: self, title: locationServiceAlertTitle,
                          message: locationServiceAlertMessage,
-                         actionTitle: locationServiceAlertActionTitle)
+                         actionTitle: okAlertActionTitle)
         }
     }
     

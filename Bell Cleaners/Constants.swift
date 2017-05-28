@@ -8,12 +8,14 @@
 
 import UIKit
 
-let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
+let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0).cgColor
 let layerShadowColor = UIColor.black.cgColor
 let layerShadowOffset = CGSize(width: 0, height: 2.0)
 let layerShadowOpacity: Float = 0.5
 let layerShadowRadius: CGFloat = 4.0
 let layerCornerRadius: CGFloat = 10.0
+let layerBorderWidth: CGFloat = 3.0
+let layerTextShadowRaius: CGFloat = 2.0
 let delayAfterViewAppears = 0.5
 let animationKeyPath = "transform.rotation"
 let shakeFromValue = 0.0
@@ -37,5 +39,30 @@ let separatingComma = ","
 let routeToBellURLSuffix = "&daddr=3508+S+Lancaster+Rd+75216"
 let locationServiceAlertTitle = "Authorization Denied"
 let locationServiceAlertMessage = "Location Services can be changed in your Privacy Settings"
-let locationServiceAlertActionTitle = "OK"
+let okAlertActionTitle = "OK"
+let emailValidationAlertTitle = "Please enter a valid email address"
+let emailValidationAlertMessage = "Verification email will be sent"
+let passwordMinimumLength = 6
+let passwordValidationAlertTitle = "Password is too short"
+let passwordValidationAlertMessage = "Please enter atleast 6 characters"
+let loginValidationAlertTitle = "Please check your email address or password"
+let loginValidationAlertMessage = "Please enter atleast 6 characters"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

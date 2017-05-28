@@ -8,9 +8,7 @@
 
 import UIKit
 
-@IBDesignable
-class ShadowButton: UIButton {
-    
+class ShadowButton: UIButton {    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()
@@ -33,3 +31,7 @@ class ShadowButton: UIButton {
 class MapButton: ShadowButton {}
 
 class DirectionsButton: ShadowButton {}
+
+class LoginButton: ShadowButton {}
+
+class SignUpButton: ShadowButton {}

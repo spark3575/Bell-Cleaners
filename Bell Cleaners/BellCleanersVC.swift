@@ -9,7 +9,6 @@
 import UIKit
 
 class BellCleanersVC: UIViewController {
-
     @IBOutlet weak var bellLogoButton: BellLogoButton!
     @IBOutlet weak var callBellButton: CallBellButton!
     
