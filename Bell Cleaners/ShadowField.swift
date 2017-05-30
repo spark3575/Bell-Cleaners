@@ -26,7 +26,7 @@ class ShadowField: UITextField {
         layer.shadowOpacity = layerShadowOpacity
         layer.shadowRadius = layerTextShadowRaius
         layer.cornerRadius = layerCornerRadius
-        layer.borderColor = bellColor
+        layer.borderColor = bellColor.cgColor
         layer.borderWidth = layerBorderWidth
     }
 }
@@ -48,7 +48,7 @@ class EmailField: ShadowField {
                                               range: range)
         
         if allMatches.count == 1,
-            allMatches.first?.url?.absoluteString.contains("mailto:") == true
+            allMatches.first?.url?.absoluteString.contains(emailValidationContaining) == true
         {
             return trimmedText
         }

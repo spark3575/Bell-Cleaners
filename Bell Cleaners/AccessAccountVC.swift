@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
-@IBDesignable
 class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var callBellButton: CallBellButton!
     @IBOutlet weak var emailField: EmailField!
     @IBOutlet weak var passwordField: PasswordField!
+    @IBOutlet weak var callBellButton: CallBellButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = accessAccountNavBarTitle
         emailField.delegate = self
         passwordField.delegate = self
     }
@@ -59,31 +59,41 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignIn(_ sender: SignInButton) {
-        if let email = emailField.text, let password = passwordField.text {
-            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-                if error == nil {
-                    print("SHIN: Email user authenticated with Firebase")
-                } else {
-                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-                        if error != nil {
-                            print("SHIN: Unable to authenticate with Firebase using email")
-                        } else {
-                            print("SHIN: Successfully authenticated with Firebase")
-                        }
-                    })
+        if let email = emailField.text, let password = passwordField.text, (email.characters.count > 0 && password.characters.count > 0) {
+            AuthService.instance.signIn(withEmail: email, password: password, onComplete: { (errorMessage, data) in
+                guard errorMessage == nil else {
+                    self.alertValidationFailed.presentAlert(fromController: self, title: authenticationAlertTitle, message: errorMessage!, actionTitle: okAlertActionTitle)
+                    return
                 }
+                self.performSegue(withIdentifier: myAccountSegueIdentifier, sender: nil)
             })
         } else {
-            alertValidationFailed.presentAlert(fromController: self, title: loginAlertTitle, message: loginAlertMessage, actionTitle: okAlertActionTitle)
+            alertValidationFailed.presentAlert(fromController: self, title: signInAlertTitle, message: signInAlertMessage, actionTitle: okAlertActionTitle)
         }
     }
     
     @IBAction func didTapSignUp(_ sender: SignUpButton) {
-        
+        if let email = emailField.text, let password = passwordField.text {
+            AuthService.instance.createUser(withEmail: email, password: password, onComplete: { (errorMessage, data) in
+                guard errorMessage == nil else {
+                    self.alertValidationFailed.presentAlert(fromController: self, title: authenticationAlertTitle, message: errorMessage!, actionTitle: okAlertActionTitle)
+                    return
+                }
+                self.performSegue(withIdentifier: signUpSegueIdentifier, sender: nil)
+            })
+        } else {
+            alertValidationFailed.presentAlert(fromController: self, title: signUpAlertTitle, message: signUpAlertMessage, actionTitle: okAlertActionTitle)
+        }
     }
     
     @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backButton = UIBarButtonItem()
+        backButton.title = emptyLeftBarButtonItemTitle
+        navigationItem.backBarButtonItem = backButton
     }
 }
 

@@ -10,9 +10,15 @@ import UIKit
 
 class SignUpVC: UIViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        
+        navigationItem.title = signUpNavBarTitle
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backButton = UIBarButtonItem()
+        backButton.title = emptyLeftBarButtonItemTitle
+        navigationItem.backBarButtonItem = backButton
     }
 }

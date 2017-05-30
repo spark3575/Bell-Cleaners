@@ -18,6 +18,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = mapNavBarTitle
         setupBellCleanersMap()
     }
     
@@ -97,5 +98,5 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
-    }
+    }    
 }

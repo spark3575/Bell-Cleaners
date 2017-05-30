@@ -29,6 +29,8 @@ class ShadowButton: UIButton {
     }
 }
 
+class AccessAccountButton: ShadowButton {}
+
 class MapButton: ShadowButton {}
 
 class DirectionsButton: ShadowButton {}
@@ -36,3 +38,13 @@ class DirectionsButton: ShadowButton {}
 class SignInButton: ShadowButton {}
 
 class SignUpButton: ShadowButton {}
+
+class SignOutButton: ShadowButton {}
+
+class OrdersButton: ShadowButton {}
+
+class ProfileButton: ShadowButton {}
+
+class SettingsButton: ShadowButton {}
+
+class SupportButton: ShadowButton {}

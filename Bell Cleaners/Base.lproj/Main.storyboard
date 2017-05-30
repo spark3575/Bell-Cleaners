@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E4R-Qp-0Wr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EbK-Qg-ckx">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CIh-wJ-csf" userLabel="bell icon">
-                                <rect key="frame" x="110" y="94" width="100" height="100"/>
+                                <rect key="frame" x="110" y="50" width="100" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04f-XK-3VK" userLabel="bellLogo" customClass="BellLogoButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -61,10 +61,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lTt-i2-8ke" userLabel="menu">
-                                <rect key="frame" x="20" y="224" width="280" height="268"/>
+                                <rect key="frame" x="20" y="180" width="280" height="304.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3t-dA-vw8" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3t-dA-vw8" customClass="AccessAccountButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="51.5"/>
                                         <color key="backgroundColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Access Account">
@@ -74,11 +74,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                         <connections>
-                                            <segue destination="E4R-Qp-0Wr" kind="show" identifier="AccessAccountVC" id="ZjS-ew-qf2"/>
+                                            <action selector="didTapAccessAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X60-v1-4dt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-1e-3tA" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="63.5" width="280" height="51"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Dry Clean">
@@ -89,7 +89,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-Xm-9uj" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="112" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="126.5" width="280" height="51.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Laundry">
@@ -105,7 +105,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="168" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="190" width="280" height="51"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Alteration">
@@ -121,7 +121,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="224" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="253" width="280" height="51.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Sneakers and more">
@@ -139,10 +139,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-EV-kEH" userLabel="map &amp; phone">
-                                <rect key="frame" x="20" y="504" width="280" height="44"/>
+                                <rect key="frame" x="20" y="496.5" width="280" height="51.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-8l-4qm" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="51.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Map">
@@ -161,7 +161,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-uD-gkv" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="106" y="0.0" width="174" height="44"/>
+                                        <rect key="frame" x="106" y="0.0" width="174" height="51.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="214-374-7007">
@@ -186,124 +186,41 @@
                                     </constraint>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yav-8e-pGp" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bell Cleaners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9h-WS-bdY">
-                                        <rect key="frame" x="87.5" y="27.5" width="146.5" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                        </variation>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="3JA-Wa-QGq"/>
-                                    <constraint firstAttribute="height" constant="44" id="63b-XZ-3Kn"/>
-                                    <constraint firstItem="F9h-WS-bdY" firstAttribute="centerY" secondItem="Yav-8e-pGp" secondAttribute="centerY" id="67w-6A-X46"/>
-                                    <constraint firstItem="F9h-WS-bdY" firstAttribute="centerX" secondItem="Yav-8e-pGp" secondAttribute="centerX" id="TbS-X0-sBT"/>
-                                    <constraint firstAttribute="height" constant="64" id="YLe-ZQ-a8m"/>
-                                    <constraint firstItem="F9h-WS-bdY" firstAttribute="centerY" secondItem="Yav-8e-pGp" secondAttribute="centerY" constant="10" id="jEu-1r-CjB"/>
-                                    <constraint firstItem="F9h-WS-bdY" firstAttribute="centerX" secondItem="Yav-8e-pGp" secondAttribute="centerX" id="owJ-nv-aMh"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3JA-Wa-QGq"/>
-                                        <exclude reference="63b-XZ-3Kn"/>
-                                        <exclude reference="YLe-ZQ-a8m"/>
-                                        <exclude reference="67w-6A-X46"/>
-                                        <exclude reference="TbS-X0-sBT"/>
-                                        <exclude reference="jEu-1r-CjB"/>
-                                        <exclude reference="owJ-nv-aMh"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="67w-6A-X46"/>
-                                        <include reference="owJ-nv-aMh"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="63b-XZ-3Kn"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="YLe-ZQ-a8m"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="YLe-ZQ-a8m"/>
-                                        <include reference="TbS-X0-sBT"/>
-                                        <include reference="jEu-1r-CjB"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="3JA-Wa-QGq"/>
-                                        <include reference="TbS-X0-sBT"/>
-                                        <include reference="jEu-1r-CjB"/>
-                                    </mask>
-                                </variation>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hHS-EV-kEH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0rp-4C-xKT"/>
                             <constraint firstItem="CIh-wJ-csf" firstAttribute="width" secondItem="hHS-EV-kEH" secondAttribute="width" id="2KW-b3-z0c"/>
+                            <constraint firstItem="CIh-wJ-csf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="5dj-Z4-ay3"/>
                             <constraint firstItem="lTt-i2-8ke" firstAttribute="top" secondItem="CIh-wJ-csf" secondAttribute="bottom" constant="30" id="7aR-uj-HwK"/>
                             <constraint firstItem="lTt-i2-8ke" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="8EX-AB-6ZD"/>
                             <constraint firstAttribute="trailing" secondItem="lTt-i2-8ke" secondAttribute="trailing" constant="20" id="BYO-IJ-JSj"/>
                             <constraint firstItem="hHS-EV-kEH" firstAttribute="height" secondItem="4HY-OT-Tf5" secondAttribute="height" id="Bps-kW-7xm"/>
                             <constraint firstItem="hHS-EV-kEH" firstAttribute="top" secondItem="CIh-wJ-csf" secondAttribute="bottom" constant="20" id="D4E-mV-WEe"/>
                             <constraint firstItem="hHS-EV-kEH" firstAttribute="top" secondItem="lTt-i2-8ke" secondAttribute="bottom" constant="12" id="Eku-IQ-70G"/>
-                            <constraint firstItem="Yav-8e-pGp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GLU-VO-RFg"/>
                             <constraint firstItem="hHS-EV-kEH" firstAttribute="width" secondItem="lTt-i2-8ke" secondAttribute="width" id="KQf-AD-VUz"/>
-                            <constraint firstItem="CIh-wJ-csf" firstAttribute="top" secondItem="Yav-8e-pGp" secondAttribute="bottom" constant="30" id="LvD-ti-Dgf"/>
+                            <constraint firstItem="lTt-i2-8ke" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="MpO-EA-AWI"/>
                             <constraint firstItem="lTt-i2-8ke" firstAttribute="leading" secondItem="hHS-EV-kEH" secondAttribute="trailing" constant="20" id="Pe9-yS-ISc"/>
                             <constraint firstItem="CIh-wJ-csf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WNM-z9-ar2"/>
                             <constraint firstItem="hHS-EV-kEH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="YCH-vT-ErX"/>
                             <constraint firstAttribute="trailing" secondItem="hHS-EV-kEH" secondAttribute="trailing" constant="20" id="YXm-nm-gls"/>
-                            <constraint firstItem="lTt-i2-8ke" firstAttribute="top" secondItem="Yav-8e-pGp" secondAttribute="bottom" constant="20" id="cy0-XA-6CJ"/>
-                            <constraint firstItem="Yav-8e-pGp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="foE-DI-P3Z"/>
-                            <constraint firstAttribute="trailing" secondItem="Yav-8e-pGp" secondAttribute="trailing" id="i8A-zY-c7D"/>
                             <constraint firstItem="8H8-8l-4qm" firstAttribute="height" secondItem="4HY-OT-Tf5" secondAttribute="height" id="kdF-eW-8U3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hHS-EV-kEH" secondAttribute="bottom" constant="20" id="qLB-GF-YNN"/>
-                            <constraint firstAttribute="trailing" secondItem="Yav-8e-pGp" secondAttribute="trailing" id="rtv-Je-6M3"/>
-                            <constraint firstItem="Yav-8e-pGp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s5n-w9-nU8"/>
                             <constraint firstItem="lTt-i2-8ke" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="tgT-P9-Vn9"/>
-                            <constraint firstItem="Yav-8e-pGp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uoe-8n-0FS"/>
                             <constraint firstItem="CIh-wJ-csf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wQG-mH-2P7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lTt-i2-8ke" secondAttribute="bottom" constant="20" id="y5A-aX-cSh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hHS-EV-kEH" secondAttribute="bottom" constant="20" id="yNU-iW-DSw"/>
-                            <constraint firstItem="CIh-wJ-csf" firstAttribute="top" secondItem="Yav-8e-pGp" secondAttribute="bottom" constant="20" id="yNz-Uj-tpE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="GLU-VO-RFg"/>
-                                <exclude reference="foE-DI-P3Z"/>
-                                <exclude reference="i8A-zY-c7D"/>
-                                <exclude reference="rtv-Je-6M3"/>
-                                <exclude reference="s5n-w9-nU8"/>
-                                <exclude reference="uoe-8n-0FS"/>
                                 <exclude reference="2KW-b3-z0c"/>
-                                <exclude reference="LvD-ti-Dgf"/>
                                 <exclude reference="WNM-z9-ar2"/>
                                 <exclude reference="wQG-mH-2P7"/>
-                                <exclude reference="yNz-Uj-tpE"/>
                                 <exclude reference="7aR-uj-HwK"/>
                                 <exclude reference="8EX-AB-6ZD"/>
                                 <exclude reference="BYO-IJ-JSj"/>
+                                <exclude reference="MpO-EA-AWI"/>
                                 <exclude reference="Pe9-yS-ISc"/>
-                                <exclude reference="cy0-XA-6CJ"/>
                                 <exclude reference="tgT-P9-Vn9"/>
                                 <exclude reference="kdF-eW-8U3"/>
                                 <exclude reference="0rp-4C-xKT"/>
@@ -320,15 +237,11 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="GLU-VO-RFg"/>
-                                <include reference="rtv-Je-6M3"/>
-                                <include reference="uoe-8n-0FS"/>
                                 <include reference="2KW-b3-z0c"/>
                                 <include reference="WNM-z9-ar2"/>
-                                <include reference="yNz-Uj-tpE"/>
                                 <include reference="8EX-AB-6ZD"/>
+                                <include reference="MpO-EA-AWI"/>
                                 <include reference="Pe9-yS-ISc"/>
-                                <include reference="cy0-XA-6CJ"/>
                                 <include reference="0rp-4C-xKT"/>
                                 <include reference="Bps-kW-7xm"/>
                                 <include reference="D4E-mV-WEe"/>
@@ -337,12 +250,13 @@
                                 <include reference="y5A-aX-cSh"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="kdF-eW-8U3"/>
+                            </mask>
+                        </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="foE-DI-P3Z"/>
-                                <include reference="i8A-zY-c7D"/>
-                                <include reference="s5n-w9-nU8"/>
-                                <include reference="LvD-ti-Dgf"/>
                                 <include reference="wQG-mH-2P7"/>
                                 <include reference="7aR-uj-HwK"/>
                                 <include reference="BYO-IJ-JSj"/>
@@ -356,10 +270,6 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="GLU-VO-RFg"/>
-                                <include reference="foE-DI-P3Z"/>
-                                <include reference="i8A-zY-c7D"/>
-                                <include reference="LvD-ti-Dgf"/>
                                 <include reference="wQG-mH-2P7"/>
                                 <include reference="7aR-uj-HwK"/>
                                 <include reference="BYO-IJ-JSj"/>
@@ -376,11 +286,13 @@
                     <connections>
                         <outlet property="bellLogoButton" destination="04f-XK-3VK" id="yQB-xC-bdN"/>
                         <outlet property="callBellButton" destination="HIa-uD-gkv" id="UKe-fw-JqQ"/>
+                        <segue destination="E4R-Qp-0Wr" kind="show" identifier="AccessAccountVC" id="zXT-Lz-g9u"/>
+                        <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" id="F9E-7H-wjq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="80"/>
+            <point key="canvasLocation" x="1500" y="79"/>
         </scene>
         <!--Access AccountVC-->
         <scene sceneID="YVn-KT-I2i">
@@ -394,83 +306,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fE-jF-cfY" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sf9-a7-vrs">
-                                        <rect key="frame" x="70" y="27.5" width="181" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                        </variation>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjX-3k-pj0">
-                                        <rect key="frame" x="0.0" y="20" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="HZ7-Hw-x20"/>
-                                            <constraint firstAttribute="height" constant="44" id="Sbq-7z-89L"/>
-                                        </constraints>
-                                        <state key="normal" image="backArrow"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" id="muU-TC-1nj"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="ZjX-3k-pj0" firstAttribute="leading" secondItem="4fE-jF-cfY" secondAttribute="leading" id="0zt-HH-IAc"/>
-                                    <constraint firstAttribute="height" constant="64" id="CZT-jt-IDI"/>
-                                    <constraint firstItem="Sf9-a7-vrs" firstAttribute="centerY" secondItem="4fE-jF-cfY" secondAttribute="centerY" id="HLL-t5-fTf">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
-                                    </constraint>
-                                    <constraint firstItem="Sf9-a7-vrs" firstAttribute="centerX" secondItem="4fE-jF-cfY" secondAttribute="centerX" id="MHs-cM-5BW"/>
-                                    <constraint firstAttribute="height" constant="44" id="MIf-Fo-nSw"/>
-                                    <constraint firstItem="Sf9-a7-vrs" firstAttribute="centerY" secondItem="4fE-jF-cfY" secondAttribute="centerY" id="MNa-ha-EvD"/>
-                                    <constraint firstItem="ZjX-3k-pj0" firstAttribute="centerY" secondItem="4fE-jF-cfY" secondAttribute="centerY" id="gkP-Fu-QCi">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
-                                    </constraint>
-                                    <constraint firstItem="Sf9-a7-vrs" firstAttribute="centerX" secondItem="4fE-jF-cfY" secondAttribute="centerX" id="hxR-eD-MGx"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZjX-3k-pj0" secondAttribute="bottom" id="lt7-bM-S78"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="MIf-Fo-nSw"/>
-                                        <exclude reference="lt7-bM-S78"/>
-                                        <exclude reference="MHs-cM-5BW"/>
-                                        <exclude reference="MNa-ha-EvD"/>
-                                        <exclude reference="hxR-eD-MGx"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="CZT-jt-IDI"/>
-                                        <include reference="MIf-Fo-nSw"/>
-                                        <include reference="lt7-bM-S78"/>
-                                        <include reference="MHs-cM-5BW"/>
-                                        <include reference="MNa-ha-EvD"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="MIf-Fo-nSw"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="hxR-eD-MGx"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="hxR-eD-MGx"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="M1g-ah-iqS" userLabel="directions &amp; phone">
                                 <rect key="frame" x="20" y="488" width="280" height="60"/>
                                 <subviews>
@@ -524,8 +359,8 @@
                                     </constraint>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7D-pfP">
-                                <rect key="frame" x="20" y="84" width="280" height="370"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7D-pfP">
+                                <rect key="frame" x="20" y="40" width="280" height="346"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please login or sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIb-px-Fxg">
                                         <rect key="frame" x="47" y="0.0" width="186" height="21.5"/>
@@ -533,30 +368,30 @@
                                         <color key="textColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                         </variation>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="y5U-gd-ocm" userLabel="field &amp; button">
-                                        <rect key="frame" x="0.0" y="41.5" width="280" height="212"/>
+                                        <rect key="frame" x="0.0" y="33.5" width="280" height="236"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="5YO-52-zmQ" userLabel="email &amp; pass">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="92"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rTF-Qh-z7O" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
                                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="48N-f0-w6a"/>
+                                                            <constraint firstAttribute="height" constant="40" id="48N-f0-w6a"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••••" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-LS-JK9" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                                        <rect key="frame" x="0.0" y="52" width="280" height="40"/>
                                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -567,13 +402,15 @@
                                                 <variation key="heightClass=regular-widthClass=regular" axis="horizontal"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XB0-pj-N9p" userLabel="login &amp; signup">
-                                                <rect key="frame" x="0.0" y="112" width="280" height="100"/>
+                                                <rect key="frame" x="0.0" y="104" width="280" height="132"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-HI-Lzq" customClass="SignInButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
                                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="SPc-I8-r3E"/>
+                                                            <constraint firstAttribute="height" constant="60" id="SPc-I8-r3E">
+                                                                <variation key="heightClass=compact" constant="44"/>
+                                                            </constraint>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                         <state key="normal" title="Sign In">
@@ -587,7 +424,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2u-V2-ubY" customClass="SignUpButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                                        <rect key="frame" x="0.0" y="72" width="280" height="60"/>
                                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                         <state key="normal" title="Sign Up">
@@ -612,49 +449,21 @@
                                             <constraint firstAttribute="trailing" secondItem="XB0-pj-N9p" secondAttribute="trailing" id="oKc-qB-Sz7"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Ibq-6r-A5e" userLabel="your account">
-                                        <rect key="frame" x="22.5" y="273.5" width="235.5" height="96.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your account information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfa-dd-p70">
-                                                <rect key="frame" x="0.0" y="0.0" width="235.5" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="UiG-kd-P5p">
-                                                        <variation key="heightClass=compact-widthClass=compact" constant="20"/>
-                                                    </constraint>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <color key="textColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact-widthClass=compact">
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                                                </variation>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIP-jK-yWo">
-                                                <rect key="frame" x="0.0" y="32" width="235.5" height="64.5"/>
-                                                <string key="text">•  Orders
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIP-jK-yWo">
+                                        <rect key="frame" x="22.5" y="281.5" width="235.5" height="64.5"/>
+                                        <string key="text">•  Orders
 •  Itemized list
 •  Pick up and delivery setup</string>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact-widthClass=compact">
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
-                                                </variation>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="jfa-dd-p70" firstAttribute="leading" secondItem="Ibq-6r-A5e" secondAttribute="leading" id="6Gk-iw-G0m"/>
-                                            <constraint firstAttribute="trailing" secondItem="jfa-dd-p70" secondAttribute="trailing" id="nNv-Xf-Ok4"/>
-                                            <constraint firstItem="jfa-dd-p70" firstAttribute="top" secondItem="Ibq-6r-A5e" secondAttribute="top" id="vqJ-9U-OTH"/>
-                                        </constraints>
-                                        <variation key="heightClass=regular-widthClass=regular" spacing="5"/>
-                                    </stackView>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=compact-widthClass=compact">
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                        </variation>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="y5U-gd-ocm" firstAttribute="leading" secondItem="GuM-7D-pfP" secondAttribute="leading" id="TgM-pt-GCi"/>
@@ -665,14 +474,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4fE-jF-cfY" firstAttribute="top" secondItem="5zb-pe-cqs" secondAttribute="top" id="43G-Jk-XNy"/>
-                            <constraint firstAttribute="trailing" secondItem="4fE-jF-cfY" secondAttribute="trailing" id="JaQ-8F-m79"/>
+                            <constraint firstItem="GuM-7D-pfP" firstAttribute="top" secondItem="cuc-Ju-03z" secondAttribute="bottom" constant="20" id="Ivo-gZ-4vM"/>
                             <constraint firstItem="GuM-7D-pfP" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="KLF-PJ-oJU"/>
                             <constraint firstItem="kQ3-wm-g1y" firstAttribute="top" secondItem="M1g-ah-iqS" secondAttribute="bottom" constant="20" id="RDp-x2-oQp"/>
                             <constraint firstItem="M1g-ah-iqS" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="SM0-X7-tyz"/>
-                            <constraint firstItem="GuM-7D-pfP" firstAttribute="top" secondItem="4fE-jF-cfY" secondAttribute="bottom" constant="20" id="eGB-kg-8Jo"/>
                             <constraint firstAttribute="trailing" secondItem="GuM-7D-pfP" secondAttribute="trailing" constant="20" id="qqi-gc-aA2"/>
-                            <constraint firstItem="4fE-jF-cfY" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" id="rOS-2t-7yQ"/>
                             <constraint firstAttribute="trailing" secondItem="M1g-ah-iqS" secondAttribute="trailing" constant="20" id="tT7-LC-85z"/>
                         </constraints>
                     </view>
@@ -680,11 +486,207 @@
                         <outlet property="callBellButton" destination="XyX-g8-YZS" id="tqZ-lI-bP7"/>
                         <outlet property="emailField" destination="rTF-Qh-z7O" id="vUv-LM-iGM"/>
                         <outlet property="passwordField" destination="YQ3-LS-JK9" id="OxB-L2-g60"/>
+                        <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" id="Z9D-Lf-8h7"/>
+                        <segue destination="teV-et-Uyh" kind="show" identifier="SignUpVC" id="q2M-gZ-L3S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSt-C1-NOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2333" y="79"/>
+            <point key="canvasLocation" x="2243" y="79"/>
+        </scene>
+        <!--My AccountVC-->
+        <scene sceneID="jLe-1c-lKT">
+            <objects>
+                <viewController id="T6v-Fh-8cu" customClass="MyAccountVC" customModule="Bell_Cleaners" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LSE-ns-EG1"/>
+                        <viewControllerLayoutGuide type="bottom" id="s6h-Lx-1TS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="voa-ew-vmy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-gm-wej">
+                                <rect key="frame" x="20" y="40" width="280" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWT-Sj-2oG" customClass="OrdersButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="JZm-Ay-wuq">
+                                                <variation key="heightClass=compact" constant="44"/>
+                                            </constraint>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="Orders">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="didTapOrders:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="foq-jC-ex4"/>
+                                            <action selector="didTapSignUp:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="hWo-oR-aHo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-MX-r3Y" customClass="ProfileButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="280" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="Profile">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="didTapProfile:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="32c-qW-5px"/>
+                                            <action selector="didTapSignUp:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="d64-HK-kbP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <variation key="heightClass=compact" axis="horizontal"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JXV-Nq-sKL">
+                                <rect key="frame" x="20" y="184" width="280" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QO-gg-SEH" customClass="SettingsButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="aVe-Ot-tUZ">
+                                                <variation key="heightClass=compact" constant="44"/>
+                                            </constraint>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="Settings">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="didTapSettings:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="ebL-hL-yXw"/>
+                                            <action selector="didTapSignUp:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="wpG-gL-07r"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcw-gG-rxL" customClass="SupportButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="280" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="Support">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="didTapSignUp:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="KA1-rS-cZj"/>
+                                            <action selector="didTapSupport:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="m5B-xB-yZc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <variation key="heightClass=compact" axis="horizontal"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-up-HVa" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="20" y="488" width="280" height="60"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FD7-Kl-W28">
+                                        <variation key="heightClass=compact" constant="44"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="didTapSignOut:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="7jM-Yf-72D"/>
+                                    <action selector="didTapSignUp:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="wEp-zo-ORm"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="h4s-0i-diN" userLabel="directions &amp; phone">
+                                <rect key="frame" x="20" y="328" width="280" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrk-US-nxa" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="lmS-KY-9F4">
+                                                <variation key="heightClass=compact" constant="44"/>
+                                            </constraint>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="Map">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <segue destination="vjV-Qa-jUl" kind="show" id="h6p-SN-ldM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoS-Vg-MUE" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="106" y="0.0" width="174" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="214-374-7007">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="didTapCallBell:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="drE-He-M1Y"/>
+                                            <action selector="didTapCallBell:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="idz-PM-t4t"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="yrk-US-nxa" firstAttribute="width" secondItem="RoS-Vg-MUE" secondAttribute="width" id="AqP-8W-4c8">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="-80"/>
+                                    </constraint>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nf9-gm-wej" firstAttribute="top" secondItem="LSE-ns-EG1" secondAttribute="bottom" constant="20" id="FQb-XF-d5d"/>
+                            <constraint firstItem="s6h-Lx-1TS" firstAttribute="top" secondItem="tag-up-HVa" secondAttribute="bottom" constant="20" id="Ft9-Of-PhC"/>
+                            <constraint firstItem="JXV-Nq-sKL" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="JKT-1b-Z1E"/>
+                            <constraint firstAttribute="trailing" secondItem="nf9-gm-wej" secondAttribute="trailing" constant="20" id="QYb-Tg-Y14"/>
+                            <constraint firstItem="nf9-gm-wej" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="SYj-hw-0z1"/>
+                            <constraint firstItem="h4s-0i-diN" firstAttribute="top" secondItem="JXV-Nq-sKL" secondAttribute="bottom" constant="12" id="V1I-X6-ScD"/>
+                            <constraint firstItem="h4s-0i-diN" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="WoM-HW-lvu"/>
+                            <constraint firstItem="tag-up-HVa" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="fwO-db-xO3"/>
+                            <constraint firstAttribute="trailing" secondItem="tag-up-HVa" secondAttribute="trailing" constant="20" id="gIV-1X-axn"/>
+                            <constraint firstAttribute="trailing" secondItem="h4s-0i-diN" secondAttribute="trailing" constant="20" id="hLy-jK-HdS"/>
+                            <constraint firstAttribute="trailing" secondItem="JXV-Nq-sKL" secondAttribute="trailing" constant="20" id="kEs-ov-evG"/>
+                            <constraint firstItem="JXV-Nq-sKL" firstAttribute="top" secondItem="nf9-gm-wej" secondAttribute="bottom" constant="12" id="swi-22-Rf4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="callBellButton" destination="RoS-Vg-MUE" id="woj-qq-gdn"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" id="vco-2w-DvZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12P-9I-gXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3064" y="79"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="osL-lQ-1Jq">
@@ -702,7 +704,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goX-F2-e4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3126" y="79"/>
+            <point key="canvasLocation" x="1500" y="819"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="ZfA-9g-c6T">
@@ -717,90 +719,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ek3-om-ZO9">
-                                <rect key="frame" x="0.0" y="64" width="320" height="348"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="392"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xq8-Ks-Fog" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bell Cleaners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fux-8Z-w5y">
-                                        <rect key="frame" x="87.5" y="27.5" width="146.5" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                        </variation>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xz-V3-7aS">
-                                        <rect key="frame" x="0.0" y="20" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="0Xy-2J-kUd"/>
-                                            <constraint firstAttribute="height" constant="44" id="c4B-aW-dfS"/>
-                                        </constraints>
-                                        <state key="normal" image="backArrow"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" id="puF-tm-FXB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="8Xz-V3-7aS" firstAttribute="leading" secondItem="Xq8-Ks-Fog" secondAttribute="leading" id="8HE-45-2UK"/>
-                                    <constraint firstAttribute="height" constant="44" id="A5p-xU-SZX"/>
-                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerY" secondItem="Xq8-Ks-Fog" secondAttribute="centerY" id="AZ9-nC-T2d"/>
-                                    <constraint firstItem="8Xz-V3-7aS" firstAttribute="centerY" secondItem="Xq8-Ks-Fog" secondAttribute="centerY" id="Jto-KJ-98W">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
-                                    </constraint>
-                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerY" secondItem="Xq8-Ks-Fog" secondAttribute="centerY" id="Pu3-wZ-Hbu">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
-                                    </constraint>
-                                    <constraint firstAttribute="bottom" secondItem="8Xz-V3-7aS" secondAttribute="bottom" id="hXQ-Yf-BS2"/>
-                                    <constraint firstAttribute="height" constant="64" id="rGt-it-a1W"/>
-                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerX" secondItem="Xq8-Ks-Fog" secondAttribute="centerX" id="ygb-TL-X9G"/>
-                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerX" secondItem="Xq8-Ks-Fog" secondAttribute="centerX" id="zHq-CE-rjw"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="A5p-xU-SZX"/>
-                                        <exclude reference="hXQ-Yf-BS2"/>
-                                        <exclude reference="AZ9-nC-T2d"/>
-                                        <exclude reference="ygb-TL-X9G"/>
-                                        <exclude reference="zHq-CE-rjw"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="A5p-xU-SZX"/>
-                                        <exclude reference="rGt-it-a1W"/>
-                                        <include reference="hXQ-Yf-BS2"/>
-                                        <include reference="AZ9-nC-T2d"/>
-                                        <include reference="ygb-TL-X9G"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="A5p-xU-SZX"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="zHq-CE-rjw"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="zHq-CE-rjw"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O84-lh-ApF" userLabel="address" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="412" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3508 S. Lancaster Rd. Dallas, TX 75216" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYY-tY-Op3">
-                                        <rect key="frame" x="55" y="8" width="210" height="48"/>
+                                        <rect key="frame" x="56" y="8" width="210" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="210" id="VJB-3f-oqc"/>
                                         </constraints>
@@ -917,18 +842,15 @@
                             <constraint firstAttribute="trailing" secondItem="Ae6-hr-JHx" secondAttribute="trailing" constant="20" id="28T-Lq-YN9"/>
                             <constraint firstItem="ek3-om-ZO9" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" id="3tr-go-5VT"/>
                             <constraint firstAttribute="trailing" secondItem="ek3-om-ZO9" secondAttribute="trailing" id="5I5-6e-t8u"/>
-                            <constraint firstItem="Xq8-Ks-Fog" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" id="6jG-Wi-ctf"/>
                             <constraint firstItem="O84-lh-ApF" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" id="9ql-gP-tWw"/>
-                            <constraint firstItem="ek3-om-ZO9" firstAttribute="top" secondItem="Xq8-Ks-Fog" secondAttribute="bottom" id="McX-aO-lyl"/>
                             <constraint firstItem="Dc7-Lk-dpY" firstAttribute="top" secondItem="Ae6-hr-JHx" secondAttribute="bottom" constant="20" id="VQv-nP-OHu">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstItem="Xq8-Ks-Fog" firstAttribute="top" secondItem="S0f-aV-fqP" secondAttribute="top" id="ZxU-Bn-dzk"/>
                             <constraint firstItem="Ae6-hr-JHx" firstAttribute="top" secondItem="O84-lh-ApF" secondAttribute="bottom" constant="12" id="b53-vw-0w7">
                                 <variation key="heightClass=compact" constant="6"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="O84-lh-ApF" secondAttribute="trailing" id="dAA-Lp-UN1"/>
-                            <constraint firstAttribute="trailing" secondItem="Xq8-Ks-Fog" secondAttribute="trailing" id="q3j-lq-OiI"/>
+                            <constraint firstItem="ek3-om-ZO9" firstAttribute="top" secondItem="hqk-uL-c1R" secondAttribute="bottom" id="jYR-Az-Q25"/>
                             <constraint firstItem="O84-lh-ApF" firstAttribute="top" secondItem="ek3-om-ZO9" secondAttribute="bottom" id="sEF-Ax-X7g"/>
                             <constraint firstItem="Ae6-hr-JHx" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" constant="20" id="xcE-aV-rkx"/>
                         </constraints>
@@ -940,15 +862,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kak-OA-qxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1549" y="79"/>
+            <point key="canvasLocation" x="758" y="819"/>
+        </scene>
+        <!--Shadow Navigation-->
+        <scene sceneID="Xci-Z8-lVX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EbK-Qg-ckx" customClass="ShadowNavigation" customModule="Bell_Cleaners" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MZ0-Ct-jw8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Edc-bw-m6p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zRw-Lj-ZAN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757.5" y="79.225352112676063"/>
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="13" height="21"/>
         <image name="bellLogo" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="muU-TC-1nj"/>
-        <segue reference="lJL-me-ucU"/>
+        <segue reference="vco-2w-DvZ"/>
+        <segue reference="F9E-7H-wjq"/>
+        <segue reference="h6p-SN-ldM"/>
     </inferredMetricsTieBreakers>
 </document>

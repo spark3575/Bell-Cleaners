@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class BellCleanersVC: UIViewController {
     
     @IBOutlet weak var bellLogoButton: BellLogoButton!
     @IBOutlet weak var callBellButton: CallBellButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = bellCleanersNavBarTitle
+    }
     
     private func shakeAndPlaySound() {
         bellLogoButton.shake()
@@ -28,7 +35,18 @@ class BellCleanersVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.hidesBackButton = true
         bellLogoButton.imageView?.contentMode = .scaleAspectFit
+    }
+    
+    @IBAction func didTapAccessAccount(_ sender: AccessAccountButton) {
+        guard Auth.auth().currentUser == nil else {
+            performSegue(withIdentifier: myAccountSegueIdentifier, sender: nil)
+            return
+        }
+        performSegue(withIdentifier: accessAccountSegueIdentifier, sender: nil)
     }
     
     @IBAction func didTapBell(_ sender: BellLogoButton) {
@@ -37,5 +55,11 @@ class BellCleanersVC: UIViewController {
     
     @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backButton = UIBarButtonItem()
+        backButton.title = emptyLeftBarButtonItemTitle
+        navigationItem.backBarButtonItem = backButton
     }
 }

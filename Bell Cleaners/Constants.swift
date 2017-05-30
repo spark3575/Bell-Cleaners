@@ -8,7 +8,16 @@
 
 import UIKit
 
-let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0).cgColor
+let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
+let navigationBarKeyHidesShadow = "hidesShadow"
+let navigationBarTintColor = UIColor.white
+let emptyLeftBarButtonItemTitle = ""
+let emptyNavBarTitle = ""
+let bellCleanersNavBarTitle = "Bell Cleaners"
+let mapNavBarTitle = "Map"
+let accessAccountNavBarTitle = "Access Account"
+let signUpNavBarTitle = "Sign Up"
+let myAccountNavBarTitle = "My Account"
 let layerShadowColor = UIColor.black.cgColor
 let layerShadowOffset = CGSize(width: 0, height: 2.0)
 let layerShadowOpacity: Float = 0.5
@@ -41,13 +50,21 @@ let locationAlertTitle = "Location Services Required"
 let locationAlertMessage = "Authorization can be changed in your Privacy Settings"
 let mapAlertActionTitle = "Settings"
 let okAlertActionTitle = "OK"
+let emailValidationContaining = "mailto:"
 let emailAlertTitle = "Valid Email Address Required"
 let emailAlertMessage = "Verification email will be sent"
 let passwordMinimumLength = 6
 let passwordAlertTitle = "Password Required"
 let passwordAlertMessage = "Enter atleast 6 characters"
-let loginAlertTitle = "Please check your email address or password"
-let loginAlertMessage = ""
+let authenticationAlertTitle = "Authentication Error"
+let signInAlertTitle = "Sign In Error"
+let signInAlertMessage = "Please check your email address or password"
+let signUpAlertTitle = "Sign Up Error"
+let signUpAlertMessage = "Please check your email address or password"
+let bellCleanersSegueIdentifier = "BellCleanersVC"
+let accessAccountSegueIdentifier = "AccessAccountVC"
+let myAccountSegueIdentifier = "MyAccountVC"
+let signUpSegueIdentifier = "SignUpVC"
 
 
 
