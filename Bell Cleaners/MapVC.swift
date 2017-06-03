@@ -18,7 +18,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = mapNavBarTitle
+        navigationItem.title = mapLiteral
         setupBellCleanersMap()
     }
     
@@ -85,7 +85,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         case .authorizedAlways:
             manager.startUpdatingLocation()
         case .restricted, .denied:
-            alertAccessDenied.presentMapAlert(fromController: self, title: locationAlertTitle,
+            alertAccessDenied.presentActionAlert(fromController: self, title: locationAlertTitle,
                          message: locationAlertMessage,
                          actionTitle: okAlertActionTitle)
         }

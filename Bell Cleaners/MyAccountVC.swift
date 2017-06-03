@@ -16,7 +16,7 @@ class MyAccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = myAccountNavBarTitle
+        navigationItem.title = myAccountLiteral
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,13 +47,14 @@ class MyAccountVC: UIViewController {
     }
 
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
+        DataService.instance.currentUserRef.removeAllObservers()
         AuthService.instance.signOut()
-        performSegue(withIdentifier: bellCleanersSegueIdentifier, sender: nil)
+        performSegue(withIdentifier: bellCleanersSegue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backButton = UIBarButtonItem()
-        backButton.title = emptyLeftBarButtonItemTitle
+        backButton.title = emptyLiteral
         navigationItem.backBarButtonItem = backButton
     }
 }

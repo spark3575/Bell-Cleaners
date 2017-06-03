@@ -17,7 +17,7 @@ class BellCleanersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = bellCleanersNavBarTitle
+        navigationItem.title = bellCleanersLiteral
     }
     
     private func shakeAndPlaySound() {
@@ -28,11 +28,13 @@ class BellCleanersVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Timer.scheduledTimer(withTimeInterval: delayAfterViewAppears, repeats: false) {
-            [weak self] timer in
-            self?.shakeAndPlaySound()
-        }
+//        Timer.scheduledTimer(withTimeInterval: delayAfterViewAppears, repeats: false) {
+//            [weak self] timer in
+//            self?.shakeAndPlaySound()
+//        }
     }
+    
+    var handle: AuthStateDidChangeListenerHandle?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,11 +44,15 @@ class BellCleanersVC: UIViewController {
     }
     
     @IBAction func didTapAccessAccount(_ sender: AccessAccountButton) {
-        guard Auth.auth().currentUser == nil else {
-            performSegue(withIdentifier: myAccountSegueIdentifier, sender: nil)
+        if Auth.auth().currentUser != nil && AuthService.profileFull == false {
+            self.performSegue(withIdentifier: signUpSegue, sender: self)
             return
         }
-        performSegue(withIdentifier: accessAccountSegueIdentifier, sender: nil)
+        if Auth.auth().currentUser != nil && AuthService.profileFull == true {
+            self.performSegue(withIdentifier: myAccountSegue, sender: self)
+            return
+        }
+        self.performSegue(withIdentifier: accessAccountSegue, sender: self)
     }
     
     @IBAction func didTapBell(_ sender: BellLogoButton) {
@@ -59,7 +65,7 @@ class BellCleanersVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backButton = UIBarButtonItem()
-        backButton.title = emptyLeftBarButtonItemTitle
+        backButton.title = emptyLiteral
         navigationItem.backBarButtonItem = backButton
     }
 }

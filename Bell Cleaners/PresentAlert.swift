@@ -16,9 +16,9 @@ class PresentAlert: UIAlertController {
         controller.present(alert, animated: true)
     }
     
-    func presentMapAlert(fromController controller: UIViewController, title: String, message: String, actionTitle: String) {
+    func presentActionAlert(fromController controller: UIViewController, title: String, message: String, actionTitle: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: mapAlertActionTitle, style: .default, handler: { alert in
+        alert.addAction(UIAlertAction(title: settingsAlertActionTitle, style: .default, handler: { alert in
             guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
             UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
         }))

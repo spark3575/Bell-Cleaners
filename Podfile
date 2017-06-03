@@ -11,6 +11,6 @@ target 'Bell Cleaners' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
-  pod 'SwiftKeychainWrapper'
-
+  pod 'Fabric'
+  pod 'Crashlytics'
 end

@@ -37,9 +37,9 @@ class DirectionsButton: ShadowButton {}
 
 class SignInButton: ShadowButton {}
 
-class SignUpButton: ShadowButton {}
-
 class SignOutButton: ShadowButton {}
+
+class SaveButton: ShadowButton {}
 
 class OrdersButton: ShadowButton {}
 

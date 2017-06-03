@@ -11,6 +11,8 @@ import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
 import UserNotifications
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -32,11 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         
-        application.registerForRemoteNotifications()
-        
-        FirebaseApp.configure()
-        
         UIApplication.shared.statusBarStyle = .lightContent
+        application.registerForRemoteNotifications()
+        FirebaseApp.configure()
+        Fabric.with([Crashlytics.self])
         return true
     }
 

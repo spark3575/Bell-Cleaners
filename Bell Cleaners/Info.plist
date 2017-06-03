@@ -47,5 +47,19 @@
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location will only be used to get directions to Bell Cleaners</string>
+    <key>Fabric</key>
+    <dict>
+        <key>APIKey</key>
+        <string>a47b936c74b32e271b9ee27e999e3e6911db2e7b</string>
+        <key>Kits</key>
+        <array>
+            <dict>
+                <key>KitInfo</key>
+                <dict/>
+                <key>KitName</key>
+                <string>Crashlytics</string>
+            </dict>
+        </array>
+    </dict>
 </dict>
 </plist>

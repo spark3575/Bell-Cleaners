@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Firebase
 
 typealias Completion = (_ errorMessage: String?, _ data: AnyObject?) -> Void
 
@@ -17,6 +17,8 @@ class AuthService {
     static var instance: AuthService {
         return _instance
     }
+    
+    static var profileFull = Bool()
     
     func signIn(withEmail email: String, password: String, onComplete: Completion?) {
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
@@ -34,6 +36,12 @@ class AuthService {
                 self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
             } else {
                 onComplete?(nil, user)
+                if let user = user {
+                    let userData = [emailLiteral: email, passwordLiteral: password]
+                    DataService.instance.updateUser(uid: user.uid, userData: userData as [String: AnyObject])
+                    print(userData)
+                }
+                
             }
         })
     }
@@ -42,50 +50,26 @@ class AuthService {
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        if Auth.auth().currentUser == nil {
-            print("User is signed out")
+            print(signOutErrorMessage + String(describing: signOutError))
         }
     }
     
-    func handleFirebaseError(error: NSError, onComplete: Completion?) {
-        print(error.debugDescription)
+    private func handleFirebaseError(error: NSError, onComplete: Completion?) {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             switch (errorCode) {
             case .userNotFound:
-                onComplete?("User not found", nil)
+                onComplete?(userNotFoundErrorMessage, nil)
             case .invalidEmail:
-                onComplete?("Invalid email address", nil)
+                onComplete?(invalidEmailErrorMessage, nil)
             case .wrongPassword:
-                onComplete?("Invalid password", nil)
+                onComplete?(invalidPasswordErrorMessage, nil)
             case .networkError:
-                onComplete?("Problem with network connection", nil)
+                onComplete?(networkConnectionErrorMessage, nil)
             case .emailAlreadyInUse, .credentialAlreadyInUse:
-                onComplete?("Could not create account. Email already in use.", nil)
+                onComplete?(createAccountErrorMessage, nil)
             default:
-                onComplete?("There was a problem. Please try again.", nil)
+                onComplete?(defaultErrorMessage, nil)
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

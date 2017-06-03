@@ -20,6 +20,6 @@ class ShadowNavigation: UINavigationController {
         self.navigationBar.layer.shadowOpacity = layerShadowOpacity
         self.navigationBar.layer.shadowRadius = layerShadowRadius
         self.navigationBar.layer.masksToBounds = false
-        self.navigationBar.setValue(true, forKey: navigationBarKeyHidesShadow)
+        self.navigationBar.setValue(true, forKey: hidesShadowLiteral)
     }
 }
