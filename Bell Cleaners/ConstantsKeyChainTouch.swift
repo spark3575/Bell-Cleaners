@@ -8,9 +8,12 @@
 
 import Foundation
 
-let buttonTitleSignIn = "Sign In"
-let buttonTitleCreateAccount = "Create Account"
-let hasLoginKeyLiteral = "hasLoginKey"
+let hasSignedInBeforeLiteral = "hasSignedInBefore"
+let secureTextLiteral: Character = "•"
+let userNotFoundLiteral = "User Not Found"
+let createOneNowLiteral = "Please create a new account"
+let createAccountLiteral = "Create Account"
+let cancelActionTitle = "Cancel"
 let hasUsedTouchKeyLiteral = "hasUsedTouch"
 let keyChainFatalError = "Error updating keychain - "
 let canEvaluatePolicyMessage = "Touch ID not available"
@@ -19,3 +22,5 @@ let touchLAErrorAuthentication = "Authentication Failed"
 let touchLAErrorCancel = "Touch ID cancelled"
 let touchLAErrorPasscode = "Passcode needs to be set to use Touch ID"
 let touchLAErrorDefault = "Touch ID Failed"
+let fieldsNotFilledTitle = "All Information Required"
+let fieldsNotFilledMessage = "Please fill out every field"

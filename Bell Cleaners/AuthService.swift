@@ -39,9 +39,7 @@ class AuthService {
                 if let user = user {
                     let userData = [emailLiteral: email, passwordLiteral: password]
                     DataService.instance.updateUser(uid: user.uid, userData: userData as [String: AnyObject])
-                    print(userData)
                 }
-                
             }
         })
     }

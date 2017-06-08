@@ -9,8 +9,7 @@
 import UIKit
 import Firebase
 
-class CreateAccountVC: UIViewController {
-    
+class CreateAccountVC: UIViewController {    
     @IBOutlet weak var emailField: EmailField!
     @IBOutlet weak var passwordField: PasswordField!
     @IBOutlet weak var firstNameField: FirstNameField!
@@ -82,7 +81,7 @@ class CreateAccountVC: UIViewController {
             }
             print(filledCount)
             if filledCount < Int(snapshot.childrenCount) {
-                self.fieldsNotFilled.presentAlert(fromController: self, title: "All Information Required", message: "Please fill out every field", actionTitle: okAlertActionTitle)
+                self.fieldsNotFilled.presentAlert(fromController: self, title: fieldsNotFilledTitle, message: fieldsNotFilledMessage, actionTitle: okAlertActionTitle)
             } else {
                 AuthService.profileFull = true
                 self.performSegue(withIdentifier: myAccountSegue, sender: self)
@@ -93,11 +92,5 @@ class CreateAccountVC: UIViewController {
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         AuthService.instance.signOut()
         performSegue(withIdentifier: bellCleanersSegue, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backButton = UIBarButtonItem()
-        backButton.title = emptyLiteral
-        navigationItem.backBarButtonItem = backButton
     }
 }

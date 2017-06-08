@@ -9,8 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class MyAccountVC: UIViewController {
-    
+class MyAccountVC: UIViewController {    
     @IBOutlet weak var callBellButton: CallBellButton!
     
     override func viewDidLoad() {
@@ -50,11 +49,5 @@ class MyAccountVC: UIViewController {
         DataService.instance.currentUserRef.removeAllObservers()
         AuthService.instance.signOut()
         performSegue(withIdentifier: bellCleanersSegue, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backButton = UIBarButtonItem()
-        backButton.title = emptyLiteral
-        navigationItem.backBarButtonItem = backButton
     }
 }

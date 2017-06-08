@@ -10,14 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var callBellButton: CallBellButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = mapLiteral
         setupBellCleanersMap()
     }
@@ -56,7 +54,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                 userLatitude = userCoordinates.latitude
                 userLongitude = userCoordinates.longitude
             }
-            
             if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
                 let userLatitudeString = String(format: decimalPlacesFormat, userLatitude)
                 let userLongitudeString = String(format: decimalPlacesFormat, userLongitude)
@@ -74,7 +71,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                 }
             }
         }
-        
         let alertAccessDenied = PresentAlert()
         
         switch status {
@@ -85,7 +81,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         case .authorizedAlways:
             manager.startUpdatingLocation()
         case .restricted, .denied:
-            alertAccessDenied.presentActionAlert(fromController: self, title: locationAlertTitle,
+            alertAccessDenied.presentSettingsActionAlert(fromController: self, title: locationAlertTitle,
                          message: locationAlertMessage,
                          actionTitle: okAlertActionTitle)
         }

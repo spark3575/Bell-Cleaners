@@ -29,8 +29,8 @@ let shakeFromValue = 0.0
 let shakeToValue = -(CGFloat.pi / 3)
 let shakeDuration = 0.3
 let shakeRepeatCount: Float = 2
-let bellSound = "dingSmallBell"
-let mp3 = "mp3"
+let bellSoundLiteral = "dingSmallBell"
+let mp3Literal = "mp3"
 
 
 
