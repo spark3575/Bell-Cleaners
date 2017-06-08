@@ -11,11 +11,6 @@ import AVFoundation
 
 class BellLogoButton: ShadowButton {
     
-    func shakeAndPlaySound() {
-        shake()
-        playSound(file: bellSoundLiteral, ext: mp3Literal)
-    }
-    
     func shake() {
         let shake = CABasicAnimation(keyPath: animationKeyPath)
         shake.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -40,5 +35,10 @@ class BellLogoButton: ShadowButton {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func shakeAndPlaySound() {
+        shake()
+        playSound(file: bellSoundLiteral, ext: mp3Literal)
     }
 }

@@ -16,10 +16,6 @@ class BellCleanersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = bellCleanersLiteral
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         Timer.scheduledTimer(withTimeInterval: delayAfterViewAppears, repeats: false) {
             [weak self] timer in
             self?.bellLogoButton.shakeAndPlaySound()

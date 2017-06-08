@@ -127,11 +127,11 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             if !hasSignedInBefore {
                 self.saveLogin(email: email, password: password)
             }            
-            if AuthService.profileFull == false {
+            if !AuthService.profileFull {
                 self.performSegue(withIdentifier: signUpSegue, sender: self)
                 return
             }
-            if AuthService.profileFull == true {
+            if AuthService.profileFull {
                 self.performSegue(withIdentifier: myAccountSegue, sender: self)
                 return
             }

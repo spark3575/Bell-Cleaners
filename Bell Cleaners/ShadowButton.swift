@@ -27,6 +27,14 @@ class ShadowButton: UIButton {
         layer.shadowRadius = layerShadowRadius
         layer.cornerRadius = layerCornerRadius
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform.identity
+        }
+        super.touchesBegan(touches, with: event)
+    }
 }
 
 class AccessAccountButton: ShadowButton {}
