@@ -22,9 +22,9 @@ class ShadowField: UITextField {
     
     private func setup() {
         layer.shadowColor = layerShadowColor
-        layer.shadowOffset = layerShadowOffset
-        layer.shadowOpacity = layerShadowOpacity
-        layer.shadowRadius = layerShadowRadius
+        layer.shadowOffset = textFieldShadowOffset
+        layer.shadowOpacity = textFieldShadowOpacity
+        layer.shadowRadius = textFieldShadowRadius
         layer.cornerRadius = layerCornerRadius
         layer.borderColor = bellColor.cgColor
         layer.borderWidth = layerBorderWidth
