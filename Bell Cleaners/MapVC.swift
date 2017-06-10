@@ -10,7 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {    
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var callBellButton: CallBellButton!
     
@@ -22,14 +23,11 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     private func setupBellCleanersMap() {
         mapView.delegate = self
-        mapView.showsScale = true
-        
+        mapView.showsScale = true        
         let bellCoordinates = CLLocationCoordinate2DMake(bellLatitude, bellLongitude)
         let bellSpan: MKCoordinateSpan = MKCoordinateSpanMake(bellSpanLatitudeDelta, bellSpanLongitudeDelta)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(bellCoordinates, bellSpan)
-        
         mapView.setRegion(region, animated: true)
-        
         let annotation = MKPointAnnotation()
         annotation.coordinate = bellCoordinates
         annotation.title = bellAnnotationTitle
@@ -49,7 +47,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             manager.startUpdatingLocation()
             manager.desiredAccuracy = kCLLocationAccuracyBest
             let userCoordinates = (manager.location?.coordinate)!
-            
             if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
                 userLatitude = userCoordinates.latitude
                 userLongitude = userCoordinates.longitude
@@ -57,12 +54,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
                 let userLatitudeString = String(format: decimalPlacesFormat, userLatitude)
                 let userLongitudeString = String(format: decimalPlacesFormat, userLongitude)
-                
                 let userLocationString = userLatitudeString + separatingComma + userLongitudeString
                 let routeToBell = URL(string: routeToBellURLPrefix + userLocationString + routeToBellURLSuffix)
-                
                 manager.stopUpdatingLocation()
-                
                 guard let routeURL = routeToBell else { return }
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(routeURL, options: [:], completionHandler: nil)
@@ -72,7 +66,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             }
         }
         let alertAccessDenied = PresentAlert()
-        
         switch status {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()

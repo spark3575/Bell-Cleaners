@@ -13,7 +13,6 @@
 		B02C6FB21EE8931B00A2465E /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */; };
 		B02C6FB41EE894D700A2465E /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C6FB31EE894D700A2465E /* SegueFromRight.swift */; };
 		B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B37DD1EDD9C7300BF675B /* DataService.swift */; };
-		B04B37E01EDDB40000BF675B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B37DF1EDDB40000BF675B /* User.swift */; };
 		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
 		B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */; };
 		B05900B71EE24529009238EE /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B61EE24529009238EE /* TouchIDAuthentication.swift */; };
@@ -48,7 +47,6 @@
 		B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		B02C6FB31EE894D700A2465E /* SegueFromRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		B04B37DD1EDD9C7300BF675B /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		B04B37DF1EDDB40000BF675B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		B05900B61EE24529009238EE /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 			children = (
 				B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */,
 				B05900B61EE24529009238EE /* TouchIDAuthentication.swift */,
-				B04B37DF1EDDB40000BF675B /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -367,7 +364,6 @@
 				B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */,
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
-				B04B37E01EDDB40000BF675B /* User.swift in Sources */,
 				B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */,
 				B08956A21ED91FEF00736208 /* PresentAlert.swift in Sources */,
 				B0B610B01ED7BD49001E3C6C /* AccessAccountVC.swift in Sources */,

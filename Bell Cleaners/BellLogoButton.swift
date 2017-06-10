@@ -19,8 +19,7 @@ class BellLogoButton: ShadowButton {
         shake.isRemovedOnCompletion = false
         shake.duration = shakeDuration
         shake.autoreverses = true
-        shake.repeatCount = shakeRepeatCount
-        
+        shake.repeatCount = shakeRepeatCount        
         self.layer.add(shake, forKey: nil)
     }
     

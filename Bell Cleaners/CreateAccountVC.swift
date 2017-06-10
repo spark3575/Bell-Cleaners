@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 
-class CreateAccountVC: UIViewController {    
+class CreateAccountVC: UIViewController {
+    
     @IBOutlet weak var emailField: EmailField!
     @IBOutlet weak var passwordField: PasswordField!
     @IBOutlet weak var firstNameField: FirstNameField!
@@ -20,10 +21,8 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var zipcodeField: ZipcodeField!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         navigationItem.title = signInLiteral
-        
         DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
             if let user = snapshot.value as? [String : AnyObject] {
                 let email = user[emailLiteral] ?? emptyLiteral as AnyObject
@@ -47,8 +46,7 @@ class CreateAccountVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        super.viewWillAppear(animated)        
         navigationItem.hidesBackButton = true
     }
     
@@ -68,7 +66,6 @@ class CreateAccountVC: UIViewController {
                         cityLiteral: cityField.text as AnyObject,
                         zipcodeLiteral: zipcodeField.text as AnyObject]
         DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-        
         DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
             print(snapshot.childrenCount)
             var filledCount = 0

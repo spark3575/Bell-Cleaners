@@ -12,6 +12,7 @@ import Firebase
 typealias Completion = (_ errorMessage: String?, _ data: AnyObject?) -> Void
 
 class AuthService {
+    
     private static let _instance = AuthService()
     
     static var instance: AuthService {

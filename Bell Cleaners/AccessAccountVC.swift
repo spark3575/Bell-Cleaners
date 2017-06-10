@@ -14,7 +14,8 @@ struct KeychainConfiguration {
     static let accessGroup: String? = nil
 }
 
-class AccessAccountVC: UIViewController, UITextFieldDelegate {    
+class AccessAccountVC: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var emailField: EmailField!
     @IBOutlet weak var passwordField: PasswordField!
     @IBOutlet weak var signInButton: SignInButton!
@@ -24,15 +25,16 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var callBellButton: CallBellButton!
     
     private var passwordItems: [KeychainPasswordItem] = []
+    private var securedTextEmail: String?
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = accessAccountLiteral
         emailField.delegate = self
         passwordField.delegate = self
-        
-        if UserDefaults.standard.value(forKey: hasSignedInBeforeLiteral) as? Bool == true {
-            if let email = UserDefaults.standard.value(forKey: emailLiteral) as? String {
+        if (defaults.bool(forKey: hasSignedInBeforeLiteral)) {
+            if let email = defaults.string(forKey: emailLiteral) {
                 var characters = Array(email.characters)
                 var count = email.characters.count
                 var replaceCount = 0
@@ -45,13 +47,13 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 }
                 count -= replaceCount
                 emailField.text = String(characters[0..<count])
+                securedTextEmail = emailField.text
+                createInfoLabel.isHidden = true
             }
             touchView.isHidden = !bellTouchSignIn.canEvaluatePolicy()
             touchButton.isHidden = !bellTouchSignIn.canEvaluatePolicy()
-            if let hasTouched = UserDefaults.standard.value(forKey: hasUsedTouchKeyLiteral) as? Bool {
-                if hasTouched {
-                    touchSignIn()
-                }
+            if (defaults.bool(forKey: hasUsedTouchKeyLiteral)) {
+                touchSignIn()
             }
         } else {
             touchView.isHidden = true
@@ -95,40 +97,38 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     }
     
     private func signInUser(email: String, password: String) {
+        var signInFailedAlert = UIAlertController(title: userNotFoundLiteral, message: createNewAccountLiteral, preferredStyle: .alert)
+        var createAccountAction = UIAlertAction(title: createAccountLiteral, style: .default, handler: { action in
+            self.signInButton.setTitle(createAccountLiteral, for: .normal)
+            self.emailField.text = emptyLiteral
+            self.passwordField.text = emptyLiteral
+            self.touchButton.isHidden = true
+            self.createInfoLabel.isHidden = true
+        })
+        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .default, handler: nil)        
         AuthService.instance.signIn(withEmail: email, password: password, onComplete: { (errorMessage, data) in
             if errorMessage == userNotFoundErrorMessage {
-                let signInFailedAlert = UIAlertController(title: userNotFoundLiteral, message: createOneNowLiteral, preferredStyle: .alert)
-                let createAccountAction = UIAlertAction(title: createAccountLiteral, style: .default, handler: { action in
-                    self.createUser(email: email, password: password)
-                })
-                let cancelAction = UIAlertAction(title: cancelActionTitle, style: .default, handler: nil)
-                let okAction = UIAlertAction(title: okAlertActionTitle, style: .default, handler: nil)
-                let hasUsedTouch = UserDefaults.standard.bool(forKey: hasUsedTouchKeyLiteral)
-                if !hasUsedTouch {
-                    signInFailedAlert.addAction(createAccountAction)
-                } else {
-                    self.signInButton.setTitle(createAccountLiteral, for: .normal)
-                    self.touchButton.isHidden = true
-                    self.createInfoLabel.isHidden = true
-                    UserDefaults.standard.set(false, forKey: hasUsedTouchKeyLiteral)
-                    signInFailedAlert.addAction(okAction)
-                    self.present(signInFailedAlert, animated: true, completion: nil)
-                    return
+                if !(self.defaults.bool(forKey: hasSignedInBeforeLiteral)) {
+                    createAccountAction = UIAlertAction(title: createAccountLiteral, style: .default, handler: { action in
+                        self.createUser(email: email, password: password)
+                    })
                 }
+                self.defaults.set(false, forKey: hasUsedTouchKeyLiteral)
+                signInFailedAlert.addAction(createAccountAction)
                 signInFailedAlert.addAction(cancelAction)
                 self.present(signInFailedAlert, animated: true, completion: nil)
                 return
             }
             guard errorMessage == nil else {
-                self.alertValidationFailed.presentAlert(fromController: self, title: authenticationAlertTitle, message: errorMessage!, actionTitle: okAlertActionTitle)
+                signInFailedAlert = UIAlertController(title: signInAlertTitle, message: errorMessage, preferredStyle: .alert)
+                signInFailedAlert.addAction(createAccountAction)
+                signInFailedAlert.addAction(cancelAction)
+                self.present(signInFailedAlert, animated: true, completion: nil)
                 return
             }
-            let hasSignedInBefore = UserDefaults.standard.bool(forKey: hasSignedInBeforeLiteral)
-            if !hasSignedInBefore {
-                self.saveLogin(email: email, password: password)
-            }            
+            self.saveLogin(email: email, password: password)
             if !AuthService.profileFull {
-                self.performSegue(withIdentifier: signUpSegue, sender: self)
+                self.performSegue(withIdentifier: createAccountSegue, sender: self)
                 return
             }
             if AuthService.profileFull {
@@ -145,12 +145,12 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 return
             }
             self.saveLogin(email: email, password: password)
-            self.performSegue(withIdentifier: signUpSegue, sender: self)
+            self.performSegue(withIdentifier: createAccountSegue, sender: self)
         })
     }
     
     private func saveLogin(email: String, password: String) {
-        UserDefaults.standard.setValue(email, forKey: emailLiteral)
+        defaults.setValue(email, forKey: emailLiteral)
         do {
             let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
                                                     account: emailLiteral,
@@ -159,10 +159,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         } catch {
             fatalError(keyChainFatalError + String(describing: error))
         }
-        let hasSignedInBefore = UserDefaults.standard.bool(forKey: hasSignedInBeforeLiteral)
-        if !hasSignedInBefore {
-            UserDefaults.standard.set(true, forKey: hasSignedInBeforeLiteral)
-        }
+        defaults.set(true, forKey: hasSignedInBeforeLiteral)
     }
     
     private let bellTouchSignIn = TouchIDAuth()
@@ -175,9 +172,8 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                         self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: message, message: emptyLiteral, actionTitle: okAlertActionTitle)
                     }
                 } else {
-                    let hasSignedInBefore = UserDefaults.standard.bool(forKey: hasSignedInBeforeLiteral)
-                    if hasSignedInBefore {
-                        if let email = UserDefaults.standard.value(forKey: emailLiteral) as? String {
+                    if (self.defaults.bool(forKey: hasSignedInBeforeLiteral)) {
+                        if let email = self.defaults.string(forKey: emailLiteral) {
                             var password = emptyLiteral
                             
                             do {
@@ -185,11 +181,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                                                                         account: emailLiteral,
                                                                         accessGroup: KeychainConfiguration.accessGroup)
                                 password = try passwordItem.readPassword()
-                                
-                                let hasUsedTouch = UserDefaults.standard.bool(forKey: hasUsedTouchKeyLiteral)
-                                if !hasUsedTouch {
-                                    UserDefaults.standard.set(true, forKey: hasUsedTouchKeyLiteral)
-                                }
+                                self.defaults.set(true, forKey: hasUsedTouchKeyLiteral)
                                 self.signInUser(email: email, password: password)
                             }
                             catch {
@@ -207,18 +199,20 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     @IBAction func didTapSignIn(_ sender: SignInButton) {
         if let email = emailField.text, let password = passwordField.text, !email.isEmpty && !password.isEmpty {
             if signInButton.currentTitle == signInLiteral {
-                let hasSignedInBefore = UserDefaults.standard.bool(forKey: hasSignedInBeforeLiteral)
-                if hasSignedInBefore {
-                    if let savedEmail = UserDefaults.standard.value(forKey: emailLiteral) as? String {
-                        signInUser(email: savedEmail, password: password)
+                if (defaults.bool(forKey: hasSignedInBeforeLiteral)) {
+                    if securedTextEmail == email {
+                        if let savedEmail = defaults.string(forKey: emailLiteral) {
+                            signInUser(email: savedEmail, password: password)
+                        }
+                    } else {
+                        signInUser(email: email, password: password)
                     }
+                    defaults.set(false, forKey: hasUsedTouchKeyLiteral)
                     return
+                } else {
+                    signInUser(email: email, password: password)
+                    defaults.set(false, forKey: hasUsedTouchKeyLiteral)
                 }
-                let hasUsedTouch = UserDefaults.standard.bool(forKey: hasUsedTouchKeyLiteral)
-                if hasUsedTouch {
-                    UserDefaults.standard.set(false, forKey: hasUsedTouchKeyLiteral)
-                }
-                signInUser(email: email, password: password)
             } else {
                 self.createUser(email: email, password: password)
             }

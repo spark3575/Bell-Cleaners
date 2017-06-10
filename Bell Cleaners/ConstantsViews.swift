@@ -34,28 +34,3 @@ let shakeDuration = 0.3
 let shakeRepeatCount: Float = 2
 let bellSoundLiteral = "dingSmallBell"
 let mp3Literal = "mp3"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

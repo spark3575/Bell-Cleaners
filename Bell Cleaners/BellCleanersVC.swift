@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 
-class BellCleanersVC: UIViewController {    
+class BellCleanersVC: UIViewController {
+    
     @IBOutlet weak var bellLogoButton: BellLogoButton!
     @IBOutlet weak var callBellButton: CallBellButton!
     

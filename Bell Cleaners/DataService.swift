@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class DataService {
+    
     private static let _instance = DataService()
     
     static var instance: DataService {

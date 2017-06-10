@@ -9,7 +9,8 @@
 import UIKit
 import FirebaseAuth
 
-class MyAccountVC: UIViewController {    
+class MyAccountVC: UIViewController {
+    
     @IBOutlet weak var callBellButton: CallBellButton!
     
     override func viewDidLoad() {

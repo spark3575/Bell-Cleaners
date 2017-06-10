@@ -11,7 +11,7 @@ import Foundation
 let hasSignedInBeforeLiteral = "hasSignedInBefore"
 let secureTextLiteral: Character = "•"
 let userNotFoundLiteral = "User Not Found"
-let createOneNowLiteral = "Please create a new account"
+let createNewAccountLiteral = "Please create a new account"
 let createAccountLiteral = "Create Account"
 let cancelActionTitle = "Cancel"
 let hasUsedTouchKeyLiteral = "hasUsedTouch"

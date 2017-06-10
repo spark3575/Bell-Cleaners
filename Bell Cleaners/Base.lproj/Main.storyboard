@@ -185,7 +185,7 @@
                                 <rect key="frame" x="20" y="586.5" width="335" height="60.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-8l-4qm" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="122" height="60.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="60.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Map">
@@ -207,7 +207,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-uD-gkv" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="134" y="0.0" width="201" height="60.5"/>
+                                        <rect key="frame" x="133.5" y="0.0" width="201.5" height="60.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="214-374-7007">
@@ -348,7 +348,7 @@
                         <outlet property="callBellButton" destination="HIa-uD-gkv" id="UKe-fw-JqQ"/>
                         <segue destination="E4R-Qp-0Wr" kind="show" identifier="AccessAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="zXT-Lz-g9u"/>
                         <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="F9E-7H-wjq"/>
-                        <segue destination="teV-et-Uyh" kind="show" identifier="SignUpVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="2nD-yd-Kn0"/>
+                        <segue destination="teV-et-Uyh" kind="show" identifier="CreateAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="2nD-yd-Kn0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -633,7 +633,7 @@
                         <outlet property="touchButton" destination="rin-wt-YUL" id="d2C-Bm-5b5"/>
                         <outlet property="touchView" destination="IRA-O9-mdg" id="CBl-Ii-iVw"/>
                         <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="Z9D-Lf-8h7"/>
-                        <segue destination="teV-et-Uyh" kind="show" identifier="SignUpVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="q2M-gZ-L3S"/>
+                        <segue destination="teV-et-Uyh" kind="show" identifier="CreateAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="q2M-gZ-L3S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSt-C1-NOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -880,7 +880,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12P-9I-gXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1943" y="449"/>
+            <point key="canvasLocation" x="1937" y="449"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="osL-lQ-1Jq">
@@ -1307,7 +1307,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIe-0R-O45">
-                                        <rect key="frame" x="166" y="29" width="45" height="26.5"/>
+                                        <rect key="frame" x="165" y="29" width="45" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1383,9 +1383,9 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="F9E-7H-wjq"/>
         <segue reference="v5G-PO-KDn"/>
-        <segue reference="lJL-me-ucU"/>
-        <segue reference="2nD-yd-Kn0"/>
+        <segue reference="q2M-gZ-L3S"/>
+        <segue reference="Z9D-Lf-8h7"/>
+        <segue reference="8Uf-Hb-fqD"/>
     </inferredMetricsTieBreakers>
 </document>

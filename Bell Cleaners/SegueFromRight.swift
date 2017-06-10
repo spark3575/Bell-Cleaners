@@ -8,10 +8,9 @@
 
 import UIKit
 
-class SegueFromRight: UIStoryboardSegue
-{
-    override func perform()
-    {
+class SegueFromRight: UIStoryboardSegue {
+    
+    override func perform() {
         let src = self.source
         let dst = self.destination
         
