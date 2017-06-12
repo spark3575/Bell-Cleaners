@@ -8,7 +8,7 @@
 
 import UIKit
 
-let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0).cgColor
+let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
 let hidesShadowLiteral = "hidesShadow"
 let navigationBarTintColor = UIColor.white
 let emptyLiteral = ""
@@ -34,3 +34,8 @@ let shakeDuration = 0.3
 let shakeRepeatCount: Float = 2
 let bellSoundLiteral = "dingSmallBell"
 let mp3Literal = "mp3"
+let textStackTopConstraintOriginal: CGFloat = 64
+let keyboardToolbarHeight: CGFloat = 40
+let spaceTextToKeyboard: CGFloat = 8
+let keyboardActionNext = "Next"
+let keyboardActionDone = "Done"

@@ -26,7 +26,7 @@ class ShadowField: UITextField {
         layer.shadowOpacity = textFieldShadowOpacity
         layer.shadowRadius = textFieldShadowRadius
         layer.cornerRadius = layerCornerRadius
-        layer.borderColor = bellColor
+        layer.borderColor = bellColor.cgColor
         layer.borderWidth = layerBorderWidth
     }
     

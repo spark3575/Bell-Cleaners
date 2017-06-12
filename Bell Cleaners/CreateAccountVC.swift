@@ -68,7 +68,8 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         })
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: "Next", action: #selector(goToNextField(currentTextField:)))
+        addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: keyboardActionNext, action: #selector(goToNextField(currentTextField:)))
+        addNextButtonToKeyboard(textField: zipcodeField, actionTitle: keyboardActionDone, action: #selector(goToNextField(currentTextField:)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +96,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
     func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-        let targetY = view.frame.size.height - (keyboardFrame?.height)! - 8 - (activeField?.frame.size.height)!
+        let targetY = view.frame.size.height - (keyboardFrame?.height)! - spaceTextToKeyboard - (activeField?.frame.size.height)!
         let textFieldY = textStack.frame.origin.y + (activeField?.frame.origin.y)!
         let difference = targetY - textFieldY
         let targetOffsetForTopConstraint = textStackTopConstraint.constant + difference
@@ -108,14 +109,15 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
     func keyboardWillHide(notification: NSNotification) {
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         UIView.animate(withDuration: keyboardDuration!) {
-            self.textStackTopConstraint.constant = 64
+            self.textStackTopConstraint.constant = textStackTopConstraintOriginal
             self.view.layoutIfNeeded()
         }
     }
     
     func addNextButtonToKeyboard(textField: UITextField, actionTitle: String, action: Selector?) {
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: keyboardToolbarHeight))
         toolbar.barStyle = UIBarStyle.default
+        toolbar.tintColor = bellColor
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let action: UIBarButtonItem = UIBarButtonItem(title: actionTitle, style: UIBarButtonItemStyle.done, target: self, action: action)
         var items = [UIBarButtonItem]()
@@ -136,26 +138,31 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         case 4: nextField = addressField
         case 5: nextField = cityField
         case 6: nextField = zipcodeField
-        default: nextField = emailField
+        case 7: nextField = zipcodeField
+        default: break
         }
         return nextField!
     }
     
     func goToNextField(currentTextField: UITextField) {
+        let nextFieldToBeEdited = nextFieldToEdit(activeField!)
         if pickupDeliverySwitch.isOn {
-            nextField = nextFieldToEdit(activeField!)
-            nextField?.becomeFirstResponder()
+            if activeField != nextFieldToBeEdited {
+                nextFieldToBeEdited.becomeFirstResponder()
+            } else {
+                self.view.endEditing(true)
+            }
         } else {
             self.view.endEditing(true)
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nextField = nextFieldToEdit(activeField!)
+        let nextFieldToBeEdited = nextFieldToEdit(activeField!)
         switch textField.returnKeyType {
         case .next:
             textField.resignFirstResponder()
-            nextField?.becomeFirstResponder()
+            nextFieldToBeEdited.becomeFirstResponder()
         case .done:
             textField.resignFirstResponder()
         default:

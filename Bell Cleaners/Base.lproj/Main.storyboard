@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T6v-Fh-8cu">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -670,29 +670,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-up-HVa" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="20" y="488" width="280" height="60"/>
-                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="FD7-Kl-W28">
-                                        <variation key="heightClass=compact" constant="44"/>
-                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="Sign Out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=compact">
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="didTapSignOut:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="7jM-Yf-72D"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7z-cG-xg1" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
@@ -721,7 +698,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Fmk-B6-hY5">
-                                <rect key="frame" x="20" y="84" width="280" height="348"/>
+                                <rect key="frame" x="20" y="84" width="280" height="276"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-gm-wej">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="132"/>
@@ -815,8 +792,49 @@
                                         </subviews>
                                         <variation key="heightClass=compact" axis="horizontal"/>
                                     </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="EC2-R7-AWu"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EC2-R7-AWu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="EC2-R7-AWu"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XF8-Uh-Uhx">
+                                <rect key="frame" x="20" y="416" width="280" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-up-HVa" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="FD7-Kl-W28">
+                                                <variation key="heightClass=compact" constant="44"/>
+                                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                            </constraint>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <state key="normal" title="Sign Out">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=compact">
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="didTapSignOut:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="7jM-Yf-72D"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="h4s-0i-diN" userLabel="directions &amp; phone">
-                                        <rect key="frame" x="0.0" y="288" width="280" height="60"/>
+                                        <rect key="frame" x="0.0" y="72" width="280" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrk-US-nxa" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="60"/>
@@ -884,12 +902,25 @@
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="9bY-gZ-YTx"/>
                             <constraint firstAttribute="trailing" secondItem="x7z-cG-xg1" secondAttribute="trailing" id="CUW-MC-rGi"/>
                             <constraint firstItem="x7z-cG-xg1" firstAttribute="top" secondItem="voa-ew-vmy" secondAttribute="top" id="DAh-cb-KvL"/>
-                            <constraint firstItem="s6h-Lx-1TS" firstAttribute="top" secondItem="tag-up-HVa" secondAttribute="bottom" constant="20" id="Ft9-Of-PhC"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="top" secondItem="x7z-cG-xg1" secondAttribute="bottom" constant="20" id="Uoe-xd-iCh"/>
-                            <constraint firstItem="tag-up-HVa" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="fwO-db-xO3"/>
-                            <constraint firstAttribute="trailing" secondItem="tag-up-HVa" secondAttribute="trailing" constant="20" id="gIV-1X-axn"/>
+                            <constraint firstItem="XF8-Uh-Uhx" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="Zgf-N9-kX7"/>
+                            <constraint firstAttribute="trailing" secondItem="XF8-Uh-Uhx" secondAttribute="trailing" constant="20" id="emA-WW-KoM"/>
                             <constraint firstAttribute="trailing" secondItem="Fmk-B6-hY5" secondAttribute="trailing" constant="20" id="kqB-cS-BNV"/>
+                            <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="orH-tt-lqP"/>
+                            <constraint firstItem="s6h-Lx-1TS" firstAttribute="top" secondItem="XF8-Uh-Uhx" secondAttribute="bottom" constant="20" id="srS-CK-LaL"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="orH-tt-lqP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="9bY-gZ-YTx"/>
+                                <exclude reference="kqB-cS-BNV"/>
+                                <include reference="orH-tt-lqP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="callBellButton" destination="RoS-Vg-MUE" id="woj-qq-gdn"/>
@@ -988,9 +1019,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APB-fd-NLz">
                                         <rect key="frame" x="0.0" y="215" width="240" height="35"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup and Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-Y3-JSD">
-                                                <rect key="frame" x="11" y="7" width="163.5" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup &amp; Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-Y3-JSD">
+                                                <rect key="frame" x="12" y="6" width="161" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=regular-widthClass=regular">
@@ -1008,7 +1039,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="jf0-JR-PiY" firstAttribute="centerY" secondItem="APB-fd-NLz" secondAttribute="centerY" id="Fed-NR-ZoY"/>
-                                            <constraint firstItem="zPY-Y3-JSD" firstAttribute="leading" secondItem="APB-fd-NLz" secondAttribute="leading" constant="11" id="Yae-0x-xx1"/>
+                                            <constraint firstItem="zPY-Y3-JSD" firstAttribute="leading" secondItem="APB-fd-NLz" secondAttribute="leading" constant="12" id="Yae-0x-xx1"/>
                                             <constraint firstAttribute="trailing" secondItem="jf0-JR-PiY" secondAttribute="trailing" constant="3" id="hNi-Wn-Zd1"/>
                                             <constraint firstItem="zPY-Y3-JSD" firstAttribute="centerY" secondItem="APB-fd-NLz" secondAttribute="centerY" id="nHE-GI-3VA"/>
                                         </constraints>
@@ -1068,10 +1099,10 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="r1L-8M-Rpy">
-                                <rect key="frame" x="36" y="488" width="248" height="60"/>
+                                <rect key="frame" x="20" y="488" width="280" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wyc-Nj-EPB" customClass="SaveButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="118" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="60"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="0Eu-SK-jOq">
@@ -1094,7 +1125,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crd-ZV-S6Q" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="130" y="0.0" width="118" height="60"/>
+                                        <rect key="frame" x="146" y="0.0" width="134" height="60"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Sign Out">
@@ -1149,10 +1180,23 @@
                             <constraint firstItem="UW9-Jl-hBk" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" id="Ayx-OT-QUD"/>
                             <constraint firstItem="VIC-fs-QSJ" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" constant="40" id="Hx3-br-kYL"/>
                             <constraint firstAttribute="trailing" secondItem="UW9-Jl-hBk" secondAttribute="trailing" id="Ppr-61-dZb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="r1L-8M-Rpy" secondAttribute="trailing" constant="20" id="TjF-rU-cck"/>
+                            <constraint firstAttribute="trailing" secondItem="r1L-8M-Rpy" secondAttribute="trailing" constant="20" id="TjF-rU-cck"/>
                             <constraint firstItem="VIC-fs-QSJ" firstAttribute="top" secondItem="4Cb-v3-7Ou" secondAttribute="bottom" constant="64" id="To7-Qf-sfw"/>
-                            <constraint firstItem="r1L-8M-Rpy" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leadingMargin" constant="20" id="dJc-th-st7"/>
+                            <constraint firstItem="r1L-8M-Rpy" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" constant="20" id="dJc-th-st7"/>
+                            <constraint firstItem="VIC-fs-QSJ" firstAttribute="centerX" secondItem="qUE-n1-ftJ" secondAttribute="centerX" id="orl-MG-5s7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="orl-MG-5s7"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="ARS-Wt-OBu"/>
+                                <exclude reference="Hx3-br-kYL"/>
+                                <include reference="orl-MG-5s7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addressField" destination="KXd-on-em7" id="UzC-t6-xzg"/>
@@ -1225,7 +1269,6 @@
                                     <constraint firstItem="HYY-tY-Op3" firstAttribute="centerY" secondItem="O84-lh-ApF" secondAttribute="centerY" id="Fez-7I-BIO"/>
                                     <constraint firstAttribute="height" constant="64" id="GSM-FY-IAi">
                                         <variation key="heightClass=compact" constant="30"/>
-                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                                     </constraint>
                                     <constraint firstAttribute="trailing" secondItem="HYY-tY-Op3" secondAttribute="trailing" id="Quu-8r-n8Y"/>
                                     <constraint firstItem="HYY-tY-Op3" firstAttribute="top" secondItem="O84-lh-ApF" secondAttribute="top" id="UaX-01-78y"/>
@@ -1395,9 +1438,9 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ef2-9A-hCN"/>
-        <segue reference="q2M-gZ-L3S"/>
-        <segue reference="8Uf-Hb-fqD"/>
+        <segue reference="dg4-a2-sD0"/>
+        <segue reference="h6p-SN-ldM"/>
         <segue reference="DAz-cr-tTc"/>
+        <segue reference="q2M-gZ-L3S"/>
     </inferredMetricsTieBreakers>
 </document>
