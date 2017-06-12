@@ -27,6 +27,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
     private let defaults = UserDefaults.standard
+    private let alertValidationFailed = PresentAlert()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,8 +77,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    
-    private let alertValidationFailed = PresentAlert()
     
     private func emailValidation(_ textField: UITextField) {
         if emailField.validate(field: emailField) != nil {
@@ -169,7 +168,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             bellTouchSignIn.authenticateUser() { message in
                 if let message = message {
                     if message == canEvaluatePolicyMessage, message == touchLAErrorPasscode {
-                        self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: message, message: emptyLiteral, actionTitle: okAlertActionTitle)
+                        self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: message, message: touchSettingsMessage, actionTitle: okAlertActionTitle)
                     }
                 } else {
                     if (self.defaults.bool(forKey: hasSignedInBeforeLiteral)) {
@@ -192,7 +191,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 }
             }
         } else {
-            self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: canEvaluatePolicyMessage, message: emptyLiteral, actionTitle: okAlertActionTitle)
+            self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: canEvaluatePolicyMessage, message: touchSettingsMessage, actionTitle: okAlertActionTitle)
         }
     }
     

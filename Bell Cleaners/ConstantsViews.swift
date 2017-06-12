@@ -8,7 +8,7 @@
 
 import UIKit
 
-let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
+let bellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0).cgColor
 let hidesShadowLiteral = "hidesShadow"
 let navigationBarTintColor = UIColor.white
 let emptyLiteral = ""
