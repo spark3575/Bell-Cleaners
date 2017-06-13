@@ -51,6 +51,8 @@ class SaveButton: ShadowButton {}
 
 class OrdersButton: ShadowButton {}
 
+class PickupDeliveryButton: ShadowButton {}
+
 class ProfileButton: ShadowButton {}
 
 class SettingsButton: ShadowButton {}

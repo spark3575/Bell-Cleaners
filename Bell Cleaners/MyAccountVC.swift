@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class MyAccountVC: UIViewController {
     
@@ -15,21 +15,15 @@ class MyAccountVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = myAccountLiteral
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationItem.hidesBackButton = true
     }
     
     @IBAction func didTapOrders(_ sender: OrdersButton) {
-        
-    }
-    
-    @IBAction func didTapProfile(_ sender: ProfileButton) {
         
     }
     
@@ -47,7 +41,6 @@ class MyAccountVC: UIViewController {
     }
 
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        DataService.instance.currentUserRef.removeAllObservers()
         AuthService.instance.signOut()
         performSegue(withIdentifier: bellCleanersSegue, sender: self)
     }

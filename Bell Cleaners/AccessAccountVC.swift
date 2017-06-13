@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 struct KeychainConfiguration {
     static let serviceName = bellCleanersLiteral
@@ -23,11 +23,16 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var touchButton: UIButton!
     @IBOutlet weak var createInfoLabel: UILabel!
     @IBOutlet weak var callBellButton: CallBellButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var textStack: UIStackView!
+    @IBOutlet weak var textStackTopConstraint: NSLayoutConstraint!
     
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
-    private let defaults = UserDefaults.standard
     private let alertValidationFailed = PresentAlert()
+    private let bellTouchSignIn = TouchIDAuth()
+    private let defaults = UserDefaults.standard
+    private var activeField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +65,47 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             touchView.isHidden = true
             touchButton.isHidden = true
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
+        let targetY = view.frame.size.height - (keyboardFrame?.height)! - spaceTextToKeyboard - (activeField?.frame.size.height)!
+        let textFieldY = textStack.frame.origin.y + (activeField?.frame.origin.y)!
+        let difference = targetY - textFieldY
+        let targetOffsetForTopConstraint = textStackTopConstraint.constant + difference
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: keyboardDuration!, animations: {
+            self.textStackTopConstraint.constant = targetOffsetForTopConstraint
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: keyboardDuration!) {
+            self.textStackTopConstraint.constant = textStackTopConstraintOriginal
+            self.view.layoutIfNeeded()
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -83,6 +125,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
             passwordField.becomeFirstResponder()
         } else {
+            textField.resignFirstResponder()
             alertValidationFailed.presentAlert(fromController: self, title: emailAlertTitle, message: emailAlertMessage, actionTitle: okAlertActionTitle)
         }
     }
@@ -91,6 +134,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         if (textField.text?.characters.count)! >= passwordMinimumLength {
             textField.resignFirstResponder()
         } else {
+            textField.resignFirstResponder()
             alertValidationFailed.presentAlert(fromController: self, title: passwordAlertTitle, message: passwordAlertMessage, actionTitle: okAlertActionTitle)
         }
     }
@@ -126,14 +170,20 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 return
             }
             self.saveLogin(email: email, password: password)
-            if !AuthService.profileFull {
-                self.performSegue(withIdentifier: createAccountSegue, sender: self)
-                return
-            }
-            if AuthService.profileFull {
-                self.performSegue(withIdentifier: myAccountSegue, sender: self)
-                return
-            }
+            DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+                if let user = snapshot.value as? [String : AnyObject] {
+                    let ableToAccess = user[ableToAccessMyAccountLiteral] ?? false as AnyObject
+                    let ableToAccessMyAccount = (ableToAccess as! Bool)
+                    self.defaults.set(ableToAccessMyAccount, forKey: ableToAccessMyAccountLiteral)
+                }
+                self.spinner.stopAnimating()
+                if (self.defaults.bool(forKey: ableToAccessMyAccountLiteral)) {
+                    self.performSegue(withIdentifier: myAccountSegue, sender: self)
+                    return
+                } else {
+                    self.performSegue(withIdentifier: profileSegue, sender: self)
+                }
+            })
         })
     }
     
@@ -144,7 +194,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 return
             }
             self.saveLogin(email: email, password: password)
-            self.performSegue(withIdentifier: createAccountSegue, sender: self)
+            self.performSegue(withIdentifier: profileSegue, sender: self)
         })
     }
     
@@ -161,8 +211,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         defaults.set(true, forKey: hasSignedInBeforeLiteral)
     }
     
-    private let bellTouchSignIn = TouchIDAuth()
-    
     private func touchSignIn() {
         if bellTouchSignIn.canEvaluatePolicy() {
             bellTouchSignIn.authenticateUser() { message in
@@ -173,6 +221,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 } else {
                     if (self.defaults.bool(forKey: hasSignedInBeforeLiteral)) {
                         if let email = self.defaults.string(forKey: emailLiteral) {
+                            self.spinner.startAnimating()
                             var password = emptyLiteral
                             
                             do {
@@ -197,6 +246,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignIn(_ sender: SignInButton) {
         if let email = emailField.text, let password = passwordField.text, !email.isEmpty && !password.isEmpty {
+            spinner.startAnimating()
             if signInButton.currentTitle == signInLiteral {
                 if (defaults.bool(forKey: hasSignedInBeforeLiteral)) {
                     if securedTextEmail == email {

@@ -10,6 +10,7 @@
 		B00A97951ED32CEB00C32A88 /* ConstantsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97941ED32CEB00C32A88 /* ConstantsViews.swift */; };
 		B00A97971ED32D8800C32A88 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97961ED32D8800C32A88 /* ShadowView.swift */; };
 		B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97981ED336C900C32A88 /* ShadowButton.swift */; };
+		B01C11EB1EEEE1160037A1A9 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C11EA1EEEE1160037A1A9 /* ProfileVC.swift */; };
 		B02C6FB21EE8931B00A2465E /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */; };
 		B02C6FB41EE894D700A2465E /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C6FB31EE894D700A2465E /* SegueFromRight.swift */; };
 		B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B37DD1EDD9C7300BF675B /* DataService.swift */; };
@@ -21,7 +22,6 @@
 		B0631A2A1EDF476100256643 /* ConstantsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0631A291EDF476100256643 /* ConstantsServices.swift */; };
 		B075A0331ED535DC003FF1BE /* dingSmallBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */; };
 		B075A0371ED53A7D003FF1BE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075A0361ED53A7D003FF1BE /* AVFoundation.framework */; };
-		B089569E1ED840EC00736208 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089569D1ED840EC00736208 /* CreateAccountVC.swift */; };
 		B08956A01ED8765600736208 /* ShadowField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089569F1ED8765600736208 /* ShadowField.swift */; };
 		B08956A21ED91FEF00736208 /* PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08956A11ED91FEF00736208 /* PresentAlert.swift */; };
 		B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */; };
@@ -44,6 +44,7 @@
 		B00A97941ED32CEB00C32A88 /* ConstantsViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsViews.swift; sourceTree = "<group>"; };
 		B00A97961ED32D8800C32A88 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		B00A97981ED336C900C32A88 /* ShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
+		B01C11EA1EEEE1160037A1A9 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		B02C6FB31EE894D700A2465E /* SegueFromRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		B04B37DD1EDD9C7300BF675B /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		B0631A291EDF476100256643 /* ConstantsServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsServices.swift; sourceTree = "<group>"; };
 		B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dingSmallBell.mp3; sourceTree = "<group>"; };
 		B075A0361ED53A7D003FF1BE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		B089569D1ED840EC00736208 /* CreateAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		B089569F1ED8765600736208 /* ShadowField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowField.swift; sourceTree = "<group>"; };
 		B08956A11ED91FEF00736208 /* PresentAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAlert.swift; sourceTree = "<group>"; };
 		B0AECE521ED0D48F00097AE1 /* Bell Cleaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Cleaners.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +135,7 @@
 				B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */,
 				B0B610A31ED5C3CE001E3C6C /* MapVC.swift */,
 				B0B610AF1ED7BD49001E3C6C /* AccessAccountVC.swift */,
-				B089569D1ED840EC00736208 /* CreateAccountVC.swift */,
+				B01C11EA1EEEE1160037A1A9 /* ProfileVC.swift */,
 				B0C02F1E1EDB7CEF002C4F52 /* MyAccountVC.swift */,
 			);
 			name = Controller;
@@ -357,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00A97971ED32D8800C32A88 /* ShadowView.swift in Sources */,
+				B01C11EB1EEEE1160037A1A9 /* ProfileVC.swift in Sources */,
 				B0631A281EDF43FC00256643 /* ConstantsBell.swift in Sources */,
 				B0B610A61ED6608D001E3C6C /* CallBellButton.swift in Sources */,
 				B0B610A41ED5C3CE001E3C6C /* MapVC.swift in Sources */,
@@ -372,7 +373,6 @@
 				B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */,
 				B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */,
 				B02C6FB21EE8931B00A2465E /* SegueFromLeft.swift in Sources */,
-				B089569E1ED840EC00736208 /* CreateAccountVC.swift in Sources */,
 				B00A97951ED32CEB00C32A88 /* ConstantsViews.swift in Sources */,
 				B05900BB1EE368C0009238EE /* ConstantsKeyChainTouch.swift in Sources */,
 				B0C02F231EDB9EE8002C4F52 /* AuthService.swift in Sources */,

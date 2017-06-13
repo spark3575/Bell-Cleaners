@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T6v-Fh-8cu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bell Cleaners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktt-Zh-cS9">
-                                        <rect key="frame" x="93" y="29" width="134.5" height="26.5"/>
+                                        <rect key="frame" x="93.5" y="29" width="134.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -347,8 +347,6 @@
                         <outlet property="bellLogoButton" destination="04f-XK-3VK" id="yQB-xC-bdN"/>
                         <outlet property="callBellButton" destination="HIa-uD-gkv" id="UKe-fw-JqQ"/>
                         <segue destination="E4R-Qp-0Wr" kind="show" identifier="AccessAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="zXT-Lz-g9u"/>
-                        <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="F9E-7H-wjq"/>
-                        <segue destination="teV-et-Uyh" kind="show" identifier="CreateAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="2nD-yd-Kn0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -367,48 +365,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcZ-2s-8NH" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQR-64-QPn">
-                                        <rect key="frame" x="77" y="29" width="166.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact">
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                        </variation>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4h-Sh-aXW">
-                                        <rect key="frame" x="8" y="20" width="60" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="8Es-vj-042">
-                                                <variation key="heightClass=compact" constant="30"/>
-                                            </constraint>
-                                            <constraint firstAttribute="width" constant="60" id="vqX-l1-4mD"/>
-                                        </constraints>
-                                        <state key="normal" image="backArrow"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="v5G-PO-KDn"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="v4h-Sh-aXW" firstAttribute="leading" secondItem="zcZ-2s-8NH" secondAttribute="leading" constant="8" id="2Dj-Jj-uau"/>
-                                    <constraint firstItem="xQR-64-QPn" firstAttribute="centerY" secondItem="zcZ-2s-8NH" secondAttribute="centerY" constant="10" id="3Zb-9u-fqo">
-                                        <variation key="heightClass=compact" constant="0.0"/>
-                                    </constraint>
-                                    <constraint firstItem="v4h-Sh-aXW" firstAttribute="centerY" secondItem="xQR-64-QPn" secondAttribute="centerY" id="9MT-q8-s6E"/>
-                                    <constraint firstItem="xQR-64-QPn" firstAttribute="centerX" secondItem="zcZ-2s-8NH" secondAttribute="centerX" id="Q1L-Qf-7YK"/>
-                                    <constraint firstAttribute="height" constant="64" id="wkl-0F-AmD">
-                                        <variation key="heightClass=compact" constant="30"/>
-                                    </constraint>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Yvv-Yl-f3u">
                                 <rect key="frame" x="20" y="84" width="280" height="132"/>
                                 <subviews>
@@ -465,6 +421,48 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcZ-2s-8NH" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQR-64-QPn">
+                                        <rect key="frame" x="77" y="29" width="166.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=compact">
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        </variation>
+                                    </label>
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4h-Sh-aXW">
+                                        <rect key="frame" x="8" y="20" width="60" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="8Es-vj-042">
+                                                <variation key="heightClass=compact" constant="30"/>
+                                            </constraint>
+                                            <constraint firstAttribute="width" constant="60" id="vqX-l1-4mD"/>
+                                        </constraints>
+                                        <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="v5G-PO-KDn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="v4h-Sh-aXW" firstAttribute="leading" secondItem="zcZ-2s-8NH" secondAttribute="leading" constant="8" id="2Dj-Jj-uau"/>
+                                    <constraint firstItem="xQR-64-QPn" firstAttribute="centerY" secondItem="zcZ-2s-8NH" secondAttribute="centerY" constant="10" id="3Zb-9u-fqo">
+                                        <variation key="heightClass=compact" constant="0.0"/>
+                                    </constraint>
+                                    <constraint firstItem="v4h-Sh-aXW" firstAttribute="centerY" secondItem="xQR-64-QPn" secondAttribute="centerY" id="9MT-q8-s6E"/>
+                                    <constraint firstItem="xQR-64-QPn" firstAttribute="centerX" secondItem="zcZ-2s-8NH" secondAttribute="centerX" id="Q1L-Qf-7YK"/>
+                                    <constraint firstAttribute="height" constant="64" id="wkl-0F-AmD">
+                                        <variation key="heightClass=compact" constant="30"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lih-5U-Xa4" userLabel="signin &amp; touch">
                                 <rect key="frame" x="20" y="228" width="280" height="132"/>
                                 <subviews>
@@ -604,15 +602,19 @@
                                     </constraint>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JTH-i8-s7K">
+                                <rect key="frame" x="40" y="248" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Yvv-Yl-f3u" secondAttribute="trailing" constant="20" id="9V2-VR-8xW"/>
-                            <constraint firstItem="Yvv-Yl-f3u" firstAttribute="top" secondItem="zcZ-2s-8NH" secondAttribute="bottom" constant="20" id="DcZ-i7-d4m"/>
                             <constraint firstItem="lih-5U-Xa4" firstAttribute="centerX" secondItem="5zb-pe-cqs" secondAttribute="centerX" id="JFm-M0-K2g"/>
                             <constraint firstItem="Yvv-Yl-f3u" firstAttribute="centerX" secondItem="5zb-pe-cqs" secondAttribute="centerX" id="LUa-xs-ikH"/>
+                            <constraint firstItem="JTH-i8-s7K" firstAttribute="centerY" secondItem="SLn-HI-Lzq" secondAttribute="centerY" id="PCc-ff-woW"/>
                             <constraint firstItem="zcZ-2s-8NH" firstAttribute="top" secondItem="5zb-pe-cqs" secondAttribute="top" id="PST-LG-JgI"/>
                             <constraint firstItem="zcZ-2s-8NH" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" id="PdM-ej-KAO"/>
+                            <constraint firstItem="Yvv-Yl-f3u" firstAttribute="top" secondItem="cuc-Ju-03z" secondAttribute="bottom" constant="64" id="R11-Hs-V19"/>
                             <constraint firstItem="kQ3-wm-g1y" firstAttribute="top" secondItem="M1g-ah-iqS" secondAttribute="bottom" constant="20" id="RDp-x2-oQp"/>
                             <constraint firstItem="HIP-jK-yWo" firstAttribute="centerX" secondItem="5zb-pe-cqs" secondAttribute="centerX" id="S6v-bq-2sW"/>
                             <constraint firstItem="M1g-ah-iqS" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="SM0-X7-tyz"/>
@@ -620,6 +622,7 @@
                             <constraint firstItem="lih-5U-Xa4" firstAttribute="top" secondItem="Yvv-Yl-f3u" secondAttribute="bottom" constant="12" id="Wlu-TT-QvN"/>
                             <constraint firstItem="Yvv-Yl-f3u" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="aIn-Ud-bGK"/>
                             <constraint firstItem="SLn-HI-Lzq" firstAttribute="height" secondItem="YQ3-LS-JK9" secondAttribute="height" id="cNd-5S-BJ1"/>
+                            <constraint firstItem="JTH-i8-s7K" firstAttribute="leading" secondItem="SLn-HI-Lzq" secondAttribute="leading" constant="20" id="czh-As-9Rh"/>
                             <constraint firstItem="lih-5U-Xa4" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="gBN-hU-0Ky"/>
                             <constraint firstAttribute="trailing" secondItem="zcZ-2s-8NH" secondAttribute="trailing" id="hW5-Ez-Db6"/>
                             <constraint firstItem="HIP-jK-yWo" firstAttribute="top" secondItem="lih-5U-Xa4" secondAttribute="bottom" constant="12" id="stH-ae-gwk"/>
@@ -648,10 +651,13 @@
                         <outlet property="emailField" destination="rTF-Qh-z7O" id="vUv-LM-iGM"/>
                         <outlet property="passwordField" destination="YQ3-LS-JK9" id="OxB-L2-g60"/>
                         <outlet property="signInButton" destination="SLn-HI-Lzq" id="8j4-YR-ebz"/>
+                        <outlet property="spinner" destination="JTH-i8-s7K" id="J7R-i8-NQa"/>
+                        <outlet property="textStack" destination="Yvv-Yl-f3u" id="mRp-dq-L7o"/>
+                        <outlet property="textStackTopConstraint" destination="R11-Hs-V19" id="cGV-0T-s1K"/>
                         <outlet property="touchButton" destination="rin-wt-YUL" id="d2C-Bm-5b5"/>
                         <outlet property="touchView" destination="IRA-O9-mdg" id="CBl-Ii-iVw"/>
                         <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="Z9D-Lf-8h7"/>
-                        <segue destination="teV-et-Uyh" kind="show" identifier="CreateAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="q2M-gZ-L3S"/>
+                        <segue destination="teV-et-Uyh" kind="show" identifier="ProfileVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="q2M-gZ-L3S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSt-C1-NOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -698,16 +704,16 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Fmk-B6-hY5">
-                                <rect key="frame" x="20" y="84" width="280" height="276"/>
+                                <rect key="frame" x="20" y="84" width="280" height="268"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-gm-wej">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="132"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="268"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWT-Sj-2oG" customClass="OrdersButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="JZm-Ay-wuq">
+                                                    <constraint firstAttribute="height" constant="44" id="JZm-Ay-wuq">
                                                         <variation key="heightClass=compact" constant="44"/>
                                                         <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                                                     </constraint>
@@ -726,8 +732,25 @@
                                                     <action selector="didTapOrders:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="foq-jC-ex4"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSK-rC-nC0" customClass="PickupDeliveryButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <state key="normal" title="Pickup &amp; Delivery">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="heightClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="didTapOrders:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="T7H-ea-phq"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-MX-r3Y" customClass="ProfileButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="72" width="280" height="60"/>
+                                                <rect key="frame" x="0.0" y="112" width="280" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Profile">
@@ -740,24 +763,12 @@
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="didTapProfile:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="32c-qW-5px"/>
+                                                    <segue destination="teV-et-Uyh" kind="show" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="sTz-N8-jFO"/>
                                                 </connections>
                                             </button>
-                                        </subviews>
-                                        <variation key="heightClass=compact" axis="horizontal"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JXV-Nq-sKL">
-                                        <rect key="frame" x="0.0" y="144" width="280" height="132"/>
-                                        <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QO-gg-SEH" customClass="SettingsButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+                                                <rect key="frame" x="0.0" y="168" width="280" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="aVe-Ot-tUZ">
-                                                        <variation key="heightClass=compact" constant="44"/>
-                                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                                                    </constraint>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Settings">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -773,7 +784,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcw-gG-rxL" customClass="SupportButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="72" width="280" height="60"/>
+                                                <rect key="frame" x="0.0" y="224" width="280" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Support">
@@ -924,17 +935,17 @@
                     </view>
                     <connections>
                         <outlet property="callBellButton" destination="RoS-Vg-MUE" id="woj-qq-gdn"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="a6P-aN-701"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="n0N-wj-lyn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12P-9I-gXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1937" y="449"/>
+            <point key="canvasLocation" x="1939" y="450"/>
         </scene>
-        <!--Create AccountVC-->
+        <!--ProfileVC-->
         <scene sceneID="osL-lQ-1Jq">
             <objects>
-                <viewController id="teV-et-Uyh" customClass="CreateAccountVC" customModule="Bell_Cleaners" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="teV-et-Uyh" customClass="ProfileVC" customModule="Bell_Cleaners" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Cb-v3-7Ou"/>
                         <viewControllerLayoutGuide type="bottom" id="DDd-ic-dGS"/>
@@ -1146,8 +1157,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UW9-Jl-hBk" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-OC-CJr">
-                                        <rect key="frame" x="80.5" y="29" width="160" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTd-OC-CJr">
+                                        <rect key="frame" x="127.5" y="29.5" width="66" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1170,15 +1181,21 @@
                                     </constraint>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cMb-Lx-n91">
+                                <rect key="frame" x="141" y="265" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="UW9-Jl-hBk" firstAttribute="top" secondItem="qUE-n1-ftJ" secondAttribute="top" id="3WS-7q-LHj"/>
+                            <constraint firstItem="cMb-Lx-n91" firstAttribute="centerY" secondItem="qUE-n1-ftJ" secondAttribute="centerY" id="5Nv-8a-Ebq"/>
                             <constraint firstItem="DDd-ic-dGS" firstAttribute="top" secondItem="r1L-8M-Rpy" secondAttribute="bottom" constant="20" id="9UQ-QS-RwY"/>
                             <constraint firstAttribute="trailing" secondItem="VIC-fs-QSJ" secondAttribute="trailing" constant="40" id="ARS-Wt-OBu"/>
                             <constraint firstItem="UW9-Jl-hBk" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" id="Ayx-OT-QUD"/>
                             <constraint firstItem="VIC-fs-QSJ" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" constant="40" id="Hx3-br-kYL"/>
+                            <constraint firstItem="cMb-Lx-n91" firstAttribute="centerX" secondItem="qUE-n1-ftJ" secondAttribute="centerX" id="Je2-dV-TqT"/>
                             <constraint firstAttribute="trailing" secondItem="UW9-Jl-hBk" secondAttribute="trailing" id="Ppr-61-dZb"/>
                             <constraint firstAttribute="trailing" secondItem="r1L-8M-Rpy" secondAttribute="trailing" constant="20" id="TjF-rU-cck"/>
                             <constraint firstItem="VIC-fs-QSJ" firstAttribute="top" secondItem="4Cb-v3-7Ou" secondAttribute="bottom" constant="64" id="To7-Qf-sfw"/>
@@ -1207,6 +1224,7 @@
                         <outlet property="passwordField" destination="HL7-4s-4Jg" id="ZU5-od-Iax"/>
                         <outlet property="phoneNumberField" destination="adU-wo-tox" id="oO6-aF-FIy"/>
                         <outlet property="pickupDeliverySwitch" destination="jf0-JR-PiY" id="a31-xl-j3w"/>
+                        <outlet property="spinner" destination="cMb-Lx-n91" id="RbJ-GZ-LG9"/>
                         <outlet property="textStack" destination="VIC-fs-QSJ" id="alZ-5E-yzh"/>
                         <outlet property="textStackTopConstraint" destination="To7-Qf-sfw" id="ob5-Ip-hgg"/>
                         <outlet property="zipcodeField" destination="gMt-qQ-8j3" id="0k1-y4-pal"/>
@@ -1216,7 +1234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goX-F2-e4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168.125" y="448.94366197183098"/>
+            <point key="canvasLocation" x="1168" y="450"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="ZfA-9g-c6T">
@@ -1373,7 +1391,7 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-4S-wxT">
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-4S-wxT">
                                         <rect key="frame" x="8" y="20.5" width="60" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="LnG-vs-yV4">
@@ -1438,9 +1456,9 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dg4-a2-sD0"/>
-        <segue reference="h6p-SN-ldM"/>
-        <segue reference="DAz-cr-tTc"/>
+        <segue reference="v5G-PO-KDn"/>
+        <segue reference="Z9D-Lf-8h7"/>
         <segue reference="q2M-gZ-L3S"/>
+        <segue reference="8Uf-Hb-fqD"/>
     </inferredMetricsTieBreakers>
 </document>
