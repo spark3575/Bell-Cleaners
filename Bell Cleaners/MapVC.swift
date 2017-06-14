@@ -15,31 +15,31 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var callBellButton: CallBellButton!
     
+    private var locationManager = CLLocationManager()
+    private var userLocation: CLLocation!
+    private var userLatitude = 0.0
+    private var userLongitude = 0.0
+    let alertAccessDenied = PresentAlert()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = mapLiteral
         setupBellCleanersMap()
     }
     
     private func setupBellCleanersMap() {
         mapView.delegate = self
         mapView.showsScale = true        
-        let bellCoordinates = CLLocationCoordinate2DMake(bellLatitude, bellLongitude)
-        let bellSpan: MKCoordinateSpan = MKCoordinateSpanMake(bellSpanLatitudeDelta, bellSpanLongitudeDelta)
+        let bellCoordinates = CLLocationCoordinate2DMake(Constants.Coordinates.BellLatitude, Constants.Coordinates.BellLongitude)
+        let bellSpan: MKCoordinateSpan = MKCoordinateSpanMake(Constants.Coordinates.SpanLatitudeDelta, Constants.Coordinates.SpanLongitudeDelta)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(bellCoordinates, bellSpan)
         mapView.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()
         annotation.coordinate = bellCoordinates
-        annotation.title = bellAnnotationTitle
-        annotation.subtitle = bellAnnotationSubtitle
+        annotation.title = Constants.Literals.BellCleaners
+        annotation.subtitle = Constants.Literals.ExpertGarmentCare
         mapView.addAnnotation(annotation)
         mapView.selectAnnotation(annotation, animated: true)
     }
-    
-    private var locationManager = CLLocationManager()
-    private var userLocation: CLLocation!
-    private var userLatitude = userLat
-    private var userLongitude = userLon
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
@@ -52,10 +52,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                 userLongitude = userCoordinates.longitude
             }
             if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
-                let userLatitudeString = String(format: decimalPlacesFormat, userLatitude)
-                let userLongitudeString = String(format: decimalPlacesFormat, userLongitude)
-                let userLocationString = userLatitudeString + separatingComma + userLongitudeString
-                let routeToBell = URL(string: routeToBellURLPrefix + userLocationString + routeToBellURLSuffix)
+                let userLatitudeString = String(format: Constants.Literals.DecimalPlaces, userLatitude)
+                let userLongitudeString = String(format: Constants.Literals.DecimalPlaces, userLongitude)
+                let userLocationString = userLatitudeString + Constants.Literals.Comma + userLongitudeString
+                let routeToBell = URL(string: Constants.Literals.URLPrefix + userLocationString + Constants.Literals.URLSuffix)
                 manager.stopUpdatingLocation()
                 guard let routeURL = routeToBell else { return }
                 if #available(iOS 10.0, *) {
@@ -65,7 +65,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                 }
             }
         }
-        let alertAccessDenied = PresentAlert()
         switch status {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
@@ -74,9 +73,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         case .authorizedAlways:
             manager.startUpdatingLocation()
         case .restricted, .denied:
-            alertAccessDenied.presentSettingsActionAlert(fromController: self, title: locationAlertTitle,
-                         message: locationAlertMessage,
-                         actionTitle: okAlertActionTitle)
+            alertAccessDenied.presentSettingsActionAlert(fromController: self, title: Constants.Alerts.Titles.Location,
+                         message: Constants.Alerts.Messages.Location,
+                         actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     

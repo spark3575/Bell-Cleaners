@@ -21,16 +21,16 @@ class ShadowButton: UIButton {
     }
     
     private func setup() {
-        layer.shadowColor = layerShadowColor
-        layer.shadowOffset = layerShadowOffset
-        layer.shadowOpacity = layerShadowOpacity
-        layer.shadowRadius = layerShadowRadius
-        layer.cornerRadius = layerCornerRadius
+        layer.cornerRadius = Constants.Layers.CornerRadius
+        layer.shadowColor = Constants.Layers.ShadowColor
+        layer.shadowOffset = Constants.Layers.ShadowOffset
+        layer.shadowOpacity = Constants.Layers.ShadowOpacity
+        layer.shadowRadius = Constants.Layers.ShadowRadius
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-        UIView.animate(withDuration: 0.2) {
+        self.transform = CGAffineTransform(scaleX: Constants.Animations.Touch.ScaleX, y: Constants.Animations.Touch.ScaleY)
+        UIView.animate(withDuration: Constants.Animations.Touch.Duration) {
             self.transform = CGAffineTransform.identity
         }
         super.touchesBegan(touches, with: event)

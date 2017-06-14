@@ -38,7 +38,7 @@ class AuthService {
             } else {
                 onComplete?(nil, user)
                 if let user = user {
-                    let userData = [emailLiteral: email, passwordLiteral: password]
+                    let userData = [Constants.Literals.Email: email, Constants.Literals.Password: password]
                     DataService.instance.updateUser(uid: user.uid, userData: userData as [String: AnyObject])
                 }
             }
@@ -49,7 +49,7 @@ class AuthService {
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
-            print(signOutErrorMessage + String(describing: signOutError))
+            print(Constants.ErrorMessages.SignOut + String(describing: signOutError))
         }
     }
     
@@ -57,17 +57,17 @@ class AuthService {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             switch (errorCode) {
             case .userNotFound:
-                onComplete?(userNotFoundErrorMessage, nil)
+                onComplete?(Constants.ErrorMessages.UserNotFound, nil)
             case .invalidEmail:
-                onComplete?(invalidEmailErrorMessage, nil)
+                onComplete?(Constants.ErrorMessages.InvalidEmail, nil)
             case .wrongPassword:
-                onComplete?(invalidPasswordErrorMessage, nil)
+                onComplete?(Constants.ErrorMessages.InvalidPassword, nil)
             case .networkError:
-                onComplete?(networkConnectionErrorMessage, nil)
+                onComplete?(Constants.ErrorMessages.NetworkConnection, nil)
             case .emailAlreadyInUse, .credentialAlreadyInUse:
-                onComplete?(createAccountErrorMessage, nil)
+                onComplete?(Constants.ErrorMessages.EmailAlreadyInUse, nil)
             default:
-                onComplete?(defaultErrorMessage, nil)
+                onComplete?(Constants.ErrorMessages.Default, nil)
             }
         }
     }

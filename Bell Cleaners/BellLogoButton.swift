@@ -12,14 +12,14 @@ import AVFoundation
 class BellLogoButton: ShadowButton {
     
     func shake() {
-        let shake = CABasicAnimation(keyPath: animationKeyPath)
+        let shake = CABasicAnimation(keyPath: Constants.Animations.Shake.KeyPath)
         shake.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        shake.fromValue = shakeFromValue
-        shake.toValue = shakeToValue
+        shake.fromValue = Constants.Animations.Shake.FromValue
+        shake.toValue = Constants.Animations.Shake.ToValue
         shake.isRemovedOnCompletion = false
-        shake.duration = shakeDuration
+        shake.duration = Constants.Animations.Shake.Duration
         shake.autoreverses = true
-        shake.repeatCount = shakeRepeatCount        
+        shake.repeatCount = Constants.Animations.Shake.RepeatCount
         self.layer.add(shake, forKey: nil)
     }
     
@@ -38,6 +38,6 @@ class BellLogoButton: ShadowButton {
     
     func shakeAndPlaySound() {
         shake()
-        playSound(file: bellSoundLiteral, ext: mp3Literal)
+        playSound(file: Constants.Sounds.Files.DingSmallBell, ext: Constants.Sounds.Extensions.Mp3)
     }
 }

@@ -31,8 +31,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinner.startAnimating()
-        navigationItem.title = signInLiteral
         emailField.delegate = self
         passwordField.delegate = self
         firstNameField.delegate = self
@@ -41,18 +39,22 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         addressField.delegate = self
         cityField.delegate = self
         zipcodeField.delegate = self
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        spinner.startAnimating()
         DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
             if let user = snapshot.value as? [String : AnyObject] {
-                let email = user[emailLiteral] ?? emptyLiteral as AnyObject
-                let password = user[passwordLiteral] ?? emptyLiteral as AnyObject
-                let firstName = user[firstNameLiteral] ?? emptyLiteral as AnyObject
-                let lastName = user[lastNameLiteral] ?? emptyLiteral as AnyObject
-                let phoneNumber = user[phoneNumberLiteral] ?? emptyLiteral as AnyObject
-                let pickupDelivery = user[pickupDeliveryLiteral] ?? false as AnyObject
-                let address = user[addressLiteral] ?? emptyLiteral as AnyObject
-                let city = user[cityLiteral] ?? emptyLiteral as AnyObject
-                let zipcode = user[zipcodeLiteral] ?? emptyLiteral as AnyObject
+                let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
+                let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
+                let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
+                let lastName = user[Constants.Literals.LastName] ?? Constants.Literals.EmptyString as AnyObject
+                let phoneNumber = user[Constants.Literals.PhoneNumber] ?? Constants.Literals.EmptyString as AnyObject
+                let pickupDelivery = user[Constants.Literals.PickupDelivery] ?? false as AnyObject
+                let address = user[Constants.Literals.Address] ?? Constants.Literals.EmptyString as AnyObject
+                let city = user[Constants.Literals.City] ?? Constants.Literals.EmptyString as AnyObject
+                let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
                 self.emailField.text = (email as! String)
                 self.passwordField.text = (password as! String)
                 self.firstNameField.text = (firstName as! String)
@@ -71,14 +73,9 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         })
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: keyboardActionNext, action: #selector(goToNextField(currentTextField:)))
-        addNextButtonToKeyboard(textField: zipcodeField, actionTitle: keyboardActionDone, action: #selector(goToNextField(currentTextField:)))
+        addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
+        addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
         spinner.stopAnimating()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.hidesBackButton = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -100,7 +97,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-        let targetY = view.frame.size.height - (keyboardFrame?.height)! - spaceTextToKeyboard - (activeField?.frame.size.height)!
+        let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
         let textFieldY = textStack.frame.origin.y + (activeField?.frame.origin.y)!
         let difference = targetY - textFieldY
         let targetOffsetForTopConstraint = textStackTopConstraint.constant + difference
@@ -113,7 +110,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     func keyboardWillHide(notification: NSNotification) {
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         UIView.animate(withDuration: keyboardDuration!) {
-            self.textStackTopConstraint.constant = textStackTopConstraintOriginal
+            self.textStackTopConstraint.constant = Constants.Keyboards.OriginalConstraint
             self.view.layoutIfNeeded()
         }
     }
@@ -162,9 +159,9 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     }
     
     private func addNextButtonToKeyboard(textField: UITextField, actionTitle: String, action: Selector?) {
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: keyboardToolbarHeight))
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: Constants.Keyboards.ToolbarHeight))
         toolbar.barStyle = UIBarStyle.default
-        toolbar.tintColor = bellColor
+        toolbar.tintColor = Constants.Colors.BellColor
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let action: UIBarButtonItem = UIBarButtonItem(title: actionTitle, style: UIBarButtonItemStyle.done, target: self, action: action)
         var items = [UIBarButtonItem]()
@@ -188,36 +185,36 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSave(_ sender: SaveButton) {
-        var userData = [emailLiteral: emailField.text as AnyObject,
-                        passwordLiteral: passwordField.text as AnyObject,
-                        firstNameLiteral: firstNameField.text as AnyObject,
-                        lastNameLiteral: lastNameField.text as AnyObject,
-                        phoneNumberLiteral: phoneNumberField.text as AnyObject,
-                        pickupDeliveryLiteral: pickupDeliverySwitch.isOn as AnyObject,
-                        addressLiteral: addressField.text as AnyObject,
-                        cityLiteral: cityField.text as AnyObject,
-                        zipcodeLiteral: zipcodeField.text as AnyObject,
-                        ableToAccessMyAccountLiteral: defaults.bool(forKey: ableToAccessMyAccountLiteral) as AnyObject]
+        var userData = [Constants.Literals.Email: emailField.text as AnyObject,
+                        Constants.Literals.Password: passwordField.text as AnyObject,
+                        Constants.Literals.FirstName: firstNameField.text as AnyObject,
+                        Constants.Literals.LastName: lastNameField.text as AnyObject,
+                        Constants.Literals.PhoneNumber: phoneNumberField.text as AnyObject,
+                        Constants.Literals.PickupDelivery: pickupDeliverySwitch.isOn as AnyObject,
+                        Constants.Literals.Address: addressField.text as AnyObject,
+                        Constants.Literals.City: cityField.text as AnyObject,
+                        Constants.Literals.Zipcode: zipcodeField.text as AnyObject,
+                        Constants.Literals.AbleToAccessMyAccount: defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount) as AnyObject]
         if !pickupDeliverySwitch.isOn {
             if let email = emailField.text, let password = passwordField.text, let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, !email.isEmpty && !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty, !phoneNumber.isEmpty {
-                defaults.set(true, forKey: ableToAccessMyAccountLiteral)
-                userData.updateValue(true as AnyObject, forKey: ableToAccessMyAccountLiteral)
+                defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                performSegue(withIdentifier: myAccountSegue, sender: self)
+                performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
                 return
             } else {
-                self.alertFieldsNotFilled.presentAlert(fromController: self, title: missingFieldsTitle, message: missingFieldsMessage, actionTitle: okAlertActionTitle)
+                self.alertFieldsNotFilled.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.MissingFields, actionTitle: Constants.Alerts.Actions.OK)
             }
         }
         if pickupDeliverySwitch.isOn {
             if let email = emailField.text, let password = passwordField.text, let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, let address = addressField.text, let city = cityField.text, let zipcode = zipcodeField.text, !email.isEmpty && !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty, !phoneNumber.isEmpty, !address.isEmpty, !city.isEmpty, !zipcode.isEmpty {
-                defaults.set(true, forKey: ableToAccessMyAccountLiteral)
-                defaults.set(true, forKey: ableToAccessPickupDeliveryLiteral)
+                defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessPickupDelivery)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                performSegue(withIdentifier: myAccountSegue, sender: self)
+                performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
                 return
             } else {
-                self.alertFieldsNotFilled.presentAlert(fromController: self, title: fieldsNotFilledTitle, message: fieldsNotFilledMessage, actionTitle: okAlertActionTitle)
+                self.alertFieldsNotFilled.presentAlert(fromController: self, title: Constants.Alerts.Titles.AllRequired, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
             }
         }
     }
@@ -225,6 +222,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         DataService.instance.currentUserRef.removeAllObservers()
         AuthService.instance.signOut()
-        performSegue(withIdentifier: bellCleanersSegue, sender: self)
+        performSegue(withIdentifier: Constants.Segues.BellCleaners, sender: self)
     }
 }

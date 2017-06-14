@@ -22,14 +22,14 @@ class DataService {
     }
     
     var usersRef: DatabaseReference {
-        return mainRef.child(usersLiteral)
+        return mainRef.child(Constants.Literals.Users)
     }
     
     var currentUserRef: DatabaseReference {
-        return usersRef.child((Auth.auth().currentUser?.uid)!).child(profileLiteral)
+        return usersRef.child((Auth.auth().currentUser?.uid)!).child(Constants.Literals.Profile)
     }
     
     func updateUser(uid: String, userData: [String: AnyObject]) {
-        mainRef.child(usersLiteral).child(uid).child(profileLiteral).updateChildValues(userData)
+        mainRef.child(Constants.Literals.Users).child(uid).child(Constants.Literals.Profile).updateChildValues(userData)
     }
 }

@@ -9,11 +9,6 @@
 import UIKit
 import Firebase
 
-struct KeychainConfiguration {
-    static let serviceName = bellCleanersLiteral
-    static let accessGroup: String? = nil
-}
-
 class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: EmailField!
@@ -36,17 +31,16 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = accessAccountLiteral
         emailField.delegate = self
         passwordField.delegate = self
-        if (defaults.bool(forKey: hasSignedInBeforeLiteral)) {
-            if let email = defaults.string(forKey: emailLiteral) {
+        if (defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
+            if let email = defaults.string(forKey: Constants.DefaultsKeys.Email) {
                 var characters = Array(email.characters)
                 var count = email.characters.count
                 var replaceCount = 0
                 for x in 4..<count {
                     if x < 10 {
-                        characters[x] = secureTextLiteral
+                        characters[x] = Constants.Literals.SecureText
                     } else {
                         replaceCount += 1
                     }
@@ -58,7 +52,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             }
             touchView.isHidden = !bellTouchSignIn.canEvaluatePolicy()
             touchButton.isHidden = !bellTouchSignIn.canEvaluatePolicy()
-            if (defaults.bool(forKey: hasUsedTouchKeyLiteral)) {
+            if (defaults.bool(forKey: Constants.DefaultsKeys.HasUsedTouch)) {
                 touchSignIn()
             }
         } else {
@@ -88,7 +82,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-        let targetY = view.frame.size.height - (keyboardFrame?.height)! - spaceTextToKeyboard - (activeField?.frame.size.height)!
+        let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
         let textFieldY = textStack.frame.origin.y + (activeField?.frame.origin.y)!
         let difference = targetY - textFieldY
         let targetOffsetForTopConstraint = textStackTopConstraint.constant + difference
@@ -103,7 +97,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         view.layoutIfNeeded()
         UIView.animate(withDuration: keyboardDuration!) {
-            self.textStackTopConstraint.constant = textStackTopConstraintOriginal
+            self.textStackTopConstraint.constant = Constants.Keyboards.OriginalConstraint
             self.view.layoutIfNeeded()
         }
     }
@@ -126,150 +120,151 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             passwordField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
-            alertValidationFailed.presentAlert(fromController: self, title: emailAlertTitle, message: emailAlertMessage, actionTitle: okAlertActionTitle)
+            alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.Email, message: Constants.Alerts.Messages.Email, actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
     private func passwordValidation(_ textField: UITextField) {
-        if (textField.text?.characters.count)! >= passwordMinimumLength {
+        if (textField.text?.characters.count)! >= Constants.Validations.Password.MinimumLength {
             textField.resignFirstResponder()
         } else {
             textField.resignFirstResponder()
-            alertValidationFailed.presentAlert(fromController: self, title: passwordAlertTitle, message: passwordAlertMessage, actionTitle: okAlertActionTitle)
+            alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.Password, message: Constants.Alerts.Messages.Password, actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
     private func signInUser(email: String, password: String) {
-        var signInFailedAlert = UIAlertController(title: userNotFoundLiteral, message: createNewAccountLiteral, preferredStyle: .alert)
-        var createAccountAction = UIAlertAction(title: createAccountLiteral, style: .default, handler: { action in
-            self.signInButton.setTitle(createAccountLiteral, for: .normal)
-            self.emailField.text = emptyLiteral
-            self.passwordField.text = emptyLiteral
+        spinner.startAnimating()
+        let signInFailedAlert = UIAlertController(title: Constants.Alerts.Titles.UserNotFound, message: Constants.Alerts.Messages.CreateNewAccount, preferredStyle: .alert)
+        var createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
+            self.signInButton.setTitle(Constants.Literals.CreateAccount, for: .normal)
+            self.emailField.text = Constants.Literals.EmptyString
+            self.passwordField.text = Constants.Literals.EmptyString
             self.touchButton.isHidden = true
             self.createInfoLabel.isHidden = true
         })
-        let cancelAction = UIAlertAction(title: cancelActionTitle, style: .default, handler: nil)        
+        let cancelAction = UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil)
         AuthService.instance.signIn(withEmail: email, password: password, onComplete: { (errorMessage, data) in
-            if errorMessage == userNotFoundErrorMessage {
-                if !(self.defaults.bool(forKey: hasSignedInBeforeLiteral)) {
-                    createAccountAction = UIAlertAction(title: createAccountLiteral, style: .default, handler: { action in
+            if errorMessage == Constants.ErrorMessages.UserNotFound {
+                if !(self.defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
+                    createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
                         self.createUser(email: email, password: password)
                     })
                 }
-                self.defaults.set(false, forKey: hasUsedTouchKeyLiteral)
+                self.defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
                 signInFailedAlert.addAction(createAccountAction)
                 signInFailedAlert.addAction(cancelAction)
                 self.present(signInFailedAlert, animated: true, completion: nil)
+                self.spinner.stopAnimating()
                 return
             }
             guard errorMessage == nil else {
-                signInFailedAlert = UIAlertController(title: signInAlertTitle, message: errorMessage, preferredStyle: .alert)
-                signInFailedAlert.addAction(createAccountAction)
-                signInFailedAlert.addAction(cancelAction)
-                self.present(signInFailedAlert, animated: true, completion: nil)
+                self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                self.spinner.stopAnimating()
                 return
             }
             self.saveLogin(email: email, password: password)
             DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
                 if let user = snapshot.value as? [String : AnyObject] {
-                    let ableToAccess = user[ableToAccessMyAccountLiteral] ?? false as AnyObject
+                    let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
                     let ableToAccessMyAccount = (ableToAccess as! Bool)
-                    self.defaults.set(ableToAccessMyAccount, forKey: ableToAccessMyAccountLiteral)
+                    self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 }
                 self.spinner.stopAnimating()
-                if (self.defaults.bool(forKey: ableToAccessMyAccountLiteral)) {
-                    self.performSegue(withIdentifier: myAccountSegue, sender: self)
+                if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                    self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
                     return
                 } else {
-                    self.performSegue(withIdentifier: profileSegue, sender: self)
+                    self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
                 }
             })
         })
     }
     
     private func createUser(email: String, password: String) {
+        spinner.startAnimating()
         AuthService.instance.createUser(withEmail: email, password: password, onComplete: { (errorMessage, data) in
             guard errorMessage == nil else {
-                self.alertValidationFailed.presentAlert(fromController: self, title: authenticationAlertTitle, message: errorMessage!, actionTitle: okAlertActionTitle)
+                self.spinner.stopAnimating()
+                self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                 return
             }
             self.saveLogin(email: email, password: password)
-            self.performSegue(withIdentifier: profileSegue, sender: self)
+            self.spinner.stopAnimating()
+            self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
         })
     }
     
     private func saveLogin(email: String, password: String) {
-        defaults.setValue(email, forKey: emailLiteral)
+        defaults.setValue(email, forKey: Constants.DefaultsKeys.Email)
         do {
-            let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
-                                                    account: emailLiteral,
-                                                    accessGroup: KeychainConfiguration.accessGroup)
+            let passwordItem = KeychainPasswordItem(service: Constants.KeychainConfigurations.ServiceName,
+                                                    account: Constants.KeychainConfigurations.Email,
+                                                    accessGroup: Constants.KeychainConfigurations.AccessGroup)
             try passwordItem.savePassword(password)
         } catch {
-            fatalError(keyChainFatalError + String(describing: error))
+            fatalError(Constants.ErrorMessages.KeyChain + String(describing: error))
         }
-        defaults.set(true, forKey: hasSignedInBeforeLiteral)
+        defaults.set(true, forKey: Constants.DefaultsKeys.HasSignedInBefore)
     }
     
     private func touchSignIn() {
         if bellTouchSignIn.canEvaluatePolicy() {
-            bellTouchSignIn.authenticateUser() { message in
-                if let message = message {
-                    if message == canEvaluatePolicyMessage, message == touchLAErrorPasscode {
-                        self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: message, message: touchSettingsMessage, actionTitle: okAlertActionTitle)
+            bellTouchSignIn.authenticateUser() { errorMessage in
+                if let errorMessage = errorMessage {
+                    if errorMessage == Constants.ErrorMessages.TouchID, errorMessage == Constants.ErrorMessages.LAPasscode {
+                        self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: errorMessage, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
                     }
                 } else {
-                    if (self.defaults.bool(forKey: hasSignedInBeforeLiteral)) {
-                        if let email = self.defaults.string(forKey: emailLiteral) {
-                            self.spinner.startAnimating()
-                            var password = emptyLiteral
+                    if (self.defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
+                        if let email = self.defaults.string(forKey: Constants.DefaultsKeys.Email) {
+                            var password = Constants.Literals.EmptyString
                             
                             do {
-                                let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName,
-                                                                        account: emailLiteral,
-                                                                        accessGroup: KeychainConfiguration.accessGroup)
+                                let passwordItem = KeychainPasswordItem(service: Constants.KeychainConfigurations.ServiceName,
+                                                                        account: Constants.KeychainConfigurations.Email,
+                                                                        accessGroup: Constants.KeychainConfigurations.AccessGroup)
                                 password = try passwordItem.readPassword()
-                                self.defaults.set(true, forKey: hasUsedTouchKeyLiteral)
+                                self.defaults.set(true, forKey: Constants.DefaultsKeys.HasUsedTouch)
                                 self.signInUser(email: email, password: password)
                             }
                             catch {
-                                fatalError(keyChainFatalError + String(describing: error))
+                                fatalError(Constants.ErrorMessages.KeyChain + String(describing: error))
                             }
                         }
                     }
                 }
             }
         } else {
-            self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: canEvaluatePolicyMessage, message: touchSettingsMessage, actionTitle: okAlertActionTitle)
+            self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: Constants.Alerts.Titles.TouchID, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
     @IBAction func didTapSignIn(_ sender: SignInButton) {
         if let email = emailField.text, let password = passwordField.text, !email.isEmpty && !password.isEmpty {
-            spinner.startAnimating()
-            if signInButton.currentTitle == signInLiteral {
-                if (defaults.bool(forKey: hasSignedInBeforeLiteral)) {
+            if signInButton.currentTitle == Constants.Literals.SignIn {
+                if (defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
                     if securedTextEmail == email {
-                        if let savedEmail = defaults.string(forKey: emailLiteral) {
+                        if let savedEmail = defaults.string(forKey: Constants.DefaultsKeys.Email) {
                             signInUser(email: savedEmail, password: password)
                         }
                     } else {
                         signInUser(email: email, password: password)
                     }
-                    defaults.set(false, forKey: hasUsedTouchKeyLiteral)
                     return
                 } else {
                     signInUser(email: email, password: password)
-                    defaults.set(false, forKey: hasUsedTouchKeyLiteral)
                 }
-            } else {
+                defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
+            }
+            if signInButton.currentTitle == Constants.Literals.CreateAccount {
                 self.createUser(email: email, password: password)
             }
         } else {
-            if signInButton.currentTitle == signInLiteral {
-                alertValidationFailed.presentAlert(fromController: self, title: signInAlertTitle, message: accountAlertMessage, actionTitle: okAlertActionTitle)
+            if signInButton.currentTitle == Constants.Literals.SignIn {
+                alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
             } else {
-                alertValidationFailed.presentAlert(fromController: self, title: createAccountAlertTitle, message: accountAlertMessage, actionTitle: okAlertActionTitle)
+                alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
             }
         }
     }

@@ -19,30 +19,30 @@ class TouchIDAuth {
     
     func authenticateUser(completion: @escaping (String?) -> Void) {
         guard canEvaluatePolicy() else {
-            completion(canEvaluatePolicyMessage)
+            completion(Constants.ErrorMessages.TouchID)
             return
         }
         context.evaluatePolicy(
         .deviceOwnerAuthenticationWithBiometrics,
-        localizedReason: touchLocalizedReason) { (success, evaluateError) in
+        localizedReason: Constants.Literals.LocalizedReason) { (success, evaluateError) in
             if success {
                 DispatchQueue.main.async {
                     completion(nil)
                 }
             } else {
-                let message: String
+                let errorMessage: String
                 
                 switch evaluateError {
                 case LAError.authenticationFailed?:
-                    message = touchLAErrorAuthentication
+                    errorMessage = Constants.ErrorMessages.LAAuthentication
                 case LAError.userCancel?:
-                    message = touchLAErrorCancel
+                    errorMessage = Constants.ErrorMessages.LACancel
                 case LAError.passcodeNotSet?:
-                    message = touchLAErrorPasscode
+                    errorMessage = Constants.ErrorMessages.LAPasscode
                 default:
-                    message = touchLAErrorDefault
+                    errorMessage = Constants.ErrorMessages.LADefault
                 }
-                completion(message)
+                completion(errorMessage)
             }
         }
     }

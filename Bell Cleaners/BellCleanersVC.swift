@@ -16,8 +16,7 @@ class BellCleanersVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = bellCleanersLiteral
-        Timer.scheduledTimer(withTimeInterval: delayAfterViewAppears, repeats: false) {
+        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.BellShake, repeats: false) {
             [weak self] timer in
             self?.bellLogoButton.shakeAndPlaySound()
         }
@@ -25,12 +24,11 @@ class BellCleanersVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.hidesBackButton = true
         bellLogoButton.imageView?.contentMode = .scaleAspectFit
     }
     
     @IBAction func didTapAccessAccount(_ sender: AccessAccountButton) {
-        self.performSegue(withIdentifier: accessAccountSegue, sender: self)
+        self.performSegue(withIdentifier: Constants.Segues.AccessAccount, sender: self)
     }
     
     @IBAction func didTapBell(_ sender: BellLogoButton) {
