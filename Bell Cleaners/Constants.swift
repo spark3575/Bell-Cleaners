@@ -13,10 +13,10 @@ struct Constants {
     struct Alerts {
         
         struct Titles {
-            static let AllRequired = "All Information Required"
             static let CreateAccountFailed = "Create Account Failed"
             static let Email = "Valid Email Address Required"
             static let Location = "Location Services Required"
+            static let MapAppsAvailable = "Available Maps"
             static let MissingFields = "Missing Fields"
             static let Password = "Password Required"
             static let SignInFailed = "Sign In Failed"
@@ -25,19 +25,22 @@ struct Constants {
         }
         
         struct Messages {
-            static let AllRequired = "All fields required to access pickup & delivery"
+            static let AllRequired = "All fields required for pickup & delivery"
             static let CheckEmailPassword = "Please check your email address or password"
             static let CreateNewAccount = "Please create a new account"
             static let Email = "Verification email will be sent"
             static let Location = "Authorization can be changed in your Privacy Settings"
-            static let MissingFields = "Email, password, full name and phone number required to access your account"
+            static let MapAppsAvailable = "Which do you prefer"
+            static let MissingFields = "Full name and phone number required to access your account"
             static let Password = "Enter atleast 6 characters"
             static let TouchSettings = "Authorization can be changed in your Touch ID Settings"
         }
         
         struct Actions {
+            static let AppleMaps = "Apple Maps"
             static let Cancel = "Cancel"
             static let CreateAccount = "Create Account"
+            static let GoogleMaps = "Google Maps"
             static let OK = "OK"
             static let Settings = "Settings"
         }        
@@ -155,8 +158,6 @@ struct Constants {
         static let Profile = "profile"
         static let SecureText: Character = "•"
         static let SignIn = "Sign In"
-        static let URLPrefix = "http://maps.apple.com/?saddr="
-        static let URLSuffix = "&daddr=3508+S+Lancaster+Rd+75216"
         static let Users = "users"
         static let Zipcode = "zipcode"
     }
@@ -184,8 +185,19 @@ struct Constants {
     }
     
     struct URLs {
+        static let Google = "comgooglemaps://"
         static let PhoneNumber = URL(string: "tel://2143747007")
         static let Settings = URL(string: UIApplicationOpenSettingsURLString)
+        
+        struct AppleMaps {
+            static let BellURLPrefix = "https://maps.apple.com/?saddr="
+            static let BellURLSuffix = "&daddr=3508+S+Lancaster+Rd+75216"
+        }
+        
+        struct GoogleMaps {
+            static let BellURLPrefix = "comgooglemaps://?saddr="
+            static let BellURLSuffix = "&daddr=3508+S+Lancaster+Rd+75216"
+        }
     }
     
     struct Validations {

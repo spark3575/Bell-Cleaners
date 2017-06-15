@@ -214,7 +214,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
                 return
             } else {
-                self.alertFieldsNotFilled.presentAlert(fromController: self, title: Constants.Alerts.Titles.AllRequired, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
+                self.alertFieldsNotFilled.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
             }
         }
     }

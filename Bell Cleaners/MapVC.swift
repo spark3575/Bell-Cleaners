@@ -16,10 +16,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var callBellButton: CallBellButton!
     
     private var locationManager = CLLocationManager()
-    private var userLocation: CLLocation!
-    private var userLatitude = 0.0
-    private var userLongitude = 0.0
-    let alertAccessDenied = PresentAlert()
+    private var userLatitude = CLLocationDegrees()
+    private var userLongitude = CLLocationDegrees()
+    private let alertAccessDenied = PresentAlert()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,25 +44,33 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         func setupAuthorizeWhenInUse() {
             manager.startUpdatingLocation()
-            manager.desiredAccuracy = kCLLocationAccuracyBest
-            let userCoordinates = (manager.location?.coordinate)!
-            if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
+            manager.desiredAccuracy = kCLLocationAccuracyBest            
+            if let userCoordinates = manager.location?.coordinate {
                 userLatitude = userCoordinates.latitude
                 userLongitude = userCoordinates.longitude
             }
-            if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
-                let userLatitudeString = String(format: Constants.Literals.DecimalPlaces, userLatitude)
-                let userLongitudeString = String(format: Constants.Literals.DecimalPlaces, userLongitude)
-                let userLocationString = userLatitudeString + Constants.Literals.Comma + userLongitudeString
-                let routeToBell = URL(string: Constants.Literals.URLPrefix + userLocationString + Constants.Literals.URLSuffix)
-                manager.stopUpdatingLocation()
-                guard let routeURL = routeToBell else { return }
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(routeURL, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(routeURL)
-                }
-            }
+            let userLatitudeString = String(format: Constants.Literals.DecimalPlaces, userLatitude)
+            let userLongitudeString = String(format: Constants.Literals.DecimalPlaces, userLongitude)
+            let userLocationString = userLatitudeString + Constants.Literals.Comma + userLongitudeString
+            let appleMapsRouteToBell = URL(string: Constants.URLs.AppleMaps.BellURLPrefix + userLocationString + Constants.URLs.AppleMaps.BellURLSuffix)
+            let googleMapsRouteToBell = URL(string: Constants.URLs.GoogleMaps.BellURLPrefix + userLocationString + Constants.URLs.GoogleMaps.BellURLSuffix)
+            manager.stopUpdatingLocation()
+            guard let appleMapsRouteURL = appleMapsRouteToBell else { return }
+            guard let googleMapsRouteURL = googleMapsRouteToBell else { return }
+            let mapChoiceAlert = UIAlertController(title: Constants.Alerts.Titles.MapAppsAvailable, message: nil, preferredStyle: .alert)
+            let appleMapsAction = UIAlertAction(title: Constants.Alerts.Actions.AppleMaps, style: .default, handler: { action in
+                UIApplication.shared.open(appleMapsRouteURL, options: [:], completionHandler: nil)
+            })
+            let googleMapsAction = UIAlertAction(title: Constants.Alerts.Actions.GoogleMaps, style: .default, handler: { action in
+                UIApplication.shared.open(googleMapsRouteURL, options: [:], completionHandler: nil)
+            })
+            mapChoiceAlert.addAction(appleMapsAction)
+            mapChoiceAlert.addAction(googleMapsAction)
+            if (UIApplication.shared.canOpenURL(URL(string:Constants.URLs.Google)!)) {
+                present(mapChoiceAlert, animated: true, completion: nil)
+                return
+            }            
+            UIApplication.shared.open(appleMapsRouteURL, options: [:], completionHandler: nil)
         }
         switch status {
         case .notDetermined:
@@ -78,12 +85,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                          actionTitle: Constants.Alerts.Actions.OK)
         }
     }
-    
+
     @IBAction func didTapDirections(_ sender: DirectionsButton) {
         locationManager = CLLocationManager()
         locationManager.delegate = self
     }
-    
+
     @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
     }    

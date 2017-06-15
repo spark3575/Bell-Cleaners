@@ -34,10 +34,14 @@
 			</dict>
 		</array>
 	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location will only be used to get directions to Bell Cleaners</string>
+	<string>It will only be used to get directions to Bell Cleaners</string>
 	<key>UIApplicationExitsOnSuspend</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
