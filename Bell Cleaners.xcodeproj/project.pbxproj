@@ -13,6 +13,9 @@
 		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
 		B075A0331ED535DC003FF1BE /* dingSmallBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */; };
 		B075A0371ED53A7D003FF1BE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075A0361ED53A7D003FF1BE /* AVFoundation.framework */; };
+		B089569E1ED840EC00736208 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089569D1ED840EC00736208 /* SignUpVC.swift */; };
+		B08956A01ED8765600736208 /* ShadowField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089569F1ED8765600736208 /* ShadowField.swift */; };
+		B08956A21ED91FEF00736208 /* PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08956A11ED91FEF00736208 /* PresentAlert.swift */; };
 		B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */; };
 		B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */; };
 		B0AECE5B1ED0D48F00097AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE591ED0D48F00097AE1 /* Main.storyboard */; };
@@ -21,6 +24,7 @@
 		B0B610A41ED5C3CE001E3C6C /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610A31ED5C3CE001E3C6C /* MapVC.swift */; };
 		B0B610A61ED6608D001E3C6C /* CallBellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610A51ED6608D001E3C6C /* CallBellButton.swift */; };
 		B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610AD1ED6928E001E3C6C /* BellLogoButton.swift */; };
+		B0B610B01ED7BD49001E3C6C /* AccessAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610AF1ED7BD49001E3C6C /* AccessAccountVC.swift */; };
 		E2DB245DFC34F3F085473315 /* Pods_Bell_Cleaners.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,9 @@
 		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dingSmallBell.mp3; sourceTree = "<group>"; };
 		B075A0361ED53A7D003FF1BE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B089569D1ED840EC00736208 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		B089569F1ED8765600736208 /* ShadowField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowField.swift; sourceTree = "<group>"; };
+		B08956A11ED91FEF00736208 /* PresentAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAlert.swift; sourceTree = "<group>"; };
 		B0AECE521ED0D48F00097AE1 /* Bell Cleaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Cleaners.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellCleanersVC.swift; sourceTree = "<group>"; };
@@ -44,6 +51,7 @@
 		B0B610A31ED5C3CE001E3C6C /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		B0B610A51ED6608D001E3C6C /* CallBellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallBellButton.swift; sourceTree = "<group>"; };
 		B0B610AD1ED6928E001E3C6C /* BellLogoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BellLogoButton.swift; sourceTree = "<group>"; };
+		B0B610AF1ED7BD49001E3C6C /* AccessAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessAccountVC.swift; sourceTree = "<group>"; };
 		E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bell_Cleaners.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +112,8 @@
 			children = (
 				B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */,
 				B0B610A31ED5C3CE001E3C6C /* MapVC.swift */,
+				B0B610AF1ED7BD49001E3C6C /* AccessAccountVC.swift */,
+				B089569D1ED840EC00736208 /* SignUpVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -115,6 +125,8 @@
 				B00A97961ED32D8800C32A88 /* ShadowView.swift */,
 				B0B610AD1ED6928E001E3C6C /* BellLogoButton.swift */,
 				B0B610A51ED6608D001E3C6C /* CallBellButton.swift */,
+				B089569F1ED8765600736208 /* ShadowField.swift */,
+				B08956A11ED91FEF00736208 /* PresentAlert.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -188,6 +200,9 @@
 						DevelopmentTeam = 775A96F2SV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -287,7 +302,11 @@
 				B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */,
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
+				B08956A21ED91FEF00736208 /* PresentAlert.swift in Sources */,
+				B0B610B01ED7BD49001E3C6C /* AccessAccountVC.swift in Sources */,
+				B08956A01ED8765600736208 /* ShadowField.swift in Sources */,
 				B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */,
+				B089569E1ED840EC00736208 /* SignUpVC.swift in Sources */,
 				B00A97951ED32CEB00C32A88 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
