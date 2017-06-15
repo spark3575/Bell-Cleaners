@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B00A97951ED32CEB00C32A88 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97941ED32CEB00C32A88 /* Constants.swift */; };
+		B00A97971ED32D8800C32A88 /* ShadowNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97961ED32D8800C32A88 /* ShadowNavController.swift */; };
+		B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97981ED336C900C32A88 /* ShadowButton.swift */; };
 		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
 		B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */; };
 		B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */; };
@@ -19,6 +22,9 @@
 /* Begin PBXFileReference section */
 		313228CE79C036D91D2725D8 /* Pods-Bell Cleaners.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bell Cleaners.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners.debug.xcconfig"; sourceTree = "<group>"; };
 		933F98BE6AB5CBD0D743EA74 /* Pods-Bell Cleaners.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bell Cleaners.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners.release.xcconfig"; sourceTree = "<group>"; };
+		B00A97941ED32CEB00C32A88 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B00A97961ED32D8800C32A88 /* ShadowNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowNavController.swift; sourceTree = "<group>"; };
+		B00A97981ED336C900C32A88 /* ShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0AECE521ED0D48F00097AE1 /* Bell Cleaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Cleaners.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +58,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B00A97931ED32CAC00C32A88 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B00A97941ED32CEB00C32A88 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		B0AECE491ED0D48F00097AE1 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +92,7 @@
 				B0AECE6A1ED0D8D200097AE1 /* View */,
 				B0AECE691ED0D8C500097AE1 /* Controller */,
 				B0AECE6C1ED0D96600097AE1 /* Supporting Files */,
+				B00A97931ED32CAC00C32A88 /* Util */,
 			);
 			path = "Bell Cleaners";
 			sourceTree = "<group>";
@@ -93,6 +108,8 @@
 		B0AECE6A1ED0D8D200097AE1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B00A97981ED336C900C32A88 /* ShadowButton.swift */,
+				B00A97961ED32D8800C32A88 /* ShadowNavController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -255,8 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B00A97971ED32D8800C32A88 /* ShadowNavController.swift in Sources */,
+				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
 				B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */,
+				B00A97951ED32CEB00C32A88 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
