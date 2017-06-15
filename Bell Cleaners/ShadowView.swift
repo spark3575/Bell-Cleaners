@@ -1,5 +1,5 @@
 //
-//  ShadowButton.swift
+//  ShadowView.swift
 //  Bell Cleaners
 //
 //  Created by Shin Park on 5/22/17.
@@ -9,8 +9,8 @@
 import UIKit
 
 @IBDesignable
-class ShadowButton: UIButton {
-    
+class ShadowView: UIView {
+
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()
@@ -26,6 +26,5 @@ class ShadowButton: UIButton {
         layer.shadowOffset = layerShadowOffset
         layer.shadowOpacity = layerShadowOpacity
         layer.shadowRadius = layerShadowRadius
-        layer.cornerRadius = layerCornerRadius
     }
 }

@@ -10,11 +10,16 @@ import UIKit
 
 class BellCleanersVC: UIViewController {
 
+    @IBOutlet weak var bellButton: ShadowButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.navigationItem.title = "Bell Cleaners"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        bellButton.imageView?.contentMode = .scaleAspectFit
     }
 }
 
