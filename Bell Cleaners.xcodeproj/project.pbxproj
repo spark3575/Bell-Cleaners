@@ -11,6 +11,8 @@
 		B00A97971ED32D8800C32A88 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97961ED32D8800C32A88 /* ShadowView.swift */; };
 		B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97981ED336C900C32A88 /* ShadowButton.swift */; };
 		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
+		B075A0331ED535DC003FF1BE /* dingSmallBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */; };
+		B075A0371ED53A7D003FF1BE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075A0361ED53A7D003FF1BE /* AVFoundation.framework */; };
 		B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */; };
 		B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */; };
 		B0AECE5B1ED0D48F00097AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE591ED0D48F00097AE1 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		B00A97961ED32D8800C32A88 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		B00A97981ED336C900C32A88 /* ShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dingSmallBell.mp3; sourceTree = "<group>"; };
+		B075A0361ED53A7D003FF1BE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B0AECE521ED0D48F00097AE1 /* Bell Cleaners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Cleaners.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellCleanersVC.swift; sourceTree = "<group>"; };
@@ -42,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B075A0371ED53A7D003FF1BE /* AVFoundation.framework in Frameworks */,
 				E2DB245DFC34F3F085473315 /* Pods_Bell_Cleaners.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,14 +61,6 @@
 				933F98BE6AB5CBD0D743EA74 /* Pods-Bell Cleaners.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		B00A97931ED32CAC00C32A88 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				B00A97941ED32CEB00C32A88 /* Constants.swift */,
-			);
-			name = Util;
 			sourceTree = "<group>";
 		};
 		B0AECE491ED0D48F00097AE1 = {
@@ -92,7 +89,6 @@
 				B0AECE6A1ED0D8D200097AE1 /* View */,
 				B0AECE691ED0D8C500097AE1 /* Controller */,
 				B0AECE6C1ED0D96600097AE1 /* Supporting Files */,
-				B00A97931ED32CAC00C32A88 /* Util */,
 			);
 			path = "Bell Cleaners";
 			sourceTree = "<group>";
@@ -124,12 +120,14 @@
 		B0AECE6C1ED0D96600097AE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B00A97941ED32CEB00C32A88 /* Constants.swift */,
 				B0AECE551ED0D48F00097AE1 /* AppDelegate.swift */,
 				B0AECE5C1ED0D48F00097AE1 /* Assets.xcassets */,
 				B0AECE5E1ED0D48F00097AE1 /* LaunchScreen.storyboard */,
 				B0AECE611ED0D48F00097AE1 /* Info.plist */,
 				B05749361ED12C970076310B /* GoogleService-Info.plist */,
 				B0AECE6D1ED0E08F00097AE1 /* Bell Cleaners.entitlements */,
+				B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -137,6 +135,7 @@
 		C05E197BCAA5DADDDE86E4C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B075A0361ED53A7D003FF1BE /* AVFoundation.framework */,
 				E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */,
 			);
 			name = Frameworks;
@@ -212,6 +211,7 @@
 			files = (
 				B0AECE601ED0D48F00097AE1 /* LaunchScreen.storyboard in Resources */,
 				B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */,
+				B075A0331ED535DC003FF1BE /* dingSmallBell.mp3 in Resources */,
 				B0AECE5D1ED0D48F00097AE1 /* Assets.xcassets in Resources */,
 				B0AECE5B1ED0D48F00097AE1 /* Main.storyboard in Resources */,
 			);
@@ -403,7 +403,6 @@
 				CODE_SIGN_ENTITLEMENTS = "Bell Cleaners/Bell Cleaners.entitlements";
 				DEVELOPMENT_TEAM = 775A96F2SV;
 				INFOPLIST_FILE = "Bell Cleaners/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shinparkdev.Bell-Cleaners";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -419,7 +418,6 @@
 				CODE_SIGN_ENTITLEMENTS = "Bell Cleaners/Bell Cleaners.entitlements";
 				DEVELOPMENT_TEAM = 775A96F2SV;
 				INFOPLIST_FILE = "Bell Cleaners/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shinparkdev.Bell-Cleaners";
 				PRODUCT_NAME = "$(TARGET_NAME)";

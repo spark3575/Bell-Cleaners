@@ -21,29 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEg-T5-Wic">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bell" translatesAutoresizingMaskIntoConstraints="NO" id="3VB-VL-hBE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" translatesAutoresizingMaskIntoConstraints="NO" id="3VB-VL-hBE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="3VB-VL-hBE" firstAttribute="leading" secondItem="zEg-T5-Wic" secondAttribute="leading" id="1kL-PS-Lf6"/>
-                                    <constraint firstAttribute="bottom" secondItem="3VB-VL-hBE" secondAttribute="bottom" id="72t-2Z-fhG"/>
-                                    <constraint firstAttribute="trailing" secondItem="3VB-VL-hBE" secondAttribute="trailing" id="SWy-Ux-sEj"/>
-                                    <constraint firstItem="3VB-VL-hBE" firstAttribute="top" secondItem="zEg-T5-Wic" secondAttribute="top" id="bz5-5v-ncq"/>
-                                </constraints>
-                            </view>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="zEg-T5-Wic" secondAttribute="trailing" id="6ZG-z9-x5c"/>
-                            <constraint firstItem="zEg-T5-Wic" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="AfO-IL-rEu"/>
-                            <constraint firstItem="zEg-T5-Wic" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="S3Q-Md-8hh"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="zEg-T5-Wic" secondAttribute="bottom" id="cAx-WU-e2E"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

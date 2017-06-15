@@ -12,14 +12,30 @@ class BellCleanersVC: UIViewController {
 
     @IBOutlet weak var bellButton: ShadowButton!
     
+    private func shakeAndPlaySound() {
+        bellButton.shake()
+        bellButton.playSound(file: bellSound, ext: mp3)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        Timer.scheduledTimer(withTimeInterval: delayAfterViewAppears, repeats: false) {
+            [weak self] timer in
+            self?.shakeAndPlaySound()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         bellButton.imageView?.contentMode = .scaleAspectFit
     }
+    
+    @IBAction func bellPressed(_ sender: ShadowButton) {
+        shakeAndPlaySound()
+    }
 }
-
