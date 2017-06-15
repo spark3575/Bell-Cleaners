@@ -18,6 +18,9 @@
 		B0AECE5B1ED0D48F00097AE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE591ED0D48F00097AE1 /* Main.storyboard */; };
 		B0AECE5D1ED0D48F00097AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE5C1ED0D48F00097AE1 /* Assets.xcassets */; };
 		B0AECE601ED0D48F00097AE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0AECE5E1ED0D48F00097AE1 /* LaunchScreen.storyboard */; };
+		B0B610A41ED5C3CE001E3C6C /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610A31ED5C3CE001E3C6C /* MapVC.swift */; };
+		B0B610A61ED6608D001E3C6C /* CallBellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610A51ED6608D001E3C6C /* CallBellButton.swift */; };
+		B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610AD1ED6928E001E3C6C /* BellLogoButton.swift */; };
 		E2DB245DFC34F3F085473315 /* Pods_Bell_Cleaners.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		B0AECE5F1ED0D48F00097AE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0AECE611ED0D48F00097AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0AECE6D1ED0E08F00097AE1 /* Bell Cleaners.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bell Cleaners.entitlements"; sourceTree = "<group>"; };
+		B0B610A31ED5C3CE001E3C6C /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		B0B610A51ED6608D001E3C6C /* CallBellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallBellButton.swift; sourceTree = "<group>"; };
+		B0B610AD1ED6928E001E3C6C /* BellLogoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BellLogoButton.swift; sourceTree = "<group>"; };
 		E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bell_Cleaners.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B0AECE571ED0D48F00097AE1 /* BellCleanersVC.swift */,
+				B0B610A31ED5C3CE001E3C6C /* MapVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -106,6 +113,8 @@
 			children = (
 				B00A97981ED336C900C32A88 /* ShadowButton.swift */,
 				B00A97961ED32D8800C32A88 /* ShadowView.swift */,
+				B0B610AD1ED6928E001E3C6C /* BellLogoButton.swift */,
+				B0B610A51ED6608D001E3C6C /* CallBellButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -273,6 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00A97971ED32D8800C32A88 /* ShadowView.swift in Sources */,
+				B0B610A61ED6608D001E3C6C /* CallBellButton.swift in Sources */,
+				B0B610A41ED5C3CE001E3C6C /* MapVC.swift in Sources */,
+				B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */,
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
 				B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */,

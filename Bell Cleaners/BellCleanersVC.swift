@@ -10,16 +10,12 @@ import UIKit
 
 class BellCleanersVC: UIViewController {
 
-    @IBOutlet weak var bellButton: ShadowButton!
+    @IBOutlet weak var bellLogoButton: BellLogoButton!
+    @IBOutlet weak var callBellButton: CallBellButton!
     
     private func shakeAndPlaySound() {
-        bellButton.shake()
-        bellButton.playSound(file: bellSound, ext: mp3)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        bellLogoButton.shake()
+        bellLogoButton.playSound(file: bellSound, ext: mp3)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,10 +28,14 @@ class BellCleanersVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        bellButton.imageView?.contentMode = .scaleAspectFit
+        bellLogoButton.imageView?.contentMode = .scaleAspectFit
     }
     
-    @IBAction func bellPressed(_ sender: ShadowButton) {
+    @IBAction func bellPressed(_ sender: BellLogoButton) {
         shakeAndPlaySound()
+    }
+    
+    @IBAction func callBellPressed(_ sender: CallBellButton) {
+        callBellButton.callBell()
     }
 }

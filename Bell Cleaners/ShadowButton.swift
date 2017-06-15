@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 @IBDesignable
 class ShadowButton: UIButton {
@@ -22,37 +21,15 @@ class ShadowButton: UIButton {
         setup()
     }
     
-    func setup() {
+    private func setup() {
         layer.shadowColor = layerShadowColor
         layer.shadowOffset = layerShadowOffset
         layer.shadowOpacity = layerShadowOpacity
         layer.shadowRadius = layerShadowRadius
         layer.cornerRadius = layerCornerRadius
     }
-    
-    func shake () {        
-        let shake = CABasicAnimation(keyPath: animationKeyPath)
-        shake.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        shake.fromValue = shakeFromValue
-        shake.toValue = shakeToValue
-        shake.isRemovedOnCompletion = false
-        shake.duration = shakeDuration
-        shake.autoreverses = true
-        shake.repeatCount = shakeRepeatCount
-        
-        self.layer.add(shake, forKey: nil)
-    }
-    
-    var audioPlayer = AVAudioPlayer()
-    
-    func playSound(file:String, ext:String) -> Void {
-        do {
-            let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: file, ofType: ext)!)
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
 }
+
+class MapButton: ShadowButton {}
+
+class DirectionsButton: ShadowButton {}

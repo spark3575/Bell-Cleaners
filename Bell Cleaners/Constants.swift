@@ -22,4 +22,20 @@ let shakeDuration = 0.3
 let shakeRepeatCount: Float = 2
 let bellSound = "dingSmallBell"
 let mp3 = "mp3"
+let bellPhoneNumberURL = URL(string: "tel://2143747007")
+let bellLatitude = 32.705180
+let bellLongitude = -96.799560
+let bellSpanLatitudeDelta = 0.0027
+let bellSpanLongitudeDelta = 0.0027
+let bellAnnotationTitle = "Bell Cleaners"
+let bellAnnotationSubtitle = "Expert Garment Care"
+let userLat = 0.0
+let userLon = 0.0
+let decimalPlacesFormat = "%.5f"
+let routeToBellURLPrefix = "http://maps.apple.com/?saddr="
+let separatingComma = ","
+let routeToBellURLSuffix = "&daddr=3508+S+Lancaster+Rd+75216"
+let locationServiceAlertTitle = "Authorization Denied"
+let locationServiceAlertMessage = "Location Services can be changed in your Privacy Settings"
+let locationServiceAlertActionTitle = "OK"
 

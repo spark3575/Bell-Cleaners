@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vjV-Qa-jUl">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,14 +19,173 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CIh-wJ-csf" userLabel="bell icon">
+                                <rect key="frame" x="157" y="94" width="100" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04f-XK-3VK" userLabel="bellLogo" customClass="BellLogoButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="GYf-Qa-R28"/>
+                                            <constraint firstAttribute="width" constant="100" id="eU1-qr-Y5t"/>
+                                            <constraint firstAttribute="height" constant="200" id="p51-lH-eDi"/>
+                                            <constraint firstAttribute="width" constant="200" id="xVA-pv-QqX"/>
+                                        </constraints>
+                                        <state key="normal" image="bellLogo"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="GYf-Qa-R28"/>
+                                                <exclude reference="eU1-qr-Y5t"/>
+                                                <exclude reference="p51-lH-eDi"/>
+                                                <exclude reference="xVA-pv-QqX"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="GYf-Qa-R28"/>
+                                                <include reference="eU1-qr-Y5t"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="p51-lH-eDi"/>
+                                                <include reference="xVA-pv-QqX"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="bellPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zUM-sM-xS6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lTt-i2-8ke" userLabel="menu">
+                                <rect key="frame" x="20" y="224" width="374" height="407.33333333333337"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3t-dA-vw8" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
+                                        <color key="backgroundColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Access Account">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-1e-3tA" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="84" width="374" height="71.666666666666686"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Dry Clean">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-Xm-9uj" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="167.66666666666669" width="374" height="72"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Laundry">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="251.66666666666666" width="374" height="71.999999999999972"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Alteration">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="335.66666666666663" width="374" height="71.666666666666742"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Sneakers and more">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-EV-kEH" userLabel="map &amp; phone">
+                                <rect key="frame" x="20" y="643.33333333333348" width="374" height="72.666666666666629"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-8l-4qm" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="141.33333333333334" height="72.666666666666629"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Map">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <segue destination="vjV-Qa-jUl" kind="show" identifier="MapVC" id="lJL-me-ucU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-uD-gkv" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="153.33333333333337" y="0.0" width="220.66666666666663" height="72.666666666666629"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="214-374-7007">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="callBellPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PdD-EJ-3sU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8H8-8l-4qm" firstAttribute="width" secondItem="HIa-uD-gkv" secondAttribute="width" constant="-80" id="NmL-ye-tee"/>
+                                </constraints>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yav-8e-pGp" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bell Cleaners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9h-WS-bdY">
-                                        <rect key="frame" x="114.5" y="27.5" width="146.5" height="29"/>
+                                        <rect key="frame" x="134" y="27.666666666666664" width="146.33333333333331" height="28.666666666666664"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -41,7 +200,7 @@
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3JA-Wa-QGq"/>
-                                    <constraint firstAttribute="height" constant="32" id="63b-XZ-3Kn"/>
+                                    <constraint firstAttribute="height" constant="44" id="63b-XZ-3Kn"/>
                                     <constraint firstItem="F9h-WS-bdY" firstAttribute="centerY" secondItem="Yav-8e-pGp" secondAttribute="centerY" id="67w-6A-X46"/>
                                     <constraint firstItem="F9h-WS-bdY" firstAttribute="centerX" secondItem="Yav-8e-pGp" secondAttribute="centerX" id="TbS-X0-sBT"/>
                                     <constraint firstAttribute="height" constant="64" id="YLe-ZQ-a8m"/>
@@ -90,159 +249,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CIh-wJ-csf" userLabel="bell icon">
-                                <rect key="frame" x="137.5" y="94" width="100" height="100"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04f-XK-3VK" userLabel="bell-home-icon" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="GYf-Qa-R28"/>
-                                            <constraint firstAttribute="width" constant="100" id="eU1-qr-Y5t"/>
-                                            <constraint firstAttribute="height" constant="200" id="p51-lH-eDi"/>
-                                            <constraint firstAttribute="width" constant="200" id="xVA-pv-QqX"/>
-                                        </constraints>
-                                        <state key="normal" image="bellLogo"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="GYf-Qa-R28"/>
-                                                <exclude reference="eU1-qr-Y5t"/>
-                                                <exclude reference="p51-lH-eDi"/>
-                                                <exclude reference="xVA-pv-QqX"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="GYf-Qa-R28"/>
-                                                <include reference="eU1-qr-Y5t"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <mask key="constraints">
-                                                <include reference="p51-lH-eDi"/>
-                                                <include reference="xVA-pv-QqX"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="bellPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJG-N9-A7a"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lTt-i2-8ke" userLabel="menu">
-                                <rect key="frame" x="16" y="224" width="343" height="351"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3t-dA-vw8" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="60.5"/>
-                                        <color key="backgroundColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Access Account">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-1e-3tA" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72.5" width="343" height="60.5"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Dry Clean">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-Xm-9uj" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="145" width="343" height="61"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Laundry">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="218" width="343" height="60.5"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Alteration">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="290.5" width="343" height="60.5"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Sneakers and more">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-EV-kEH" userLabel="map">
-                                <rect key="frame" x="16" y="587" width="343" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-8l-4qm" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="125.5" height="60"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Map">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-uD-gkv" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="137.5" y="0.0" width="205.5" height="60"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="214-374-7007">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="8H8-8l-4qm" firstAttribute="width" secondItem="HIa-uD-gkv" secondAttribute="width" constant="-80" id="NmL-ye-tee"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -363,15 +369,274 @@
                     </view>
                     <navigationItem key="navigationItem" id="gsx-6f-wha"/>
                     <connections>
-                        <outlet property="bellButton" destination="04f-XK-3VK" id="Wq5-Pv-B2I"/>
+                        <outlet property="bellLogoButton" destination="04f-XK-3VK" id="yQB-xC-bdN"/>
+                        <outlet property="callBellButton" destination="HIa-uD-gkv" id="UKe-fw-JqQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320.8" y="85.007496251874073"/>
+            <point key="canvasLocation" x="1359" y="83"/>
+        </scene>
+        <!--MapVC-->
+        <scene sceneID="ZfA-9g-c6T">
+            <objects>
+                <viewController id="vjV-Qa-jUl" customClass="MapVC" customModule="Bell_Cleaners" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hqk-uL-c1R"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dc7-Lk-dpY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S0f-aV-fqP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ek3-om-ZO9">
+                                <rect key="frame" x="0.0" y="64" width="414" height="516"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xq8-Ks-Fog" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bell Cleaners" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fux-8Z-w5y">
+                                        <rect key="frame" x="134" y="27.666666666666664" width="146.33333333333331" height="28.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=compact-widthClass=compact">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xz-V3-7aS">
+                                        <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="0Xy-2J-kUd"/>
+                                            <constraint firstAttribute="height" constant="44" id="c4B-aW-dfS"/>
+                                        </constraints>
+                                        <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" id="puF-tm-FXB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8Xz-V3-7aS" firstAttribute="leading" secondItem="Xq8-Ks-Fog" secondAttribute="leading" id="8HE-45-2UK"/>
+                                    <constraint firstAttribute="height" constant="44" id="A5p-xU-SZX"/>
+                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerY" secondItem="Xq8-Ks-Fog" secondAttribute="centerY" id="AZ9-nC-T2d"/>
+                                    <constraint firstItem="8Xz-V3-7aS" firstAttribute="centerY" secondItem="Xq8-Ks-Fog" secondAttribute="centerY" id="Jto-KJ-98W">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                    </constraint>
+                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerY" secondItem="Xq8-Ks-Fog" secondAttribute="centerY" id="Pu3-wZ-Hbu">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="8Xz-V3-7aS" secondAttribute="bottom" id="hXQ-Yf-BS2"/>
+                                    <constraint firstAttribute="height" constant="64" id="rGt-it-a1W"/>
+                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerX" secondItem="Xq8-Ks-Fog" secondAttribute="centerX" id="ygb-TL-X9G"/>
+                                    <constraint firstItem="fux-8Z-w5y" firstAttribute="centerX" secondItem="Xq8-Ks-Fog" secondAttribute="centerX" id="zHq-CE-rjw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="A5p-xU-SZX"/>
+                                        <exclude reference="hXQ-Yf-BS2"/>
+                                        <exclude reference="AZ9-nC-T2d"/>
+                                        <exclude reference="ygb-TL-X9G"/>
+                                        <exclude reference="zHq-CE-rjw"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="A5p-xU-SZX"/>
+                                        <exclude reference="rGt-it-a1W"/>
+                                        <include reference="hXQ-Yf-BS2"/>
+                                        <include reference="AZ9-nC-T2d"/>
+                                        <include reference="ygb-TL-X9G"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="A5p-xU-SZX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="zHq-CE-rjw"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="zHq-CE-rjw"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O84-lh-ApF" userLabel="address" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="580" width="414" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3508 S. Lancaster Rd. Dallas, TX 75216" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYY-tY-Op3">
+                                        <rect key="frame" x="102.33333333333331" y="8" width="210" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="210" id="VJB-3f-oqc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="VJB-3f-oqc"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="VJB-3f-oqc"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.29821726679801941" green="0.71367651224136353" blue="0.4951484203338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="HYY-tY-Op3" secondAttribute="bottom" id="0CH-dh-fUY"/>
+                                    <constraint firstItem="HYY-tY-Op3" firstAttribute="leading" secondItem="O84-lh-ApF" secondAttribute="leading" id="Eb3-Mr-4eR"/>
+                                    <constraint firstItem="HYY-tY-Op3" firstAttribute="centerY" secondItem="O84-lh-ApF" secondAttribute="centerY" id="Fez-7I-BIO"/>
+                                    <constraint firstAttribute="height" constant="64" id="GSM-FY-IAi">
+                                        <variation key="heightClass=compact" constant="30"/>
+                                    </constraint>
+                                    <constraint firstAttribute="trailing" secondItem="HYY-tY-Op3" secondAttribute="trailing" id="Quu-8r-n8Y"/>
+                                    <constraint firstItem="HYY-tY-Op3" firstAttribute="top" secondItem="O84-lh-ApF" secondAttribute="top" id="UaX-01-78y"/>
+                                    <constraint firstItem="HYY-tY-Op3" firstAttribute="centerX" secondItem="O84-lh-ApF" secondAttribute="centerX" id="im8-Zc-D76"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0CH-dh-fUY"/>
+                                        <exclude reference="Eb3-Mr-4eR"/>
+                                        <exclude reference="Quu-8r-n8Y"/>
+                                        <exclude reference="UaX-01-78y"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Fez-7I-BIO"/>
+                                        <include reference="im8-Zc-D76"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="0CH-dh-fUY"/>
+                                        <include reference="Eb3-Mr-4eR"/>
+                                        <include reference="Quu-8r-n8Y"/>
+                                        <include reference="UaX-01-78y"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ae6-hr-JHx" userLabel="directions &amp; phone">
+                                <rect key="frame" x="10" y="656" width="394" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hv-lt-oZM" customClass="DirectionsButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="j2g-XT-U3d">
+                                                <variation key="heightClass=compact" constant="44"/>
+                                            </constraint>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Directions">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="directionsPressed:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="R2w-5z-xLN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JA-dP-iCI" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="163" y="0.0" width="231" height="60"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="214-374-7007">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="callBellPressed:" destination="vjV-Qa-jUl" eventType="touchUpInside" id="EPB-ki-DBH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4hv-lt-oZM" firstAttribute="width" secondItem="0JA-dP-iCI" secondAttribute="width" constant="-80" id="Atu-49-dwA"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ae6-hr-JHx" secondAttribute="trailing" id="28T-Lq-YN9"/>
+                            <constraint firstItem="ek3-om-ZO9" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" id="3tr-go-5VT"/>
+                            <constraint firstAttribute="trailing" secondItem="ek3-om-ZO9" secondAttribute="trailing" id="5I5-6e-t8u"/>
+                            <constraint firstItem="Xq8-Ks-Fog" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" id="6jG-Wi-ctf"/>
+                            <constraint firstItem="O84-lh-ApF" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" id="9ql-gP-tWw"/>
+                            <constraint firstItem="Ae6-hr-JHx" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leading" constant="10" id="DFP-B8-wbq"/>
+                            <constraint firstItem="ek3-om-ZO9" firstAttribute="top" secondItem="Xq8-Ks-Fog" secondAttribute="bottom" id="McX-aO-lyl"/>
+                            <constraint firstItem="Dc7-Lk-dpY" firstAttribute="top" secondItem="Ae6-hr-JHx" secondAttribute="bottom" constant="20" id="VQv-nP-OHu">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="Xq8-Ks-Fog" firstAttribute="top" secondItem="S0f-aV-fqP" secondAttribute="top" id="ZxU-Bn-dzk"/>
+                            <constraint firstItem="Ae6-hr-JHx" firstAttribute="top" secondItem="O84-lh-ApF" secondAttribute="bottom" constant="12" id="b53-vw-0w7">
+                                <variation key="heightClass=compact" constant="6"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="O84-lh-ApF" secondAttribute="trailing" id="dAA-Lp-UN1"/>
+                            <constraint firstAttribute="trailing" secondItem="Ae6-hr-JHx" secondAttribute="trailing" constant="10" id="oCv-FO-luW"/>
+                            <constraint firstAttribute="trailing" secondItem="Xq8-Ks-Fog" secondAttribute="trailing" id="q3j-lq-OiI"/>
+                            <constraint firstItem="O84-lh-ApF" firstAttribute="top" secondItem="ek3-om-ZO9" secondAttribute="bottom" id="sEF-Ax-X7g"/>
+                            <constraint firstItem="Ae6-hr-JHx" firstAttribute="leading" secondItem="S0f-aV-fqP" secondAttribute="leadingMargin" id="xcE-aV-rkx"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="28T-Lq-YN9"/>
+                                <exclude reference="xcE-aV-rkx"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="28T-Lq-YN9"/>
+                                <exclude reference="xcE-aV-rkx"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="28T-Lq-YN9"/>
+                                <exclude reference="DFP-B8-wbq"/>
+                                <exclude reference="oCv-FO-luW"/>
+                                <include reference="xcE-aV-rkx"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="callBellButton" destination="0JA-dP-iCI" id="K39-Kh-gbE"/>
+                        <outlet property="mapView" destination="ek3-om-ZO9" id="mrJ-4n-OFw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kak-OA-qxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2124" y="82"/>
         </scene>
     </scenes>
     <resources>
+        <image name="backArrow" width="13" height="21"/>
         <image name="bellLogo" width="250" height="250"/>
     </resources>
 </document>
