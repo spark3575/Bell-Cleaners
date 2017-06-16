@@ -76,7 +76,8 @@ struct Constants {
     }
     
     struct Colors {
-        static let BellColor = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
+        static let BellGreen = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
+        static let BellRed = UIColor(red: 230.0 / 255.0, green: 81.0 / 255.0, blue: 85.0 / 255.0, alpha: 1.0)
     }
     
     struct Coordinates {

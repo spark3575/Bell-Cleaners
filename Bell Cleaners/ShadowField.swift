@@ -21,7 +21,7 @@ class ShadowField: UITextField {
     }
     
     private func setup() {
-        layer.borderColor = Constants.Colors.BellColor.cgColor
+        layer.borderColor = Constants.Colors.BellGreen.cgColor
         layer.borderWidth = Constants.Layers.BorderWidth
         layer.cornerRadius = Constants.Layers.CornerRadius
         layer.shadowColor = Constants.Layers.ShadowColor

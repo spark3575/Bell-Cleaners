@@ -25,9 +25,10 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     private var activeField: UITextField?
-    private var nextField: UITextField?
     private let alertFieldsNotFilled = PresentAlert()
     private let defaults = UserDefaults.standard
+    private var handle: AuthStateDidChangeListenerHandle?
+    private var nextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,33 +45,35 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         spinner.startAnimating()
-        DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
-            if let user = snapshot.value as? [String : AnyObject] {
-                let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
-                let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
-                let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
-                let lastName = user[Constants.Literals.LastName] ?? Constants.Literals.EmptyString as AnyObject
-                let phoneNumber = user[Constants.Literals.PhoneNumber] ?? Constants.Literals.EmptyString as AnyObject
-                let pickupDelivery = user[Constants.Literals.PickupDelivery] ?? false as AnyObject
-                let address = user[Constants.Literals.Address] ?? Constants.Literals.EmptyString as AnyObject
-                let city = user[Constants.Literals.City] ?? Constants.Literals.EmptyString as AnyObject
-                let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
-                self.emailField.text = (email as! String)
-                self.passwordField.text = (password as! String)
-                self.firstNameField.text = (firstName as! String)
-                self.lastNameField.text = (lastName as! String)
-                self.phoneNumberField.text = (phoneNumber as! String)
-                self.pickupDeliverySwitch.isOn = (pickupDelivery as! Bool)
-                self.addressField.text = (address as! String)
-                self.cityField.text = (city as! String)
-                self.zipcodeField.text = (zipcode as! String)
-                if self.pickupDeliverySwitch.isOn {
-                    self.addressField.isHidden = false
-                    self.cityField.isHidden = false
-                    self.zipcodeField.isHidden = false
+        if Auth.auth().currentUser != nil {
+            DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+                if let user = snapshot.value as? [String : AnyObject] {
+                    let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
+                    let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
+                    let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
+                    let lastName = user[Constants.Literals.LastName] ?? Constants.Literals.EmptyString as AnyObject
+                    let phoneNumber = user[Constants.Literals.PhoneNumber] ?? Constants.Literals.EmptyString as AnyObject
+                    let pickupDelivery = user[Constants.Literals.PickupDelivery] ?? false as AnyObject
+                    let address = user[Constants.Literals.Address] ?? Constants.Literals.EmptyString as AnyObject
+                    let city = user[Constants.Literals.City] ?? Constants.Literals.EmptyString as AnyObject
+                    let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
+                    self.emailField.text = (email as! String)
+                    self.passwordField.text = (password as! String)
+                    self.firstNameField.text = (firstName as! String)
+                    self.lastNameField.text = (lastName as! String)
+                    self.phoneNumberField.text = (phoneNumber as! String)
+                    self.pickupDeliverySwitch.isOn = (pickupDelivery as! Bool)
+                    self.addressField.text = (address as! String)
+                    self.cityField.text = (city as! String)
+                    self.zipcodeField.text = (zipcode as! String)
+                    if self.pickupDeliverySwitch.isOn {
+                        self.addressField.isHidden = false
+                        self.cityField.isHidden = false
+                        self.zipcodeField.isHidden = false
+                    }
                 }
-            }
-        })
+            })
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
@@ -78,8 +81,17 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         spinner.stopAnimating()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // [START auth_listener]
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -94,7 +106,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         activeField = nil
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
@@ -107,7 +119,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         UIView.animate(withDuration: keyboardDuration!) {
             self.textStackTopConstraint.constant = Constants.Keyboards.OriginalConstraint
@@ -115,7 +127,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func goToNextField(currentTextField: UITextField) {
+    @objc func goToNextField(currentTextField: UITextField) {
         let nextFieldToBeEdited = nextFieldToEdit(activeField!)
         if pickupDeliverySwitch.isOn {
             if activeField != nextFieldToBeEdited {
@@ -161,7 +173,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private func addNextButtonToKeyboard(textField: UITextField, actionTitle: String, action: Selector?) {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: Constants.Keyboards.ToolbarHeight))
         toolbar.barStyle = UIBarStyle.default
-        toolbar.tintColor = Constants.Colors.BellColor
+        toolbar.tintColor = Constants.Colors.BellGreen
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let action: UIBarButtonItem = UIBarButtonItem(title: actionTitle, style: UIBarButtonItemStyle.done, target: self, action: action)
         var items = [UIBarButtonItem]()

@@ -11,23 +11,25 @@ import Firebase
 
 class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var callBellButton: CallBellButton!
+    @IBOutlet weak var createInfoLabel: UILabel!
     @IBOutlet weak var emailField: EmailField!
     @IBOutlet weak var passwordField: PasswordField!
     @IBOutlet weak var signInButton: SignInButton!
-    @IBOutlet weak var touchView: UIView!
     @IBOutlet weak var touchButton: UIButton!
-    @IBOutlet weak var createInfoLabel: UILabel!
-    @IBOutlet weak var callBellButton: CallBellButton!
+    @IBOutlet weak var touchView: UIView!
+    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var textStack: UIStackView!
     @IBOutlet weak var textStackTopConstraint: NSLayoutConstraint!
     
-    private var passwordItems: [KeychainPasswordItem] = []
-    private var securedTextEmail: String?
+    private var activeField: UITextField?
     private let alertValidationFailed = PresentAlert()
     private let bellTouchSignIn = TouchIDAuth()
     private let defaults = UserDefaults.standard
-    private var activeField: UITextField?
+    private var handle: AuthStateDidChangeListenerHandle?
+    private var passwordItems: [KeychainPasswordItem] = []
+    private var securedTextEmail: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +65,17 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // [START auth_listener]
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -79,7 +90,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         activeField = nil
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
@@ -93,7 +104,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         view.layoutIfNeeded()
         UIView.animate(withDuration: keyboardDuration!) {
@@ -164,20 +175,25 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 return
             }
             self.saveLogin(email: email, password: password)
-            DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
-                if let user = snapshot.value as? [String : AnyObject] {
-                    let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
-                    let ableToAccessMyAccount = (ableToAccess as! Bool)
-                    self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
-                }
-                self.spinner.stopAnimating()
-                if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                    self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
-                    return
-                } else {
-                    self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
-                }
-            })
+            if Auth.auth().currentUser != nil {
+                DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+                    if let user = snapshot.value as? [String : AnyObject] {
+                        let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
+                        let ableToAccessMyAccount = (ableToAccess as! Bool)
+                        self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                    }
+                    self.spinner.stopAnimating()
+                    if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                        self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
+                        return
+                    } else {
+                            self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
+                            return
+                    }
+                })
+            } else {
+                self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+            }                
         })
     }
     
