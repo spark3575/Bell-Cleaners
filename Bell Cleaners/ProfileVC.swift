@@ -25,7 +25,9 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     private var activeField: UITextField?
-    private let alertFieldsNotFilled = PresentAlert()
+    private let alertProfile = PresentAlert()
+    private var currentEmail = String()
+    private var currentPassword = String()
     private let defaults = UserDefaults.standard
     private var handle: AuthStateDidChangeListenerHandle?
     private var nextField: UITextField?
@@ -57,8 +59,10 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 let address = user[Constants.Literals.Address] ?? Constants.Literals.EmptyString as AnyObject
                 let city = user[Constants.Literals.City] ?? Constants.Literals.EmptyString as AnyObject
                 let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
-                self.emailField.text = (email as! String)
-                self.passwordField.text = (password as! String)
+                self.currentEmail = (email as! String)
+                self.emailField.text = self.currentEmail
+                self.currentPassword = (password as! String)
+                self.passwordField.text = self.currentPassword
                 self.firstNameField.text = (firstName as! String)
                 self.lastNameField.text = (lastName as! String)
                 self.phoneNumberField.text = (phoneNumber as! String)
@@ -206,14 +210,43 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                         Constants.Literals.Zipcode: zipcodeField.text as AnyObject,
                         Constants.Literals.AbleToAccessMyAccount: defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount) as AnyObject]
         if !pickupDeliverySwitch.isOn {
-            if let email = emailField.text, let password = passwordField.text, let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, !email.isEmpty && !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty, !phoneNumber.isEmpty {
+            if let email = emailField.text, email != currentEmail {
+                AuthService.instance.updateEmail(to: email, onComplete: { (errorMessage, nil) in
+                    if errorMessage == Constants.ErrorMessages.RequiresRecentLogin {
+                        let user = Auth.auth().currentUser
+                        var credential: AuthCredential
+                        var enteredPassword = String()
+                        credential = (EmailAuthProvider.credential(withEmail: self.currentEmail, password: enteredPassword))
+                        let reAuthenticateAlert = UIAlertController(title: "Re-authentication Required", message: "Please enter your password", preferredStyle: .alert)
+                        reAuthenticateAlert.addAction(UIAlertAction(title: "Re-authenticate", style: .default, handler: { action in
+                            enteredPassword = (reAuthenticateAlert.textFields?.first?.text)!
+                            user?.reauthenticate(with: credential) { error in
+                                if error != nil {
+                                    // An error happened.
+                                    self.alertProfile.presentAlert(fromController: self, title: "Re-authentication Failed", message: "Please sign in again", actionTitle: Constants.Alerts.Actions.OK)
+                                    self.performSegue(withIdentifier: Constants.Segues.AccessAccount, sender: self)
+                                    return
+                                } else {
+                                    // User re-authenticated.
+                                    AuthService.instance.updateEmail(to: email, onComplete: nil)
+                                }
+                            }
+                        }))
+                        reAuthenticateAlert.addTextField(configurationHandler: nil)
+                        self.present(reAuthenticateAlert, animated: true, completion: nil)                        
+                    } else {
+                        self.alertProfile.presentAlert(fromController: self, title: "Email Update Failed", message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                    }
+                })
+            }
+            if let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, !firstName.isEmpty && !lastName.isEmpty && !phoneNumber.isEmpty {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
                 performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
                 return
             } else {
-                self.alertFieldsNotFilled.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.MissingFields, actionTitle: Constants.Alerts.Actions.OK)
+                self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.MissingFields, actionTitle: Constants.Alerts.Actions.OK)
             }
         }
         if pickupDeliverySwitch.isOn {
@@ -224,7 +257,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
                 return
             } else {
-                self.alertFieldsNotFilled.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
+                self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
             }
         }
     }

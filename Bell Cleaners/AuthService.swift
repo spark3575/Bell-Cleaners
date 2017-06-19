@@ -53,6 +53,14 @@ class AuthService {
         }
     }
     
+    func updateEmail(to email: String, onComplete: Completion?) {
+        Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+            if error != nil {
+                self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            }
+        }
+    }
+    
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -74,6 +82,8 @@ class AuthService {
                 onComplete?(Constants.ErrorMessages.NetworkConnection, nil)
             case .emailAlreadyInUse, .credentialAlreadyInUse:
                 onComplete?(Constants.ErrorMessages.EmailAlreadyInUse, nil)
+            case .requiresRecentLogin:
+                onComplete?(Constants.ErrorMessages.RequiresRecentLogin, nil)
             default:
                 onComplete?(Constants.ErrorMessages.Default, nil)
             }

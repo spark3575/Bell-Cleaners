@@ -24,7 +24,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textStackTopConstraint: NSLayoutConstraint!
     
     private var activeField: UITextField?
-    private let alertValidationFailed = PresentAlert()
+    private let alertAccessAccount = PresentAlert()
     private let bellTouchSignIn = TouchIDAuth()
     private let defaults = UserDefaults.standard
     private var handle: AuthStateDidChangeListenerHandle?
@@ -131,7 +131,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             passwordField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
-            alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.Email, message: Constants.Alerts.Messages.Email, actionTitle: Constants.Alerts.Actions.OK)
+            alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.Email, message: Constants.Alerts.Messages.Email, actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
@@ -140,15 +140,15 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
         } else {
             textField.resignFirstResponder()
-            alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.Password, message: Constants.Alerts.Messages.Password, actionTitle: Constants.Alerts.Actions.OK)
+            alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.Password, message: Constants.Alerts.Messages.Password, actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
     private func signInUser(email: String, password: String) {
         spinner.startAnimating()
-        AuthService.instance.signIn(withEmail: email, password: password, onComplete: { (errorMessage, data) in
+        AuthService.instance.signIn(withEmail: email, password: password, onComplete: { (errorMessage, user) in
             self.spinner.stopAnimating()
-            let signInFailedAlert = UIAlertController(title: Constants.Alerts.Titles.UserNotFound, message: Constants.Alerts.Messages.CreateNewAccount, preferredStyle: .alert)
+            let alertSignInFailed = UIAlertController(title: Constants.Alerts.Titles.UserNotFound, message: Constants.Alerts.Messages.CreateNewAccount, preferredStyle: .alert)
             var createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
                 self.signInButton.setTitle(Constants.Literals.CreateAccount, for: .normal)
                 self.emailField.text = Constants.Literals.EmptyString
@@ -164,51 +164,67 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                     })
                 }
                 self.defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
-                signInFailedAlert.addAction(createAccountAction)
-                signInFailedAlert.addAction(cancelAction)
-                self.present(signInFailedAlert, animated: true, completion: nil)
+                alertSignInFailed.addAction(createAccountAction)
+                alertSignInFailed.addAction(cancelAction)
+                self.present(alertSignInFailed, animated: true, completion: nil)
                 return
             }
-            guard let _ = data, errorMessage == nil else {
-                self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+            guard let _ = user, errorMessage == nil else {
+                self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                 return
             }
             self.saveLogin(email: email, password: password)
-            self.spinner.startAnimating()
-            DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
-                self.spinner.stopAnimating()
-                if let user = snapshot.value as? [String : AnyObject] {
-                    let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
-                    let ableToAccessMyAccount = (ableToAccess as! Bool)
-                    self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
-                    let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
-                    let email = userEmail as! String
-                    if email == Constants.Literals.AdminEmail {
-                        self.performSegue(withIdentifier: Constants.Segues.Admin, sender: self)
-                        return
+            if let user = user, user.isEmailVerified {
+                self.spinner.startAnimating()
+                DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+                    self.spinner.stopAnimating()
+                    if let user = snapshot.value as? [String : AnyObject] {
+                        let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
+                        let ableToAccessMyAccount = (ableToAccess as! Bool)
+                        self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                        let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
+                        let email = userEmail as! String
+                        if email == Constants.Literals.AdminEmail {
+                            self.performSegue(withIdentifier: Constants.Segues.Admin, sender: self)
+                            return
+                        }
                     }
+                    if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                        self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
+                        return
+                    } else {
+                        self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
+                    }
+                })
+            } else {
+                let alertAccessAccount = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.EmailVerification, preferredStyle: .alert)
+                if let user = user, !user.isEmailVerified {
+                    alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendVerificationEmail, style: .default, handler: { alert in
+                        AuthService.instance.sendVerificationEmail()
+                    }))
                 }
-                if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                    self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
-                    return
-                } else {
-                    self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
-                }
-            })
+                alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: nil))
+                self.present(alertAccessAccount, animated: true, completion: nil)
+            }
         })
     }
     
     private func createUser(email: String, password: String) {
         spinner.startAnimating()
-        AuthService.instance.createUser(withEmail: email, password: password, onComplete: { (errorMessage, data) in
+        AuthService.instance.createUser(withEmail: email, password: password, onComplete: { (errorMessage, user) in
             self.spinner.stopAnimating()
-            guard let _ = data, errorMessage == nil else {
-                self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+            guard let _ = user, errorMessage == nil else {
+                self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                 return
             }
             AuthService.instance.sendVerificationEmail()
             self.saveLogin(email: email, password: password)
-            self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
+            if let user = user, user.isEmailVerified {
+                self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
+            } else {
+                self.signInButton.setTitle(Constants.Literals.SignIn, for: .normal)
+                self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
+            }
         })
     }
     
@@ -230,7 +246,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             bellTouchSignIn.authenticateUser() { errorMessage in
                 if let errorMessage = errorMessage {
                     if errorMessage == Constants.ErrorMessages.TouchID, errorMessage == Constants.ErrorMessages.LAPasscode {
-                        self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: errorMessage, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
+                        self.alertAccessAccount.presentSettingsActionAlert(fromController: self, title: errorMessage, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
                     }
                 } else {
                     if (self.defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
@@ -253,7 +269,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 }
             }
         } else {
-            self.alertValidationFailed.presentSettingsActionAlert(fromController: self, title: Constants.Alerts.Titles.TouchID, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
+            self.alertAccessAccount.presentSettingsActionAlert(fromController: self, title: Constants.Alerts.Titles.TouchID, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
@@ -279,9 +295,9 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             }
         } else {
             if signInButton.currentTitle == Constants.Literals.SignIn {
-                alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
+                alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
             } else {
-                alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
+                alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
             }
         }
     }

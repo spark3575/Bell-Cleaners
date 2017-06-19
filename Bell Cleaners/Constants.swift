@@ -15,6 +15,7 @@ struct Constants {
         struct Titles {
             static let CreateAccountFailed = "Create Account Failed"
             static let Email = "Valid Email Address Required"
+            static let EmailVerification = "Email Verification Required"
             static let Location = "Location Services Required"
             static let MapAppsAvailable = "Available Maps"
             static let MissingFields = "Missing Fields"
@@ -27,8 +28,10 @@ struct Constants {
         struct Messages {
             static let AllRequired = "All fields required for pickup & delivery"
             static let CheckEmailPassword = "Please check your email address or password"
+            static let CheckVerificationEmail = "Please check your email and sign in"
             static let CreateNewAccount = "Please create a new account"
             static let Email = "Verification email will be sent"
+            static let EmailVerification = "Please check your email to verify"
             static let Location = "Authorization can be changed in your Privacy Settings"
             static let MapAppsAvailable = "Which do you prefer"
             static let MissingFields = "Full name and phone number required to access your account"
@@ -42,6 +45,7 @@ struct Constants {
             static let CreateAccount = "Create Account"
             static let GoogleMaps = "Google Maps"
             static let OK = "OK"
+            static let SendVerificationEmail = "Send Verification Email"
             static let Settings = "Settings"
         }        
     }
@@ -106,6 +110,7 @@ struct Constants {
         static let LADefault = "Touch ID Failed"
         static let LAPasscode = "Passcode needs to be set to use Touch ID"
         static let NetworkConnection = "Network connection not available"
+        static let RequiresRecentLogin = "Requires recent login"
         static let SignOut = "Sign Out Failed - "
         static let TouchID = "Touch ID not available"
         static let UserNotFound = "User not found"
@@ -122,7 +127,7 @@ struct Constants {
         static let ActionDone = "Done"
         static let ActionNext = "Next"
         static let ToolbarHeight: CGFloat = 40
-        static let OriginalConstraint: CGFloat = 64
+        static let OriginalConstraint: CGFloat = 84
         static let SpaceToText: CGFloat = 8
     }
     
@@ -141,7 +146,7 @@ struct Constants {
     struct Literals {
         static let AbleToAccessMyAccount = "ableToAccessMyAccount"
         static let Address = "address"
-        static let AdminEmail = "admin@bellcleaners.com"
+        static let AdminEmail = "bellcleaners@gmail.com"
         static let BellCleaners = "Bell Cleaners"
         static let City = "city"
         static let Comma = ","
