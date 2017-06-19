@@ -1509,9 +1509,9 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v5G-PO-KDn"/>
-        <segue reference="Z9D-Lf-8h7"/>
+        <segue reference="DAz-cr-tTc"/>
         <segue reference="q2M-gZ-L3S"/>
+        <segue reference="ef2-9A-hCN"/>
         <segue reference="8Uf-Hb-fqD"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -45,6 +45,14 @@ class AuthService {
         })
     }
     
+    func sendVerificationEmail() {
+        Auth.auth().currentUser?.sendEmailVerification { (error) in
+            if let error = error {
+                print(Constants.ErrorMessages.VerificationEmail + String(describing: error))
+            }
+        }
+    }
+    
     func signOut() {
         do {
             try Auth.auth().signOut()

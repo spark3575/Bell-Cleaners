@@ -109,6 +109,7 @@ struct Constants {
         static let SignOut = "Sign Out Failed - "
         static let TouchID = "Touch ID not available"
         static let UserNotFound = "User not found"
+        static let VerificationEmail = "Verification Email Failed - "
     }
     
     struct KeychainConfigurations {
@@ -140,6 +141,7 @@ struct Constants {
     struct Literals {
         static let AbleToAccessMyAccount = "ableToAccessMyAccount"
         static let Address = "address"
+        static let AdminEmail = "admin@bellcleaners.com"
         static let BellCleaners = "Bell Cleaners"
         static let City = "city"
         static let Comma = ","
@@ -176,6 +178,7 @@ struct Constants {
     
     struct Segues {
         static let AccessAccount = "AccessAccountVC"
+        static let Admin = "AdminVC"
         static let BellCleaners = "BellCleanersVC"
         static let MyAccount = "MyAccountVC"
         static let Profile = "ProfileVC"

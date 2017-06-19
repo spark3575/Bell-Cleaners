@@ -157,7 +157,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 self.createInfoLabel.isHidden = true
             })
             let cancelAction = UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil)
-            if let _ = data, errorMessage == Constants.ErrorMessages.UserNotFound {
+            if errorMessage == Constants.ErrorMessages.UserNotFound {
                 if !(self.defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
                     createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
                         self.createUser(email: email, password: password)
@@ -181,6 +181,12 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                     let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
                     let ableToAccessMyAccount = (ableToAccess as! Bool)
                     self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                    let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
+                    let email = userEmail as! String
+                    if email == Constants.Literals.AdminEmail {
+                        self.performSegue(withIdentifier: Constants.Segues.Admin, sender: self)
+                        return
+                    }
                 }
                 if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
                     self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
@@ -200,6 +206,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                 return
             }
+            AuthService.instance.sendVerificationEmail()
             self.saveLogin(email: email, password: password)
             self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
         })

@@ -45,40 +45,38 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         spinner.startAnimating()
-        if Auth.auth().currentUser != nil {
-            DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
-                if let user = snapshot.value as? [String : AnyObject] {
-                    let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
-                    let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
-                    let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
-                    let lastName = user[Constants.Literals.LastName] ?? Constants.Literals.EmptyString as AnyObject
-                    let phoneNumber = user[Constants.Literals.PhoneNumber] ?? Constants.Literals.EmptyString as AnyObject
-                    let pickupDelivery = user[Constants.Literals.PickupDelivery] ?? false as AnyObject
-                    let address = user[Constants.Literals.Address] ?? Constants.Literals.EmptyString as AnyObject
-                    let city = user[Constants.Literals.City] ?? Constants.Literals.EmptyString as AnyObject
-                    let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
-                    self.emailField.text = (email as! String)
-                    self.passwordField.text = (password as! String)
-                    self.firstNameField.text = (firstName as! String)
-                    self.lastNameField.text = (lastName as! String)
-                    self.phoneNumberField.text = (phoneNumber as! String)
-                    self.pickupDeliverySwitch.isOn = (pickupDelivery as! Bool)
-                    self.addressField.text = (address as! String)
-                    self.cityField.text = (city as! String)
-                    self.zipcodeField.text = (zipcode as! String)
-                    if self.pickupDeliverySwitch.isOn {
-                        self.addressField.isHidden = false
-                        self.cityField.isHidden = false
-                        self.zipcodeField.isHidden = false
-                    }
+        DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+            self.spinner.stopAnimating()
+            if let user = snapshot.value as? [String : AnyObject] {
+                let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
+                let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
+                let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
+                let lastName = user[Constants.Literals.LastName] ?? Constants.Literals.EmptyString as AnyObject
+                let phoneNumber = user[Constants.Literals.PhoneNumber] ?? Constants.Literals.EmptyString as AnyObject
+                let pickupDelivery = user[Constants.Literals.PickupDelivery] ?? false as AnyObject
+                let address = user[Constants.Literals.Address] ?? Constants.Literals.EmptyString as AnyObject
+                let city = user[Constants.Literals.City] ?? Constants.Literals.EmptyString as AnyObject
+                let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
+                self.emailField.text = (email as! String)
+                self.passwordField.text = (password as! String)
+                self.firstNameField.text = (firstName as! String)
+                self.lastNameField.text = (lastName as! String)
+                self.phoneNumberField.text = (phoneNumber as! String)
+                self.pickupDeliverySwitch.isOn = (pickupDelivery as! Bool)
+                self.addressField.text = (address as! String)
+                self.cityField.text = (city as! String)
+                self.zipcodeField.text = (zipcode as! String)
+                if self.pickupDeliverySwitch.isOn {
+                    self.addressField.isHidden = false
+                    self.cityField.isHidden = false
+                    self.zipcodeField.isHidden = false
                 }
-            })
-        }
+            }
+        })
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
         addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
-        spinner.stopAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
