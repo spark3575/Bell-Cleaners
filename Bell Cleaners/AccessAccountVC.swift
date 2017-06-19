@@ -146,17 +146,18 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     private func signInUser(email: String, password: String) {
         spinner.startAnimating()
-        let signInFailedAlert = UIAlertController(title: Constants.Alerts.Titles.UserNotFound, message: Constants.Alerts.Messages.CreateNewAccount, preferredStyle: .alert)
-        var createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
-            self.signInButton.setTitle(Constants.Literals.CreateAccount, for: .normal)
-            self.emailField.text = Constants.Literals.EmptyString
-            self.passwordField.text = Constants.Literals.EmptyString
-            self.touchButton.isHidden = true
-            self.createInfoLabel.isHidden = true
-        })
-        let cancelAction = UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil)
         AuthService.instance.signIn(withEmail: email, password: password, onComplete: { (errorMessage, data) in
-            if errorMessage == Constants.ErrorMessages.UserNotFound {
+            self.spinner.stopAnimating()
+            let signInFailedAlert = UIAlertController(title: Constants.Alerts.Titles.UserNotFound, message: Constants.Alerts.Messages.CreateNewAccount, preferredStyle: .alert)
+            var createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
+                self.signInButton.setTitle(Constants.Literals.CreateAccount, for: .normal)
+                self.emailField.text = Constants.Literals.EmptyString
+                self.passwordField.text = Constants.Literals.EmptyString
+                self.touchButton.isHidden = true
+                self.createInfoLabel.isHidden = true
+            })
+            let cancelAction = UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil)
+            if let _ = data, errorMessage == Constants.ErrorMessages.UserNotFound {
                 if !(self.defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
                     createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
                         self.createUser(email: email, password: password)
@@ -166,47 +167,40 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 signInFailedAlert.addAction(createAccountAction)
                 signInFailedAlert.addAction(cancelAction)
                 self.present(signInFailedAlert, animated: true, completion: nil)
-                self.spinner.stopAnimating()
                 return
             }
-            guard errorMessage == nil else {
+            guard let _ = data, errorMessage == nil else {
                 self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                self.spinner.stopAnimating()
                 return
             }
             self.saveLogin(email: email, password: password)
-            if Auth.auth().currentUser != nil {
-                DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
-                    if let user = snapshot.value as? [String : AnyObject] {
-                        let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
-                        let ableToAccessMyAccount = (ableToAccess as! Bool)
-                        self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
-                    }
-                    self.spinner.stopAnimating()
-                    if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                        self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
-                        return
-                    } else {
-                            self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
-                            return
-                    }
-                })
-            } else {
-                self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-            }                
+            self.spinner.startAnimating()
+            DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+                self.spinner.stopAnimating()
+                if let user = snapshot.value as? [String : AnyObject] {
+                    let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
+                    let ableToAccessMyAccount = (ableToAccess as! Bool)
+                    self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                }
+                if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                    self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
+                    return
+                } else {
+                    self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
+                }
+            })
         })
     }
     
     private func createUser(email: String, password: String) {
         spinner.startAnimating()
         AuthService.instance.createUser(withEmail: email, password: password, onComplete: { (errorMessage, data) in
-            guard errorMessage == nil else {
-                self.spinner.stopAnimating()
+            self.spinner.stopAnimating()
+            guard let _ = data, errorMessage == nil else {
                 self.alertValidationFailed.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                 return
             }
             self.saveLogin(email: email, password: password)
-            self.spinner.stopAnimating()
             self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
         })
     }
