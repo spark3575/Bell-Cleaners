@@ -17,11 +17,9 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: PasswordField!
     @IBOutlet weak var signInButton: SignInButton!
     @IBOutlet weak var touchButton: UIButton!
-    @IBOutlet weak var touchView: UIView!
-    
+    @IBOutlet weak var touchView: UIView!    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var textStack: UIStackView!
-    @IBOutlet weak var textStackTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private var activeField: UITextField?
     private let alertAccessAccount = PresentAlert()
@@ -30,6 +28,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private var handle: AuthStateDidChangeListenerHandle?
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
+    private var scrollViewOrigin: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,12 +93,13 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
-        let textFieldY = textStack.frame.origin.y + (activeField?.frame.origin.y)!
+        self.scrollViewOrigin = scrollView.frame.origin.y
+        let textFieldY = scrollView.frame.origin.y + (activeField?.frame.origin.y)!
         let difference = targetY - textFieldY
-        let targetOffsetForTopConstraint = textStackTopConstraint.constant + difference
+        let targetOffsetForScrollViewOrigin = scrollView.frame.origin.y + difference
         view.layoutIfNeeded()
         UIView.animate(withDuration: keyboardDuration!, animations: {
-            self.textStackTopConstraint.constant = targetOffsetForTopConstraint
+            self.scrollView.frame.origin.y = targetOffsetForScrollViewOrigin
             self.view.layoutIfNeeded()
         })
     }
@@ -108,7 +108,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         view.layoutIfNeeded()
         UIView.animate(withDuration: keyboardDuration!) {
-            self.textStackTopConstraint.constant = Constants.Keyboards.OriginalConstraint
+            self.scrollView.frame.origin.y = self.scrollViewOrigin
             self.view.layoutIfNeeded()
         }
     }
