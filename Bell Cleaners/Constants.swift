@@ -54,7 +54,7 @@ struct Constants {
         
         struct Segue {
             static let Delay = 0.0
-            static let Duration = 0.25
+            static let Duration = 0.35
             static let TranslationX: CGFloat = 0
             static let TranslationY: CGFloat = 0
         }

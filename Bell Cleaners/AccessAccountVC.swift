@@ -12,7 +12,6 @@ import Firebase
 class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var callBellButton: CallBellButton!
-    @IBOutlet weak var createInfoLabel: UILabel!
     @IBOutlet weak var emailField: EmailField!
     @IBOutlet weak var passwordField: PasswordField!
     @IBOutlet weak var signInButton: SignInButton!
@@ -20,6 +19,8 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var touchView: UIView!    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var textView: UITextView!
     
     private var activeField: UITextField?
     private let alertAccessAccount = PresentAlert()
@@ -28,12 +29,13 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private var handle: AuthStateDidChangeListenerHandle?
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
-    private var scrollViewOrigin: CGFloat!
+    private var scrollViewOrigin: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
+        scrollViewOrigin = scrollView.frame.origin.y
         if (defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
             if let email = defaults.string(forKey: Constants.DefaultsKeys.Email) {
                 var characters = Array(email.characters)
@@ -49,16 +51,15 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 count -= replaceCount
                 emailField.text = String(characters[0..<count])
                 securedTextEmail = emailField.text
-                createInfoLabel.isHidden = true
+                textView.isHidden = true
             }
             touchView.isHidden = !bellTouchSignIn.canEvaluatePolicy()
-            touchButton.isHidden = !bellTouchSignIn.canEvaluatePolicy()
             if (defaults.bool(forKey: Constants.DefaultsKeys.HasUsedTouch)) {
                 touchSignIn()
             }
         } else {
             touchView.isHidden = true
-            touchButton.isHidden = true
+            textView.isHidden = false
         }
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -93,8 +94,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
-        self.scrollViewOrigin = scrollView.frame.origin.y
-        let textFieldY = scrollView.frame.origin.y + (activeField?.frame.origin.y)!
+        let textFieldY = scrollView.frame.origin.y + stackView.frame.origin.y + (activeField?.frame.origin.y)!
         let difference = targetY - textFieldY
         let targetOffsetForScrollViewOrigin = scrollView.frame.origin.y + difference
         view.layoutIfNeeded()
@@ -108,7 +108,9 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         view.layoutIfNeeded()
         UIView.animate(withDuration: keyboardDuration!) {
-            self.scrollView.frame.origin.y = self.scrollViewOrigin
+            if let origin = self.scrollViewOrigin {
+                self.scrollView.frame.origin.y = origin
+            }
             self.view.layoutIfNeeded()
         }
     }
@@ -153,8 +155,8 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 self.signInButton.setTitle(Constants.Literals.CreateAccount, for: .normal)
                 self.emailField.text = Constants.Literals.EmptyString
                 self.passwordField.text = Constants.Literals.EmptyString
-                self.touchButton.isHidden = true
-                self.createInfoLabel.isHidden = true
+                self.touchView.isHidden = true
+                self.textView.isHidden = true
             })
             let cancelAction = UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil)
             if errorMessage == Constants.ErrorMessages.UserNotFound {

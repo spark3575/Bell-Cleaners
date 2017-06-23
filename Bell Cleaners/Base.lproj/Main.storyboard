@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-xz-8j0" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
@@ -89,10 +89,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lTt-i2-8ke" userLabel="menu">
-                                <rect key="frame" x="20" y="204" width="280" height="284.5"/>
+                                <rect key="frame" x="20" y="204" width="280" height="211"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3t-dA-vw8" customClass="AccessAccountButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="32.5"/>
                                         <color key="backgroundColor" red="0.25098039215686274" green="0.66666666666666663" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Access Account">
@@ -109,7 +109,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTT-1e-3tA" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="59.5" width="280" height="47"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="280" height="32.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Dry Clean">
@@ -123,7 +123,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-Xm-9uj" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="118.5" width="280" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="89" width="280" height="33"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Laundry">
@@ -142,7 +142,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="178" width="280" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="134" width="280" height="32.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Alteration">
@@ -161,7 +161,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="237.5" width="280" height="47"/>
+                                        <rect key="frame" x="0.0" y="178.5" width="280" height="32.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Sneakers and more">
@@ -182,10 +182,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-EV-kEH" userLabel="map &amp; phone">
-                                <rect key="frame" x="20" y="500.5" width="280" height="47.5"/>
+                                <rect key="frame" x="20" y="427" width="280" height="33"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-8l-4qm" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="94" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="33"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Map">
@@ -207,7 +207,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-uD-gkv" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="106" y="0.0" width="174" height="47.5"/>
+                                        <rect key="frame" x="106" y="0.0" width="174" height="33"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="214-374-7007">
@@ -362,17 +362,17 @@
                         <viewControllerLayoutGuide type="bottom" id="kQ3-wm-g1y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5zb-pe-cqs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ma-a4-jHm">
-                                <rect key="frame" x="20" y="182" width="280" height="204"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ma-a4-jHm">
+                                <rect key="frame" x="0.0" y="84" width="320" height="296"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJd-5q-sAa">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="204"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJd-5q-sAa" userLabel="content">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="357.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Yvv-Yl-f3u">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="204"/>
+                                                <rect key="frame" x="20" y="10" width="280" height="276"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-sB-NtF" userLabel="email &amp; pass">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="132"/>
@@ -413,7 +413,7 @@
                                                         <variation key="heightClass=compact" axis="horizontal"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lih-5U-Xa4" userLabel="signin &amp; touch">
-                                                        <rect key="frame" x="0.0" y="144" width="280" height="60"/>
+                                                        <rect key="frame" x="0.0" y="144" width="280" height="132"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-HI-Lzq" customClass="SignInButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
@@ -435,11 +435,11 @@
                                                                     <action selector="didTapSignIn:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="crL-Dn-IAR"/>
                                                                 </connections>
                                                             </button>
-                                                            <view hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRA-O9-mdg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+                                                            <view opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRA-O9-mdg">
+                                                                <rect key="frame" x="0.0" y="72" width="280" height="60"/>
                                                                 <subviews>
                                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rin-wt-YUL">
-                                                                        <rect key="frame" x="110" y="0.0" width="60" height="60"/>
+                                                                        <rect key="frame" x="110.5" y="0.5" width="60" height="60"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="rin-wt-YUL" secondAttribute="height" multiplier="1:1" id="l4g-rY-gid"/>
                                                                             <constraint firstAttribute="width" constant="60" id="yXF-sc-XEi"/>
@@ -475,45 +475,6 @@
                                                             </mask>
                                                         </variation>
                                                     </stackView>
-                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="sxe-c3-VE9">
-                                                        <rect key="frame" x="0.0" y="204" width="280" height="60"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNR-SW-4Bk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="28" height="60"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An account will be created if you do not have one." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIP-jK-yWo">
-                                                                <rect key="frame" x="29" y="0.0" width="222" height="60"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="60" id="HKi-Zt-94D">
-                                                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                                                                    </constraint>
-                                                                    <constraint firstAttribute="width" constant="222" id="m0W-7j-oKw">
-                                                                        <variation key="heightClass=regular-widthClass=regular" constant="350"/>
-                                                                    </constraint>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                                <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                                                                <variation key="heightClass=compact-widthClass=compact">
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                </variation>
-                                                                <variation key="heightClass=regular-widthClass=regular">
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                                                </variation>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpo-Uv-gMP">
-                                                                <rect key="frame" x="252" y="0.0" width="28" height="60"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </view>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="qpo-Uv-gMP" secondAttribute="trailing" id="EaX-B7-UYy"/>
-                                                            <constraint firstItem="yNR-SW-4Bk" firstAttribute="leading" secondItem="sxe-c3-VE9" secondAttribute="leading" id="ofF-YU-jL1"/>
-                                                            <constraint firstItem="qpo-Uv-gMP" firstAttribute="width" secondItem="yNR-SW-4Bk" secondAttribute="width" id="p3C-gN-vdI"/>
-                                                        </constraints>
-                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="400" id="Chb-hC-9VW"/>
@@ -529,12 +490,24 @@
                                                     </mask>
                                                 </variation>
                                             </stackView>
+                                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="An account will be created if you do not have one." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-jL-ava">
+                                                <rect key="frame" x="45.5" y="298" width="230" height="59"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="230" id="CtZ-hT-rqQ"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Yvv-Yl-f3u" firstAttribute="leading" secondItem="UJd-5q-sAa" secondAttribute="leading" id="1Ug-Rw-Lhs"/>
-                                            <constraint firstItem="Yvv-Yl-f3u" firstAttribute="top" secondItem="UJd-5q-sAa" secondAttribute="top" id="Ggu-1Q-nWI"/>
-                                            <constraint firstAttribute="trailing" secondItem="Yvv-Yl-f3u" secondAttribute="trailing" id="hfW-qC-Bh5"/>
+                                            <constraint firstItem="Yvv-Yl-f3u" firstAttribute="leading" secondItem="UJd-5q-sAa" secondAttribute="leading" constant="20" id="1Ug-Rw-Lhs"/>
+                                            <constraint firstAttribute="bottom" secondItem="FaM-jL-ava" secondAttribute="bottom" id="Jhf-hW-8yF"/>
+                                            <constraint firstItem="FaM-jL-ava" firstAttribute="top" secondItem="Yvv-Yl-f3u" secondAttribute="bottom" constant="12" id="SEv-LQ-qpB"/>
+                                            <constraint firstAttribute="trailing" secondItem="Yvv-Yl-f3u" secondAttribute="trailing" constant="20" id="hfW-qC-Bh5"/>
+                                            <constraint firstItem="FaM-jL-ava" firstAttribute="centerX" secondItem="UJd-5q-sAa" secondAttribute="centerX" id="jGX-0W-8Wa"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -544,9 +517,8 @@
                                     <constraint firstAttribute="bottom" secondItem="UJd-5q-sAa" secondAttribute="bottom" id="3la-2S-eOv"/>
                                     <constraint firstAttribute="width" constant="400" id="B9G-Hi-a7v"/>
                                     <constraint firstItem="UJd-5q-sAa" firstAttribute="leading" secondItem="3Ma-a4-jHm" secondAttribute="leading" id="C8P-1l-iBr"/>
-                                    <constraint firstAttribute="bottom" secondItem="Yvv-Yl-f3u" secondAttribute="bottom" id="gHQ-in-zpm"/>
-                                    <constraint firstItem="UJd-5q-sAa" firstAttribute="centerY" secondItem="3Ma-a4-jHm" secondAttribute="centerY" id="glN-Du-4By"/>
-                                    <constraint firstItem="UJd-5q-sAa" firstAttribute="centerX" secondItem="3Ma-a4-jHm" secondAttribute="centerX" id="t6S-3e-laE"/>
+                                    <constraint firstItem="Yvv-Yl-f3u" firstAttribute="centerX" secondItem="3Ma-a4-jHm" secondAttribute="centerX" id="dFG-fD-rV9"/>
+                                    <constraint firstItem="Yvv-Yl-f3u" firstAttribute="centerY" secondItem="3Ma-a4-jHm" secondAttribute="centerY" id="kzc-XE-BlF"/>
                                     <constraint firstItem="UJd-5q-sAa" firstAttribute="top" secondItem="3Ma-a4-jHm" secondAttribute="top" id="wql-1Q-JnJ"/>
                                 </constraints>
                                 <variation key="default">
@@ -561,7 +533,7 @@
                                 </variation>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="M1g-ah-iqS" userLabel="directions &amp; phone">
-                                <rect key="frame" x="20" y="488" width="280" height="60"/>
+                                <rect key="frame" x="20" y="400" width="280" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ie6-iW-TZb" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="94" height="60"/>
@@ -662,46 +634,41 @@
                                     </constraint>
                                 </constraints>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JTH-i8-s7K">
-                                <rect key="frame" x="40" y="310" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JTH-i8-s7K">
+                                <rect key="frame" x="40" y="258" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="3Ma-a4-jHm" secondAttribute="trailing" constant="20" id="4Bj-31-8q7"/>
-                            <constraint firstItem="3Ma-a4-jHm" firstAttribute="centerX" secondItem="5zb-pe-cqs" secondAttribute="centerX" id="A3P-Hv-x8Y"/>
-                            <constraint firstItem="3Ma-a4-jHm" firstAttribute="centerX" secondItem="5zb-pe-cqs" secondAttribute="centerX" id="JcV-YX-igN"/>
-                            <constraint firstItem="3Ma-a4-jHm" firstAttribute="centerY" secondItem="5zb-pe-cqs" secondAttribute="centerY" id="L2B-8r-as8"/>
-                            <constraint firstItem="3Ma-a4-jHm" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="N8c-el-kTd"/>
+                            <constraint firstAttribute="trailing" secondItem="3Ma-a4-jHm" secondAttribute="trailing" id="4Bj-31-8q7"/>
+                            <constraint firstItem="3Ma-a4-jHm" firstAttribute="top" secondItem="zcZ-2s-8NH" secondAttribute="bottom" constant="20" id="C5Q-8x-Gy9"/>
+                            <constraint firstItem="M1g-ah-iqS" firstAttribute="top" secondItem="3Ma-a4-jHm" secondAttribute="bottom" constant="20" id="H5u-wa-7VF"/>
+                            <constraint firstItem="3Ma-a4-jHm" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" id="N8c-el-kTd"/>
                             <constraint firstItem="zcZ-2s-8NH" firstAttribute="top" secondItem="5zb-pe-cqs" secondAttribute="top" id="PST-LG-JgI"/>
                             <constraint firstItem="zcZ-2s-8NH" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" id="PdM-ej-KAO"/>
                             <constraint firstItem="kQ3-wm-g1y" firstAttribute="top" secondItem="M1g-ah-iqS" secondAttribute="bottom" constant="20" id="RDp-x2-oQp"/>
                             <constraint firstItem="M1g-ah-iqS" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="SM0-X7-tyz"/>
+                            <constraint firstItem="JTH-i8-s7K" firstAttribute="centerY" secondItem="SLn-HI-Lzq" secondAttribute="centerY" id="WdZ-uf-wR6"/>
                             <constraint firstAttribute="trailing" secondItem="zcZ-2s-8NH" secondAttribute="trailing" id="hW5-Ez-Db6"/>
                             <constraint firstAttribute="trailing" secondItem="M1g-ah-iqS" secondAttribute="trailing" constant="20" id="tT7-LC-85z"/>
+                            <constraint firstItem="JTH-i8-s7K" firstAttribute="leading" secondItem="SLn-HI-Lzq" secondAttribute="leading" constant="20" id="tbr-yF-xqm"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="A3P-Hv-x8Y"/>
-                            </mask>
-                        </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
                                 <exclude reference="4Bj-31-8q7"/>
-                                <include reference="A3P-Hv-x8Y"/>
                                 <exclude reference="N8c-el-kTd"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="callBellButton" destination="XyX-g8-YZS" id="tqZ-lI-bP7"/>
-                        <outlet property="createInfoLabel" destination="HIP-jK-yWo" id="kvC-JH-qtA"/>
                         <outlet property="emailField" destination="rTF-Qh-z7O" id="vUv-LM-iGM"/>
                         <outlet property="passwordField" destination="YQ3-LS-JK9" id="OxB-L2-g60"/>
                         <outlet property="scrollView" destination="3Ma-a4-jHm" id="Kki-hL-msg"/>
                         <outlet property="signInButton" destination="SLn-HI-Lzq" id="8j4-YR-ebz"/>
                         <outlet property="spinner" destination="JTH-i8-s7K" id="J7R-i8-NQa"/>
+                        <outlet property="stackView" destination="Yvv-Yl-f3u" id="hDo-7Y-zPU"/>
+                        <outlet property="textView" destination="FaM-jL-ava" id="G7c-fP-9fg"/>
                         <outlet property="touchButton" destination="rin-wt-YUL" id="d2C-Bm-5b5"/>
                         <outlet property="touchView" destination="IRA-O9-mdg" id="CBl-Ii-iVw"/>
                         <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="Z9D-Lf-8h7"/>
@@ -722,14 +689,14 @@
                         <viewControllerLayoutGuide type="bottom" id="8EY-Uh-i8X"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pRS-3f-W9I">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNM-KK-iHh" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIk-Gl-qbq">
-                                        <rect key="frame" x="128" y="29.5" width="65" height="26.5"/>
+                                        <rect key="frame" x="127.5" y="29.5" width="65" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -774,7 +741,7 @@
                         <viewControllerLayoutGuide type="bottom" id="s6h-Lx-1TS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="voa-ew-vmy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7z-cG-xg1" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
@@ -920,7 +887,7 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XF8-Uh-Uhx">
-                                <rect key="frame" x="20" y="416" width="280" height="132"/>
+                                <rect key="frame" x="20" y="328" width="280" height="132"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-up-HVa" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
@@ -1052,7 +1019,7 @@
                         <viewControllerLayoutGuide type="bottom" id="DDd-ic-dGS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qUE-n1-ftJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-fs-QSJ">
@@ -1211,7 +1178,7 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="r1L-8M-Rpy">
-                                <rect key="frame" x="20" y="488" width="280" height="60"/>
+                                <rect key="frame" x="20" y="400" width="280" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wyc-Nj-EPB" customClass="SaveButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="134" height="60"/>
@@ -1283,7 +1250,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cMb-Lx-n91">
-                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <rect key="frame" x="141.5" y="221.5" width="37" height="37"/>
                                 <color key="color" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -1346,17 +1313,17 @@
                         <viewControllerLayoutGuide type="bottom" id="Dc7-Lk-dpY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="S0f-aV-fqP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ek3-om-ZO9">
-                                <rect key="frame" x="0.0" y="64" width="320" height="348"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="260"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O84-lh-ApF" userLabel="address" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="412" width="320" height="64"/>
+                                <rect key="frame" x="0.0" y="324" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3508 S. Lancaster Rd. Dallas, TX 75216" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYY-tY-Op3">
-                                        <rect key="frame" x="55" y="10.5" width="210" height="43"/>
+                                        <rect key="frame" x="55.5" y="10.5" width="210" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="210" id="VJB-3f-oqc"/>
                                         </constraints>
@@ -1417,7 +1384,7 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ae6-hr-JHx" userLabel="directions &amp; phone">
-                                <rect key="frame" x="20" y="488" width="280" height="60"/>
+                                <rect key="frame" x="20" y="400" width="280" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hv-lt-oZM" customClass="DirectionsButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="111.5" height="60"/>
@@ -1557,9 +1524,9 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v5G-PO-KDn"/>
         <segue reference="8Uf-Hb-fqD"/>
-        <segue reference="Z9D-Lf-8h7"/>
+        <segue reference="v5G-PO-KDn"/>
         <segue reference="q2M-gZ-L3S"/>
+        <segue reference="Z9D-Lf-8h7"/>
     </inferredMetricsTieBreakers>
 </document>
