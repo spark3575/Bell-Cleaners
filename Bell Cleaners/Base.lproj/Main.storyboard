@@ -144,7 +144,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="178" width="280" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="178" width="280" height="47"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Alteration">
@@ -163,7 +163,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="237.5" width="280" height="47"/>
+                                        <rect key="frame" x="0.0" y="237" width="280" height="47.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Sneakers and more">
@@ -991,7 +991,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-fs-QSJ">
-                                <rect key="frame" x="40" y="84" width="240" height="250"/>
+                                <rect key="frame" x="40" y="159" width="240" height="250"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jdb-AB-K6V" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
@@ -1145,7 +1145,7 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="r1L-8M-Rpy">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="r1L-8M-Rpy" userLabel="save &amp; signout">
                                 <rect key="frame" x="20" y="504" width="280" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wyc-Nj-EPB" customClass="SaveButton" customModule="Bell_Cleaners" customModuleProvider="target">
@@ -1229,14 +1229,15 @@
                         <constraints>
                             <constraint firstItem="UW9-Jl-hBk" firstAttribute="top" secondItem="qUE-n1-ftJ" secondAttribute="top" id="3WS-7q-LHj"/>
                             <constraint firstItem="cMb-Lx-n91" firstAttribute="centerY" secondItem="qUE-n1-ftJ" secondAttribute="centerY" id="5Nv-8a-Ebq"/>
+                            <constraint firstItem="VIC-fs-QSJ" firstAttribute="centerX" secondItem="qUE-n1-ftJ" secondAttribute="centerX" id="6WF-LF-PTU"/>
                             <constraint firstItem="DDd-ic-dGS" firstAttribute="top" secondItem="r1L-8M-Rpy" secondAttribute="bottom" constant="20" id="9UQ-QS-RwY"/>
                             <constraint firstAttribute="trailing" secondItem="VIC-fs-QSJ" secondAttribute="trailing" constant="40" id="ARS-Wt-OBu"/>
                             <constraint firstItem="UW9-Jl-hBk" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" id="Ayx-OT-QUD"/>
+                            <constraint firstItem="VIC-fs-QSJ" firstAttribute="centerY" secondItem="qUE-n1-ftJ" secondAttribute="centerY" id="HBA-vT-h6t"/>
                             <constraint firstItem="VIC-fs-QSJ" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" constant="40" id="Hx3-br-kYL"/>
                             <constraint firstItem="cMb-Lx-n91" firstAttribute="centerX" secondItem="qUE-n1-ftJ" secondAttribute="centerX" id="Je2-dV-TqT"/>
                             <constraint firstAttribute="trailing" secondItem="UW9-Jl-hBk" secondAttribute="trailing" id="Ppr-61-dZb"/>
                             <constraint firstAttribute="trailing" secondItem="r1L-8M-Rpy" secondAttribute="trailing" constant="20" id="TjF-rU-cck"/>
-                            <constraint firstItem="VIC-fs-QSJ" firstAttribute="top" secondItem="4Cb-v3-7Ou" secondAttribute="bottom" constant="64" id="To7-Qf-sfw"/>
                             <constraint firstItem="r1L-8M-Rpy" firstAttribute="leading" secondItem="qUE-n1-ftJ" secondAttribute="leading" constant="20" id="dJc-th-st7"/>
                             <constraint firstItem="VIC-fs-QSJ" firstAttribute="centerX" secondItem="qUE-n1-ftJ" secondAttribute="centerX" id="orl-MG-5s7"/>
                         </constraints>
@@ -1263,8 +1264,7 @@
                         <outlet property="phoneNumberField" destination="adU-wo-tox" id="oO6-aF-FIy"/>
                         <outlet property="pickupDeliverySwitch" destination="jf0-JR-PiY" id="a31-xl-j3w"/>
                         <outlet property="spinner" destination="cMb-Lx-n91" id="RbJ-GZ-LG9"/>
-                        <outlet property="textStack" destination="VIC-fs-QSJ" id="alZ-5E-yzh"/>
-                        <outlet property="textStackTopConstraint" destination="To7-Qf-sfw" id="ob5-Ip-hgg"/>
+                        <outlet property="stackView" destination="VIC-fs-QSJ" id="F24-jk-3Y9"/>
                         <outlet property="zipcodeField" destination="gMt-qQ-8j3" id="0k1-y4-pal"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="ef2-9A-hCN"/>
                         <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="DAz-cr-tTc"/>

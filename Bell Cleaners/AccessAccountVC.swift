@@ -91,22 +91,18 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
         let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
         let difference = targetY - textFieldY
         let targetOffsetForScrollViewOrigin = stackView.frame.origin.y + difference
-        view.layoutIfNeeded()
-        UIView.animate(withDuration: keyboardDuration!, animations: {
+        UIView.animate(withDuration: Constants.Animations.Keyboard.Duration, animations: {
             self.stackView.frame.origin.y = targetOffsetForScrollViewOrigin
             self.view.layoutIfNeeded()
         })
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-        view.layoutIfNeeded()
-        UIView.animate(withDuration: keyboardDuration!) {
+        UIView.animate(withDuration: Constants.Animations.Keyboard.Duration) {
             if let origin = self.stackViewOrigin {
                 self.stackView.frame.origin.y = origin
             }

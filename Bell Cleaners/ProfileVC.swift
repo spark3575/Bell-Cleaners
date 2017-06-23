@@ -20,9 +20,8 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addressField: AddressField!
     @IBOutlet weak var cityField: CityField!
     @IBOutlet weak var zipcodeField: ZipcodeField!
-    @IBOutlet weak var textStack: UIStackView!
-    @IBOutlet weak var textStackTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var stackView: UIStackView!
     
     private var activeField: UITextField?
     private let alertProfile = PresentAlert()
@@ -31,6 +30,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private let defaults = UserDefaults.standard
     private var handle: AuthStateDidChangeListenerHandle?
     private var nextField: UITextField?
+    private var stackViewOrigin: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,21 +110,21 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
-        let textFieldY = textStack.frame.origin.y + (activeField?.frame.origin.y)!
+        let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
         let difference = targetY - textFieldY
-        let targetOffsetForTopConstraint = textStackTopConstraint.constant + difference
-        UIView.animate(withDuration: keyboardDuration!, animations: {
-            self.textStackTopConstraint.constant = targetOffsetForTopConstraint
+        let targetOffsetForScrollViewOrigin = stackView.frame.origin.y + difference
+        UIView.animate(withDuration: Constants.Animations.Keyboard.Duration, animations: {
+            self.stackView.frame.origin.y = targetOffsetForScrollViewOrigin
             self.view.layoutIfNeeded()
         })
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-        UIView.animate(withDuration: keyboardDuration!) {
-            self.textStackTopConstraint.constant = Constants.Keyboards.OriginalConstraint
+        UIView.animate(withDuration: Constants.Animations.Keyboard.Duration) {
+            if let origin = self.stackViewOrigin {
+                self.stackView.frame.origin.y = origin
+            }
             self.view.layoutIfNeeded()
         }
     }
@@ -188,13 +188,19 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTogglePickupDelivery(_ sender: UISwitch) {
         if !pickupDeliverySwitch.isOn {
-            self.addressField.isHidden = true
-            self.cityField.isHidden = true
-            self.zipcodeField.isHidden = true
+            UIView.animate(withDuration: Constants.Animations.Switch.Duration) {
+                self.addressField.isHidden = true
+                self.cityField.isHidden = true
+                self.zipcodeField.isHidden = true
+                self.view.layoutIfNeeded()
+            }
         } else {
-            self.addressField.isHidden = false
-            self.cityField.isHidden = false
-            self.zipcodeField.isHidden = false
+            UIView.animate(withDuration: Constants.Animations.Switch.Duration) {
+                self.addressField.isHidden = false
+                self.cityField.isHidden = false
+                self.zipcodeField.isHidden = false
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
@@ -217,13 +223,13 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                         var credential: AuthCredential
                         var enteredPassword = String()
                         credential = (EmailAuthProvider.credential(withEmail: self.currentEmail, password: enteredPassword))
-                        let reAuthenticateAlert = UIAlertController(title: "Re-authentication Required", message: "Please enter your password", preferredStyle: .alert)
-                        reAuthenticateAlert.addAction(UIAlertAction(title: "Re-authenticate", style: .default, handler: { action in
+                        let reAuthenticateAlert = UIAlertController(title: Constants.Alerts.Titles.ReAuthentication, message: Constants.Alerts.Messages.ReAuthentication, preferredStyle: .alert)
+                        reAuthenticateAlert.addAction(UIAlertAction(title: Constants.Alerts.Actions.ReAuthentication, style: .default, handler: { action in
                             enteredPassword = (reAuthenticateAlert.textFields?.first?.text)!
                             user?.reauthenticate(with: credential) { error in
                                 if error != nil {
                                     // An error happened.
-                                    self.alertProfile.presentAlert(fromController: self, title: "Re-authentication Failed", message: "Please sign in again", actionTitle: Constants.Alerts.Actions.OK)
+                                    self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.ReAuthenticationFailed, message: Constants.Alerts.Messages.SignInAgain, actionTitle: Constants.Alerts.Actions.OK)
                                     self.performSegue(withIdentifier: Constants.Segues.AccessAccount, sender: self)
                                     return
                                 } else {
@@ -235,7 +241,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                         reAuthenticateAlert.addTextField(configurationHandler: nil)
                         self.present(reAuthenticateAlert, animated: true, completion: nil)                        
                     } else {
-                        self.alertProfile.presentAlert(fromController: self, title: "Email Update Failed", message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                        self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.EmailUpdateFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                     }
                 })
             }

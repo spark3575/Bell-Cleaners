@@ -15,11 +15,14 @@ struct Constants {
         struct Titles {
             static let CreateAccountFailed = "Create Account Failed"
             static let Email = "Valid Email Address Required"
+            static let EmailUpdateFailed = "Email Update Failed"
             static let EmailVerification = "Email Verification Required"
             static let Location = "Location Services Required"
             static let MapAppsAvailable = "Available Maps"
             static let MissingFields = "Missing Fields"
             static let Password = "Password Required"
+            static let ReAuthentication = "Re-authentication Required"
+            static let ReAuthenticationFailed = "Re-authentication Failed"
             static let SignInFailed = "Sign In Failed"
             static let TouchID = "Touch ID not available"
             static let UserNotFound = "User Not Found"
@@ -36,6 +39,8 @@ struct Constants {
             static let MapAppsAvailable = "Which do you prefer"
             static let MissingFields = "Full name and phone number required to access your account"
             static let Password = "Enter atleast 6 characters"
+            static let ReAuthentication = "Please enter your password"
+            static let SignInAgain = "Please sign in again"
             static let TouchSettings = "Authorization can be changed in your Touch ID Settings"
         }
         
@@ -45,12 +50,17 @@ struct Constants {
             static let CreateAccount = "Create Account"
             static let GoogleMaps = "Google Maps"
             static let OK = "OK"
+            static let ReAuthentication = "Re-authenticate"
             static let SendVerificationEmail = "Send Verification Email"
             static let Settings = "Settings"
         }        
     }
     
     struct Animations {
+        
+        struct Keyboard {
+            static let Duration = 0.35
+        }
         
         struct Segue {
             static let Delay = 0.0
@@ -65,6 +75,10 @@ struct Constants {
             static let KeyPath = "transform.rotation"
             static let RepeatCount: Float = 2
             static let ToValue = -(CGFloat.pi / 3)
+        }
+        
+        struct Switch {
+            static let Duration = 0.35
         }
         
         struct Touch {
