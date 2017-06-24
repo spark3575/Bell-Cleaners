@@ -27,6 +27,8 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private let alertProfile = PresentAlert()
     private var currentEmail = String()
     private var currentPassword = String()
+    private var enteredEmailField = UITextField()
+    private var enteredPasswordField = UITextField()
     private let defaults = UserDefaults.standard
     private var handle: AuthStateDidChangeListenerHandle?
     private var nextField: UITextField?
@@ -42,11 +44,11 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         addressField.delegate = self
         cityField.delegate = self
         zipcodeField.delegate = self
-        stackViewOriginY = view.frame.origin.y
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        stackViewOriginY = view.frame.origin.y
         spinner.startAnimating()
         DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
             self.spinner.stopAnimating()
@@ -110,6 +112,14 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        if activeField == emailField {
+            NotificationCenter.default.removeObserver(self)
+            performSegue(withIdentifier: Constants.Segues.UpdateEmail, sender: self)
+        }
+        if activeField == passwordField {
+            NotificationCenter.default.removeObserver(self)
+            performSegue(withIdentifier: Constants.Segues.UpdatePassword, sender: self)
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -213,35 +223,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                         Constants.Literals.Zipcode: zipcodeField.text as AnyObject,
                         Constants.Literals.AbleToAccessMyAccount: defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount) as AnyObject]
         if !pickupDeliverySwitch.isOn {
-            if let email = emailField.text, email != currentEmail {
-                AuthService.instance.updateEmail(to: email, onComplete: { (errorMessage, nil) in
-                    if errorMessage == Constants.ErrorMessages.RequiresRecentLogin {
-                        let user = Auth.auth().currentUser
-                        var credential: AuthCredential
-                        var enteredPassword = String()
-                        credential = (EmailAuthProvider.credential(withEmail: self.currentEmail, password: enteredPassword))
-                        let reAuthenticateAlert = UIAlertController(title: Constants.Alerts.Titles.ReAuthentication, message: Constants.Alerts.Messages.ReAuthentication, preferredStyle: .alert)
-                        reAuthenticateAlert.addAction(UIAlertAction(title: Constants.Alerts.Actions.ReAuthentication, style: .default, handler: { action in
-                            enteredPassword = (reAuthenticateAlert.textFields?.first?.text)!
-                            user?.reauthenticate(with: credential) { error in
-                                if error != nil {
-                                    // An error happened.
-                                    self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.ReAuthenticationFailed, message: Constants.Alerts.Messages.SignInAgain, actionTitle: Constants.Alerts.Actions.OK)
-                                    self.performSegue(withIdentifier: Constants.Segues.AccessAccount, sender: self)
-                                    return
-                                } else {
-                                    // User re-authenticated.
-                                    AuthService.instance.updateEmail(to: email, onComplete: nil)
-                                }
-                            }
-                        }))
-                        reAuthenticateAlert.addTextField(configurationHandler: nil)
-                        self.present(reAuthenticateAlert, animated: true, completion: nil)                        
-                    } else {
-                        self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.EmailUpdateFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                    }
-                })
-            }
             if let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, !firstName.isEmpty && !lastName.isEmpty && !phoneNumber.isEmpty {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
@@ -253,7 +234,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
             }
         }
         if pickupDeliverySwitch.isOn {
-            if let email = emailField.text, let password = passwordField.text, let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, let address = addressField.text, let city = cityField.text, let zipcode = zipcodeField.text, !email.isEmpty && !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty, !phoneNumber.isEmpty, !address.isEmpty, !city.isEmpty, !zipcode.isEmpty {
+            if let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, let address = addressField.text, let city = cityField.text, let zipcode = zipcodeField.text, !firstName.isEmpty, !lastName.isEmpty, !phoneNumber.isEmpty, !address.isEmpty, !city.isEmpty, !zipcode.isEmpty {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessPickupDelivery)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])

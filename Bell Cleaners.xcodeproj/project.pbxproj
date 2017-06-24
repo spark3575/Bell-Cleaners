@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B003C3E11EFE929100C73996 /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003C3E01EFE929100C73996 /* UpdateEmailVC.swift */; };
+		B003C3E31EFED44F00C73996 /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003C3E21EFED44F00C73996 /* UpdatePasswordVC.swift */; };
 		B006E7B81EF0A44100C7638B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B006E7B71EF0A44100C7638B /* Constants.swift */; };
 		B00A97971ED32D8800C32A88 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97961ED32D8800C32A88 /* ShadowView.swift */; };
 		B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A97981ED336C900C32A88 /* ShadowButton.swift */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		313228CE79C036D91D2725D8 /* Pods-Bell Cleaners.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bell Cleaners.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners.debug.xcconfig"; sourceTree = "<group>"; };
 		933F98BE6AB5CBD0D743EA74 /* Pods-Bell Cleaners.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bell Cleaners.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bell Cleaners/Pods-Bell Cleaners.release.xcconfig"; sourceTree = "<group>"; };
+		B003C3E01EFE929100C73996 /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
+		B003C3E21EFED44F00C73996 /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
 		B006E7B71EF0A44100C7638B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B00A97961ED32D8800C32A88 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		B00A97981ED336C900C32A88 /* ShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				B0B610A31ED5C3CE001E3C6C /* MapVC.swift */,
 				B0B610AF1ED7BD49001E3C6C /* AccessAccountVC.swift */,
 				B01C11EA1EEEE1160037A1A9 /* ProfileVC.swift */,
+				B003C3E01EFE929100C73996 /* UpdateEmailVC.swift */,
+				B003C3E21EFED44F00C73996 /* UpdatePasswordVC.swift */,
 				B0C02F1E1EDB7CEF002C4F52 /* MyAccountVC.swift */,
 				B0616FFC1EF381ED001DB41D /* AdminVC.swift */,
 			);
@@ -355,11 +361,13 @@
 				B01C11EB1EEEE1160037A1A9 /* ProfileVC.swift in Sources */,
 				B0B610A61ED6608D001E3C6C /* CallBellButton.swift in Sources */,
 				B0B610A41ED5C3CE001E3C6C /* MapVC.swift in Sources */,
+				B003C3E31EFED44F00C73996 /* UpdatePasswordVC.swift in Sources */,
 				B0C02F1F1EDB7CEF002C4F52 /* MyAccountVC.swift in Sources */,
 				B006E7B81EF0A44100C7638B /* Constants.swift in Sources */,
 				B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */,
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
+				B003C3E11EFE929100C73996 /* UpdateEmailVC.swift in Sources */,
 				B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */,
 				B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */,
 				B08956A21ED91FEF00736208 /* PresentAlert.swift in Sources */,

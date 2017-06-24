@@ -49,6 +49,10 @@ class SignOutButton: ShadowButton {}
 
 class SaveButton: ShadowButton {}
 
+class CancelButton: ShadowButton {}
+
+class UpdateButton: ShadowButton {}
+
 class OrdersButton: ShadowButton {}
 
 class PickupDeliveryButton: ShadowButton {}

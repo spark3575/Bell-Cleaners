@@ -13,35 +13,40 @@ struct Constants {
     struct Alerts {
         
         struct Titles {
-            static let CreateAccountFailed = "Create Account Failed"
-            static let Email = "Valid Email Address Required"
-            static let EmailUpdateFailed = "Email Update Failed"
+            static let CreateAccountFailed = "Create Account Failed"            
             static let EmailVerification = "Email Verification Required"
             static let Location = "Location Services Required"
             static let MapAppsAvailable = "Available Maps"
             static let MissingFields = "Missing Fields"
             static let Password = "Password Required"
-            static let ReAuthentication = "Re-authentication Required"
             static let ReAuthenticationFailed = "Re-authentication Failed"
             static let SignInFailed = "Sign In Failed"
             static let TouchID = "Touch ID not available"
+            static let UpdateEmailFailed = "Update Email Failed"
+            static let UpdateEmailSuccesful = "Update Email Successful"
+            static let UpdatePasswordFailed = "Update Password Failed"
+            static let UpdatePasswordSuccesful = "Update Password Successful"
             static let UserNotFound = "User Not Found"
+            static let ValidEmail = "Valid Email Address Required"
         }
         
         struct Messages {
             static let AllRequired = "All fields required for pickup & delivery"
             static let CheckEmailPassword = "Please check your email address or password"
-            static let CheckVerificationEmail = "Please check your email and sign in"
+            static let CheckVerificationEmail = "Please check your email to verify and sign in"
             static let CreateNewAccount = "Please create a new account"
-            static let Email = "Verification email will be sent"
-            static let EmailVerification = "Please check your email to verify"
             static let Location = "Authorization can be changed in your Privacy Settings"
             static let MapAppsAvailable = "Which do you prefer"
             static let MissingFields = "Full name and phone number required to access your account"
             static let Password = "Enter atleast 6 characters"
-            static let ReAuthentication = "Please enter your password"
-            static let SignInAgain = "Please sign in again"
+            static let ReAuthenticationFailed = "Incorrect password"
             static let TouchSettings = "Authorization can be changed in your Touch ID Settings"
+            static let UpdateEmailFailed = "Incorrect password"
+            static let UpdateEmailSuccesful = "Please check your updated email to verify and sign in"
+            static let UpdatePasswordFailed = "Please check your passwords"
+            static let UpdatePasswordSuccesful = "Please sign in using your new password"
+            static let VerificationEmail = "Verification email will be sent"
+            static let VerifyEmail = "Please check your email to verify"
         }
         
         struct Actions {
@@ -50,7 +55,6 @@ struct Constants {
             static let CreateAccount = "Create Account"
             static let GoogleMaps = "Google Maps"
             static let OK = "OK"
-            static let ReAuthentication = "Re-authenticate"
             static let SendVerificationEmail = "Send Verification Email"
             static let Settings = "Settings"
         }        
@@ -202,6 +206,8 @@ struct Constants {
         static let BellCleaners = "BellCleanersVC"
         static let MyAccount = "MyAccountVC"
         static let Profile = "ProfileVC"
+        static let UpdateEmail = "UpdateEmailVC"
+        static let UpdatePassword = "UpdatePasswordVC"
     }
     
     struct TimerIntervals {

@@ -63,6 +63,10 @@ class EmailField: ShadowField {
 
 class PasswordField: ShadowField {}
 
+class CurrentPasswordField: ShadowField {}
+
+class NewPasswordField: ShadowField {}
+
 class FirstNameField: ShadowField {}
 
 class LastNameField: ShadowField {}

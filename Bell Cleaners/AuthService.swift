@@ -61,6 +61,14 @@ class AuthService {
         }
     }
     
+    func updatePassword(to password: String, onComplete: Completion?) {
+        Auth.auth().currentUser?.updatePassword(to: password) { (error) in
+            if error != nil {
+                self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            }
+        }
+    }
+    
     func signOut() {
         do {
             try Auth.auth().signOut()

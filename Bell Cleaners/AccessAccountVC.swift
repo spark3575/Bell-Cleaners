@@ -34,6 +34,10 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         stackViewOriginY = view.frame.origin.y
         if (defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
             if let email = defaults.string(forKey: Constants.DefaultsKeys.Email) {
@@ -127,7 +131,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             passwordField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
-            alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.Email, message: Constants.Alerts.Messages.Email, actionTitle: Constants.Alerts.Actions.OK)
+            alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.ValidEmail, message: Constants.Alerts.Messages.VerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
@@ -193,7 +197,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                     }
                 })
             } else {
-                let alertAccessAccount = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.EmailVerification, preferredStyle: .alert)
+                let alertAccessAccount = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.VerificationEmail, preferredStyle: .alert)
                 if let user = user, !user.isEmailVerified {
                     alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendVerificationEmail, style: .default, handler: { alert in
                         AuthService.instance.sendVerificationEmail()
