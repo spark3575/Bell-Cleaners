@@ -59,12 +59,13 @@ struct Constants {
     struct Animations {
         
         struct Keyboard {
-            static let Duration = 0.35
+            static let DurationShow = 0.3
+            static let DurationHide = 0.3
         }
         
         struct Segue {
             static let Delay = 0.0
-            static let Duration = 0.35
+            static let Duration = 0.3
             static let TranslationX: CGFloat = 0
             static let TranslationY: CGFloat = 0
         }
@@ -78,7 +79,7 @@ struct Constants {
         }
         
         struct Switch {
-            static let Duration = 0.35
+            static let Duration = 0.3
         }
         
         struct Touch {
@@ -142,7 +143,7 @@ struct Constants {
         static let ActionNext = "Next"
         static let ToolbarHeight: CGFloat = 40
         static let OriginalConstraint: CGFloat = 84
-        static let SpaceToText: CGFloat = 8
+        static let SpaceToText: CGFloat = 10
     }
     
     struct Layers {

@@ -30,7 +30,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private let defaults = UserDefaults.standard
     private var handle: AuthStateDidChangeListenerHandle?
     private var nextField: UITextField?
-    private var stackViewOrigin: CGFloat?
+    private var stackViewOriginY: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         addressField.delegate = self
         cityField.delegate = self
         zipcodeField.delegate = self
+        stackViewOriginY = view.frame.origin.y
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,7 +79,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
             }
         })
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
         addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
     }
@@ -98,6 +98,14 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        if activeField != nil {
+            UIView.animate(withDuration: Constants.Animations.Keyboard.DurationHide, animations: {
+                if let originY = self.stackViewOriginY {
+                    self.stackView.frame.origin.y = originY
+                    self.view.layoutIfNeeded()
+                }
+            })
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -112,21 +120,12 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
         let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
-        let difference = targetY - textFieldY
-        let targetOffsetForScrollViewOrigin = stackView.frame.origin.y + difference
-        UIView.animate(withDuration: Constants.Animations.Keyboard.Duration, animations: {
-            self.stackView.frame.origin.y = targetOffsetForScrollViewOrigin
+        let differenceY = targetY - textFieldY
+        let targetOffsetY = stackView.frame.origin.y + differenceY
+        UIView.animate(withDuration: Constants.Animations.Keyboard.DurationShow, animations: {
+            self.stackView.frame.origin.y = targetOffsetY
             self.view.layoutIfNeeded()
         })
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: Constants.Animations.Keyboard.Duration) {
-            if let origin = self.stackViewOrigin {
-                self.stackView.frame.origin.y = origin
-            }
-            self.view.layoutIfNeeded()
-        }
     }
     
     @objc func goToNextField(currentTextField: UITextField) {
@@ -188,19 +187,17 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTogglePickupDelivery(_ sender: UISwitch) {
         if !pickupDeliverySwitch.isOn {
-            UIView.animate(withDuration: Constants.Animations.Switch.Duration) {
+            UIView.animate(withDuration: Constants.Animations.Switch.Duration, animations: {
                 self.addressField.isHidden = true
                 self.cityField.isHidden = true
                 self.zipcodeField.isHidden = true
-                self.view.layoutIfNeeded()
-            }
+            })
         } else {
-            UIView.animate(withDuration: Constants.Animations.Switch.Duration) {
+            UIView.animate(withDuration: Constants.Animations.Switch.Duration, animations: {
                 self.addressField.isHidden = false
                 self.cityField.isHidden = false
                 self.zipcodeField.isHidden = false
-                self.view.layoutIfNeeded()
-            }
+            })
         }
     }
     
