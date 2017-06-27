@@ -85,7 +85,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                          actionTitle: Constants.Alerts.Actions.OK)
         }
     }
-
+    
     @IBAction func didTapDirections(_ sender: DirectionsButton) {
         locationManager = CLLocationManager()
         locationManager.delegate = self

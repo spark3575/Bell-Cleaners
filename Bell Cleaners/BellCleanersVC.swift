@@ -28,7 +28,7 @@ class BellCleanersVC: UIViewController {
     }
     
     @IBAction func didTapAccessAccount(_ sender: AccessAccountButton) {
-        self.performSegue(withIdentifier: Constants.Segues.AccessAccount, sender: self)
+        self.performSegue(withIdentifier: Constants.Segues.AccessAccountVC, sender: self)
     }
     
     @IBAction func didTapBell(_ sender: BellLogoButton) {
@@ -38,4 +38,6 @@ class BellCleanersVC: UIViewController {
     @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
     }
+    
+    @IBAction func unwindToBellCleanersVC(segue:UIStoryboardSegue) { }
 }

@@ -51,7 +51,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         stackViewOriginY = view.frame.origin.y
         spinner.startAnimating()
         DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
-            self.spinner.stopAnimating()
             if let user = snapshot.value as? [String : AnyObject] {
                 let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                 let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
@@ -70,26 +69,30 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 self.lastNameField.text = (lastName as! String)
                 self.phoneNumberField.text = (phoneNumber as! String)
                 self.pickupDeliverySwitch.isOn = (pickupDelivery as! Bool)
-                self.addressField.text = (address as! String)
-                self.cityField.text = (city as! String)
-                self.zipcodeField.text = (zipcode as! String)
                 if self.pickupDeliverySwitch.isOn {
                     self.addressField.isHidden = false
                     self.cityField.isHidden = false
                     self.zipcodeField.isHidden = false
+                    self.addressField.text = (address as! String)
+                    self.cityField.text = (city as! String)
+                    self.zipcodeField.text = (zipcode as! String)
+                } else {
+                    self.addressField.isHidden = true
+                    self.cityField.isHidden = true
+                    self.zipcodeField.isHidden = true
                 }
             }
         })
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
         addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
+        spinner.stopAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // [START auth_listener]
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-        }
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,11 +117,11 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         activeField = textField
         if activeField == emailField {
             NotificationCenter.default.removeObserver(self)
-            performSegue(withIdentifier: Constants.Segues.UpdateEmail, sender: self)
+            performSegue(withIdentifier: Constants.Segues.UpdateEmailVC, sender: self)
         }
         if activeField == passwordField {
             NotificationCenter.default.removeObserver(self)
-            performSegue(withIdentifier: Constants.Segues.UpdatePassword, sender: self)
+            performSegue(withIdentifier: Constants.Segues.UpdatePasswordVC, sender: self)
         }
     }
     
@@ -227,7 +230,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
+                performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                 return
             } else {
                 self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.MissingFields, actionTitle: Constants.Alerts.Actions.OK)
@@ -238,7 +241,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessPickupDelivery)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
+                performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                 return
             } else {
                 self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
@@ -247,8 +250,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        DataService.instance.currentUserRef.removeAllObservers()
         AuthService.instance.signOut()
-        performSegue(withIdentifier: Constants.Segues.BellCleaners, sender: self)
+        performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
     }
 }

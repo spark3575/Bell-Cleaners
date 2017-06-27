@@ -492,71 +492,11 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="M1g-ah-iqS" userLabel="directions &amp; phone">
-                                <rect key="frame" x="20" y="504" width="280" height="44"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ie6-iW-TZb" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="pvK-Ll-pkD">
-                                                <variation key="heightClass=compact" constant="44"/>
-                                                <variation key="heightClass=regular-widthClass=regular" constant="80"/>
-                                            </constraint>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <state key="normal" title="Map">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="heightClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                        <connections>
-                                            <segue destination="vjV-Qa-jUl" kind="show" identifier="" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="8Uf-Hb-fqD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyX-g8-YZS" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="106" y="0.0" width="174" height="44"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <state key="normal" title="214-374-7007">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="heightClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="didTapCallBell:" destination="E4R-Qp-0Wr" eventType="touchUpInside" id="DnN-ZT-XZm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ie6-iW-TZb" firstAttribute="width" secondItem="XyX-g8-YZS" secondAttribute="width" id="7I3-WS-DQv">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="-80"/>
-                                    </constraint>
-                                </constraints>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcZ-2s-8NH" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQR-64-QPn">
-                                        <rect key="frame" x="79.5" y="29" width="162.5" height="26.5"/>
+                                        <rect key="frame" x="79" y="29" width="162.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -567,7 +507,7 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         </variation>
                                     </label>
-                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4h-Sh-aXW">
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4h-Sh-aXW">
                                         <rect key="frame" x="8" y="19.5" width="60" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8Es-vj-042">
@@ -606,16 +546,13 @@
                             <constraint firstItem="JTH-i8-s7K" firstAttribute="leading" secondItem="SLn-HI-Lzq" secondAttribute="leading" constant="20" id="ICs-5p-kVs"/>
                             <constraint firstItem="zcZ-2s-8NH" firstAttribute="top" secondItem="5zb-pe-cqs" secondAttribute="top" id="PST-LG-JgI"/>
                             <constraint firstItem="zcZ-2s-8NH" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" id="PdM-ej-KAO"/>
-                            <constraint firstItem="kQ3-wm-g1y" firstAttribute="top" secondItem="M1g-ah-iqS" secondAttribute="bottom" constant="20" id="RDp-x2-oQp"/>
                             <constraint firstItem="Yvv-Yl-f3u" firstAttribute="centerY" secondItem="5zb-pe-cqs" secondAttribute="centerY" id="RxQ-lF-uNb"/>
-                            <constraint firstItem="M1g-ah-iqS" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="SM0-X7-tyz"/>
                             <constraint firstItem="JTH-i8-s7K" firstAttribute="centerY" secondItem="SLn-HI-Lzq" secondAttribute="centerY" id="Si5-sZ-9t3"/>
                             <constraint firstItem="Yvv-Yl-f3u" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="VLE-3N-Gld"/>
                             <constraint firstAttribute="trailing" secondItem="Yvv-Yl-f3u" secondAttribute="trailing" constant="20" id="ZwE-eN-jEl"/>
                             <constraint firstItem="FaM-jL-ava" firstAttribute="centerX" secondItem="5zb-pe-cqs" secondAttribute="centerX" id="gpY-KR-h1g"/>
                             <constraint firstAttribute="trailing" secondItem="zcZ-2s-8NH" secondAttribute="trailing" id="hW5-Ez-Db6"/>
                             <constraint firstItem="FaM-jL-ava" firstAttribute="top" secondItem="Yvv-Yl-f3u" secondAttribute="bottom" constant="12" id="mCr-6O-dKd"/>
-                            <constraint firstAttribute="trailing" secondItem="M1g-ah-iqS" secondAttribute="trailing" constant="20" id="tT7-LC-85z"/>
                         </constraints>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
@@ -625,7 +562,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="callBellButton" destination="XyX-g8-YZS" id="tqZ-lI-bP7"/>
                         <outlet property="emailField" destination="rTF-Qh-z7O" id="vUv-LM-iGM"/>
                         <outlet property="passwordField" destination="YQ3-LS-JK9" id="OxB-L2-g60"/>
                         <outlet property="signInButton" destination="SLn-HI-Lzq" id="8j4-YR-ebz"/>
@@ -780,9 +716,6 @@
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                 </variation>
-                                                <connections>
-                                                    <action selector="didTapOrders:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="T7H-ea-phq"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-MX-r3Y" customClass="ProfileButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="112" width="280" height="44"/>
@@ -853,94 +786,29 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XF8-Uh-Uhx">
-                                <rect key="frame" x="20" y="448" width="280" height="100"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-up-HVa" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
-                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="FD7-Kl-W28">
-                                                <variation key="heightClass=compact" constant="44"/>
-                                                <variation key="heightClass=regular-widthClass=regular" constant="80"/>
-                                            </constraint>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <state key="normal" title="Sign Out">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="heightClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="didTapSignOut:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="7jM-Yf-72D"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="h4s-0i-diN" userLabel="directions &amp; phone">
-                                        <rect key="frame" x="0.0" y="56" width="280" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrk-US-nxa" customClass="MapButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
-                                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="lmS-KY-9F4">
-                                                        <variation key="heightClass=compact" constant="44"/>
-                                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
-                                                    </constraint>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                <state key="normal" title="Map">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <variation key="heightClass=compact">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                                </variation>
-                                                <connections>
-                                                    <segue destination="vjV-Qa-jUl" kind="show" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="h6p-SN-ldM"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoS-Vg-MUE" customClass="CallBellButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="106" y="0.0" width="174" height="44"/>
-                                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                <state key="normal" title="214-374-7007">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <variation key="heightClass=compact">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                                </variation>
-                                                <connections>
-                                                    <action selector="didTapCallBell:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="idz-PM-t4t"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="yrk-US-nxa" firstAttribute="width" secondItem="RoS-Vg-MUE" secondAttribute="width" id="AqP-8W-4c8">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="-80"/>
-                                            </constraint>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-up-HVa" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="20" y="504" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="FD7-Kl-W28">
+                                        <variation key="heightClass=compact" constant="44"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="didTapSignOut:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="7jM-Yf-72D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -949,12 +817,12 @@
                             <constraint firstAttribute="trailing" secondItem="x7z-cG-xg1" secondAttribute="trailing" id="CUW-MC-rGi"/>
                             <constraint firstItem="x7z-cG-xg1" firstAttribute="top" secondItem="voa-ew-vmy" secondAttribute="top" id="DAh-cb-KvL"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerY" secondItem="voa-ew-vmy" secondAttribute="centerY" id="E3H-iH-nUo"/>
+                            <constraint firstItem="tag-up-HVa" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="EgT-zg-YnS"/>
+                            <constraint firstAttribute="trailing" secondItem="tag-up-HVa" secondAttribute="trailing" constant="20" id="FJV-an-LEU"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="N9h-11-Z7o"/>
-                            <constraint firstItem="XF8-Uh-Uhx" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="Zgf-N9-kX7"/>
-                            <constraint firstAttribute="trailing" secondItem="XF8-Uh-Uhx" secondAttribute="trailing" constant="20" id="emA-WW-KoM"/>
                             <constraint firstAttribute="trailing" secondItem="Fmk-B6-hY5" secondAttribute="trailing" constant="20" id="kqB-cS-BNV"/>
+                            <constraint firstItem="s6h-Lx-1TS" firstAttribute="top" secondItem="tag-up-HVa" secondAttribute="bottom" constant="20" id="l8h-T1-WPU"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="orH-tt-lqP"/>
-                            <constraint firstItem="s6h-Lx-1TS" firstAttribute="top" secondItem="XF8-Uh-Uhx" secondAttribute="bottom" constant="20" id="srS-CK-LaL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -970,11 +838,11 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="callBellButton" destination="RoS-Vg-MUE" id="woj-qq-gdn"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="n0N-wj-lyn"/>
+                        <segue destination="aMb-4w-tMI" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="q8J-Hm-O40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12P-9I-gXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="aMb-4w-tMI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1939" y="450"/>
         </scene>
@@ -991,7 +859,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-fs-QSJ">
-                                <rect key="frame" x="40" y="149" width="240" height="270"/>
+                                <rect key="frame" x="40" y="78.5" width="240" height="411"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jdb-AB-K6V" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
@@ -1091,8 +959,8 @@
                                             <constraint firstItem="zPY-Y3-JSD" firstAttribute="centerY" secondItem="APB-fd-NLz" secondAttribute="centerY" id="nHE-GI-3VA"/>
                                         </constraints>
                                     </view>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KXd-on-em7" customClass="AddressField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="270" width="240" height="0.0"/>
+                                    <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KXd-on-em7" customClass="AddressField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="282" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -1104,8 +972,8 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zjp-ZJ-Che" customClass="CityField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="270" width="240" height="0.0"/>
+                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zjp-ZJ-Che" customClass="CityField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="329" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -1117,8 +985,8 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gMt-qQ-8j3" customClass="ZipcodeField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="270" width="240" height="0.0"/>
+                                    <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gMt-qQ-8j3" customClass="ZipcodeField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="376" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -1266,13 +1134,14 @@
                         <outlet property="spinner" destination="cMb-Lx-n91" id="RbJ-GZ-LG9"/>
                         <outlet property="stackView" destination="VIC-fs-QSJ" id="F24-jk-3Y9"/>
                         <outlet property="zipcodeField" destination="gMt-qQ-8j3" id="0k1-y4-pal"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="ef2-9A-hCN"/>
                         <segue destination="T6v-Fh-8cu" kind="show" identifier="MyAccountVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="DAz-cr-tTc"/>
                         <segue destination="4v8-XT-WEv" kind="show" identifier="UpdateEmailVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="YKE-OE-h6v"/>
                         <segue destination="bEF-wO-5co" kind="show" identifier="UpdatePasswordVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="Qdj-um-ByV"/>
+                        <segue destination="gDb-Pw-Lms" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="amD-gF-PNI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goX-F2-e4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gDb-Pw-Lms" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1168" y="450"/>
         </scene>
@@ -1396,7 +1265,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFO-hr-zCp">
-                                        <rect key="frame" x="94" y="29.5" width="133" height="26.5"/>
+                                        <rect key="frame" x="94" y="29" width="133" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1440,11 +1309,12 @@
                         <outlet property="currentPasswordField" destination="pN2-AD-7II" id="mwZ-cN-cht"/>
                         <outlet property="newEmailField" destination="CU7-1G-WK9" id="MKE-MS-3lj"/>
                         <outlet property="stackView" destination="qDC-JQ-0Qx" id="9hK-M0-OzM"/>
-                        <segue destination="E4R-Qp-0Wr" kind="show" identifier="AccessAccountVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="m18-qM-RTu"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="gko-g6-Gku"/>
+                        <segue destination="Me8-T0-biR" kind="unwind" identifier="unwindToAccessAccountVC" unwindAction="unwindToAccessAccountVCWithSegue:" id="ROT-qH-eUb"/>
+                        <segue destination="Me8-T0-biR" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="Mvb-MX-dwu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBZ-Gj-K7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Me8-T0-biR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1168" y="1161"/>
         </scene>
@@ -1464,7 +1334,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhm-ai-NzF">
-                                        <rect key="frame" x="72.5" y="29.5" width="176.5" height="26.5"/>
+                                        <rect key="frame" x="72" y="29" width="176.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1612,11 +1482,12 @@
                         <outlet property="currentPasswordField" destination="L9s-fd-IgU" id="KBw-Zh-OJl"/>
                         <outlet property="newPasswordField" destination="MQJ-WY-fc3" id="gnc-Ud-jHo"/>
                         <outlet property="stackView" destination="5Hj-i2-Qtj" id="ra5-nW-3dE"/>
-                        <segue destination="E4R-Qp-0Wr" kind="show" identifier="AccessAccountVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="MyU-GG-Ayl"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="HUc-qP-Gpt"/>
+                        <segue destination="nDm-2E-9AG" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="6kS-y7-FTs"/>
+                        <segue destination="nDm-2E-9AG" kind="unwind" identifier="unwindToAccessAccountVC" unwindAction="unwindToAccessAccountVCWithSegue:" id="wKs-Us-s3E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtV-Fh-dEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nDm-2E-9AG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1939" y="1161"/>
         </scene>
@@ -1776,7 +1647,7 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         </variation>
                                     </label>
-                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-4S-wxT">
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vds-4S-wxT">
                                         <rect key="frame" x="8" y="20.5" width="60" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="LnG-vs-yV4">
@@ -1786,7 +1657,7 @@
                                         </constraints>
                                         <state key="normal" image="backArrow"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="dg4-a2-sD0"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="Uj3-HO-MKx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1830,6 +1701,7 @@
                     <connections>
                         <outlet property="callBellButton" destination="0JA-dP-iCI" id="K39-Kh-gbE"/>
                         <outlet property="mapView" destination="ek3-om-ZO9" id="mrJ-4n-OFw"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="hri-hR-xyU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kak-OA-qxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1843,10 +1715,8 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Uj3-HO-MKx"/>
+        <segue reference="zTZ-BM-ifj"/>
         <segue reference="DAz-cr-tTc"/>
-        <segue reference="TvH-2h-sTi"/>
-        <segue reference="m18-qM-RTu"/>
-        <segue reference="gko-g6-Gku"/>
-        <segue reference="lJL-me-ucU"/>
     </inferredMetricsTieBreakers>
 </document>

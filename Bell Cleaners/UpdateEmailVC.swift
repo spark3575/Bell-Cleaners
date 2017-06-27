@@ -20,6 +20,7 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     private let defaults = UserDefaults.standard
     private var enteredEmail: String?
     private var enteredPassword: String?
+    private var handle: AuthStateDidChangeListenerHandle?
     private var stackViewOriginY: CGFloat?
     
     override func viewDidLoad() {
@@ -32,11 +33,13 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(animated)
         stackViewOriginY = view.frame.origin.y
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -106,26 +109,41 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     @IBAction func didTapUpdate(_ sender: UpdateButton) {
         let currentEmail = defaults.string(forKey: Constants.DefaultsKeys.Email)
         if let enteredEmail = newEmailField.text, let enteredPassword = currentPasswordField.text, !enteredEmail.isEmpty, !enteredPassword.isEmpty {
-            let user = Auth.auth().currentUser
-            let credential = (EmailAuthProvider.credential(withEmail: currentEmail!, password: enteredPassword))
-            user?.reauthenticate(with: credential) { error in
-                if error != nil {
-                    // An error happened.
-                    self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: Constants.Alerts.Messages.UpdateEmailFailed, actionTitle: Constants.Alerts.Actions.OK)
+            AuthService.instance.reauthenticate(withEmail: currentEmail!, password: enteredPassword, onComplete: { (errorMessage, user) in
+                guard errorMessage == nil else {
+                    self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                     return
-                } else {
-                    // User re-authenticated.
+                }
+                // User re-authenticated.
+                
+                func emailUpdated(success: (Bool) -> Void) {
                     AuthService.instance.updateEmail(to: enteredEmail, onComplete: { (errorMessage, nil) in
                         guard errorMessage == nil else {
                             self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                             return
                         }
-                        self.defaults.setValue(enteredEmail, forKey: Constants.Literals.Email)
-                        self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, actionTitle: Constants.Alerts.Actions.OK)
                     })
-                    self.performSegue(withIdentifier: Constants.Segues.AccessAccount, sender: self)
+                    success(true)
                 }
-            }
+                
+                emailUpdated { success in
+                    if success {
+                        let user = Auth.auth().currentUser
+                        print(user?.email as Any)
+                        AuthService.instance.sendVerificationEmail()
+                    }
+                }
+                if let user = user {
+                    let email = [Constants.Literals.Email: enteredEmail]
+                    DataService.instance.updateUser(uid: user.uid, userData: email as [String: AnyObject])
+                }
+                self.defaults.setValue(enteredEmail, forKey: Constants.Literals.Email)
+                let alertUpdateEmail = UIAlertController(title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, preferredStyle: .alert)
+                alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in
+                    self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
+                }))
+                self.present(alertUpdateEmail, animated: true, completion: nil)
+            })
         } else {
             self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
         }
@@ -133,6 +151,6 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         AuthService.instance.signOut()
-        performSegue(withIdentifier: Constants.Segues.BellCleaners, sender: self)
+        performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
     }
 }

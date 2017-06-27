@@ -13,7 +13,8 @@ struct Constants {
     struct Alerts {
         
         struct Titles {
-            static let CreateAccountFailed = "Create Account Failed"            
+            static let CreateAccountFailed = "Create Account Failed"
+            static let CreateAccountSuccesful = "Create Account Succesful"
             static let EmailVerification = "Email Verification Required"
             static let Location = "Location Services Required"
             static let MapAppsAvailable = "Available Maps"
@@ -201,13 +202,15 @@ struct Constants {
     }
     
     struct Segues {
-        static let AccessAccount = "AccessAccountVC"
-        static let Admin = "AdminVC"
-        static let BellCleaners = "BellCleanersVC"
-        static let MyAccount = "MyAccountVC"
-        static let Profile = "ProfileVC"
-        static let UpdateEmail = "UpdateEmailVC"
-        static let UpdatePassword = "UpdatePasswordVC"
+        static let AccessAccountVC = "AccessAccountVC"
+        static let AdminVC = "AdminVC"
+        static let BellCleanersVC = "BellCleanersVC"
+        static let MyAccountVC = "MyAccountVC"
+        static let ProfileVC = "ProfileVC"
+        static let UpdateEmailVC = "UpdateEmailVC"
+        static let UpdatePasswordVC = "UpdatePasswordVC"
+        static let UnwindToAccessAccountVC = "unwindToAccessAccountVC"
+        static let UnwindToBellCleanersVC = "unwindToBellCleanersVC"
     }
     
     struct TimerIntervals {

@@ -11,7 +11,6 @@ import Firebase
 
 class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var callBellButton: CallBellButton!
     @IBOutlet weak var emailField: EmailField!
     @IBOutlet weak var passwordField: PasswordField!
     @IBOutlet weak var signInButton: SignInButton!
@@ -70,8 +69,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // [START auth_listener]
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-        }
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -185,21 +183,21 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                         let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                         let email = userEmail as! String
                         if email == Constants.Literals.AdminEmail {
-                            self.performSegue(withIdentifier: Constants.Segues.Admin, sender: self)
+                            self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
                             return
                         }
                     }
                     if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                        self.performSegue(withIdentifier: Constants.Segues.MyAccount, sender: self)
+                        self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                         return
                     } else {
-                        self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
+                        self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
                     }
                 })
             } else {
-                let alertAccessAccount = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.VerificationEmail, preferredStyle: .alert)
+                let alertAccessAccount = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, preferredStyle: .alert)
                 if let user = user, !user.isEmailVerified {
-                    alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendVerificationEmail, style: .default, handler: { alert in
+                    alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendVerificationEmail, style: .default, handler: { action in
                         AuthService.instance.sendVerificationEmail()
                     }))
                 }
@@ -217,14 +215,11 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                 return
             }
+            self.signInButton.setTitle(Constants.Literals.SignIn, for: .normal)
+            self.textView.isHidden = true
             AuthService.instance.sendVerificationEmail()
             self.saveLogin(email: email, password: password)
-            if let user = user, user.isEmailVerified {
-                self.performSegue(withIdentifier: Constants.Segues.Profile, sender: self)
-            } else {
-                self.signInButton.setTitle(Constants.Literals.SignIn, for: .normal)
-                self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
-            }
+            self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountSuccesful, message: Constants.Alerts.Messages.CheckVerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
         })
     }
     
@@ -306,7 +301,5 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         touchSignIn()
     }
     
-    @IBAction func didTapCallBell(_ sender: CallBellButton) {
-        callBellButton.callBell()
-    }
+    @IBAction func unwindToAccessAccountVC(segue: UIStoryboardSegue) { }
 }

@@ -11,8 +11,6 @@ import Firebase
 
 class MyAccountVC: UIViewController {
     
-    @IBOutlet weak var callBellButton: CallBellButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,13 +27,9 @@ class MyAccountVC: UIViewController {
     @IBAction func didTapSupport(_ sender: SupportButton) {
         
     }
-    
-    @IBAction func didTapCallBell(_ sender: CallBellButton) {
-        callBellButton.callBell()
-    }
 
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         AuthService.instance.signOut()
-        performSegue(withIdentifier: Constants.Segues.BellCleaners, sender: self)
+        performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
     }
 }

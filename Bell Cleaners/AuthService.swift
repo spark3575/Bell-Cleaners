@@ -45,6 +45,18 @@ class AuthService {
         })
     }
     
+    func reauthenticate(withEmail email: String, password: String, onComplete: Completion?) {
+        let user = Auth.auth().currentUser
+        let credential = (EmailAuthProvider.credential(withEmail: email, password: password))
+        user?.reauthenticate(with: credential) { error in
+            if error != nil {
+                self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            } else {
+                onComplete?(nil, user)
+            }
+        }
+    }
+    
     func sendVerificationEmail() {
         Auth.auth().currentUser?.sendEmailVerification { (error) in
             if let error = error {

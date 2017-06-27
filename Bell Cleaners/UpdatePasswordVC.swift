@@ -107,10 +107,14 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
                         guard errorMessage == nil else {
                             self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                             return
-                        }                        
-                        self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordSuccesful, message: Constants.Alerts.Messages.UpdatePasswordSuccesful, actionTitle: Constants.Alerts.Actions.OK)
+                        }
                     })
-                    self.performSegue(withIdentifier: Constants.Segues.AccessAccount, sender: self)
+                    if let user = user {
+                        let updatedPassword = [Constants.Literals.Password: newPassword]
+                        DataService.instance.updateUser(uid: user.uid, userData: updatedPassword as [String: AnyObject])
+                    }
+                    self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordSuccesful, message: Constants.Alerts.Messages.UpdatePasswordSuccesful, actionTitle: Constants.Alerts.Actions.OK)
+                    self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                 }
             }
         } else {
@@ -120,6 +124,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         AuthService.instance.signOut()
-        performSegue(withIdentifier: Constants.Segues.BellCleaners, sender: self)
+        performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
     }
 }
