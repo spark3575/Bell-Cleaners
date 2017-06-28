@@ -31,8 +31,13 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        stackViewOriginY = view.frame.origin.y
+        stackViewOriginY = view.frame.origin.y        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        // [START auth_listener]
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
     }
     
@@ -115,35 +120,38 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
                     return
                 }
                 // User re-authenticated.
-                
-                func emailUpdated(success: (Bool) -> Void) {
-                    AuthService.instance.updateEmail(to: enteredEmail, onComplete: { (errorMessage, nil) in
-                        guard errorMessage == nil else {
-                            self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                            return
-                        }
-                    })
-                    success(true)
-                }
-                
-                emailUpdated { success in
-                    if success {
-                        let user = Auth.auth().currentUser
-                        print(user?.email as Any)
-                        AuthService.instance.sendVerificationEmail()
+                AuthService.instance.updateEmail(to: enteredEmail, onComplete: { (errorMessage, nil) in
+                    guard errorMessage == nil else {
+                        self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                        return
                     }
-                }
-                if let user = user {
+                })
+                if let user = Auth.auth().currentUser {
                     let email = [Constants.Literals.Email: enteredEmail]
                     DataService.instance.updateUser(uid: user.uid, userData: email as [String: AnyObject])
                 }
                 self.defaults.setValue(enteredEmail, forKey: Constants.Literals.Email)
-                let alertUpdateEmail = UIAlertController(title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, preferredStyle: .alert)
-                alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in
-                    self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
-                }))
-                self.present(alertUpdateEmail, animated: true, completion: nil)
+                
             })
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                AuthService.instance.reauthenticate(withEmail: enteredEmail, password: enteredPassword, onComplete: { (errorMessage, user) in
+                    guard errorMessage == nil else {
+                        self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                        return
+                    }
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {
+                        timer in if let user = Auth.auth().currentUser {
+                            print(user.email as Any)
+                            AuthService.instance.sendVerificationEmail()
+                        }
+                    }
+                    let alertUpdateEmail = UIAlertController(title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, preferredStyle: .alert)
+                    alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in
+                        self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
+                    }))
+                    self.present(alertUpdateEmail, animated: true, completion: nil)
+                })
+            }
         } else {
             self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
         }

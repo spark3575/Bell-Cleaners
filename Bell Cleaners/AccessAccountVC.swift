@@ -62,12 +62,12 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         } else {
             touchView.isHidden = true
             textView.isHidden = false
-        }
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        }        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         // [START auth_listener]
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
     }
@@ -172,7 +172,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 return
             }
             self.saveLogin(email: email, password: password)
-            if let user = user, user.isEmailVerified {
+            if let user = Auth.auth().currentUser , user.isEmailVerified {
                 self.spinner.startAnimating()
                 DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
                     self.spinner.stopAnimating()
@@ -196,7 +196,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 })
             } else {
                 let alertAccessAccount = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, preferredStyle: .alert)
-                if let user = user, !user.isEmailVerified {
+                if let user = Auth.auth().currentUser, !user.isEmailVerified {
                     alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendVerificationEmail, style: .default, handler: { action in
                         AuthService.instance.sendVerificationEmail()
                     }))

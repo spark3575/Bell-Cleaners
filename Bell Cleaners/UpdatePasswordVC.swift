@@ -17,8 +17,9 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     
     private var activeField: UITextField?
     private let alertUpdatePassword = PresentAlert()
-    private let defaults = UserDefaults.standard
     private var currentPassword: String?
+    private let defaults = UserDefaults.standard
+    private var handle: AuthStateDidChangeListenerHandle?
     private var newPassword: String?
     private var stackViewOriginY: CGFloat?
     
@@ -31,12 +32,19 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         stackViewOriginY = view.frame.origin.y
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        // [START auth_listener]
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
