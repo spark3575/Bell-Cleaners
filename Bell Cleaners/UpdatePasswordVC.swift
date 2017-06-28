@@ -105,6 +105,7 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
             AuthService.instance.reauthenticate(withEmail: currentEmail!, password: currentPassword, onComplete: { (errorMessage, user) in
                 guard errorMessage == nil else {
                     self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                    self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                     return
                 }
                 // User re-authenticated.
