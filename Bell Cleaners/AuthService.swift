@@ -60,7 +60,7 @@ class AuthService {
     func sendVerificationEmail() {
         Auth.auth().currentUser?.sendEmailVerification { (error) in
             if let error = error {
-                print(Constants.ErrorMessages.VerificationEmail + String(describing: error))
+                print(Constants.ErrorMessages.VerificationEmail, error)
             }
         }
     }
@@ -85,7 +85,7 @@ class AuthService {
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
-            print(Constants.ErrorMessages.SignOut + String(describing: signOutError))
+            print(Constants.ErrorMessages.SignOut, signOutError)
         }
     }
     
