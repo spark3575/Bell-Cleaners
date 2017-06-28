@@ -101,30 +101,29 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapUpdate(_ sender: UpdateButton) {
         let currentEmail = defaults.string(forKey: Constants.DefaultsKeys.Email)
-        if let currentPassword = currentPasswordField.text, let newPassword = currentPasswordField.text, !currentPassword.isEmpty, !newPassword.isEmpty {
-            let user = Auth.auth().currentUser
-            let credential = (EmailAuthProvider.credential(withEmail: currentEmail!, password: currentPassword))
-            user?.reauthenticate(with: credential) { error in
-                if error != nil {
-                    // An error happened.
-                    self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.ReAuthenticationFailed, message: Constants.Alerts.Messages.ReAuthenticationFailed, actionTitle: Constants.Alerts.Actions.OK)
+        if let currentPassword = currentPasswordField.text, let newPassword = newPasswordField.text, !currentPassword.isEmpty, !newPassword.isEmpty {
+            AuthService.instance.reauthenticate(withEmail: currentEmail!, password: currentPassword, onComplete: { (errorMessage, user) in
+                guard errorMessage == nil else {
+                    self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                     return
-                } else {
-                    // User re-authenticated.
-                    AuthService.instance.updatePassword(to: newPassword, onComplete: { (errorMessage, nil) in
-                        guard errorMessage == nil else {
-                            self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                            return
-                        }
-                    })
-                    if let user = user {
-                        let updatedPassword = [Constants.Literals.Password: newPassword]
-                        DataService.instance.updateUser(uid: user.uid, userData: updatedPassword as [String: AnyObject])
-                    }
-                    self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordSuccesful, message: Constants.Alerts.Messages.UpdatePasswordSuccesful, actionTitle: Constants.Alerts.Actions.OK)
-                    self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                 }
-            }
+                // User re-authenticated.
+                AuthService.instance.updatePassword(to: newPassword, onComplete: { (errorMessage, nil) in
+                    guard errorMessage == nil else {
+                        self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                        return
+                    }
+                })
+                if let user = Auth.auth().currentUser {
+                    let updatedPassword = [Constants.Literals.Password: newPassword]
+                    DataService.instance.updateUser(uid: user.uid, userData: updatedPassword as [String: AnyObject])
+                }
+            })
+            let alertUpdatePassword = UIAlertController(title: Constants.Alerts.Titles.UpdatePasswordSuccesful, message: Constants.Alerts.Messages.UpdatePasswordSuccesful, preferredStyle: .alert)
+            alertUpdatePassword.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in
+                self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
+            }))
+            self.present(alertUpdatePassword, animated: true, completion: nil)
         } else {
             self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: Constants.Alerts.Messages.UpdatePasswordFailed, actionTitle: Constants.Alerts.Actions.OK)
         }

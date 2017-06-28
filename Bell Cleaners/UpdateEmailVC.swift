@@ -113,28 +113,27 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapUpdate(_ sender: UpdateButton) {
         let currentEmail = defaults.string(forKey: Constants.DefaultsKeys.Email)
-        if let enteredEmail = newEmailField.text, let enteredPassword = currentPasswordField.text, !enteredEmail.isEmpty, !enteredPassword.isEmpty {
-            AuthService.instance.reauthenticate(withEmail: currentEmail!, password: enteredPassword, onComplete: { (errorMessage, user) in
+        if let newEmail = newEmailField.text, let currentPassword = currentPasswordField.text, !newEmail.isEmpty, !currentPassword.isEmpty {
+            AuthService.instance.reauthenticate(withEmail: currentEmail!, password: currentPassword, onComplete: { (errorMessage, user) in
                 guard errorMessage == nil else {
                     self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                     return
                 }
                 // User re-authenticated.
-                AuthService.instance.updateEmail(to: enteredEmail, onComplete: { (errorMessage, nil) in
+                AuthService.instance.updateEmail(to: newEmail, onComplete: { (errorMessage, nil) in
                     guard errorMessage == nil else {
                         self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                         return
                     }
                 })
                 if let user = Auth.auth().currentUser {
-                    let email = [Constants.Literals.Email: enteredEmail]
-                    DataService.instance.updateUser(uid: user.uid, userData: email as [String: AnyObject])
+                    let updatedEmail = [Constants.Literals.Email: newEmail]
+                    DataService.instance.updateUser(uid: user.uid, userData: updatedEmail as [String: AnyObject])
                 }
-                self.defaults.setValue(enteredEmail, forKey: Constants.Literals.Email)
-                
+                self.defaults.setValue(newEmail, forKey: Constants.Literals.Email)
             })
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
-                AuthService.instance.reauthenticate(withEmail: enteredEmail, password: enteredPassword, onComplete: { (errorMessage, user) in
+                AuthService.instance.reauthenticate(withEmail: newEmail, password: currentPassword, onComplete: { (errorMessage, user) in
                     guard errorMessage == nil else {
                         self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                         return
