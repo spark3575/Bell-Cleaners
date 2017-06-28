@@ -18,7 +18,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var touchView: UIView!    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textViewStack: UIStackView!
     
     private var activeField: UITextField?
     private let alertAccessAccount = PresentAlert()
@@ -33,11 +33,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        stackViewOriginY = view.frame.origin.y
         if (defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
             if let email = defaults.string(forKey: Constants.DefaultsKeys.Email) {
                 var characters = Array(email.characters)
@@ -53,7 +48,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 count -= replaceCount
                 emailField.text = String(characters[0..<count])
                 securedTextEmail = emailField.text
-                textView.isHidden = true
+                textViewStack.isHidden = true
             }
             touchView.isHidden = !bellTouchSignIn.canEvaluatePolicy()
             if (defaults.bool(forKey: Constants.DefaultsKeys.HasUsedTouch)) {
@@ -61,13 +56,18 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             }
         } else {
             touchView.isHidden = true
-            textView.isHidden = false
-        }        
+            textViewStack.isHidden = false
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        stackViewOriginY = view.frame.origin.y
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         // [START auth_listener]
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
     }
@@ -152,7 +152,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 self.emailField.text = Constants.Literals.EmptyString
                 self.passwordField.text = Constants.Literals.EmptyString
                 self.touchView.isHidden = true
-                self.textView.isHidden = true
+                self.textViewStack.isHidden = true
             })
             let cancelAction = UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil)
             if errorMessage == Constants.ErrorMessages.UserNotFound {
@@ -216,7 +216,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 return
             }
             self.signInButton.setTitle(Constants.Literals.SignIn, for: .normal)
-            self.textView.isHidden = true
+            self.textViewStack.isHidden = true
             AuthService.instance.sendVerificationEmail()
             self.saveLogin(email: email, password: password)
             self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountSuccesful, message: Constants.Alerts.Messages.CheckVerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
