@@ -1152,6 +1152,7 @@
                         <segue destination="4v8-XT-WEv" kind="show" identifier="UpdateEmailVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="YKE-OE-h6v"/>
                         <segue destination="bEF-wO-5co" kind="show" identifier="UpdatePasswordVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="Qdj-um-ByV"/>
                         <segue destination="gDb-Pw-Lms" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="amD-gF-PNI"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="BellCleanersVC" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="xiN-Ll-6Yj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goX-F2-e4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1304,13 +1305,19 @@
                                     </constraint>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Wpv-pY-Kvb">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qDC-JQ-0Qx" firstAttribute="centerX" secondItem="mO9-gL-f3d" secondAttribute="centerX" id="A7Y-kg-JLi"/>
+                            <constraint firstItem="Wpv-pY-Kvb" firstAttribute="centerY" secondItem="mO9-gL-f3d" secondAttribute="centerY" id="Bv0-jM-VBo"/>
                             <constraint firstAttribute="trailing" secondItem="1dp-Eo-NC8" secondAttribute="trailing" id="UnK-7T-Srq"/>
                             <constraint firstItem="qDC-JQ-0Qx" firstAttribute="leading" secondItem="mO9-gL-f3d" secondAttribute="leading" constant="20" id="acx-Qk-61D"/>
                             <constraint firstItem="6Cq-Ah-oeF" firstAttribute="top" secondItem="ZqH-oi-TKh" secondAttribute="bottom" constant="20" id="aji-P8-oEY"/>
+                            <constraint firstItem="Wpv-pY-Kvb" firstAttribute="centerX" secondItem="mO9-gL-f3d" secondAttribute="centerX" id="exA-uR-Yr5"/>
                             <constraint firstItem="qDC-JQ-0Qx" firstAttribute="centerY" secondItem="mO9-gL-f3d" secondAttribute="centerY" id="fMX-fp-5bZ"/>
                             <constraint firstAttribute="trailing" secondItem="qDC-JQ-0Qx" secondAttribute="trailing" constant="20" id="fWp-SE-iea"/>
                             <constraint firstItem="1dp-Eo-NC8" firstAttribute="top" secondItem="mO9-gL-f3d" secondAttribute="top" id="gpV-cl-q27"/>
@@ -1322,6 +1329,7 @@
                     <connections>
                         <outlet property="currentPasswordField" destination="pN2-AD-7II" id="mwZ-cN-cht"/>
                         <outlet property="newEmailField" destination="CU7-1G-WK9" id="MKE-MS-3lj"/>
+                        <outlet property="spinner" destination="Wpv-pY-Kvb" id="Nrj-bf-2WK"/>
                         <outlet property="stackView" destination="qDC-JQ-0Qx" id="9hK-M0-OzM"/>
                         <segue destination="Me8-T0-biR" kind="unwind" identifier="unwindToAccessAccountVC" unwindAction="unwindToAccessAccountVCWithSegue:" id="ROT-qH-eUb"/>
                         <segue destination="Me8-T0-biR" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="Mvb-MX-dwu"/>
@@ -1477,6 +1485,10 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9pg-CE-pfm">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1485,9 +1497,11 @@
                             <constraint firstItem="y1H-3H-Uz2" firstAttribute="leading" secondItem="2BI-jx-qj0" secondAttribute="leading" id="Hif-Kf-WiL"/>
                             <constraint firstItem="5Hj-i2-Qtj" firstAttribute="centerX" secondItem="2BI-jx-qj0" secondAttribute="centerX" id="IXj-3o-FFN"/>
                             <constraint firstItem="5Hj-i2-Qtj" firstAttribute="leading" secondItem="2BI-jx-qj0" secondAttribute="leading" constant="20" id="MDI-vg-HhP"/>
+                            <constraint firstItem="9pg-CE-pfm" firstAttribute="centerY" secondItem="2BI-jx-qj0" secondAttribute="centerY" id="R06-52-8z1"/>
                             <constraint firstAttribute="trailing" secondItem="5Hj-i2-Qtj" secondAttribute="trailing" constant="20" id="Yfm-An-cVp"/>
                             <constraint firstItem="y1H-3H-Uz2" firstAttribute="top" secondItem="2BI-jx-qj0" secondAttribute="top" id="afD-Gs-bc7"/>
                             <constraint firstAttribute="trailing" secondItem="CQI-HI-17W" secondAttribute="trailing" constant="20" id="pFH-C8-9uW"/>
+                            <constraint firstItem="9pg-CE-pfm" firstAttribute="centerX" secondItem="2BI-jx-qj0" secondAttribute="centerX" id="pdY-dC-YdM"/>
                             <constraint firstItem="5Hj-i2-Qtj" firstAttribute="centerY" secondItem="2BI-jx-qj0" secondAttribute="centerY" id="rtw-vm-nuC"/>
                             <constraint firstItem="dW4-Tr-e52" firstAttribute="top" secondItem="CQI-HI-17W" secondAttribute="bottom" constant="20" id="sRe-8z-cKq"/>
                         </constraints>
@@ -1495,6 +1509,7 @@
                     <connections>
                         <outlet property="currentPasswordField" destination="L9s-fd-IgU" id="KBw-Zh-OJl"/>
                         <outlet property="newPasswordField" destination="MQJ-WY-fc3" id="gnc-Ud-jHo"/>
+                        <outlet property="spinner" destination="9pg-CE-pfm" id="MOk-uZ-Yzc"/>
                         <outlet property="stackView" destination="5Hj-i2-Qtj" id="ra5-nW-3dE"/>
                         <segue destination="nDm-2E-9AG" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="6kS-y7-FTs"/>
                         <segue destination="nDm-2E-9AG" kind="unwind" identifier="unwindToAccessAccountVC" unwindAction="unwindToAccessAccountVCWithSegue:" id="wKs-Us-s3E"/>
@@ -1729,8 +1744,8 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TvH-2h-sTi"/>
-        <segue reference="DAz-cr-tTc"/>
+        <segue reference="Z9D-Lf-8h7"/>
         <segue reference="v5G-PO-KDn"/>
+        <segue reference="q2M-gZ-L3S"/>
     </inferredMetricsTieBreakers>
 </document>

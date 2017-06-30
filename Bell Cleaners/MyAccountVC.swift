@@ -29,7 +29,11 @@ class MyAccountVC: UIViewController {
     }
 
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        AuthService.instance.signOut()
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
+        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
+            timer in if Auth.auth().currentUser != nil {
+                AuthService.instance.signOut()
+            }
+        }
     }
 }

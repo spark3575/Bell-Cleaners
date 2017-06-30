@@ -12,27 +12,29 @@ import Firebase
 class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: EmailField!
-    @IBOutlet weak var passwordField: PasswordField!
+    @IBOutlet weak var passwordField: PasswordField!    
     @IBOutlet weak var signInButton: SignInButton!
-    @IBOutlet weak var touchButton: UIButton!
-    @IBOutlet weak var touchView: UIView!    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var textViewStack: UIStackView!
+    @IBOutlet weak var touchButton: UIButton!
+    @IBOutlet weak var touchView: UIView!
     
     private var activeField: UITextField?
     private let alertAccessAccount = PresentAlert()
     private let bellTouchSignIn = TouchIDAuth()
     private let defaults = UserDefaults.standard
-    private var handle: AuthStateDidChangeListenerHandle?
+    private let notification = NotificationCenter.default
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
     private var stackViewOriginY: CGFloat?
+    private var userRefObserverHandle: DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
+        stackViewOriginY = view.frame.origin.y
         if (defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
             if let email = defaults.string(forKey: Constants.DefaultsKeys.Email) {
                 var characters = Array(email.characters)
@@ -54,28 +56,30 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             if (defaults.bool(forKey: Constants.DefaultsKeys.HasUsedTouch)) {
                 touchSignIn()
             }
-        } else {
-            touchView.isHidden = true
-            textViewStack.isHidden = false
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        stackViewOriginY = view.frame.origin.y
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // [START auth_listener]
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
+        if !(defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
+            emailField.text = Constants.Literals.EmptyString
+            passwordField.text = Constants.Literals.EmptyString
+            touchView.isHidden = true
+            if (defaults.string(forKey: Constants.DefaultsKeys.Email)) == nil {
+                textViewStack.isHidden = false
+            } else {
+                textViewStack.isHidden = true
+            }
+        }
+        notification.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        notification.removeObserver(self)
+        if let userRefObserverHandle = userRefObserverHandle {
+            DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -99,16 +103,18 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-        let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
-        let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
-        let differenceY = targetY - textFieldY
-        let targetOffsetY = stackView.frame.origin.y + differenceY
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: Constants.Animations.Keyboard.DurationShow, animations: {
-            self.stackView.frame.origin.y = targetOffsetY
+        if notification.userInfo != nil {
+            let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+            let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
+            let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
+            let differenceY = targetY - textFieldY
+            let targetOffsetY = stackView.frame.origin.y + differenceY
             self.view.layoutIfNeeded()
-        })
+            UIView.animate(withDuration: Constants.Animations.Keyboard.DurationShow, animations: {
+                self.stackView.frame.origin.y = targetOffsetY
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -130,6 +136,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
             alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.ValidEmail, message: Constants.Alerts.Messages.VerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -138,7 +145,8 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
         } else {
             textField.resignFirstResponder()
-            alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.Password, message: Constants.Alerts.Messages.Password, actionTitle: Constants.Alerts.Actions.OK)            
+            alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.Password, message: Constants.Alerts.Messages.Password, actionTitle: Constants.Alerts.Actions.OK)
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -165,6 +173,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 alertSignInFailed.addAction(createAccountAction)
                 alertSignInFailed.addAction(cancelAction)
                 self.present(alertSignInFailed, animated: true, completion: nil)
+                self.view.layoutIfNeeded()
                 return
             }
             guard let _ = user, errorMessage == nil else {
@@ -174,7 +183,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             self.saveLogin(email: email, password: password)
             if let user = Auth.auth().currentUser , user.isEmailVerified {
                 self.spinner.startAnimating()
-                DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+                self.userRefObserverHandle = DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
                     self.spinner.stopAnimating()
                     if let user = snapshot.value as? [String : AnyObject] {
                         let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
@@ -183,14 +192,17 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                         let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                         let email = userEmail as! String
                         if email == Constants.Literals.AdminEmail {
+                            self.notification.removeObserver(self)
                             self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
                             return
                         }
                     }
                     if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                        self.notification.removeObserver(self)
                         self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                         return
                     } else {
+                        self.notification.removeObserver(self)
                         self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
                     }
                 })
@@ -203,6 +215,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 }
                 alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: nil))
                 self.present(alertAccessAccount, animated: true, completion: nil)
+                self.view.layoutIfNeeded()
             }
         })
     }
@@ -213,6 +226,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             self.spinner.stopAnimating()
             guard let _ = user, errorMessage == nil else {
                 self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                self.view.layoutIfNeeded()
                 return
             }
             self.signInButton.setTitle(Constants.Literals.SignIn, for: .normal)
@@ -220,6 +234,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             AuthService.instance.sendVerificationEmail()
             self.saveLogin(email: email, password: password)
             self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountSuccesful, message: Constants.Alerts.Messages.CheckVerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
+            self.view.layoutIfNeeded()
         })
     }
     
@@ -242,6 +257,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 if let errorMessage = errorMessage {
                     if errorMessage == Constants.ErrorMessages.TouchID, errorMessage == Constants.ErrorMessages.LAPasscode {
                         self.alertAccessAccount.presentSettingsActionAlert(fromController: self, title: errorMessage, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
+                        self.view.layoutIfNeeded()
                     }
                 } else {
                     if (self.defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
@@ -265,6 +281,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             }
         } else {
             self.alertAccessAccount.presentSettingsActionAlert(fromController: self, title: Constants.Alerts.Titles.TouchID, message: Constants.Alerts.Messages.TouchSettings, actionTitle: Constants.Alerts.Actions.OK)
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -283,7 +300,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 } else {
                     signInUser(email: email, password: password)
                 }
-                defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
             }
             if signInButton.currentTitle == Constants.Literals.CreateAccount {
                 self.createUser(email: email, password: password)
@@ -291,8 +307,10 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         } else {
             if signInButton.currentTitle == Constants.Literals.SignIn {
                 alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.SignInFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
+                self.view.layoutIfNeeded()
             } else {
                 alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.CreateAccountFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
+                self.view.layoutIfNeeded()
             }
         }
     }
@@ -301,5 +319,5 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         touchSignIn()
     }
     
-    @IBAction func unwindToAccessAccountVC(segue: UIStoryboardSegue) { }
+    @IBAction func unwindToAccessAccountVC(segue: UIStoryboardSegue) {}
 }

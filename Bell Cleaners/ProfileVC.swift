@@ -11,14 +11,14 @@ import Firebase
 
 class ProfileVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var emailField: EmailField!
-    @IBOutlet weak var passwordField: PasswordField!
-    @IBOutlet weak var firstNameField: FirstNameField!
-    @IBOutlet weak var lastNameField: LastNameField!
-    @IBOutlet weak var phoneNumberField: PhoneNumberField!
-    @IBOutlet weak var pickupDeliverySwitch: UISwitch!
     @IBOutlet weak var addressField: AddressField!
     @IBOutlet weak var cityField: CityField!
+    @IBOutlet weak var emailField: EmailField!
+    @IBOutlet weak var firstNameField: FirstNameField!
+    @IBOutlet weak var lastNameField: LastNameField!
+    @IBOutlet weak var passwordField: PasswordField!
+    @IBOutlet weak var phoneNumberField: PhoneNumberField!
+    @IBOutlet weak var pickupDeliverySwitch: UISwitch!
     @IBOutlet weak var zipcodeField: ZipcodeField!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var stackView: UIStackView!
@@ -30,12 +30,14 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private var enteredEmailField = UITextField()
     private var enteredPasswordField = UITextField()
     private let defaults = UserDefaults.standard
-    private var handle: AuthStateDidChangeListenerHandle?
     private var nextField: UITextField?
+    private let notification = NotificationCenter.default
     private var stackViewOriginY: CGFloat?
+    private var userRefObserverHandle: DatabaseHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        stackViewOriginY = view.frame.origin.y
         emailField.delegate = self
         passwordField.delegate = self
         firstNameField.delegate = self
@@ -48,9 +50,8 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        stackViewOriginY = view.frame.origin.y
         spinner.startAnimating()
-        DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+        userRefObserverHandle = DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
             if let user = snapshot.value as? [String : AnyObject] {
                 let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                 let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
@@ -83,22 +84,16 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 }
             }
         })
+        notification.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
         addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
         spinner.stopAnimating()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        // [START auth_listener]
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        notification.removeObserver(self)
+        DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -116,11 +111,11 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
         if activeField == emailField {
-            NotificationCenter.default.removeObserver(self)
+            notification.removeObserver(self)
             performSegue(withIdentifier: Constants.Segues.UpdateEmailVC, sender: self)
         }
         if activeField == passwordField {
-            NotificationCenter.default.removeObserver(self)
+            notification.removeObserver(self)
             performSegue(withIdentifier: Constants.Segues.UpdatePasswordVC, sender: self)
         }
     }
@@ -215,9 +210,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSave(_ sender: SaveButton) {
-        var userData = [Constants.Literals.Email: emailField.text as AnyObject,
-                        Constants.Literals.Password: passwordField.text as AnyObject,
-                        Constants.Literals.FirstName: firstNameField.text as AnyObject,
+        var userData = [Constants.Literals.FirstName: firstNameField.text as AnyObject,
                         Constants.Literals.LastName: lastNameField.text as AnyObject,
                         Constants.Literals.PhoneNumber: phoneNumberField.text as AnyObject,
                         Constants.Literals.PickupDelivery: pickupDeliverySwitch.isOn as AnyObject,
@@ -230,10 +223,12 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
+                notification.removeObserver(self)
                 performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                 return
             } else {
                 self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.MissingFields, actionTitle: Constants.Alerts.Actions.OK)
+                self.view.layoutIfNeeded()
             }
         }
         if pickupDeliverySwitch.isOn {
@@ -241,16 +236,24 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessPickupDelivery)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
+                notification.removeObserver(self)
                 performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                 return
             } else {
                 self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
+                self.view.layoutIfNeeded()
             }
         }
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        AuthService.instance.signOut()
+        DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
+        notification.removeObserver(self)
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
+        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
+            timer in if Auth.auth().currentUser != nil {
+                AuthService.instance.signOut()
+            }
+        }
     }
 }

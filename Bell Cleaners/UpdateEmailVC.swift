@@ -13,6 +13,7 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var newEmailField: EmailField!
     @IBOutlet weak var currentPasswordField: PasswordField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var stackView: UIStackView!
     
     private var activeField: UITextField?
@@ -20,31 +21,24 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     private let defaults = UserDefaults.standard
     private var enteredEmail: String?
     private var enteredPassword: String?
-    private var handle: AuthStateDidChangeListenerHandle?
+    private let notification = NotificationCenter.default
     private var stackViewOriginY: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        stackViewOriginY = view.frame.origin.y
         newEmailField.delegate = self
         currentPasswordField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        stackViewOriginY = view.frame.origin.y        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        // [START auth_listener]
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in }
+        notification.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        notification.removeObserver(self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -99,6 +93,7 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
             alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.ValidEmail, message: Constants.Alerts.Messages.VerificationEmail, actionTitle: Constants.Alerts.Actions.OK)
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -108,22 +103,28 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
             alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.Password, message: Constants.Alerts.Messages.Password, actionTitle: Constants.Alerts.Actions.OK)
+            self.view.layoutIfNeeded()
         }
     }
     
     @IBAction func didTapUpdate(_ sender: UpdateButton) {
         let currentEmail = defaults.string(forKey: Constants.DefaultsKeys.Email)
         if let newEmail = newEmailField.text, let currentPassword = currentPasswordField.text, !newEmail.isEmpty, !currentPassword.isEmpty {
+            spinner.startAnimating()
             AuthService.instance.reauthenticate(withEmail: currentEmail!, password: currentPassword, onComplete: { (errorMessage, user) in
+                self.spinner.stopAnimating()
                 guard errorMessage == nil else {
                     self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                    self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
+                    self.view.layoutIfNeeded()
                     return
                 }
                 // User re-authenticated.
+                self.spinner.startAnimating()
                 AuthService.instance.updateEmail(to: newEmail, onComplete: { (errorMessage, nil) in
+                    self.spinner.stopAnimating()
                     guard errorMessage == nil else {
                         self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                        self.view.layoutIfNeeded()
                         return
                     }
                 })
@@ -132,34 +133,45 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
                     DataService.instance.updateUser(uid: user.uid, userData: updatedEmail as [String: AnyObject])
                 }
                 self.defaults.setValue(newEmail, forKey: Constants.Literals.Email)
-            })
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
-                AuthService.instance.reauthenticate(withEmail: newEmail, password: currentPassword, onComplete: { (errorMessage, user) in
-                    guard errorMessage == nil else {
-                        self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                        self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
-                        return
-                    }
-                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {
-                        timer in if let user = Auth.auth().currentUser {
-                            print(user.email as Any)
-                            AuthService.instance.sendVerificationEmail()
+                Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { timer in
+                    self.spinner.startAnimating()
+                    AuthService.instance.reauthenticate(withEmail: newEmail, password: currentPassword, onComplete: { (errorMessage, user) in
+                        self.spinner.stopAnimating()
+                        guard errorMessage == nil else {
+                            self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
+                            self.notification.removeObserver(self)
+                            self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
+                            return
                         }
-                    }
-                    let alertUpdateEmail = UIAlertController(title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, preferredStyle: .alert)
-                    alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in
-                        self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
-                    }))
-                    self.present(alertUpdateEmail, animated: true, completion: nil)
-                })
-            }
+                        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { timer in
+                            if Auth.auth().currentUser != nil {
+                                AuthService.instance.sendVerificationEmail()
+                            }
+                        }
+                        self.defaults.set(false, forKey: Constants.DefaultsKeys.HasSignedInBefore)
+                        self.defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
+                        let alertUpdateEmail = UIAlertController(title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, preferredStyle: .alert)
+                        alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in                            
+                            self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
+                        }))
+                        self.notification.removeObserver(self)
+                        self.present(alertUpdateEmail, animated: true, completion: nil)
+                    })
+                }
+            })
         } else {
             self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)
+            self.view.layoutIfNeeded()
         }
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        AuthService.instance.signOut()
+        notification.removeObserver(self)
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
+        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
+            timer in if Auth.auth().currentUser != nil {
+                AuthService.instance.signOut()
+            }
+        }
     }
 }

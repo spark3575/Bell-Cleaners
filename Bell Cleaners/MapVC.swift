@@ -12,13 +12,13 @@ import CoreLocation
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var callBellButton: CallBellButton!
+    @IBOutlet weak var mapView: MKMapView!
     
+    private let alertAccessDenied = PresentAlert()
     private var locationManager = CLLocationManager()
     private var userLatitude = CLLocationDegrees()
     private var userLongitude = CLLocationDegrees()
-    private let alertAccessDenied = PresentAlert()
     
     override func viewDidLoad() {
         super.viewDidLoad()

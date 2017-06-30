@@ -176,6 +176,7 @@ struct Constants {
         static let EmptyString = ""
         static let ExpertGarmentCare = "Expert Garment Care"
         static let FirstName = "firstName"
+        static let KeyboardWillShow = "keyboardWillShow"
         static let LastName = "lastName"
         static let LocalizedReason = "Sign In with Touch ID"
         static let MailTo = "mailto:"
@@ -214,7 +215,8 @@ struct Constants {
     }
     
     struct TimerIntervals {
-        static let BellShake = 0.5
+        static let BellShakeDelay = 0.5
+        static let FirebaseDelay = 1.0
     }
     
     struct URLs {
