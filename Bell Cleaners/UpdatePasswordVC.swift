@@ -63,19 +63,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
         activeField = nil
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-        let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
-        let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
-        let differenceY = targetY - textFieldY
-        let targetOffsetY = stackView.frame.origin.y + differenceY
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: Constants.Animations.Keyboard.DurationShow, animations: {
-            self.stackView.frame.origin.y = targetOffsetY
-            self.view.layoutIfNeeded()
-        })
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.returnKeyType {
         case .next:
