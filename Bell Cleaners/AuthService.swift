@@ -81,6 +81,16 @@ class AuthService {
         }
     }
     
+    func createProfileChangeRequest(name: String) {
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = name
+        changeRequest?.commitChanges { (error) in
+            if let error = error {
+                print(Constants.ErrorMessages.SetDisplayName, error)
+            }
+        }
+    }
+    
     func signOut() {
         do {
             try Auth.auth().signOut()

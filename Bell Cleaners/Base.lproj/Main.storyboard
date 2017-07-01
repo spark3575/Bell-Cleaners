@@ -144,7 +144,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="178" width="280" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="178" width="280" height="47"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Alteration">
@@ -163,7 +163,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="237.5" width="280" height="47"/>
+                                        <rect key="frame" x="0.0" y="237" width="280" height="47.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Sneakers and more">
@@ -382,7 +382,7 @@
                                                     </constraint>
                                                 </constraints>
                                                 <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -395,7 +395,7 @@
                                                 <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                                 <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                 <variation key="heightClass=compact">
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -634,16 +634,52 @@
                                     </constraint>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="g3F-Uj-ZVX">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMa-W3-JJY" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="20" y="504" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="B6q-DK-dUi">
+                                        <variation key="heightClass=compact" constant="44"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="didTapSignOut:" destination="3tC-X3-qFp" eventType="touchUpInside" id="vpH-14-f9n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="g3F-Uj-ZVX" firstAttribute="centerX" secondItem="pRS-3f-W9I" secondAttribute="centerX" id="8Q6-51-xi6"/>
+                            <constraint firstItem="8EY-Uh-i8X" firstAttribute="top" secondItem="aMa-W3-JJY" secondAttribute="bottom" constant="20" id="GjX-K9-ZBQ"/>
+                            <constraint firstItem="g3F-Uj-ZVX" firstAttribute="centerY" secondItem="pRS-3f-W9I" secondAttribute="centerY" id="GnB-hq-63s"/>
                             <constraint firstItem="zNM-KK-iHh" firstAttribute="top" secondItem="pRS-3f-W9I" secondAttribute="top" id="Kmu-LF-Zii"/>
+                            <constraint firstAttribute="trailing" secondItem="aMa-W3-JJY" secondAttribute="trailing" constant="20" id="a18-Z9-EFg"/>
+                            <constraint firstItem="aMa-W3-JJY" firstAttribute="leading" secondItem="pRS-3f-W9I" secondAttribute="leading" constant="20" id="fHm-8Y-2R2"/>
                             <constraint firstItem="zNM-KK-iHh" firstAttribute="leading" secondItem="pRS-3f-W9I" secondAttribute="leading" id="he7-6D-hWT"/>
                             <constraint firstAttribute="trailing" secondItem="zNM-KK-iHh" secondAttribute="trailing" id="sXy-Xo-05T"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="FAQ-lg-6z9" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="WZe-0T-mjF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zs0-hx-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FAQ-lg-6z9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1939" y="-263"/>
         </scene>
@@ -823,6 +859,10 @@
                                     <action selector="didTapSignOut:" destination="T6v-Fh-8cu" eventType="touchUpInside" id="7jM-Yf-72D"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="E62-Ik-1ja">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -833,7 +873,9 @@
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerY" secondItem="voa-ew-vmy" secondAttribute="centerY" id="E3H-iH-nUo"/>
                             <constraint firstItem="tag-up-HVa" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="EgT-zg-YnS"/>
                             <constraint firstAttribute="trailing" secondItem="tag-up-HVa" secondAttribute="trailing" constant="20" id="FJV-an-LEU"/>
+                            <constraint firstItem="E62-Ik-1ja" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="L3y-qC-qri"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="N9h-11-Z7o"/>
+                            <constraint firstItem="E62-Ik-1ja" firstAttribute="centerY" secondItem="voa-ew-vmy" secondAttribute="centerY" id="gb8-Sp-PdA"/>
                             <constraint firstAttribute="trailing" secondItem="Fmk-B6-hY5" secondAttribute="trailing" constant="40" id="kqB-cS-BNV"/>
                             <constraint firstItem="s6h-Lx-1TS" firstAttribute="top" secondItem="tag-up-HVa" secondAttribute="bottom" constant="20" id="l8h-T1-WPU"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="orH-tt-lqP"/>
@@ -1220,7 +1262,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qDC-JQ-0Qx">
                                 <rect key="frame" x="40" y="206" width="240" height="156"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Email" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CU7-1G-WK9" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Email" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CU7-1G-WK9" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1229,7 +1271,7 @@
                                             </constraint>
                                         </constraints>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1238,11 +1280,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pN2-AD-7II" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pN2-AD-7II" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1384,7 +1426,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="5Hj-i2-Qtj">
                                 <rect key="frame" x="40" y="206" width="240" height="156"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="L9s-fd-IgU" customClass="CurrentPasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="L9s-fd-IgU" customClass="CurrentPasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1393,7 +1435,7 @@
                                             </constraint>
                                         </constraints>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1402,11 +1444,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MQJ-WY-fc3" customClass="NewPasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MQJ-WY-fc3" customClass="NewPasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1744,8 +1786,8 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z9D-Lf-8h7"/>
         <segue reference="v5G-PO-KDn"/>
-        <segue reference="q2M-gZ-L3S"/>
+        <segue reference="Z9D-Lf-8h7"/>
+        <segue reference="zTZ-BM-ifj"/>
     </inferredMetricsTieBreakers>
 </document>

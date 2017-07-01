@@ -32,10 +32,6 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
         currentPasswordField.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notification.removeObserver(self)
@@ -128,7 +124,6 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
                         self.spinner.stopAnimating()
                         guard errorMessage == nil else {
                             self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                            self.notification.removeObserver(self)
                             self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                             return
                         }
@@ -143,7 +138,6 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
                         alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in                            
                             self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                         }))
-                        self.notification.removeObserver(self)
                         self.present(alertUpdateEmail, animated: true, completion: nil)
                     })
                 }
@@ -155,7 +149,6 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        notification.removeObserver(self)
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
         Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
             timer in if Auth.auth().currentUser != nil {

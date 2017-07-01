@@ -215,7 +215,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                notification.removeObserver(self)
+                AuthService.instance.createProfileChangeRequest(name: firstName)
                 performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                 return
             } else {
@@ -228,7 +228,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessPickupDelivery)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                notification.removeObserver(self)
+                AuthService.instance.createProfileChangeRequest(name: firstName)
                 performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                 return
             } else {
@@ -239,8 +239,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
-        notification.removeObserver(self)
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
         Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
             timer in if Auth.auth().currentUser != nil {

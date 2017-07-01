@@ -131,6 +131,7 @@ struct Constants {
         static let LAPasscode = "Passcode needs to be set to use Touch ID"
         static let NetworkConnection = "Network connection not available"
         static let RequiresRecentLogin = "Requires recent login"
+        static let SetDisplayName = "Set Display Name Failed - "
         static let SignOut = "Sign Out Failed - "
         static let TouchID = "Touch ID not available"
         static let UserNotFound = "User not found"

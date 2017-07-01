@@ -29,7 +29,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
     private var stackViewOriginY: CGFloat?
-    private var userRefObserverHandle: DatabaseHandle?
+    private var userRefObserverHandle: DatabaseHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +77,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notification.removeObserver(self)
-        if let userRefObserverHandle = userRefObserverHandle {
-            DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
-        }
+        DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -179,17 +177,14 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                         let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                         let email = userEmail as! String
                         if email == Constants.Literals.AdminEmail {
-                            self.notification.removeObserver(self)
                             self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
                             return
                         }
                     }
                     if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                        self.notification.removeObserver(self)
                         self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
                         return
                     } else {
-                        self.notification.removeObserver(self)
                         self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
                     }
                 })

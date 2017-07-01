@@ -11,10 +11,6 @@ import Firebase
 
 class MyAccountVC: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction func didTapOrders(_ sender: OrdersButton) {
         
     }

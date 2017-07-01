@@ -31,10 +31,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
         currentPasswordField.delegate = self
         newPasswordField.delegate = self
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -61,6 +57,7 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
+        notification.removeObserver(self)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -127,7 +124,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        notification.removeObserver(self)
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
         Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
             timer in if Auth.auth().currentUser != nil {
