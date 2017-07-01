@@ -24,6 +24,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private let alertAccessAccount = PresentAlert()
     private let bellTouchSignIn = TouchIDAuth()
     private let defaults = UserDefaults.standard
+    private var keyboardManager: KeyboardManager?
     private let notification = NotificationCenter.default
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
@@ -71,7 +72,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                 textViewStack.isHidden = true
             }
         }
-        notification.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -96,25 +96,12 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        keyboardManager = KeyboardManager(observer: self, viewOfVC: [view], stackViewToMove: [stackView], textFieldToMove: [activeField!], notifyFromObject: nil)
+        keyboardManager?.viewMoveWhenKeyboardWillShow()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if notification.userInfo != nil {
-            let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-            let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
-            let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
-            let differenceY = targetY - textFieldY
-            let targetOffsetY = stackView.frame.origin.y + differenceY
-            self.view.layoutIfNeeded()
-            UIView.animate(withDuration: Constants.Animations.Keyboard.DurationShow, animations: {
-                self.stackView.frame.origin.y = targetOffsetY
-                self.view.layoutIfNeeded()
-            })
-        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

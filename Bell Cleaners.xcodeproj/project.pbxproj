@@ -20,6 +20,7 @@
 		B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */; };
 		B05900B71EE24529009238EE /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B61EE24529009238EE /* TouchIDAuthentication.swift */; };
 		B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616FFC1EF381ED001DB41D /* AdminVC.swift */; };
+		B06971DA1F069D220006D7D0 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06971D91F069D220006D7D0 /* KeyboardManager.swift */; };
 		B075A0331ED535DC003FF1BE /* dingSmallBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */; };
 		B075A0371ED53A7D003FF1BE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075A0361ED53A7D003FF1BE /* AVFoundation.framework */; };
 		B08956A01ED8765600736208 /* ShadowField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089569F1ED8765600736208 /* ShadowField.swift */; };
@@ -54,6 +55,7 @@
 		B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		B05900B61EE24529009238EE /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		B0616FFC1EF381ED001DB41D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
+		B06971D91F069D220006D7D0 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dingSmallBell.mp3; sourceTree = "<group>"; };
 		B075A0361ED53A7D003FF1BE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B089569F1ED8765600736208 /* ShadowField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowField.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				B08956A11ED91FEF00736208 /* PresentAlert.swift */,
 				B02C6FB31EE894D700A2465E /* SegueFromRight.swift */,
 				B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */,
+				B06971D91F069D220006D7D0 /* KeyboardManager.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				B0C02F231EDB9EE8002C4F52 /* AuthService.swift in Sources */,
 				B02C6FB41EE894D700A2465E /* SegueFromRight.swift in Sources */,
 				B05900B71EE24529009238EE /* TouchIDAuthentication.swift in Sources */,
+				B06971DA1F069D220006D7D0 /* KeyboardManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

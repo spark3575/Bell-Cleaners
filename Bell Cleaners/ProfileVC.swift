@@ -30,6 +30,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private var enteredEmailField = UITextField()
     private var enteredPasswordField = UITextField()
     private let defaults = UserDefaults.standard
+    private var keyboardManager: KeyboardManager?
     private var nextField: UITextField?
     private let notification = NotificationCenter.default
     private var stackViewOriginY: CGFloat?
@@ -84,9 +85,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 }
             }
         })
-        notification.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
-        addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
         spinner.stopAnimating()
     }
     
@@ -109,12 +107,18 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeField = textField
-        if activeField == emailField {
+        if textField != emailField, textField != passwordField {
+            activeField = textField
+            keyboardManager = KeyboardManager(observer: self, viewOfVC: [view], stackViewToMove: [stackView], textFieldToMove: [activeField!], notifyFromObject: nil)
+            keyboardManager?.viewMoveWhenKeyboardWillShow()
+            addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
+            addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
+        }
+        if textField == emailField {
             notification.removeObserver(self)
             performSegue(withIdentifier: Constants.Segues.UpdateEmailVC, sender: self)
         }
-        if activeField == passwordField {
+        if textField == passwordField {
             notification.removeObserver(self)
             performSegue(withIdentifier: Constants.Segues.UpdatePasswordVC, sender: self)
         }
@@ -122,18 +126,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
-        let targetY = view.frame.size.height - (keyboardFrame?.height)! - Constants.Keyboards.SpaceToText - (activeField?.frame.size.height)!
-        let textFieldY = stackView.frame.origin.y + (activeField?.frame.origin.y)!
-        let differenceY = targetY - textFieldY
-        let targetOffsetY = stackView.frame.origin.y + differenceY
-        UIView.animate(withDuration: Constants.Animations.Keyboard.DurationShow, animations: {
-            self.stackView.frame.origin.y = targetOffsetY
-            self.view.layoutIfNeeded()
-        })
     }
     
     @objc func goToNextField(currentTextField: UITextField) {

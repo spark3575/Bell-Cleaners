@@ -20,6 +20,7 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     private let alertUpdatePassword = PresentAlert()
     private var currentPassword: String?
     private let defaults = UserDefaults.standard
+    private var keyboardManager: KeyboardManager?
     private var newPassword: String?
     private let notification = NotificationCenter.default
     private var stackViewOriginY: CGFloat?
@@ -33,7 +34,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        notification.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,6 +55,8 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        keyboardManager = KeyboardManager(observer: self, viewOfVC: [view], stackViewToMove: [stackView], textFieldToMove: [activeField!], notifyFromObject: nil)
+        keyboardManager?.viewMoveWhenKeyboardWillShow()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

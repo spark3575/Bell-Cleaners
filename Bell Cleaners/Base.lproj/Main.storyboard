@@ -368,13 +368,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Yvv-Yl-f3u">
-                                <rect key="frame" x="20" y="142" width="280" height="284"/>
+                                <rect key="frame" x="40" y="142" width="240" height="284"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-sB-NtF" userLabel="email &amp; pass">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rTF-Qh-z7O" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                                 <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="48N-f0-w6a">
@@ -392,7 +392,7 @@
                                                 </variation>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••••" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-LS-JK9" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                                 <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -408,10 +408,10 @@
                                         <variation key="heightClass=compact" axis="horizontal"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lih-5U-Xa4" userLabel="signin &amp; touch">
-                                        <rect key="frame" x="0.0" y="112" width="280" height="100"/>
+                                        <rect key="frame" x="0.0" y="112" width="240" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-HI-Lzq" customClass="SignInButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="JkE-cM-m4L">
@@ -433,10 +433,10 @@
                                                 </connections>
                                             </button>
                                             <view opaque="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRA-O9-mdg">
-                                                <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rin-wt-YUL">
-                                                        <rect key="frame" x="118.5" y="0.0" width="44" height="44"/>
+                                                        <rect key="frame" x="98.5" y="0.0" width="44" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="44" id="5ea-rz-UHJ">
                                                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
@@ -460,14 +460,14 @@
                                         <variation key="heightClass=compact" axis="horizontal"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ta-sq-SxJ">
-                                        <rect key="frame" x="0.0" y="224" width="280" height="60"/>
+                                        <rect key="frame" x="0.0" y="224" width="240" height="60"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjo-Zz-UxC">
-                                                <rect key="frame" x="0.0" y="0.0" width="25" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="5" height="60"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="An account will be created if you do not have one." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-jL-ava">
-                                                <rect key="frame" x="25" y="0.0" width="230" height="60"/>
+                                                <rect key="frame" x="5" y="0.0" width="230" height="60"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="230" id="CtZ-hT-rqQ">
@@ -485,7 +485,7 @@
                                                 </variation>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wd-FR-ITg">
-                                                <rect key="frame" x="255" y="0.0" width="25" height="60"/>
+                                                <rect key="frame" x="235" y="0.0" width="5" height="60"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -553,7 +553,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JTH-i8-s7K">
-                                <rect key="frame" x="40" y="266" width="20" height="20"/>
+                                <rect key="frame" x="60" y="266" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -564,8 +564,8 @@
                             <constraint firstItem="zcZ-2s-8NH" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" id="PdM-ej-KAO"/>
                             <constraint firstItem="Yvv-Yl-f3u" firstAttribute="centerY" secondItem="5zb-pe-cqs" secondAttribute="centerY" id="RxQ-lF-uNb"/>
                             <constraint firstItem="JTH-i8-s7K" firstAttribute="centerY" secondItem="SLn-HI-Lzq" secondAttribute="centerY" id="Si5-sZ-9t3"/>
-                            <constraint firstItem="Yvv-Yl-f3u" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="20" id="VLE-3N-Gld"/>
-                            <constraint firstAttribute="trailing" secondItem="Yvv-Yl-f3u" secondAttribute="trailing" constant="20" id="ZwE-eN-jEl"/>
+                            <constraint firstItem="Yvv-Yl-f3u" firstAttribute="leading" secondItem="5zb-pe-cqs" secondAttribute="leading" constant="40" id="VLE-3N-Gld"/>
+                            <constraint firstAttribute="trailing" secondItem="Yvv-Yl-f3u" secondAttribute="trailing" constant="40" id="ZwE-eN-jEl"/>
                             <constraint firstAttribute="trailing" secondItem="zcZ-2s-8NH" secondAttribute="trailing" id="hW5-Ez-Db6"/>
                         </constraints>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -689,13 +689,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Fmk-B6-hY5">
-                                <rect key="frame" x="20" y="150" width="280" height="268"/>
+                                <rect key="frame" x="40" y="150" width="240" height="268"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-gm-wej">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="268"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWT-Sj-2oG" customClass="OrdersButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="JZm-Ay-wuq">
@@ -718,7 +718,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSK-rC-nC0" customClass="PickupDeliveryButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Pickup &amp; Delivery">
@@ -732,7 +732,7 @@
                                                 </variation>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-MX-r3Y" customClass="ProfileButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="112" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="112" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Profile">
@@ -749,7 +749,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QO-gg-SEH" customClass="SettingsButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="168" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="168" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Settings">
@@ -766,7 +766,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcw-gG-rxL" customClass="SupportButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="224" width="280" height="44"/>
+                                                <rect key="frame" x="0.0" y="224" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Support">
@@ -827,14 +827,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="x7z-cG-xg1" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" id="8zC-19-EiW"/>
-                            <constraint firstItem="Fmk-B6-hY5" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="9bY-gZ-YTx"/>
+                            <constraint firstItem="Fmk-B6-hY5" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="40" id="9bY-gZ-YTx"/>
                             <constraint firstAttribute="trailing" secondItem="x7z-cG-xg1" secondAttribute="trailing" id="CUW-MC-rGi"/>
                             <constraint firstItem="x7z-cG-xg1" firstAttribute="top" secondItem="voa-ew-vmy" secondAttribute="top" id="DAh-cb-KvL"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerY" secondItem="voa-ew-vmy" secondAttribute="centerY" id="E3H-iH-nUo"/>
                             <constraint firstItem="tag-up-HVa" firstAttribute="leading" secondItem="voa-ew-vmy" secondAttribute="leading" constant="20" id="EgT-zg-YnS"/>
                             <constraint firstAttribute="trailing" secondItem="tag-up-HVa" secondAttribute="trailing" constant="20" id="FJV-an-LEU"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="N9h-11-Z7o"/>
-                            <constraint firstAttribute="trailing" secondItem="Fmk-B6-hY5" secondAttribute="trailing" constant="20" id="kqB-cS-BNV"/>
+                            <constraint firstAttribute="trailing" secondItem="Fmk-B6-hY5" secondAttribute="trailing" constant="40" id="kqB-cS-BNV"/>
                             <constraint firstItem="s6h-Lx-1TS" firstAttribute="top" secondItem="tag-up-HVa" secondAttribute="bottom" constant="20" id="l8h-T1-WPU"/>
                             <constraint firstItem="Fmk-B6-hY5" firstAttribute="centerX" secondItem="voa-ew-vmy" secondAttribute="centerX" id="orH-tt-lqP"/>
                         </constraints>
@@ -1218,10 +1218,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qDC-JQ-0Qx">
-                                <rect key="frame" x="20" y="206" width="280" height="156"/>
+                                <rect key="frame" x="40" y="206" width="240" height="156"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Email" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CU7-1G-WK9" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="FpB-8h-SiE">
@@ -1239,7 +1239,7 @@
                                         </variation>
                                     </textField>
                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pN2-AD-7II" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -1252,7 +1252,7 @@
                                         </variation>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hC6-58-s9n" customClass="CancelButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="112" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="112" width="240" height="44"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="57D-ol-FNb">
@@ -1315,11 +1315,11 @@
                             <constraint firstItem="qDC-JQ-0Qx" firstAttribute="centerX" secondItem="mO9-gL-f3d" secondAttribute="centerX" id="A7Y-kg-JLi"/>
                             <constraint firstItem="Wpv-pY-Kvb" firstAttribute="centerY" secondItem="mO9-gL-f3d" secondAttribute="centerY" id="Bv0-jM-VBo"/>
                             <constraint firstAttribute="trailing" secondItem="1dp-Eo-NC8" secondAttribute="trailing" id="UnK-7T-Srq"/>
-                            <constraint firstItem="qDC-JQ-0Qx" firstAttribute="leading" secondItem="mO9-gL-f3d" secondAttribute="leading" constant="20" id="acx-Qk-61D"/>
+                            <constraint firstItem="qDC-JQ-0Qx" firstAttribute="leading" secondItem="mO9-gL-f3d" secondAttribute="leading" constant="40" id="acx-Qk-61D"/>
                             <constraint firstItem="6Cq-Ah-oeF" firstAttribute="top" secondItem="ZqH-oi-TKh" secondAttribute="bottom" constant="20" id="aji-P8-oEY"/>
                             <constraint firstItem="Wpv-pY-Kvb" firstAttribute="centerX" secondItem="mO9-gL-f3d" secondAttribute="centerX" id="exA-uR-Yr5"/>
                             <constraint firstItem="qDC-JQ-0Qx" firstAttribute="centerY" secondItem="mO9-gL-f3d" secondAttribute="centerY" id="fMX-fp-5bZ"/>
-                            <constraint firstAttribute="trailing" secondItem="qDC-JQ-0Qx" secondAttribute="trailing" constant="20" id="fWp-SE-iea"/>
+                            <constraint firstAttribute="trailing" secondItem="qDC-JQ-0Qx" secondAttribute="trailing" constant="40" id="fWp-SE-iea"/>
                             <constraint firstItem="1dp-Eo-NC8" firstAttribute="top" secondItem="mO9-gL-f3d" secondAttribute="top" id="gpV-cl-q27"/>
                             <constraint firstAttribute="trailing" secondItem="ZqH-oi-TKh" secondAttribute="trailing" constant="20" id="hHA-3t-KLq"/>
                             <constraint firstItem="ZqH-oi-TKh" firstAttribute="leading" secondItem="mO9-gL-f3d" secondAttribute="leading" constant="20" id="t97-D9-bCl"/>
@@ -1382,10 +1382,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="5Hj-i2-Qtj">
-                                <rect key="frame" x="20" y="206" width="280" height="156"/>
+                                <rect key="frame" x="40" y="206" width="240" height="156"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current Password" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="L9s-fd-IgU" customClass="CurrentPasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="or8-mA-Nyh">
@@ -1403,7 +1403,7 @@
                                         </variation>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MQJ-WY-fc3" customClass="NewPasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -1416,7 +1416,7 @@
                                         </variation>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvj-fz-oRx" customClass="CancelButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="112" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="112" width="240" height="44"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="wUy-Ge-QiN">
@@ -1496,9 +1496,9 @@
                             <constraint firstItem="CQI-HI-17W" firstAttribute="leading" secondItem="2BI-jx-qj0" secondAttribute="leading" constant="20" id="9Ko-jE-ixw"/>
                             <constraint firstItem="y1H-3H-Uz2" firstAttribute="leading" secondItem="2BI-jx-qj0" secondAttribute="leading" id="Hif-Kf-WiL"/>
                             <constraint firstItem="5Hj-i2-Qtj" firstAttribute="centerX" secondItem="2BI-jx-qj0" secondAttribute="centerX" id="IXj-3o-FFN"/>
-                            <constraint firstItem="5Hj-i2-Qtj" firstAttribute="leading" secondItem="2BI-jx-qj0" secondAttribute="leading" constant="20" id="MDI-vg-HhP"/>
+                            <constraint firstItem="5Hj-i2-Qtj" firstAttribute="leading" secondItem="2BI-jx-qj0" secondAttribute="leading" constant="40" id="MDI-vg-HhP"/>
                             <constraint firstItem="9pg-CE-pfm" firstAttribute="centerY" secondItem="2BI-jx-qj0" secondAttribute="centerY" id="R06-52-8z1"/>
-                            <constraint firstAttribute="trailing" secondItem="5Hj-i2-Qtj" secondAttribute="trailing" constant="20" id="Yfm-An-cVp"/>
+                            <constraint firstAttribute="trailing" secondItem="5Hj-i2-Qtj" secondAttribute="trailing" constant="40" id="Yfm-An-cVp"/>
                             <constraint firstItem="y1H-3H-Uz2" firstAttribute="top" secondItem="2BI-jx-qj0" secondAttribute="top" id="afD-Gs-bc7"/>
                             <constraint firstAttribute="trailing" secondItem="CQI-HI-17W" secondAttribute="trailing" constant="20" id="pFH-C8-9uW"/>
                             <constraint firstItem="9pg-CE-pfm" firstAttribute="centerX" secondItem="2BI-jx-qj0" secondAttribute="centerX" id="pdY-dC-YdM"/>
