@@ -166,8 +166,13 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                     AuthService.instance.sendPasswordReset(withEmail: email)
                 }))
                 alertSignInFailed.addAction(UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil))
-                self.present(alertSignInFailed, animated: true, completion: nil)
-                self.view.layoutIfNeeded()
+                self.spinner.startAnimating()
+                self.present(alertSignInFailed, animated: true, completion: {
+                    Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
+                        self.alertAccessAccount.presentAlert(fromController: self, title: Constants.Alerts.Titles.ResetPasswordEmailSent, message: Constants.Alerts.Messages.ResetPasswordEmailSent, actionTitle: Constants.Alerts.Actions.OK)
+                    }
+                })
+                self.spinner.stopAnimating()                
                 return
             }
             guard let _ = user, errorMessage == nil else {
