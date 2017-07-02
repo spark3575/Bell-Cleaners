@@ -17,6 +17,10 @@ class SegueFromRight: UIStoryboardSegue {
         src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
         dst.view.transform = CGAffineTransform(translationX: src.view.frame.size.width, y: Constants.Animations.Segue.TranslationY)
         
-        UIView.animate(withDuration: Constants.Animations.Segue.Duration, delay: Constants.Animations.Segue.Delay, options: UIViewAnimationOptions.curveEaseInOut, animations: { dst.view.transform = CGAffineTransform(translationX: Constants.Animations.Segue.TranslationX, y: Constants.Animations.Segue.TranslationY) }, completion: { finished in src.present(dst, animated: false, completion: nil) })
+        UIView.animate(withDuration: Constants.Animations.Segue.Duration, delay: Constants.Animations.Segue.Delay, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            dst.view.transform = CGAffineTransform(translationX: Constants.Animations.Segue.TranslationX, y: Constants.Animations.Segue.TranslationY)            
+        }, completion: { (finished) in
+            src.present(dst, animated: false, completion: nil)
+        })
     }
 }

@@ -49,12 +49,8 @@ class EmailField: ShadowField {
             return nil
         }
         let range = NSMakeRange(Constants.Validations.Email.RangeLocation, NSString(string: trimmedText).length)
-        let allMatches = dataDetector.matches(in: trimmedText,
-                                              options: [],
-                                              range: range)
-        if allMatches.count == Constants.Validations.Email.MatchesCount,
-            allMatches.first?.url?.absoluteString.contains(Constants.Literals.MailTo) == true
-        {
+        let allMatches = dataDetector.matches(in: trimmedText, options: [], range: range)
+        if allMatches.count == Constants.Validations.Email.MatchesCount, allMatches.first?.url?.absoluteString.contains(Constants.Literals.MailTo) == true {
             return trimmedText
         }
         return nil

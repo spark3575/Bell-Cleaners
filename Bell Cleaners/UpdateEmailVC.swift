@@ -127,7 +127,7 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
                             self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                             return
                         }
-                        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { timer in
+                        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
                             if Auth.auth().currentUser != nil {
                                 AuthService.instance.sendVerificationEmail()
                             }
@@ -135,7 +135,7 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
                         self.defaults.set(false, forKey: Constants.DefaultsKeys.HasSignedInBefore)
                         self.defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
                         let alertUpdateEmail = UIAlertController(title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, preferredStyle: .alert)
-                        alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in                            
+                        alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { (action) in                            
                             self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                         }))
                         self.present(alertUpdateEmail, animated: true, completion: nil)
@@ -150,8 +150,8 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
-            timer in if Auth.auth().currentUser != nil {
+        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
+            if Auth.auth().currentUser != nil {
                 AuthService.instance.signOut()
             }
         }

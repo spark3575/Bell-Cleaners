@@ -144,7 +144,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="178" width="280" height="47"/>
+                                        <rect key="frame" x="0.0" y="178" width="280" height="47.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Alteration">
@@ -163,7 +163,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="237" width="280" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="237.5" width="280" height="47"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Sneakers and more">
@@ -917,7 +917,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-fs-QSJ">
                                 <rect key="frame" x="40" y="78.5" width="240" height="411"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jdb-AB-K6V" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jdb-AB-K6V" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -926,7 +926,7 @@
                                             </constraint>
                                         </constraints>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -935,11 +935,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HL7-4s-4Jg" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HL7-4s-4Jg" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="47" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1786,8 +1786,8 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v5G-PO-KDn"/>
-        <segue reference="Z9D-Lf-8h7"/>
-        <segue reference="zTZ-BM-ifj"/>
+        <segue reference="xiN-Ll-6Yj"/>
+        <segue reference="TvH-2h-sTi"/>
+        <segue reference="DAz-cr-tTc"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -57,17 +57,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             manager.stopUpdatingLocation()
             guard let appleMapsRouteURL = appleMapsRouteToBell else { return }
             guard let googleMapsRouteURL = googleMapsRouteToBell else { return }
-            let mapChoiceAlert = UIAlertController(title: Constants.Alerts.Titles.MapAppsAvailable, message: nil, preferredStyle: .alert)
-            let appleMapsAction = UIAlertAction(title: Constants.Alerts.Actions.AppleMaps, style: .default, handler: { action in
+            let alertMapChoice = UIAlertController(title: Constants.Alerts.Titles.MapAppsAvailable, message: nil, preferredStyle: .alert)
+            alertMapChoice.addAction(UIAlertAction(title: Constants.Alerts.Actions.AppleMaps, style: .default, handler: { (action) in
                 UIApplication.shared.open(appleMapsRouteURL, options: [:], completionHandler: nil)
-            })
-            let googleMapsAction = UIAlertAction(title: Constants.Alerts.Actions.GoogleMaps, style: .default, handler: { action in
+            }))
+            alertMapChoice.addAction(UIAlertAction(title: Constants.Alerts.Actions.GoogleMaps, style: .default, handler: { (action) in
                 UIApplication.shared.open(googleMapsRouteURL, options: [:], completionHandler: nil)
-            })
-            mapChoiceAlert.addAction(appleMapsAction)
-            mapChoiceAlert.addAction(googleMapsAction)
+            }))
             if (UIApplication.shared.canOpenURL(URL(string:Constants.URLs.Google)!)) {
-                present(mapChoiceAlert, animated: true, completion: nil)
+                present(alertMapChoice, animated: true, completion: nil)
                 return
             }            
             UIApplication.shared.open(appleMapsRouteURL, options: [:], completionHandler: nil)

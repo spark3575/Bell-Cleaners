@@ -55,7 +55,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         userRefObserverHandle = DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
             if let user = snapshot.value as? [String : AnyObject] {
                 let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
-                let password = user[Constants.Literals.Password] ?? Constants.Literals.EmptyString as AnyObject
                 let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
                 let lastName = user[Constants.Literals.LastName] ?? Constants.Literals.EmptyString as AnyObject
                 let phoneNumber = user[Constants.Literals.PhoneNumber] ?? Constants.Literals.EmptyString as AnyObject
@@ -65,8 +64,12 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
                 self.currentEmail = (email as! String)
                 self.emailField.text = self.currentEmail
-                self.currentPassword = (password as! String)
-                self.passwordField.text = self.currentPassword
+                var charactersInPassword = Array(self.currentPassword.characters)
+                let count = self.currentEmail.characters.count
+                for _ in 0..<count {
+                    charactersInPassword.append(Constants.Literals.SecureText)
+                }
+                self.passwordField.text = String(charactersInPassword[0..<count])
                 self.firstNameField.text = (firstName as! String)
                 self.lastNameField.text = (lastName as! String)
                 self.phoneNumberField.text = (phoneNumber as! String)
@@ -240,8 +243,8 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
-            timer in if Auth.auth().currentUser != nil {
+        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
+            if Auth.auth().currentUser != nil {
                 AuthService.instance.signOut()
             }
         }

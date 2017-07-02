@@ -38,8 +38,8 @@ class AuthService {
             } else {
                 onComplete?(nil, user)
                 if let user = user {
-                    let userData = [Constants.Literals.Email: email, Constants.Literals.Password: password]
-                    DataService.instance.updateUser(uid: user.uid, userData: userData as [String: AnyObject])
+                    let userEmail = [Constants.Literals.Email: email]
+                    DataService.instance.updateUser(uid: user.uid, userData: userEmail as [String: AnyObject])
                 }
             }
         })
@@ -87,6 +87,14 @@ class AuthService {
         changeRequest?.commitChanges { (error) in
             if let error = error {
                 print(Constants.ErrorMessages.SetDisplayName, error)
+            }
+        }
+    }
+    
+    func sendPasswordReset(withEmail email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let error = error {
+                print(Constants.ErrorMessages.SendPasswordReset, error)
             }
         }
     }

@@ -139,24 +139,33 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         spinner.startAnimating()
         AuthService.instance.signIn(withEmail: email, password: password, onComplete: { (errorMessage, user) in
             self.spinner.stopAnimating()
-            let alertSignInFailed = UIAlertController(title: Constants.Alerts.Titles.UserNotFound, message: Constants.Alerts.Messages.CreateNewAccount, preferredStyle: .alert)
-            var createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
-                self.signInButton.setTitle(Constants.Literals.CreateAccount, for: .normal)
-                self.emailField.text = Constants.Literals.EmptyString
-                self.passwordField.text = Constants.Literals.EmptyString
-                self.touchView.isHidden = true
-                self.textViewStack.isHidden = true
-            })
-            let cancelAction = UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil)
+            var alertSignInFailed = UIAlertController(title: Constants.Alerts.Titles.UserNotFound, message: Constants.Alerts.Messages.CreateNewAccount, preferredStyle: .alert)
             if errorMessage == Constants.ErrorMessages.UserNotFound {
+                var createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { (action) in
+                    self.signInButton.setTitle(Constants.Literals.CreateAccount, for: .normal)
+                    self.emailField.text = Constants.Literals.EmptyString
+                    self.passwordField.text = Constants.Literals.EmptyString
+                    self.touchView.isHidden = true
+                    self.textViewStack.isHidden = true
+                })
                 if !(self.defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
-                    createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { action in
+                    createAccountAction = UIAlertAction(title: Constants.Alerts.Actions.CreateAccount, style: .default, handler: { (action) in
                         self.createUser(email: email, password: password)
                     })
                 }
                 self.defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
                 alertSignInFailed.addAction(createAccountAction)
-                alertSignInFailed.addAction(cancelAction)
+                alertSignInFailed.addAction(UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil))
+                self.present(alertSignInFailed, animated: true, completion: nil)
+                self.view.layoutIfNeeded()
+                return
+            }
+            if errorMessage == Constants.ErrorMessages.InvalidPassword {
+                alertSignInFailed = UIAlertController(title: Constants.Alerts.Titles.IncorrectPassword, message: Constants.Alerts.Messages.IncorrectPassword, preferredStyle: .alert)
+                alertSignInFailed.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendResetPasswordEmail, style: .default, handler: { (action) in
+                    AuthService.instance.sendPasswordReset(withEmail: email)
+                }))
+                alertSignInFailed.addAction(UIAlertAction(title: Constants.Alerts.Actions.Cancel, style: .default, handler: nil))
                 self.present(alertSignInFailed, animated: true, completion: nil)
                 self.view.layoutIfNeeded()
                 return
@@ -189,14 +198,14 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                     }
                 })
             } else {
-                let alertAccessAccount = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, preferredStyle: .alert)
+                let alertEmailVerification = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, preferredStyle: .alert)
                 if let user = Auth.auth().currentUser, !user.isEmailVerified {
-                    alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendVerificationEmail, style: .default, handler: { action in
+                    alertEmailVerification.addAction(UIAlertAction(title: Constants.Alerts.Actions.SendVerificationEmail, style: .default, handler: { (action) in
                         AuthService.instance.sendVerificationEmail()
                     }))
                 }
-                alertAccessAccount.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: nil))
-                self.present(alertAccessAccount, animated: true, completion: nil)
+                alertEmailVerification.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: nil))
+                self.present(alertEmailVerification, animated: true, completion: nil)
                 self.view.layoutIfNeeded()
             }
         })

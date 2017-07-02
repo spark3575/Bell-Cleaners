@@ -104,15 +104,11 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
                         return
                     }
                 })
-                if let user = Auth.auth().currentUser {
-                    let updatedPassword = [Constants.Literals.Password: newPassword]
-                    DataService.instance.updateUser(uid: user.uid, userData: updatedPassword as [String: AnyObject])
-                }
             })
             defaults.set(false, forKey: Constants.DefaultsKeys.HasSignedInBefore)
             defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
             let alertUpdatePassword = UIAlertController(title: Constants.Alerts.Titles.UpdatePasswordSuccesful, message: Constants.Alerts.Messages.UpdatePasswordSuccesful, preferredStyle: .alert)
-            alertUpdatePassword.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { action in                
+            alertUpdatePassword.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { (action) in                
                 self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
             }))
             self.notification.removeObserver(self)
@@ -125,8 +121,8 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) {
-            timer in if Auth.auth().currentUser != nil {
+        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
+            if Auth.auth().currentUser != nil {
                 AuthService.instance.signOut()
             }
         }
