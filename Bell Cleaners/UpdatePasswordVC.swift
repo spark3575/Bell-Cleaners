@@ -121,10 +121,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
-            if Auth.auth().currentUser != nil {
-                AuthService.instance.signOut()
-            }
-        }
+        AuthService.instance.signOut()
     }
 }

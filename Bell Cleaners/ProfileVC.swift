@@ -34,7 +34,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private var nextField: UITextField?
     private let notification = NotificationCenter.default
     private var stackViewOriginY: CGFloat?
-    private var userRefObserverHandle: DatabaseHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +51,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         spinner.startAnimating()
-        userRefObserverHandle = DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+        DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
             if let user = snapshot.value as? [String : AnyObject] {
                 let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                 let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
@@ -89,7 +88,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notification.removeObserver(self)
-        DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -238,10 +236,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
         performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
-            if Auth.auth().currentUser != nil {
-                AuthService.instance.signOut()
-            }
-        }
+        AuthService.instance.signOut()
     }
 }

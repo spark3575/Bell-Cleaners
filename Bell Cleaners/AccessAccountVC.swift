@@ -29,7 +29,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
     private var stackViewOriginY: CGFloat?
-    private var userRefObserverHandle: DatabaseHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +65,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notification.removeObserver(self)
-        if userRefObserverHandle != nil {
-            DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
-        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -173,7 +169,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             self.saveLogin(email: email, password: password)
             if let user = Auth.auth().currentUser , user.isEmailVerified {
                 self.spinner.startAnimating()
-                self.userRefObserverHandle = DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+                DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
                     self.spinner.stopAnimating()
                     if let user = snapshot.value as? [String : AnyObject] {
                         let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
@@ -186,13 +182,13 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                             return
                         }
                     }
-                    if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                        self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
-                        return
-                    } else {
-                        self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
-                    }
                 })
+                if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                    self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
+                    return
+                } else {
+                    self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
+                }
             } else {
                 let alertEmailVerification = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, preferredStyle: .alert)
                 if let user = Auth.auth().currentUser, !user.isEmailVerified {
