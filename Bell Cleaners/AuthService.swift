@@ -66,17 +66,23 @@ class AuthService {
     }
     
     func updateEmail(to email: String, onComplete: Completion?) {
+        let user = Auth.auth().currentUser
         Auth.auth().currentUser?.updateEmail(to: email) { (error) in
             if error != nil {
                 self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            } else {
+                onComplete?(nil, user)
             }
         }
     }
     
     func updatePassword(to password: String, onComplete: Completion?) {
+        let user = Auth.auth().currentUser
         Auth.auth().currentUser?.updatePassword(to: password) { (error) in
             if error != nil {
                 self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            } else {
+                onComplete?(nil, user)
             }
         }
     }

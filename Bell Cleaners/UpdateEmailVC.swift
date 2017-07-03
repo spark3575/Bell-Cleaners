@@ -98,49 +98,41 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             AuthService.instance.reauthenticate(withEmail: currentEmail!, password: currentPassword, onComplete: { (errorMessage, user) in
                 self.spinner.stopAnimating()
-                guard errorMessage == nil else {
+                guard errorMessage == nil, user != nil else {
                     self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                     self.view.layoutIfNeeded()
                     return
                 }
                 // User re-authenticated.
                 self.spinner.startAnimating()
-                AuthService.instance.updateEmail(to: newEmail, onComplete: { (errorMessage, nil) in
+                AuthService.instance.updateEmail(to: newEmail, onComplete: { (errorMessage, user) in
                     self.spinner.stopAnimating()
-                    guard errorMessage == nil else {
+                    guard errorMessage == nil, user != nil else {
                         self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                         self.view.layoutIfNeeded()
                         return
                     }
-                })
-                if let user = Auth.auth().currentUser {
                     let updatedEmail = [Constants.Literals.Email: newEmail]
-                    DataService.instance.updateUser(uid: user.uid, userData: updatedEmail as [String: AnyObject])
-                }
-                self.defaults.setValue(newEmail, forKey: Constants.Literals.Email)
-                Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { timer in
+                    DataService.instance.updateUser(uid: (user?.uid)!, userData: updatedEmail as [String: AnyObject])
+                    self.defaults.setValue(newEmail, forKey: Constants.Literals.Email)
                     self.spinner.startAnimating()
                     AuthService.instance.reauthenticate(withEmail: newEmail, password: currentPassword, onComplete: { (errorMessage, user) in
                         self.spinner.stopAnimating()
-                        guard errorMessage == nil else {
+                        guard errorMessage == nil, user != nil else {
                             self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                             self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                             return
                         }
-                        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.FirebaseDelay, repeats: false) { (timer) in
-                            if Auth.auth().currentUser != nil {
-                                AuthService.instance.sendVerificationEmail()
-                            }
-                        }
+                        AuthService.instance.sendVerificationEmail()
                         self.defaults.set(false, forKey: Constants.DefaultsKeys.HasSignedInBefore)
                         self.defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
                         let alertUpdateEmail = UIAlertController(title: Constants.Alerts.Titles.UpdateEmailSuccesful, message: Constants.Alerts.Messages.UpdateEmailSuccesful, preferredStyle: .alert)
-                        alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { (action) in                            
+                        alertUpdateEmail.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { (action) in
                             self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
                         }))
                         self.present(alertUpdateEmail, animated: true, completion: nil)
                     })
-                }
+                })
             })
         } else {
             self.alertUpdateEmail.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdateEmailFailed, message: Constants.Alerts.Messages.CheckEmailPassword, actionTitle: Constants.Alerts.Actions.OK)

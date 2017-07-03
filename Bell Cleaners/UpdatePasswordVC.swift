@@ -89,30 +89,30 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             AuthService.instance.reauthenticate(withEmail: currentEmail!, password: currentPassword, onComplete: { (errorMessage, user) in
                 self.spinner.stopAnimating()
-                guard errorMessage == nil else {
+                guard errorMessage == nil, user != nil else {
                     self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                     self.view.layoutIfNeeded()
                     return
                 }
                 // User re-authenticated.
                 self.spinner.startAnimating()
-                AuthService.instance.updatePassword(to: newPassword, onComplete: { (errorMessage, nil) in
+                AuthService.instance.updatePassword(to: newPassword, onComplete: { (errorMessage, user) in
                     self.spinner.stopAnimating()
-                    guard errorMessage == nil else {
+                    guard errorMessage == nil, user != nil else {
                         self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
                         self.view.layoutIfNeeded()
                         return
                     }
+                    self.defaults.set(false, forKey: Constants.DefaultsKeys.HasSignedInBefore)
+                    self.defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
+                    let alertUpdatePassword = UIAlertController(title: Constants.Alerts.Titles.UpdatePasswordSuccesful, message: Constants.Alerts.Messages.UpdatePasswordSuccesful, preferredStyle: .alert)
+                    alertUpdatePassword.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { (action) in
+                        self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
+                    }))
+                    self.notification.removeObserver(self)
+                    self.present(alertUpdatePassword, animated: true, completion: nil)
                 })
             })
-            defaults.set(false, forKey: Constants.DefaultsKeys.HasSignedInBefore)
-            defaults.set(false, forKey: Constants.DefaultsKeys.HasUsedTouch)
-            let alertUpdatePassword = UIAlertController(title: Constants.Alerts.Titles.UpdatePasswordSuccesful, message: Constants.Alerts.Messages.UpdatePasswordSuccesful, preferredStyle: .alert)
-            alertUpdatePassword.addAction(UIAlertAction(title: Constants.Alerts.Actions.OK, style: .default, handler: { (action) in                
-                self.performSegue(withIdentifier: Constants.Segues.UnwindToAccessAccountVC, sender: self)
-            }))
-            self.notification.removeObserver(self)
-            self.present(alertUpdatePassword, animated: true, completion: nil)
         } else {
             self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: Constants.Alerts.Messages.UpdatePasswordFailed, actionTitle: Constants.Alerts.Actions.OK)
             self.view.layoutIfNeeded()
