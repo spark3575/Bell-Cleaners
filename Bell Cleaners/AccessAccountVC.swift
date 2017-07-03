@@ -38,18 +38,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         stackViewOriginY = view.frame.origin.y
         if (defaults.bool(forKey: Constants.DefaultsKeys.HasSignedInBefore)) {
             if let email = defaults.string(forKey: Constants.DefaultsKeys.Email) {
-                var characters = Array(email.characters)
-                var count = email.characters.count
-                var replaceCount = 0
-                for x in 4..<count {
-                    if x < 10 {
-                        characters[x] = Constants.Literals.SecureText
-                    } else {
-                        replaceCount += 1
-                    }
-                }
-                count -= replaceCount
-                emailField.text = String(characters[0..<count])
+                emailField.formatWithSecureText(email: email, formattedTextField: emailField)
                 securedTextEmail = emailField.text
                 textViewStack.isHidden = true
             }
@@ -77,7 +66,9 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notification.removeObserver(self)
-        DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
+        if userRefObserverHandle != nil {
+            DataService.instance.currentUserRef.removeObserver(withHandle: userRefObserverHandle)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

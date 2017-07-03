@@ -64,12 +64,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
                 self.currentEmail = (email as! String)
                 self.emailField.text = self.currentEmail
-                var charactersInPassword = Array(self.currentPassword.characters)
-                let count = self.currentEmail.characters.count
-                for _ in 0..<count {
-                    charactersInPassword.append(Constants.Literals.SecureText)
-                }
-                self.passwordField.text = String(charactersInPassword[0..<count])
+                self.passwordField.formatWithSecureText(password: self.currentPassword, email: self.currentEmail, formattedTextField: self.passwordField)
                 self.firstNameField.text = (firstName as! String)
                 self.lastNameField.text = (lastName as! String)
                 self.phoneNumberField.text = (phoneNumber as! String)
@@ -114,8 +109,8 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
             activeField = textField
             keyboardManager = KeyboardManager(observer: self, viewOfVC: [view], stackViewToMove: [stackView], textFieldToMove: [activeField!], notifyFromObject: nil)
             keyboardManager?.viewMoveWhenKeyboardWillShow()
-            addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField(currentTextField:)))
-            addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField(currentTextField:)))
+            addNextButtonToKeyboard(textField: phoneNumberField, actionTitle: Constants.Keyboards.ActionNext, action: #selector(goToNextField))
+            addNextButtonToKeyboard(textField: zipcodeField, actionTitle: Constants.Keyboards.ActionDone, action: #selector(goToNextField))
         }
         if textField == emailField {
             notification.removeObserver(self)
@@ -131,7 +126,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
         activeField = nil
     }
     
-    @objc func goToNextField(currentTextField: UITextField) {
+    @objc func goToNextField() {
         let nextFieldToBeEdited = nextFieldToEdit(activeField!)
         if pickupDeliverySwitch.isOn {
             if activeField != nextFieldToBeEdited {

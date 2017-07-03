@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class KeyboardManager {
+class KeyboardManager {
     
-    var notifyFromObject: Any?
-    var observer: Any
-    public var stackViewToMove: [UIStackView] = []
-    public var textFieldToMove: [UITextField] = []
-    public var viewOfVC: [UIView] = []
+    private var notifyFromObject: Any?
+    private var observer: Any
+    private var stackViewToMove: [UIStackView] = []
+    private var textFieldToMove: [UITextField] = []
+    private var viewOfVC: [UIView] = []
     
-    public init(observer: Any, viewOfVC: [UIView], stackViewToMove: [UIStackView], textFieldToMove: [UITextField], notifyFromObject: Any? = nil) {
+    init(observer: Any, viewOfVC: [UIView], stackViewToMove: [UIStackView], textFieldToMove: [UITextField], notifyFromObject: Any? = nil) {
         self.notifyFromObject = notifyFromObject
         self.observer = observer
         self.stackViewToMove = stackViewToMove
@@ -24,12 +24,12 @@ public class KeyboardManager {
         self.viewOfVC = viewOfVC
     }
     
-    public func viewMoveWhenKeyboardWillShow() {
+    func viewMoveWhenKeyboardWillShow() {
         let notification = NotificationCenter.default
         notification.addObserver(self, selector: #selector(KeyboardManager.viewMover), name: NSNotification.Name.UIKeyboardWillShow, object: notifyFromObject)
     }
     
-    @objc public func viewMover(notification: NSNotification) {
+    @objc private func viewMover(notification: NSNotification) {
         for view in viewOfVC {
             for stackView in stackViewToMove {
                 for textField in textFieldToMove {
