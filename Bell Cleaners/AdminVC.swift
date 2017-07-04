@@ -12,7 +12,11 @@ import Firebase
 class AdminVC: UIViewController {
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        AuthService.instance.signOut()
+        AuthService.instance.signOut(signedOut: { (signedOut) in
+            if signedOut {
+                self.performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
+                return
+            }
+        })
     }
 }

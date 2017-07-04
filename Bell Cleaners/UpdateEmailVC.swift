@@ -143,7 +143,11 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        AuthService.instance.signOut()
+        AuthService.instance.signOut(signedOut: { (signedOut) in
+            if signedOut {
+                self.performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
+                return
+            }
+        })
     }
 }

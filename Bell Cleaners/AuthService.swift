@@ -114,11 +114,18 @@ class AuthService {
         }
     }
     
-    func signOut() {
+    func signOut(signedOut: @escaping (Bool) -> Void) {
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
             print(Constants.ErrorMessages.SignOut, signOutError)
+        }
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                return
+            } else {
+                signedOut(true)
+            }
         }
     }
     

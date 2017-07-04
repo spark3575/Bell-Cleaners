@@ -27,6 +27,8 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private let alertProfile = PresentAlert()
     private var currentEmail = String()
     private var currentPassword = String()
+    private let currentUserRef = DataService.instance.currentUserRef
+    private var databaseHandle: DatabaseHandle!
     private var enteredEmailField = UITextField()
     private var enteredPasswordField = UITextField()
     private let defaults = UserDefaults.standard
@@ -51,7 +53,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         spinner.startAnimating()
-        DataService.instance.currentUserRef.observe(.value, with: { (snapshot) in
+        databaseHandle = currentUserRef.observe(.value, with: { (snapshot) in
             if let user = snapshot.value as? [String : AnyObject] {
                 let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                 let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
@@ -87,7 +89,12 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        notification.removeObserver(self)
+        notification.removeObserver(self)        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        currentUserRef.removeAllObservers()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -245,7 +252,11 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapSignOut(_ sender: SignOutButton) {
-        performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
-        AuthService.instance.signOut()
+        AuthService.instance.signOut(signedOut: { (signedOut) in
+            if signedOut {
+                self.performSegue(withIdentifier: Constants.Segues.UnwindToBellCleanersVC, sender: self)
+                return
+            }
+        })
     }
 }
