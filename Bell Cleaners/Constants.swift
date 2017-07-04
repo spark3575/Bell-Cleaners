@@ -23,6 +23,9 @@ struct Constants {
             static let Password = "Password Required"
             static let ReAuthenticationFailed = "Re-authentication Failed"
             static let ResetPasswordEmailSent = "Reset Password Email Sent"
+            static let SendResetPasswordEmailFailed = "Send Reset Password Email Failed"
+            static let SendVerificationEmailFailed = "Send Reset Password Email Failed"
+            static let SetDisplayNameFailed = "Set Display Name Failed"
             static let SignInFailed = "Sign In Failed"
             static let TouchID = "Touch ID not available"
             static let UpdateEmailFailed = "Update Email Failed"
@@ -31,6 +34,7 @@ struct Constants {
             static let UpdatePasswordSuccesful = "Update Password Successful"
             static let UserNotFound = "User Not Found"
             static let ValidEmail = "Valid Email Address Required"
+            static let VerificationEmailSent = "Verification Email Sent"
         }
         
         struct Messages {
@@ -51,6 +55,7 @@ struct Constants {
             static let UpdatePasswordFailed = "Please check your passwords"
             static let UpdatePasswordSuccesful = "Please sign in using your new password"
             static let VerificationEmail = "Verification email will be sent"
+            static let VerificationEmailSent = "Please check your email to verify and sign in"
             static let VerifyEmail = "Please check your email to verify"
         }
         
@@ -135,11 +140,15 @@ struct Constants {
         static let LADefault = "Touch ID Failed"
         static let LAPasscode = "Passcode needs to be set to use Touch ID"
         static let NetworkConnection = "Network connection not available"
+        static let Reauthentication = "Reauthentication Failed - "
         static let RequiresRecentLogin = "Requires recent login"
         static let SendPasswordReset = "Send Password Reset Email Failed - "
+        static let SendVerification = "Send Verification Email Failed - "
         static let SetDisplayName = "Set Display Name Failed - "
         static let SignOut = "Sign Out Failed - "
         static let TouchID = "Touch ID not available"
+        static let UpdateEmail = "Updated Email Failed - "
+        static let UpdatePassword = "Updated Password Failed - "
         static let UserNotFound = "User not found"
         static let VerificationEmail = "Verification Email Failed - "
     }

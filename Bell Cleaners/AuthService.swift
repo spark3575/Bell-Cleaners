@@ -57,10 +57,13 @@ class AuthService {
         }
     }
     
-    func sendVerificationEmail() {
+    func sendVerificationEmail(onComplete: Completion?) {
+        let user = Auth.auth().currentUser
         Auth.auth().currentUser?.sendEmailVerification { (error) in
-            if let error = error {
-                print(Constants.ErrorMessages.VerificationEmail, error)
+            if error != nil {
+                self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            } else {
+                onComplete?(nil, user)
             }
         }
     }
@@ -87,20 +90,26 @@ class AuthService {
         }
     }
     
-    func createProfileChangeRequest(name: String) {
+    func createProfileChangeRequest(name: String, onComplete: Completion?) {
+        let user = Auth.auth().currentUser
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = name
         changeRequest?.commitChanges { (error) in
-            if let error = error {
-                print(Constants.ErrorMessages.SetDisplayName, error)
+            if error != nil {
+                self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            } else {
+                onComplete?(nil, user)
             }
         }
     }
     
-    func sendPasswordReset(withEmail email: String) {
+    func sendPasswordReset(withEmail email: String, onComplete: Completion?) {
+        let user = Auth.auth().currentUser
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-            if let error = error {
-                print(Constants.ErrorMessages.SendPasswordReset, error)
+            if error != nil {
+                self.handleFirebaseError(error: error! as NSError, onComplete: onComplete)
+            } else {
+                onComplete?(nil, user)
             }
         }
     }

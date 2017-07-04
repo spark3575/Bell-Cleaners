@@ -79,7 +79,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
             alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.Password, message: Constants.Alerts.Messages.Password, actionTitle: Constants.Alerts.Actions.OK)
-            self.view.layoutIfNeeded()
         }
     }
     
@@ -89,18 +88,16 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             AuthService.instance.reauthenticate(withEmail: currentEmail!, password: currentPassword, onComplete: { (errorMessage, user) in
                 self.spinner.stopAnimating()
-                guard errorMessage == nil, user != nil else {
-                    self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                    self.view.layoutIfNeeded()
+                if let error = errorMessage, user == nil {
+                    self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: error, actionTitle: Constants.Alerts.Actions.OK)
                     return
                 }
                 // User re-authenticated.
                 self.spinner.startAnimating()
                 AuthService.instance.updatePassword(to: newPassword, onComplete: { (errorMessage, user) in
                     self.spinner.stopAnimating()
-                    guard errorMessage == nil, user != nil else {
-                        self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: errorMessage!, actionTitle: Constants.Alerts.Actions.OK)
-                        self.view.layoutIfNeeded()
+                    if let error = errorMessage, user == nil {
+                        self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: error, actionTitle: Constants.Alerts.Actions.OK)
                         return
                     }
                     self.defaults.set(false, forKey: Constants.DefaultsKeys.HasSignedInBefore)
@@ -115,7 +112,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
             })
         } else {
             self.alertUpdatePassword.presentAlert(fromController: self, title: Constants.Alerts.Titles.UpdatePasswordFailed, message: Constants.Alerts.Messages.UpdatePasswordFailed, actionTitle: Constants.Alerts.Actions.OK)
-            self.view.layoutIfNeeded()
         }
     }
     

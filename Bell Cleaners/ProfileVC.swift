@@ -211,12 +211,17 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                AuthService.instance.createProfileChangeRequest(name: firstName)
-                performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
-                return
+                spinner.startAnimating()
+                AuthService.instance.createProfileChangeRequest(name: firstName, onComplete: { (errorMessage, user) in
+                    self.spinner.stopAnimating()
+                    if let error = errorMessage, user == nil {
+                        self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.SetDisplayNameFailed, message: error, actionTitle: Constants.Alerts.Actions.OK)
+                        return
+                    }
+                    self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
+                })
             } else {
                 self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.MissingFields, actionTitle: Constants.Alerts.Actions.OK)
-                self.view.layoutIfNeeded()
             }
         }
         if pickupDeliverySwitch.isOn {
@@ -224,12 +229,17 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessPickupDelivery)
                 DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
-                AuthService.instance.createProfileChangeRequest(name: firstName)
-                performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
-                return
+                spinner.startAnimating()
+                AuthService.instance.createProfileChangeRequest(name: firstName, onComplete: { (errorMessage, user) in
+                    self.spinner.stopAnimating()
+                    if let error = errorMessage, user == nil {
+                        self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.SetDisplayNameFailed, message: error, actionTitle: Constants.Alerts.Actions.OK)
+                        return
+                    }
+                    self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
+                })
             } else {
                 self.alertProfile.presentAlert(fromController: self, title: Constants.Alerts.Titles.MissingFields, message: Constants.Alerts.Messages.AllRequired, actionTitle: Constants.Alerts.Actions.OK)
-                self.view.layoutIfNeeded()
             }
         }
     }
