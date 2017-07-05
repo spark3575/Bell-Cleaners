@@ -43,8 +43,8 @@ class ShadowViewRounded: ShadowView {
     private func setup() {
         layer.cornerRadius = Constants.Layers.CornerRadius
         layer.shadowColor = Constants.Layers.ShadowColor
-        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowOffset = Constants.Layers.ShadowOffsetForRounded
         layer.shadowOpacity = Constants.Layers.ShadowOpacity
-        layer.shadowRadius = CGFloat(2.0)
+        layer.shadowRadius = Constants.Layers.ShadowRadiusForRounded
     }
 }

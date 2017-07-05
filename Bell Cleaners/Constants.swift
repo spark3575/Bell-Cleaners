@@ -172,8 +172,10 @@ struct Constants {
         static let CornerRadius: CGFloat = 10.0
         static let ShadowColor = UIColor.black.cgColor
         static let ShadowOffset = CGSize(width: 0, height: 2.0)
+        static let ShadowOffsetForRounded = CGSize(width: 0, height: 1.0)
         static let ShadowOpacity: Float = 0.5
         static let ShadowRadius: CGFloat = 4.0
+        static let ShadowRadiusForRounded: CGFloat = 2.0
         static let textFieldShadowOffset = CGSize(width: 0, height: 1.0)
         static let textFieldShadowOpacity: Float = 0.3
         static let textFieldShadowRadius: CGFloat = 3.0
