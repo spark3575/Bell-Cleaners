@@ -27,3 +27,24 @@ class ShadowView: UIView {
         layer.shadowRadius = Constants.Layers.ShadowRadius
     }
 }
+
+class ShadowViewRounded: ShadowView {
+    
+    required init?(coder aDecoder:NSCoder) {
+        super.init(coder:aDecoder)
+        setup()
+    }
+    
+    override init(frame:CGRect) {
+        super.init(frame:frame)
+        setup()
+    }
+    
+    private func setup() {
+        layer.cornerRadius = Constants.Layers.CornerRadius
+        layer.shadowColor = Constants.Layers.ShadowColor
+        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowOpacity = Constants.Layers.ShadowOpacity
+        layer.shadowRadius = CGFloat(2.0)
+    }
+}

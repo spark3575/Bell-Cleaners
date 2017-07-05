@@ -19,6 +19,8 @@
 		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
 		B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */; };
 		B05900B71EE24529009238EE /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B61EE24529009238EE /* TouchIDAuthentication.swift */; };
+		B05A53C71F0D5AA10018CE45 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */; };
+		B05A53CB1F0D5F9C0018CE45 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */; };
 		B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616FFC1EF381ED001DB41D /* AdminVC.swift */; };
 		B06971DA1F069D220006D7D0 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06971D91F069D220006D7D0 /* KeyboardManager.swift */; };
 		B075A0331ED535DC003FF1BE /* dingSmallBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */; };
@@ -54,6 +56,8 @@
 		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		B05900B61EE24529009238EE /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
+		B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
+		B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
 		B0616FFC1EF381ED001DB41D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
 		B06971D91F069D220006D7D0 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dingSmallBell.mp3; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				B003C3E01EFE929100C73996 /* UpdateEmailVC.swift */,
 				B003C3E21EFED44F00C73996 /* UpdatePasswordVC.swift */,
 				B0C02F1E1EDB7CEF002C4F52 /* MyAccountVC.swift */,
+				B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */,
 				B0616FFC1EF381ED001DB41D /* AdminVC.swift */,
 			);
 			name = Controller;
@@ -158,6 +163,7 @@
 				B02C6FB31EE894D700A2465E /* SegueFromRight.swift */,
 				B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */,
 				B06971D91F069D220006D7D0 /* KeyboardManager.swift */,
+				B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00A97971ED32D8800C32A88 /* ShadowView.swift in Sources */,
+				B05A53C71F0D5AA10018CE45 /* OrdersVC.swift in Sources */,
 				B01C11EB1EEEE1160037A1A9 /* ProfileVC.swift in Sources */,
 				B0B610A61ED6608D001E3C6C /* CallBellButton.swift in Sources */,
 				B0B610A41ED5C3CE001E3C6C /* MapVC.swift in Sources */,
@@ -370,6 +377,7 @@
 				B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */,
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
+				B05A53CB1F0D5F9C0018CE45 /* OrdersCell.swift in Sources */,
 				B003C3E11EFE929100C73996 /* UpdateEmailVC.swift in Sources */,
 				B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */,
 				B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */,

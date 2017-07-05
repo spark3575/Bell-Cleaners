@@ -10,9 +10,9 @@ import UIKit
 import Firebase
 
 class UpdateEmailVC: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var newEmailField: EmailField!
+    
     @IBOutlet weak var currentPasswordField: PasswordField!
+    @IBOutlet weak var newEmailField: EmailField!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var stackView: UIStackView!
     

@@ -230,6 +230,16 @@ struct Constants {
         static let UnwindToBellCleanersVC = "unwindToBellCleanersVC"
     }
     
+    struct TableView {
+        
+        struct Cell {
+            
+            struct Identifier {
+                static let Orders = "OrdersCell"
+            }            
+        }
+    }
+    
     struct TimerIntervals {
         static let BellShakeDelay = 0.5
         static let FirebaseDelay = 1.0
