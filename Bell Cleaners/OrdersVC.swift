@@ -12,11 +12,48 @@ import Firebase
 class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tabelView: UITableView!
+    
+    var orders = [Order]()
+    var orderIDs = [String]()
+    var currentUserOrders = [Order]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabelView.dataSource = self
         tabelView.delegate = self
+//        DataService.instance.ordersRef.observeSingleEvent(of: .value) { (snapshot) in
+//            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+//                for snap in snapshot {
+//                    print("Snap: \(snap)")
+//                    if let orderDict = snap.value as? [String: AnyObject] {
+//                        let key = snap.key
+//                        let order = Order(orderID: key, orderData: orderDict)
+//                        self.orders.append(order)
+//                    }
+//                }
+//            }
+//        }
+        DataService.instance.currentUserOrders.observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshot {
+                    print("Snap: \(snap)")
+                    let key = snap.key
+                    self.orderIDs.append(key)
+                }
+            }
+            print(self.orderIDs)
+        }
+        for x in 0..<orderIDs.count {
+            let key = orderIDs[x]
+            DataService.instance.ordersRef.queryEqual(toValue: key).observeSingleEvent(of: .value) { (snapsho) in
+                if let currentOrderDict = snapsho.value as? [String: AnyObject] {
+                    let order = Order(orderID: key, orderData: currentOrderDict)
+                    self.currentUserOrders.append(order)
+                    print(self.currentUserOrders)
+                }
+            }
+            
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -109,7 +109,7 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
                         return
                     }
                     let updatedEmail = [Constants.Literals.Email: newEmail]
-                    DataService.instance.updateUser(uid: (user?.uid)!, userData: updatedEmail as [String: AnyObject])
+                    DataService.instance.updateDBUser(uid: (user?.uid)!, userData: updatedEmail as [String: AnyObject])
                     self.defaults.setValue(newEmail, forKey: Constants.Literals.Email)
                     self.spinner.startAnimating()
                     AuthService.instance.reauthenticate(withEmail: newEmail, password: currentPassword, onComplete: { (errorMessage, user) in

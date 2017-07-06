@@ -199,6 +199,7 @@ struct Constants {
         static let LocalizedReason = "Sign In with Touch ID"
         static let MailTo = "mailto:"
         static let Map = "Map"
+        static let Orders = "orders"
         static let Password = "password"
         static let PhoneNumber = "phoneNumber"
         static let PickupDelivery = "pickupDelivery"

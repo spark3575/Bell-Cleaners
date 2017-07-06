@@ -19,8 +19,6 @@ class AuthService {
         return _instance
     }
     
-    static var profileFull = Bool()
-    
     func signIn(withEmail email: String, password: String, onComplete: Completion?) {
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
@@ -39,7 +37,7 @@ class AuthService {
                 onComplete?(nil, user)
                 if let user = user {
                     let userEmail = [Constants.Literals.Email: email]
-                    DataService.instance.updateUser(uid: user.uid, userData: userEmail as [String: AnyObject])
+                    DataService.instance.updateDBUser(uid: user.uid, userData: userEmail as [String: AnyObject])
                 }
             }
         })

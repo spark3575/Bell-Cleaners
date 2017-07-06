@@ -217,7 +217,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
             if let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, !firstName.isEmpty && !lastName.isEmpty && !phoneNumber.isEmpty {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 userData.updateValue(true as AnyObject, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
-                DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
+                DataService.instance.updateDBUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
                 spinner.startAnimating()
                 AuthService.instance.createProfileChangeRequest(name: firstName, onComplete: { (errorMessage, user) in
                     self.spinner.stopAnimating()
@@ -235,7 +235,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
             if let firstName = firstNameField.text, let lastName = lastNameField.text, let phoneNumber = phoneNumberField.text, let address = addressField.text, let city = cityField.text, let zipcode = zipcodeField.text, !firstName.isEmpty, !lastName.isEmpty, !phoneNumber.isEmpty, !address.isEmpty, !city.isEmpty, !zipcode.isEmpty {
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                 defaults.set(true, forKey: Constants.DefaultsKeys.AbleToAccessPickupDelivery)
-                DataService.instance.updateUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
+                DataService.instance.updateDBUser(uid: (Auth.auth().currentUser?.uid)!, userData: userData as [String : AnyObject])
                 spinner.startAnimating()
                 AuthService.instance.createProfileChangeRequest(name: firstName, onComplete: { (errorMessage, user) in
                     self.spinner.stopAnimating()

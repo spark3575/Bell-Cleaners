@@ -21,6 +21,7 @@
 		B05900B71EE24529009238EE /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B61EE24529009238EE /* TouchIDAuthentication.swift */; };
 		B05A53C71F0D5AA10018CE45 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */; };
 		B05A53CB1F0D5F9C0018CE45 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */; };
+		B05A53CD1F0DC48A0018CE45 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CC1F0DC48A0018CE45 /* Order.swift */; };
 		B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616FFC1EF381ED001DB41D /* AdminVC.swift */; };
 		B06971DA1F069D220006D7D0 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06971D91F069D220006D7D0 /* KeyboardManager.swift */; };
 		B075A0331ED535DC003FF1BE /* dingSmallBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */; };
@@ -58,6 +59,7 @@
 		B05900B61EE24529009238EE /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
 		B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
+		B05A53CC1F0DC48A0018CE45 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B0616FFC1EF381ED001DB41D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
 		B06971D91F069D220006D7D0 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		B075A0321ED535DC003FF1BE /* dingSmallBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dingSmallBell.mp3; sourceTree = "<group>"; };
@@ -103,6 +105,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B05A53CE1F0DDA960018CE45 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */,
+				B05900B61EE24529009238EE /* TouchIDAuthentication.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		B0AECE491ED0D48F00097AE1 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +139,7 @@
 				B0AECE6B1ED0D8E000097AE1 /* Model */,
 				B0AECE6A1ED0D8D200097AE1 /* View */,
 				B0AECE691ED0D8C500097AE1 /* Controller */,
+				B05A53CE1F0DDA960018CE45 /* Authentication */,
 				B0C02F201EDB9E7B002C4F52 /* Constants */,
 				B0C02F211EDB9EB3002C4F52 /* Services */,
 				B0AECE6C1ED0D96600097AE1 /* Supporting Files */,
@@ -171,8 +183,7 @@
 		B0AECE6B1ED0D8E000097AE1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */,
-				B05900B61EE24529009238EE /* TouchIDAuthentication.swift */,
+				B05A53CC1F0DC48A0018CE45 /* Order.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -376,6 +387,7 @@
 				B006E7B81EF0A44100C7638B /* Constants.swift in Sources */,
 				B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */,
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
+				B05A53CD1F0DC48A0018CE45 /* Order.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
 				B05A53CB1F0D5F9C0018CE45 /* OrdersCell.swift in Sources */,
 				B003C3E11EFE929100C73996 /* UpdateEmailVC.swift in Sources */,

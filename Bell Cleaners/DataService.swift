@@ -25,11 +25,19 @@ class DataService {
         return mainRef.child(Constants.Literals.Users)
     }
     
+    var ordersRef: DatabaseReference {
+        return mainRef.child(Constants.Literals.Orders)
+    }
+    
     var currentUserRef: DatabaseReference {
         return usersRef.child((Auth.auth().currentUser?.uid)!).child(Constants.Literals.Profile)
     }
     
-    func updateUser(uid: String, userData: [String: AnyObject]) {
+    var currentUserOrders: DatabaseReference {
+        return usersRef.child((Auth.auth().currentUser?.uid)!).child(Constants.Literals.Orders)
+    }
+    
+    func updateDBUser(uid: String, userData: [String: AnyObject]) {
         mainRef.child(Constants.Literals.Users).child(uid).child(Constants.Literals.Profile).updateChildValues(userData)
     }
 }
