@@ -1071,10 +1071,15 @@
                                             <segue destination="T6v-Fh-8cu" kind="custom" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="jCn-5g-XtA"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="jUI-hs-gHc">
+                                        <rect key="frame" x="85.5" y="32" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="z5V-So-72b" firstAttribute="centerY" secondItem="adX-84-Ihs" secondAttribute="centerY" id="5a6-FT-UUl"/>
+                                    <constraint firstItem="jUI-hs-gHc" firstAttribute="centerY" secondItem="adX-84-Ihs" secondAttribute="centerY" id="Tc4-SE-hmq"/>
+                                    <constraint firstItem="adX-84-Ihs" firstAttribute="leading" secondItem="jUI-hs-gHc" secondAttribute="trailing" constant="20" id="ZHb-25-tr1"/>
                                     <constraint firstItem="adX-84-Ihs" firstAttribute="centerY" secondItem="g8c-ap-XEB" secondAttribute="centerY" constant="10" id="cT2-W8-636">
                                         <variation key="heightClass=compact" constant="0.0"/>
                                         <variation key="heightClass=regular-widthClass=regular" constant="20"/>
@@ -1126,6 +1131,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="spinner" destination="jUI-hs-gHc" id="Iuo-PY-8Jh"/>
                         <outlet property="tableView" destination="ixQ-eH-eyB" id="PdD-S3-6oB"/>
                         <segue destination="j13-2u-g4L" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="8qt-M3-fnG"/>
                     </connections>

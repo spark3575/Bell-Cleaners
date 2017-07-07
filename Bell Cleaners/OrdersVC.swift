@@ -11,6 +11,7 @@ import Firebase
 
 class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     var orders = [Order]()
@@ -21,7 +22,9 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        spinner.startAnimating()
         DataService.instance.ordersRef.observe(.childChanged, with: { (snapshot) in
+            self.spinner.stopAnimating()
             if let changedOrderDict = snapshot.value as? [String: AnyObject] {
                 let changedOrderID = snapshot.key
                 let changedOrder = Order(orderID: changedOrderID, orderData: changedOrderDict)
@@ -33,7 +36,9 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
         })
+        spinner.startAnimating()
         DataService.instance.ordersRef.queryOrdered(byChild: Constants.Literals.OrderNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.spinner.stopAnimating()
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
                     if let orderDict = snap.value as? [String: AnyObject] {
