@@ -11,7 +11,7 @@ import Firebase
 
 class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tabelView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var orders = [Order]()
     var orderIDs = [String]()
@@ -19,41 +19,36 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabelView.dataSource = self
-        tabelView.delegate = self
-//        DataService.instance.ordersRef.observeSingleEvent(of: .value) { (snapshot) in
-//            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-//                for snap in snapshot {
-//                    print("Snap: \(snap)")
-//                    if let orderDict = snap.value as? [String: AnyObject] {
-//                        let key = snap.key
-//                        let order = Order(orderID: key, orderData: orderDict)
-//                        self.orders.append(order)
-//                    }
-//                }
-//            }
-//        }
-        DataService.instance.currentUserOrders.observeSingleEvent(of: .value) { (snapshot) in
+        tableView.dataSource = self
+        tableView.delegate = self
+        DataService.instance.ordersRef.observe(.childChanged, with: { (snapshot) in
+            if let changedOrderDict = snapshot.value as? [String: AnyObject] {
+                let changedOrderID = snapshot.key
+                let changedOrder = Order(orderID: changedOrderID, orderData: changedOrderDict)
+                if let index = self.currentUserOrders.index(where: {$0.orderID == changedOrderID}) {
+                    self.currentUserOrders[index] = changedOrder
+                    DispatchQueue.main.async {
+                        self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows!, with: .none)
+                    }                    
+                }
+            }
+        })
+        DataService.instance.ordersRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
-                    print("Snap: \(snap)")
-                    let key = snap.key
-                    self.orderIDs.append(key)
+                    if let orderDict = snap.value as? [String: AnyObject] {
+                        let key = snap.key
+                        let order = Order(orderID: key, orderData: orderDict)
+                        if order.userID == Auth.auth().currentUser?.uid {
+                            self.currentUserOrders.append(order)
+                        }
+                    }
                 }
             }
-            print(self.orderIDs)
-        }
-        for x in 0..<orderIDs.count {
-            let key = orderIDs[x]
-            DataService.instance.ordersRef.queryEqual(toValue: key).observeSingleEvent(of: .value) { (snapsho) in
-                if let currentOrderDict = snapsho.value as? [String: AnyObject] {
-                    let order = Order(orderID: key, orderData: currentOrderDict)
-                    self.currentUserOrders.append(order)
-                    print(self.currentUserOrders)
-                }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
-            
-        }
+        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,11 +56,17 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return currentUserOrders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tabelView.dequeueReusableCell(withIdentifier: Constants.TableView.Cell.Identifier.Orders) as! OrdersCell
+        let order = currentUserOrders[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableView.Cell.Identifier.Order) as? OrderCell {
+            cell.configureCell(order: order)
+            return cell
+        } else {
+            return OrderCell()
+        }
     }
 
     @IBAction func didTapSignOut(_ sender: SignOutButton) {

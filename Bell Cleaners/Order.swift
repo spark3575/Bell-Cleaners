@@ -16,6 +16,7 @@ class Order {
     private var _orderNumber: String!
     private var _orderStatus: String!
     private var _orderTotal: String!
+    private var _userID: String!
     
     var dateTime: String {
         return _dateTime
@@ -41,12 +42,17 @@ class Order {
         return _orderTotal
     }
     
-    init(dateTime: String, itemsCount: String, orderNumber: String, orderStatus: String, orderTotal: String) {
+    var userID: String {
+        return _userID
+    }
+    
+    init(dateTime: String, itemsCount: String, orderNumber: String, orderStatus: String, orderTotal: String, userID: String) {
         self._dateTime = dateTime
         self._itemsCount = itemsCount
         self._orderNumber = orderNumber
         self._orderStatus = orderStatus
         self._orderTotal = orderTotal
+        self._userID = userID
     }
     
     init(orderID: String, orderData: [String: AnyObject]) {
@@ -65,6 +71,9 @@ class Order {
         }
         if let orderTotal = orderData["orderTotal"] as? String {
             self._orderTotal = orderTotal
+        }
+        if let userID = orderData["userID"] as? String {
+            self._userID = userID
         }
     }
 }

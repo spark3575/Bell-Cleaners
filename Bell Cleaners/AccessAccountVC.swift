@@ -169,9 +169,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             self.saveLogin(email: email, password: password)
             if let user = Auth.auth().currentUser , user.isEmailVerified {
                 self.spinner.startAnimating()
-                let currentUserRef = DataService.instance.currentUserRef
-                var databaseHandle: DatabaseHandle!
-                databaseHandle = currentUserRef.observe(.value, with: { (snapshot) in
+                DataService.instance.currentUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     self.spinner.stopAnimating()
                     if let user = snapshot.value as? [String : AnyObject] {
                         let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
@@ -179,7 +177,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                         self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
                         let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
                         let email = userEmail as! String
-                        currentUserRef.removeObserver(withHandle: databaseHandle)
                         if email == Constants.Literals.AdminEmail {
                             self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
                             return

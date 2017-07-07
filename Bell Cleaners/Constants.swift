@@ -238,7 +238,7 @@ struct Constants {
         struct Cell {
             
             struct Identifier {
-                static let Orders = "OrdersCell"
+                static let Order = "OrderCell"
             }            
         }
     }

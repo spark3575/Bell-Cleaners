@@ -20,7 +20,7 @@
 		B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */; };
 		B05900B71EE24529009238EE /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B61EE24529009238EE /* TouchIDAuthentication.swift */; };
 		B05A53C71F0D5AA10018CE45 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */; };
-		B05A53CB1F0D5F9C0018CE45 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */; };
+		B05A53CB1F0D5F9C0018CE45 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CA1F0D5F9C0018CE45 /* OrderCell.swift */; };
 		B05A53CD1F0DC48A0018CE45 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CC1F0DC48A0018CE45 /* Order.swift */; };
 		B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616FFC1EF381ED001DB41D /* AdminVC.swift */; };
 		B06971DA1F069D220006D7D0 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06971D91F069D220006D7D0 /* KeyboardManager.swift */; };
@@ -58,7 +58,7 @@
 		B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		B05900B61EE24529009238EE /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
-		B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
+		B05A53CA1F0D5F9C0018CE45 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		B05A53CC1F0DC48A0018CE45 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B0616FFC1EF381ED001DB41D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
 		B06971D91F069D220006D7D0 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				B02C6FB31EE894D700A2465E /* SegueFromRight.swift */,
 				B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */,
 				B06971D91F069D220006D7D0 /* KeyboardManager.swift */,
-				B05A53CA1F0D5F9C0018CE45 /* OrdersCell.swift */,
+				B05A53CA1F0D5F9C0018CE45 /* OrderCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -389,7 +389,7 @@
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B05A53CD1F0DC48A0018CE45 /* Order.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,
-				B05A53CB1F0D5F9C0018CE45 /* OrdersCell.swift in Sources */,
+				B05A53CB1F0D5F9C0018CE45 /* OrderCell.swift in Sources */,
 				B003C3E11EFE929100C73996 /* UpdateEmailVC.swift in Sources */,
 				B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */,
 				B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */,
