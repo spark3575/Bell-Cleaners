@@ -200,6 +200,7 @@ struct Constants {
         static let MailTo = "mailto:"
         static let Map = "Map"
         static let Orders = "orders"
+        static let OrderNumber = "orderNumber"
         static let Password = "password"
         static let PhoneNumber = "phoneNumber"
         static let PickupDelivery = "pickupDelivery"

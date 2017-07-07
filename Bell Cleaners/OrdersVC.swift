@@ -33,14 +33,14 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
         })
-        DataService.instance.ordersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        DataService.instance.ordersRef.queryOrdered(byChild: Constants.Literals.OrderNumber).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
                     if let orderDict = snap.value as? [String: AnyObject] {
                         let key = snap.key
                         let order = Order(orderID: key, orderData: orderDict)
                         if order.userID == Auth.auth().currentUser?.uid {
-                            self.currentUserOrders.append(order)
+                            self.currentUserOrders.insert(order, at: 0)
                         }
                     }
                 }
