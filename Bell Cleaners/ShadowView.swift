@@ -25,6 +25,7 @@ class ShadowView: UIView {
         layer.shadowOffset = Constants.Layers.ShadowOffset
         layer.shadowOpacity = Constants.Layers.ShadowOpacity
         layer.shadowRadius = Constants.Layers.ShadowRadius
+        layer.backgroundColor = Constants.Colors.GreenHeavy.cgColor
     }
 }
 
@@ -46,5 +47,6 @@ class ShadowViewRounded: ShadowView {
         layer.shadowOffset = Constants.Layers.ShadowOffsetForRounded
         layer.shadowOpacity = Constants.Layers.ShadowOpacity
         layer.shadowRadius = Constants.Layers.ShadowRadiusForRounded
+        layer.backgroundColor = Constants.Colors.GreenMedium.cgColor
     }
 }

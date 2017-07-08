@@ -177,7 +177,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     private func addNextButtonToKeyboard(textField: UITextField, actionTitle: String, action: Selector?) {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: Constants.Keyboards.ToolbarHeight))
         toolbar.barStyle = UIBarStyle.default
-        toolbar.tintColor = Constants.Colors.BellGreen
+        toolbar.tintColor = Constants.Colors.GreenMedium
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let action: UIBarButtonItem = UIBarButtonItem(title: actionTitle, style: UIBarButtonItemStyle.done, target: self, action: action)
         var items = [UIBarButtonItem]()

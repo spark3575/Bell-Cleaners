@@ -14,8 +14,6 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    var orders = [Order]()
-    var orderIDs = [String]()
     var currentUserOrders = [Order]()
 
     override func viewDidLoad() {
@@ -27,23 +25,36 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.spinner.stopAnimating()
             if let changedOrderDict = snapshot.value as? [String: AnyObject] {
                 let changedOrderID = snapshot.key
-                let changedOrder = Order(orderID: changedOrderID, orderData: changedOrderDict)
-                if let index = self.currentUserOrders.index(where: {$0.orderID == changedOrderID}) {
+                let changedOrder = Order(ID: changedOrderID, orderData: changedOrderDict)
+                if let index = self.currentUserOrders.index(where: {$0.ID == changedOrderID}) {
                     self.currentUserOrders[index] = changedOrder
+                    if self.currentUserOrders[index].userID != Auth.auth().currentUser?.uid {
+                        self.currentUserOrders.remove(at: index)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
                     DispatchQueue.main.async {
                         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows!, with: .none)
-                    }                    
+                    }
+                } else {
+                    if changedOrder.userID == Auth.auth().currentUser?.uid {
+                        self.currentUserOrders.insert(changedOrder, at: 0)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
                 }
             }
         })
         spinner.startAnimating()
-        DataService.instance.ordersRef.queryOrdered(byChild: Constants.Literals.OrderNumber).observeSingleEvent(of: .value, with: { (snapshot) in
+        DataService.instance.ordersRef.queryOrdered(byChild: Constants.Literals.Number).observeSingleEvent(of: .value, with: { (snapshot) in
             self.spinner.stopAnimating()
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
                     if let orderDict = snap.value as? [String: AnyObject] {
                         let key = snap.key
-                        let order = Order(orderID: key, orderData: orderDict)
+                        let order = Order(ID: key, orderData: orderDict)
                         if order.userID == Auth.auth().currentUser?.uid {
                             self.currentUserOrders.insert(order, at: 0)
                         }

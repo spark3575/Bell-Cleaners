@@ -26,6 +26,7 @@ class ShadowButton: UIButton {
         layer.shadowOffset = Constants.Layers.ShadowOffset
         layer.shadowOpacity = Constants.Layers.ShadowOpacity
         layer.shadowRadius = Constants.Layers.ShadowRadius
+        layer.backgroundColor = Constants.Colors.GreenMedium.cgColor
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,3 +63,7 @@ class ProfileButton: ShadowButton {}
 class SettingsButton: ShadowButton {}
 
 class SupportButton: ShadowButton {}
+
+class AddOrderButton: ShadowButton {}
+
+class EditOrderButton: ShadowButton {}

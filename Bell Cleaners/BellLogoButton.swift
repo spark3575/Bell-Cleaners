@@ -9,7 +9,25 @@
 import UIKit
 import AVFoundation
 
-class BellLogoButton: ShadowButton {
+class BellLogoButton: UIButton {
+    
+    required init?(coder aDecoder:NSCoder) {
+        super.init(coder:aDecoder)
+        setup()
+    }
+    
+    override init(frame:CGRect) {
+        super.init(frame:frame)
+        setup()
+    }
+    
+    private func setup() {
+        layer.cornerRadius = Constants.Layers.CornerRadius
+        layer.shadowColor = Constants.Layers.ShadowColor
+        layer.shadowOffset = Constants.Layers.ShadowOffset
+        layer.shadowOpacity = Constants.Layers.ShadowOpacity
+        layer.shadowRadius = Constants.Layers.ShadowRadius
+    }
     
     func shake() {
         let shake = CABasicAnimation(keyPath: Constants.Animations.Shake.KeyPath)

@@ -10,69 +10,69 @@ import Foundation
 
 class Order {
     
-    private var _dateTime: String!
-    private var _itemsCount: String!
-    private var _orderID: String!
-    private var _orderNumber: String!
-    private var _orderStatus: String!
-    private var _orderTotal: String!
+    private var _date: String!
+    private var _items: String!
+    private var _ID: String!
+    private var _number: String!
+    private var _status: String!
+    private var _total: String!
     private var _userID: String!
     
-    var dateTime: String {
-        return _dateTime
+    var date: String {
+        return _date
     }
     
-    var itemsCount: String {
-        return _itemsCount
+    var items: String {
+        return _items
     }
     
-    var orderID: String {
-        return _orderID
+    var ID: String {
+        return _ID
     }
     
-    var orderNumber: String {
-        return _orderNumber
+    var number: String {
+        return _number
     }
     
-    var orderStatus: String {
-        return _orderStatus
+    var status: String {
+        return _status
     }
     
-    var orderTotal: String {
-        return _orderTotal
+    var total: String {
+        return _total
     }
     
     var userID: String {
         return _userID
     }
     
-    init(dateTime: String, itemsCount: String, orderNumber: String, orderStatus: String, orderTotal: String, userID: String) {
-        self._dateTime = dateTime
-        self._itemsCount = itemsCount
-        self._orderNumber = orderNumber
-        self._orderStatus = orderStatus
-        self._orderTotal = orderTotal
+    init(date: String, items: String, number: String, status: String, total: String, userID: String) {
+        self._date = date
+        self._items = items
+        self._number = number
+        self._status = status
+        self._total = total
         self._userID = userID
     }
     
-    init(orderID: String, orderData: [String: AnyObject]) {
-        self._orderID = orderID
-        if let dateTime = orderData["dateTime"] as? String {
-            self._dateTime = dateTime
+    init(ID: String, orderData: [String: AnyObject]) {
+        self._ID = ID
+        if let date = orderData[Constants.Literals.Date] as? String {
+            self._date = date
         }
-        if let itemsCount = orderData["itemsCount"] as? String {
-            self._itemsCount = itemsCount
+        if let items = orderData[Constants.Literals.Items] as? String {
+            self._items = items
         }
-        if let orderNumber = orderData["orderNumber"] as? String {
-            self._orderNumber = orderNumber
+        if let number = orderData[Constants.Literals.Number] as? String {
+            self._number = number
         }
-        if let orderStatus = orderData["orderStatus"] as? String {
-            self._orderStatus = orderStatus
+        if let status = orderData[Constants.Literals.Status] as? String {
+            self._status = status
         }
-        if let orderTotal = orderData["orderTotal"] as? String {
-            self._orderTotal = orderTotal
+        if let total = orderData[Constants.Literals.Total] as? String {
+            self._total = total
         }
-        if let userID = orderData["userID"] as? String {
+        if let userID = orderData[Constants.Literals.UserID] as? String {
             self._userID = userID
         }
     }

@@ -110,8 +110,12 @@ struct Constants {
     }
     
     struct Colors {
-        static let BellGreen = UIColor(red: 64.0 / 255.0, green: 170.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
-        static let BellRed = UIColor(red: 230.0 / 255.0, green: 81.0 / 255.0, blue: 85.0 / 255.0, alpha: 1.0)
+        static let GreenHeavy = UIColor(red: 18.0 / 255.0, green: 123.0 / 255.0, blue: 60.0 / 255.0, alpha: 1.0)
+        static let GreenMedium = UIColor(red: 38.0 / 255.0, green: 152.0 / 255.0, blue: 84.0 / 255.0, alpha: 1.0)
+        static let GreenLight = UIColor(red: 100.0 / 255.0, green: 195.0 / 255.0, blue: 138.0 / 255.0, alpha: 1.0)
+        static let RedHeavy = UIColor(red: 171.0 / 255.0, green: 52.0 / 255.0, blue: 24.0 / 255.0, alpha: 1.0)
+        static let RedMedium = UIColor(red: 211.0 / 255.0, green: 82.0 / 255.0, blue: 52.0 / 255.0, alpha: 1.0)
+        static let RedLight = UIColor(red: 236.0 / 255.0, green: 117.0 / 255.0, blue: 89.0 / 255.0, alpha: 1.0)
     }
     
     struct Coordinates {
@@ -189,24 +193,32 @@ struct Constants {
         static let City = "city"
         static let Comma = ","
         static let CreateAccount = "Create Account"
+        static let Date = "date"
         static let DecimalPlaces = "%.5f"
+        static let DropDate = "Drop Date"
         static let Email = "email"
         static let EmptyString = ""
         static let ExpertGarmentCare = "Expert Garment Care"
         static let FirstName = "firstName"
+        static let Items = "items"
         static let KeyboardWillShow = "keyboardWillShow"
         static let LastName = "lastName"
         static let LocalizedReason = "Sign In with Touch ID"
         static let MailTo = "mailto:"
         static let Map = "Map"
+        static let Number = "number"
         static let Orders = "orders"
-        static let OrderNumber = "orderNumber"
         static let Password = "password"
         static let PhoneNumber = "phoneNumber"
+        static let PickedUpDate = "Picked Up Date"
         static let PickupDelivery = "pickupDelivery"
         static let Profile = "profile"
+        static let ReadyDate = "Ready Date"
         static let SecureText: Character = "•"
         static let SignIn = "Sign In"
+        static let Status = "status"
+        static let Total = "total"
+        static let UserID = "userID"
         static let Users = "users"
         static let Zipcode = "zipcode"
     }
