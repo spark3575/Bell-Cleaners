@@ -29,6 +29,7 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
     private var stackViewOriginY: CGFloat?
+    var currentCustomer: Customer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,26 +170,55 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
             self.saveLogin(email: email, password: password)
             if let user = Auth.auth().currentUser , user.isEmailVerified {
                 self.spinner.startAnimating()
-                DataService.instance.currentUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                DataService.instance.cutomersRef.queryOrdered(byChild: Constants.Literals.UserID).observeSingleEvent(of: .value, with: { (snapshot) in
                     self.spinner.stopAnimating()
-                    if let user = snapshot.value as? [String : AnyObject] {
-                        let ableToAccess = user[Constants.Literals.AbleToAccessMyAccount] ?? false as AnyObject
-                        let ableToAccessMyAccount = (ableToAccess as! Bool)
-                        self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
-                        let userEmail = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
-                        let email = userEmail as! String
-                        if email == Constants.Literals.AdminEmail {
-                            self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
-                            return
+                    if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                        var customerAvailable = false
+                        var customers = [Customer]()
+                        var userIDs = [String]()
+                        for snap in snapshot {
+                            if let customerDict = snap.value as? DataService.StringAnyobjectDict {
+                                let key = snap.key
+                                let customer = Customer(ID: key, customerData: customerDict)
+                                customers.append(customer)
+                                userIDs.append(customer.userID)
+                                if !customerAvailable, customer.userID == user.uid {
+                                    self.currentCustomer = customer
+                                    customerAvailable = true
+                                }
+                            }
                         }
-                        if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                            self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
-                            return
-                        } else {
-                            self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
+                        if !customerAvailable, !userIDs.contains(user.uid) {
+                            let customerData = [Constants.Literals.AbleToAccessMyAccount: false,
+                                                Constants.Literals.Address: Constants.Literals.EmptyString,
+                                                Constants.Literals.City: Constants.Literals.EmptyString,
+                                                Constants.Literals.Email: email,
+                                                Constants.Literals.FirstName: Constants.Literals.EmptyString,
+                                                Constants.Literals.LastName: Constants.Literals.EmptyString,
+                                                Constants.Literals.PhoneNumber: Constants.Literals.EmptyString,
+                                                Constants.Literals.PickupDelivery: false,
+                                                Constants.Literals.UserID: user.uid,
+                                                Constants.Literals.Zipcode: Constants.Literals.EmptyString] as DataService.StringAnyobjectDict
+                            DataService.instance.createCustomer(userData: customerData as DataService.StringAnyobjectDict)
+                            self.currentCustomer = Customer(customerData: customerData)
                         }
                     }
-                })                
+                })
+                let ableToAccess = self.currentCustomer?.ableToAccessMyAccount ?? false
+                let ableToAccessMyAccount = ableToAccess
+                self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                let userEmail = self.currentCustomer?.email
+                let email = userEmail
+                if email == Constants.Literals.AdminEmail {
+                    self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
+                    return
+                }
+                if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                    self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
+                    return
+                } else {
+                    self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
+                }
             } else {
                 let alertEmailVerification = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, preferredStyle: .alert)
                 if let user = Auth.auth().currentUser, !user.isEmailVerified {

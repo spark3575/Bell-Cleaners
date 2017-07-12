@@ -16,6 +16,8 @@
 		B02C6FB21EE8931B00A2465E /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */; };
 		B02C6FB41EE894D700A2465E /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C6FB31EE894D700A2465E /* SegueFromRight.swift */; };
 		B02F1A4B1F0FF79800C76D79 /* AddOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F1A4A1F0FF79800C76D79 /* AddOrderVC.swift */; };
+		B03A16701F141A8C005A194A /* CustomerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A166F1F141A8C005A194A /* CustomerSearchVC.swift */; };
+		B03A16721F14358C005A194A /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A16711F14358C005A194A /* Customer.swift */; };
 		B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04B37DD1EDD9C7300BF675B /* DataService.swift */; };
 		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
 		B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */; };
@@ -55,6 +57,8 @@
 		B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		B02C6FB31EE894D700A2465E /* SegueFromRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		B02F1A4A1F0FF79800C76D79 /* AddOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderVC.swift; sourceTree = "<group>"; };
+		B03A166F1F141A8C005A194A /* CustomerSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSearchVC.swift; sourceTree = "<group>"; };
+		B03A16711F14358C005A194A /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B04B37DD1EDD9C7300BF675B /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				B0C02F1E1EDB7CEF002C4F52 /* MyAccountVC.swift */,
 				B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */,
 				B0616FFC1EF381ED001DB41D /* AdminVC.swift */,
+				B03A166F1F141A8C005A194A /* CustomerSearchVC.swift */,
 				B02F1A4A1F0FF79800C76D79 /* AddOrderVC.swift */,
 			);
 			name = Controller;
@@ -187,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				B05A53CC1F0DC48A0018CE45 /* Order.swift */,
+				B03A16711F14358C005A194A /* Customer.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -385,11 +391,13 @@
 				B02F1A4B1F0FF79800C76D79 /* AddOrderVC.swift in Sources */,
 				B01C11EB1EEEE1160037A1A9 /* ProfileVC.swift in Sources */,
 				B0B610A61ED6608D001E3C6C /* CallBellButton.swift in Sources */,
+				B03A16721F14358C005A194A /* Customer.swift in Sources */,
 				B0B610A41ED5C3CE001E3C6C /* MapVC.swift in Sources */,
 				B003C3E31EFED44F00C73996 /* UpdatePasswordVC.swift in Sources */,
 				B0C02F1F1EDB7CEF002C4F52 /* MyAccountVC.swift in Sources */,
 				B006E7B81EF0A44100C7638B /* Constants.swift in Sources */,
 				B0B610AE1ED6928E001E3C6C /* BellLogoButton.swift in Sources */,
+				B03A16701F141A8C005A194A /* CustomerSearchVC.swift in Sources */,
 				B00A97991ED336C900C32A88 /* ShadowButton.swift in Sources */,
 				B05A53CD1F0DC48A0018CE45 /* Order.swift in Sources */,
 				B0AECE581ED0D48F00097AE1 /* BellCleanersVC.swift in Sources */,

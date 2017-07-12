@@ -21,17 +21,36 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.delegate = self
         spinner.startAnimating()
+        DataService.instance.ordersRef.queryOrdered(byChild: Constants.Literals.Number).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.spinner.stopAnimating()
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshot {
+                    if let orderDict = snap.value as? [String: AnyObject] {
+                        let key = snap.key
+                        let order = Order(orderID: key, orderData: orderDict)
+                        if order.userID == Auth.auth().currentUser?.uid {
+                            self.currentUserOrders.insert(order, at: 0)
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        spinner.startAnimating()
         DataService.instance.ordersRef.observe(.childChanged, with: { (snapshot) in
             self.spinner.stopAnimating()
             if let changedOrderDict = snapshot.value as? [String: AnyObject] {
                 let changedOrderID = snapshot.key
-                let changedOrder = Order(ID: changedOrderID, orderData: changedOrderDict)
-                if let index = self.currentUserOrders.index(where: {$0.ID == changedOrderID}) {
+                let changedOrder = Order(orderID: changedOrderID, orderData: changedOrderDict)
+                if let index = self.currentUserOrders.index(where: {$0.orderID == changedOrderID}) {
                     self.currentUserOrders[index] = changedOrder
                     if self.currentUserOrders[index].userID != Auth.auth().currentUser?.uid {
                         self.currentUserOrders.remove(at: index)
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
+                            return
                         }
                     }
                     DispatchQueue.main.async {
@@ -45,24 +64,6 @@ class OrdersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         }
                     }
                 }
-            }
-        })
-        spinner.startAnimating()
-        DataService.instance.ordersRef.queryOrdered(byChild: Constants.Literals.Number).observeSingleEvent(of: .value, with: { (snapshot) in
-            self.spinner.stopAnimating()
-            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                for snap in snapshot {
-                    if let orderDict = snap.value as? [String: AnyObject] {
-                        let key = snap.key
-                        let order = Order(ID: key, orderData: orderDict)
-                        if order.userID == Auth.auth().currentUser?.uid {
-                            self.currentUserOrders.insert(order, at: 0)
-                        }
-                    }
-                }
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
             }
         })
     }

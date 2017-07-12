@@ -37,7 +37,7 @@ class AuthService {
                 onComplete?(nil, user)
                 if let user = user {
                     let userEmail = [Constants.Literals.Email: email]
-                    DataService.instance.updateDBUser(uid: user.uid, userData: userEmail as [String: AnyObject])
+                    DataService.instance.updateDBUser(uid: user.uid, userData: userEmail as DataService.StringAnyobjectDict)
                 }
             }
         })

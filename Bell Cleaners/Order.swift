@@ -12,7 +12,7 @@ class Order {
     
     private var _date: String!
     private var _items: String!
-    private var _ID: String!
+    private var _orderID: String!
     private var _number: String!
     private var _status: String!
     private var _total: String!
@@ -26,8 +26,8 @@ class Order {
         return _items
     }
     
-    var ID: String {
-        return _ID
+    var orderID: String {
+        return _orderID
     }
     
     var number: String {
@@ -55,8 +55,8 @@ class Order {
         self._userID = userID
     }
     
-    init(ID: String, orderData: [String: AnyObject]) {
-        self._ID = ID
+    init(orderID: String, orderData: [String: AnyObject]) {
+        self._orderID = orderID
         if let date = orderData[Constants.Literals.Date] as? String {
             self._date = date
         }

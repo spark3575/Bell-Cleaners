@@ -193,6 +193,7 @@ struct Constants {
         static let City = "city"
         static let Comma = ","
         static let CreateAccount = "Create Account"
+        static let Customers = "customers"
         static let Date = "date"
         static let DecimalPlaces = "%.5f"
         static let DropDate = "Drop Date"

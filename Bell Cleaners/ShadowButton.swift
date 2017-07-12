@@ -64,6 +64,10 @@ class SettingsButton: ShadowButton {}
 
 class SupportButton: ShadowButton {}
 
+class CustomerSearchButton: ShadowButton {}
+
+class OrderSearchButton: ShadowButton {}
+
 class AddOrderButton: ShadowButton {}
 
 class EditOrderButton: ShadowButton {}

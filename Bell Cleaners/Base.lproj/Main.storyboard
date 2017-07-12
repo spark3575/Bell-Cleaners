@@ -144,7 +144,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XR-3T-XSx" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="178" width="280" height="47"/>
+                                        <rect key="frame" x="0.0" y="178" width="280" height="47.5"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Alteration">
@@ -163,7 +163,7 @@
                                         </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HY-OT-Tf5" customClass="ShadowButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="237" width="280" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="237.5" width="280" height="47"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Sneakers and more">
@@ -373,7 +373,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-sB-NtF" userLabel="email &amp; pass">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rTF-Qh-z7O" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rTF-Qh-z7O" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                                 <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -391,7 +391,7 @@
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••••" textAlignment="center" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-LS-JK9" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••••" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-LS-JK9" customClass="PasswordField" customModule="Bell_Cleaners" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                                 <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -660,28 +660,28 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NoB-hy-EH5">
                                 <rect key="frame" x="40" y="234" width="240" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVj-GK-L7f" customClass="AddOrderButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVj-GK-L7f" customClass="CustomerSearchButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="au3-gy-BlH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <state key="normal" title="Add Order">
+                                        <state key="normal" title="Customer Search">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                         <connections>
-                                            <segue destination="sdh-Vy-ef9" kind="show" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="42u-BN-fX4"/>
+                                            <segue destination="jjD-et-XKW" kind="show" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="E25-bJ-lFv"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1q-hj-yg8" customClass="EditOrderButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1q-hj-yg8" customClass="OrderSearchButton" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                         <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <state key="normal" title="Edit Order">
+                                        <state key="normal" title="Order Search">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -834,7 +834,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugn-g3-sZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VTt-Rf-whY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3484" y="-263"/>
+            <point key="canvasLocation" x="4260" y="-263"/>
         </scene>
         <!--My AccountVC-->
         <scene sceneID="jLe-1c-lKT">
@@ -845,14 +845,14 @@
                         <viewControllerLayoutGuide type="bottom" id="s6h-Lx-1TS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="voa-ew-vmy">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7z-cG-xg1" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="855-pp-NZv">
-                                        <rect key="frame" x="324.5" y="29" width="120" height="26.5"/>
+                                        <rect key="frame" x="100.5" y="29" width="120" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -878,13 +878,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Fmk-B6-hY5">
-                                <rect key="frame" x="40" y="378" width="688" height="268"/>
+                                <rect key="frame" x="40" y="150" width="240" height="268"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-gm-wej">
-                                        <rect key="frame" x="0.0" y="0.0" width="688" height="268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="268"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWT-Sj-2oG" customClass="OrdersButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="688" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="JZm-Ay-wuq">
@@ -908,7 +908,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSK-rC-nC0" customClass="PickupDeliveryButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="56" width="688" height="44"/>
+                                                <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Pickup &amp; Delivery">
@@ -922,7 +922,7 @@
                                                 </variation>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-MX-r3Y" customClass="ProfileButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="112" width="688" height="44"/>
+                                                <rect key="frame" x="0.0" y="112" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Profile">
@@ -939,7 +939,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QO-gg-SEH" customClass="SettingsButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="168" width="688" height="44"/>
+                                                <rect key="frame" x="0.0" y="168" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Settings">
@@ -956,7 +956,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcw-gG-rxL" customClass="SupportButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="224" width="688" height="44"/>
+                                                <rect key="frame" x="0.0" y="224" width="240" height="44"/>
                                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <state key="normal" title="Support">
@@ -991,7 +991,7 @@
                                 </variation>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-up-HVa" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="20" y="960" width="728" height="44"/>
+                                <rect key="frame" x="20" y="504" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="FD7-Kl-W28">
@@ -1014,7 +1014,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="E62-Ik-1ja">
-                                <rect key="frame" x="365.5" y="493.5" width="37" height="37"/>
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
@@ -1065,98 +1065,103 @@
                         <viewControllerLayoutGuide type="bottom" id="uRG-OD-1AA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HC9-YQ-ABo">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ixQ-eH-eyB">
-                                <rect key="frame" x="0.0" y="74" width="768" height="866"/>
+                                <rect key="frame" x="0.0" y="74" width="320" height="410"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="68" id="Ybs-SC-kFK" customClass="OrderCell" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="68"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ybs-SC-kFK" id="6z9-Rr-N6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcW-21-KSl" customClass="ShadowViewRounded" customModule="Bell_Cleaners" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="0.0" width="748" height="57"/>
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="57"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eau-Jt-vmz" userLabel="order">
-                                                            <rect key="frame" x="8" y="8" width="52.5" height="41"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cB5-ad-kyK">
+                                                            <rect key="frame" x="8" y="8" width="267" height="41"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="151617" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-O0-ZyY">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="52.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZx-Y1-Bhw">
-                                                                    <rect key="frame" x="0.0" y="20.5" width="52.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bkS-HX-uaB" userLabel="date &amp; time">
-                                                            <rect key="frame" x="308" y="8" width="132.5" height="41"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Jul 4, 2017  3:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cg-JR-RWF">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Drop Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkL-ot-5dL">
-                                                                    <rect key="frame" x="0.0" y="20.5" width="132.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RTX-LQ-zJM" userLabel="price &amp; count">
-                                                            <rect key="frame" x="674" y="8" width="49" height="41"/>
-                                                            <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Egg-8W-lct">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="20.5"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eau-Jt-vmz" userLabel="order">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="41"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLX-Ep-H91">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="9" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="151617" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="N3r-O0-ZyY">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="35.47" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpx-L9-ET5">
-                                                                            <rect key="frame" x="12" y="0.0" width="37" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZx-Y1-Bhw">
+                                                                            <rect key="frame" x="0.0" y="20.5" width="95.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="foI-gN-vyb">
-                                                                    <rect key="frame" x="0.0" y="20.5" width="49" height="20.5"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bkS-HX-uaB" userLabel="date &amp; time">
+                                                                    <rect key="frame" x="103.5" y="0.0" width="77.5" height="41"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LR-Fn-vJO">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="14.5" height="20.5"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="July 4, 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Cg-JR-RWF">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="77.5" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Drop Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkL-ot-5dL">
+                                                                            <rect key="frame" x="0.0" y="20.5" width="77.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Items" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cep-dn-JVM">
-                                                                            <rect key="frame" x="17.5" y="0.0" width="31.5" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RTX-LQ-zJM" userLabel="price &amp; count">
+                                                                    <rect key="frame" x="189" y="0.0" width="78" height="41"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Egg-8W-lct">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="78" height="20.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qLX-Ep-H91">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="38" height="20.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="35.47" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Gpx-L9-ET5">
+                                                                                    <rect key="frame" x="41" y="0.0" width="37" height="20.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="foI-gN-vyb">
+                                                                            <rect key="frame" x="0.0" y="20.5" width="78" height="20.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LR-Fn-vJO">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="20.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Items" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cep-dn-JVM">
+                                                                                    <rect key="frame" x="46.5" y="0.0" width="31.5" height="20.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailArrow" translatesAutoresizingMaskIntoConstraints="NO" id="P6D-Ty-JJE">
-                                                            <rect key="frame" x="731" y="21.5" width="9" height="14"/>
+                                                            <rect key="frame" x="283" y="21.5" width="9" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="9" id="C7C-ad-eax"/>
                                                                 <constraint firstAttribute="height" constant="14" id="TQ9-9g-csB"/>
@@ -1166,16 +1171,12 @@
                                                     <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="P6D-Ty-JJE" firstAttribute="centerY" secondItem="LcW-21-KSl" secondAttribute="centerY" id="2hs-3j-eR9"/>
-                                                        <constraint firstItem="eau-Jt-vmz" firstAttribute="top" secondItem="LcW-21-KSl" secondAttribute="top" constant="8" id="BPw-uY-y2o"/>
-                                                        <constraint firstAttribute="bottom" secondItem="bkS-HX-uaB" secondAttribute="bottom" constant="8" id="EE4-hA-jrm"/>
                                                         <constraint firstAttribute="trailing" secondItem="P6D-Ty-JJE" secondAttribute="trailing" constant="8" id="G9I-J2-Hs3"/>
-                                                        <constraint firstAttribute="bottom" secondItem="RTX-LQ-zJM" secondAttribute="bottom" constant="8" id="Keq-fo-PEV"/>
-                                                        <constraint firstItem="eau-Jt-vmz" firstAttribute="leading" secondItem="LcW-21-KSl" secondAttribute="leading" constant="8" id="V4d-1V-Ew3"/>
-                                                        <constraint firstItem="P6D-Ty-JJE" firstAttribute="leading" secondItem="RTX-LQ-zJM" secondAttribute="trailing" constant="8" id="WXv-2W-4pt"/>
-                                                        <constraint firstItem="bkS-HX-uaB" firstAttribute="centerX" secondItem="LcW-21-KSl" secondAttribute="centerX" id="eRz-sx-KbS"/>
-                                                        <constraint firstItem="bkS-HX-uaB" firstAttribute="top" secondItem="LcW-21-KSl" secondAttribute="top" constant="8" id="it3-vz-hX8"/>
-                                                        <constraint firstItem="RTX-LQ-zJM" firstAttribute="top" secondItem="LcW-21-KSl" secondAttribute="top" constant="8" id="qaV-Y3-IRy"/>
-                                                        <constraint firstAttribute="bottom" secondItem="eau-Jt-vmz" secondAttribute="bottom" constant="8" id="wFy-7h-PaF"/>
+                                                        <constraint firstItem="cB5-ad-kyK" firstAttribute="leading" secondItem="LcW-21-KSl" secondAttribute="leading" constant="8" id="Ihj-02-fU9"/>
+                                                        <constraint firstItem="P6D-Ty-JJE" firstAttribute="leading" secondItem="cB5-ad-kyK" secondAttribute="trailing" constant="8" id="L2O-IE-SPl"/>
+                                                        <constraint firstItem="cB5-ad-kyK" firstAttribute="top" secondItem="LcW-21-KSl" secondAttribute="top" constant="8" id="fyf-Vg-bje"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cB5-ad-kyK" secondAttribute="bottom" constant="8" id="kIg-F1-sh4"/>
+                                                        <constraint firstItem="bkS-HX-uaB" firstAttribute="centerX" secondItem="LcW-21-KSl" secondAttribute="centerX" id="njz-fu-34Y"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -1198,10 +1199,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8c-ap-XEB" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adX-84-Ihs">
-                                        <rect key="frame" x="350" y="29" width="69" height="26.5"/>
+                                        <rect key="frame" x="126" y="29" width="69" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1226,7 +1227,7 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="jUI-hs-gHc">
-                                        <rect key="frame" x="310" y="32" width="20" height="20"/>
+                                        <rect key="frame" x="86" y="32" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1247,7 +1248,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awV-G9-qfL" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
-                                <rect key="frame" x="20" y="960" width="728" height="44"/>
+                                <rect key="frame" x="20" y="504" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="bIL-De-l8R">
@@ -1307,8 +1308,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-fs-QSJ">
-                                <rect key="frame" x="40" y="78.5" width="240" height="411"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-fs-QSJ">
+                                <rect key="frame" x="40" y="143" width="240" height="282"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jdb-AB-K6V" customClass="EmailField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="35"/>
@@ -1341,11 +1342,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i38-sE-Kc5" customClass="FirstNameField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i38-sE-Kc5" customClass="FirstNameField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="94" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="given-name"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1354,11 +1355,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gBc-vz-BVz" customClass="LastNameField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gBc-vz-BVz" customClass="LastNameField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="141" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="family-name"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1367,11 +1368,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="adU-wo-tox" customClass="PhoneNumberField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="adU-wo-tox" customClass="PhoneNumberField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="188" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" returnKeyType="next" textContentType="tel"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1380,39 +1381,43 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APB-fd-NLz">
-                                        <rect key="frame" x="0.0" y="235" width="240" height="35"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APB-fd-NLz" customClass="ShadowViewBordered" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="235" width="240" height="47"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup &amp; Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-Y3-JSD">
-                                                <rect key="frame" x="12" y="6" width="157" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="frame" x="12" y="13.5" width="145.5" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                 </variation>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jf0-JR-PiY">
-                                                <rect key="frame" x="188" y="2" width="51" height="31"/>
-                                                <color key="onTintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <switch opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jf0-JR-PiY">
+                                                <rect key="frame" x="179" y="8" width="51" height="31"/>
+                                                <color key="onTintColor" red="0.39215686274509803" green="0.76470588235294112" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="didTogglePickupDelivery:" destination="teV-et-Uyh" eventType="valueChanged" id="V6C-my-pam"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="jf0-JR-PiY" firstAttribute="centerY" secondItem="APB-fd-NLz" secondAttribute="centerY" id="Fed-NR-ZoY"/>
+                                            <constraint firstAttribute="trailing" secondItem="jf0-JR-PiY" secondAttribute="trailing" constant="12" id="4KT-iX-gCU"/>
+                                            <constraint firstAttribute="height" constant="47" id="Pic-yk-9du"/>
+                                            <constraint firstItem="jf0-JR-PiY" firstAttribute="centerY" secondItem="APB-fd-NLz" secondAttribute="centerY" id="Qxk-x7-WuR"/>
                                             <constraint firstItem="zPY-Y3-JSD" firstAttribute="leading" secondItem="APB-fd-NLz" secondAttribute="leading" constant="12" id="Yae-0x-xx1"/>
-                                            <constraint firstAttribute="trailing" secondItem="jf0-JR-PiY" secondAttribute="trailing" constant="3" id="hNi-Wn-Zd1"/>
                                             <constraint firstItem="zPY-Y3-JSD" firstAttribute="centerY" secondItem="APB-fd-NLz" secondAttribute="centerY" id="nHE-GI-3VA"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KXd-on-em7" customClass="AddressField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                    <textField hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KXd-on-em7" customClass="AddressField" customModule="Bell_Cleaners" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="282" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="4Wf-vj-hlY"/>
+                                        </constraints>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="address-line1"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1421,11 +1426,11 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zjp-ZJ-Che" customClass="CityField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="329" width="240" height="35"/>
+                                    <textField hidden="YES" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zjp-ZJ-Che" customClass="CityField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="282" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="address-level2"/>
                                         <variation key="heightClass=compact">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1434,8 +1439,8 @@
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         </variation>
                                     </textField>
-                                    <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zipcode" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gMt-qQ-8j3" customClass="ZipcodeField" customModule="Bell_Cleaners" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="376" width="240" height="35"/>
+                                    <textField hidden="YES" opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zipcode" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gMt-qQ-8j3" customClass="ZipcodeField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="282" width="240" height="35"/>
                                         <color key="tintColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -1449,7 +1454,13 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="adU-wo-tox" firstAttribute="height" secondItem="jdb-AB-K6V" secondAttribute="height" id="5jB-fE-PFz"/>
+                                    <constraint firstItem="i38-sE-Kc5" firstAttribute="height" secondItem="jdb-AB-K6V" secondAttribute="height" id="Hbd-To-oQI"/>
+                                    <constraint firstItem="zjp-ZJ-Che" firstAttribute="height" secondItem="KXd-on-em7" secondAttribute="height" id="ies-82-gdE"/>
+                                    <constraint firstItem="HL7-4s-4Jg" firstAttribute="height" secondItem="jdb-AB-K6V" secondAttribute="height" id="lZo-Pu-vT4"/>
                                     <constraint firstAttribute="width" constant="400" id="u2a-jc-JQU"/>
+                                    <constraint firstItem="gMt-qQ-8j3" firstAttribute="height" secondItem="KXd-on-em7" secondAttribute="height" id="yUi-KV-Mzo"/>
+                                    <constraint firstItem="gBc-vz-BVz" firstAttribute="height" secondItem="jdb-AB-K6V" secondAttribute="height" id="z8c-uR-RwT"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -2187,6 +2198,192 @@
             </objects>
             <point key="canvasLocation" x="411" y="450"/>
         </scene>
+        <!--Customer SearchVC-->
+        <scene sceneID="dI3-zS-XfG">
+            <objects>
+                <viewController id="jjD-et-XKW" customClass="CustomerSearchVC" customModule="Bell_Cleaners" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1iS-X3-J2I"/>
+                        <viewControllerLayoutGuide type="bottom" id="iTe-2v-jAa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wJ1-rK-vsk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3C-8r-beo" customClass="ShadowView" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAs-yI-JF0">
+                                        <rect key="frame" x="8" y="20.5" width="60" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="Hbz-dP-mRd"/>
+                                            <constraint firstAttribute="height" constant="44" id="LjY-Gi-03c">
+                                                <variation key="heightClass=compact" constant="30"/>
+                                            </constraint>
+                                        </constraints>
+                                        <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <segue destination="3tC-X3-qFp" kind="custom" customClass="SegueFromLeft" customModule="Bell_Cleaners" customModuleProvider="target" id="X4A-wU-AXb"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Customer Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dVQ-up-gsI">
+                                        <rect key="frame" x="60" y="27" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="C1c-7w-CvM"/>
+                                            <constraint firstAttribute="width" constant="200" id="lP8-sG-XLe"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="wAs-yI-JF0" secondAttribute="bottom" id="1T5-hU-wg5"/>
+                                    <constraint firstItem="dVQ-up-gsI" firstAttribute="centerX" secondItem="i3C-8r-beo" secondAttribute="centerX" id="8oS-xs-l1m"/>
+                                    <constraint firstAttribute="height" constant="64" id="YvB-sO-TS5">
+                                        <variation key="heightClass=compact" constant="30"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
+                                    <constraint firstItem="wAs-yI-JF0" firstAttribute="leading" secondItem="i3C-8r-beo" secondAttribute="leading" constant="8" id="hnU-Ve-33J"/>
+                                    <constraint firstItem="dVQ-up-gsI" firstAttribute="centerY" secondItem="i3C-8r-beo" secondAttribute="centerY" constant="10" id="q3X-i1-9wg"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ist-3e-KVK">
+                                <rect key="frame" x="0.0" y="74" width="320" height="270"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="68" id="UZP-pC-vCu" customClass="OrderCell" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UZP-pC-vCu" id="aT2-Ni-ewm">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOc-1s-I6s" customClass="ShadowViewRounded" customModule="Bell_Cleaners" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="35.5"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a62-3p-A7v">
+                                                            <rect key="frame" x="8" y="8" width="284" height="19.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Smith, John" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJU-mw-tRw">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="121.5" height="19.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="214-234-5678" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4kM-Sn-7wg">
+                                                                    <rect key="frame" x="129.5" y="0.0" width="154.5" height="19.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="a62-3p-A7v" firstAttribute="leading" secondItem="UOc-1s-I6s" secondAttribute="leading" constant="8" id="CRB-zb-qCJ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="a62-3p-A7v" secondAttribute="bottom" constant="8" id="YPk-LS-QG1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="a62-3p-A7v" secondAttribute="trailing" constant="8" id="hJ0-HJ-19n"/>
+                                                        <constraint firstItem="a62-3p-A7v" firstAttribute="top" secondItem="UOc-1s-I6s" secondAttribute="top" constant="8" id="twX-ts-8Ul"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="UOc-1s-I6s" secondAttribute="trailing" constant="10" id="D0b-5s-fxZ"/>
+                                                <constraint firstItem="UOc-1s-I6s" firstAttribute="leading" secondItem="aT2-Ni-ewm" secondAttribute="leading" constant="10" id="RSN-nm-PfS"/>
+                                                <constraint firstItem="UOc-1s-I6s" firstAttribute="top" secondItem="aT2-Ni-ewm" secondAttribute="top" id="SHc-5j-oWi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="sdh-Vy-ef9" kind="show" identifier="AddOrderVC" customClass="SegueFromRight" customModule="Bell_Cleaners" customModuleProvider="target" id="XVW-Ab-yov"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVU-9m-Rfv" customClass="SignOutButton" customModule="Bell_Cleaners" customModuleProvider="target">
+                                <rect key="frame" x="20" y="504" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LOl-TJ-7Gu">
+                                        <variation key="heightClass=compact" constant="44"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="didTapSignOut:" destination="3tC-X3-qFp" eventType="touchUpInside" id="Zl0-lU-zU4"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iNg-jh-lgD">
+                                <rect key="frame" x="40" y="364" width="240" height="120"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VfT-Dj-dcq" customClass="PhoneNumberField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="len-pu-k4f" customClass="LastNameField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="30" width="240" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lop-5G-e23" customClass="FirstNameField" customModule="Bell_Cleaners" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="240" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtN-BM-dun">
+                                        <rect key="frame" x="0.0" y="90" width="240" height="30"/>
+                                        <color key="backgroundColor" red="0.25098039220000001" green="0.66666666669999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Add New Customer">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="i3C-8r-beo" secondAttribute="trailing" id="1MO-rx-0BK"/>
+                            <constraint firstItem="Ist-3e-KVK" firstAttribute="leading" secondItem="wJ1-rK-vsk" secondAttribute="leading" id="7nW-j7-GrV"/>
+                            <constraint firstItem="iNg-jh-lgD" firstAttribute="leading" secondItem="wJ1-rK-vsk" secondAttribute="leading" constant="40" id="DQs-ZJ-oUz"/>
+                            <constraint firstAttribute="trailing" secondItem="iNg-jh-lgD" secondAttribute="trailing" constant="40" id="FWj-dK-Y6I"/>
+                            <constraint firstItem="i3C-8r-beo" firstAttribute="top" secondItem="wJ1-rK-vsk" secondAttribute="top" id="PuZ-FF-KMH"/>
+                            <constraint firstAttribute="trailing" secondItem="Ist-3e-KVK" secondAttribute="trailing" id="RAo-0k-Dl9"/>
+                            <constraint firstItem="iNg-jh-lgD" firstAttribute="top" secondItem="Ist-3e-KVK" secondAttribute="bottom" constant="20" id="ZlZ-pT-0ZR"/>
+                            <constraint firstItem="lVU-9m-Rfv" firstAttribute="top" secondItem="iNg-jh-lgD" secondAttribute="bottom" constant="20" id="c0s-BY-31K"/>
+                            <constraint firstAttribute="trailing" secondItem="lVU-9m-Rfv" secondAttribute="trailing" constant="20" id="j8r-w9-VCi"/>
+                            <constraint firstItem="i3C-8r-beo" firstAttribute="leading" secondItem="wJ1-rK-vsk" secondAttribute="leading" id="koY-Ae-fhv"/>
+                            <constraint firstItem="Ist-3e-KVK" firstAttribute="top" secondItem="i3C-8r-beo" secondAttribute="bottom" constant="10" id="tLM-ZF-FLj"/>
+                            <constraint firstItem="lVU-9m-Rfv" firstAttribute="leading" secondItem="wJ1-rK-vsk" secondAttribute="leading" constant="20" id="wVv-NT-in8"/>
+                            <constraint firstItem="iTe-2v-jAa" firstAttribute="top" secondItem="lVU-9m-Rfv" secondAttribute="bottom" constant="20" id="xn5-al-VZL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="dVQ-up-gsI" id="8Kg-xz-MFj"/>
+                        <outlet property="tableView" destination="Ist-3e-KVK" id="8Vk-LG-4z4"/>
+                        <segue destination="7a9-bH-x0D" kind="unwind" identifier="unwindToBellCleanersVC" unwindAction="unwindToBellCleanersVCWithSegue:" id="r95-kv-r9i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOS-ug-ya1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7a9-bH-x0D" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3480" y="-263.02816901408448"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backArrow" width="13" height="21"/>
@@ -2195,9 +2392,9 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="aaj-A7-e7v"/>
         <segue reference="xiN-Ll-6Yj"/>
-        <segue reference="TvH-2h-sTi"/>
+        <segue reference="zTZ-BM-ifj"/>
         <segue reference="DAz-cr-tTc"/>
-        <segue reference="DhX-qu-0gd"/>
     </inferredMetricsTieBreakers>
 </document>

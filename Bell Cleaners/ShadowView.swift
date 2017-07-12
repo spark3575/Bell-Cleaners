@@ -29,6 +29,30 @@ class ShadowView: UIView {
     }
 }
 
+class ShadowViewBordered: ShadowView {
+    
+    required init?(coder aDecoder:NSCoder) {
+        super.init(coder:aDecoder)
+        setup()
+    }
+    
+    override init(frame:CGRect) {
+        super.init(frame:frame)
+        setup()
+    }
+    
+    private func setup() {
+        layer.borderColor = Constants.Colors.GreenMedium.cgColor
+        layer.borderWidth = Constants.Layers.BorderWidth
+        layer.cornerRadius = Constants.Layers.CornerRadius
+        layer.shadowColor = Constants.Layers.ShadowColor
+        layer.shadowOffset = Constants.Layers.ShadowOffsetForRounded
+        layer.shadowOpacity = Constants.Layers.ShadowOpacity
+        layer.shadowRadius = Constants.Layers.ShadowRadiusForRounded
+        layer.backgroundColor = Constants.Colors.GreenMedium.cgColor
+    }
+}
+
 class ShadowViewRounded: ShadowView {
     
     required init?(coder aDecoder:NSCoder) {

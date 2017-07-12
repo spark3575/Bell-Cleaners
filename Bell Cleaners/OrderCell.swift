@@ -42,8 +42,8 @@ class OrderCell: UITableViewCell {
         let dateTimeDouble: TimeInterval = Double(epochDateTime)!
         let date = NSDate(timeIntervalSince1970: dateTimeDouble)
         let dateTimeFormatter = DateFormatter()
-        dateTimeFormatter.dateStyle = DateFormatter.Style.medium //Set date style
-        dateTimeFormatter.timeStyle = DateFormatter.Style.short //Set time style
+        dateTimeFormatter.dateStyle = DateFormatter.Style.long //Set date style
+        dateTimeFormatter.timeStyle = DateFormatter.Style.none //Set time style
         let timeZone = TimeZone.autoupdatingCurrent.identifier as String
         dateTimeFormatter.timeZone = TimeZone(identifier: timeZone)
         let localDate = dateTimeFormatter.string(from: date as Date)

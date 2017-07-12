@@ -13,12 +13,18 @@ class DataService {
     
     private static let _instance = DataService()
     
+    typealias StringAnyobjectDict = [String: AnyObject]
+    
     static var instance: DataService {
         return _instance
     }
     
     var mainRef: DatabaseReference {
         return Database.database().reference()
+    }
+    
+    var cutomersRef: DatabaseReference {
+        return mainRef.child(Constants.Literals.Customers)
     }
     
     var usersRef: DatabaseReference {
@@ -37,7 +43,15 @@ class DataService {
         return usersRef.child((Auth.auth().currentUser?.uid)!).child(Constants.Literals.Orders)
     }
     
-    func updateDBUser(uid: String, userData: [String: AnyObject]) {
+    func createCustomer(userData: StringAnyobjectDict) {
+        mainRef.child(Constants.Literals.Customers).childByAutoId().updateChildValues(userData)
+    }
+    
+    func updateCustomer(customerID: String, userData: StringAnyobjectDict) {
+        mainRef.child(Constants.Literals.Customers).child(customerID).updateChildValues(userData)
+    }
+    
+    func updateDBUser(uid: String, userData: StringAnyobjectDict) {
         mainRef.child(Constants.Literals.Users).child(uid).child(Constants.Literals.Profile).updateChildValues(userData)
     }
 }
