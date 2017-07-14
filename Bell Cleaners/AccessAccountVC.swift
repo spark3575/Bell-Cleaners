@@ -23,13 +23,13 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private var activeField: UITextField?
     private let alertAccessAccount = PresentAlert()
     private let bellTouchSignIn = TouchIDAuth()
+    private var currentCustomer: Customer?
     private let defaults = UserDefaults.standard
     private var keyboardManager: KeyboardManager?
     private let notification = NotificationCenter.default
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
     private var stackViewOriginY: CGFloat?
-    var currentCustomer: Customer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,22 +203,22 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
                             self.currentCustomer = Customer(customerData: customerData)
                         }
                     }
+                    let ableToAccess = self.currentCustomer?.ableToAccessMyAccount ?? false
+                    let ableToAccessMyAccount = ableToAccess
+                    self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
+                    let userEmail = self.currentCustomer?.email
+                    let customerEmail = userEmail
+                    if customerEmail == Constants.Literals.AdminEmail {
+                        self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
+                        return
+                    }
+                    if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
+                        self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
+                        return
+                    } else {
+                        self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
+                    }
                 })
-                let ableToAccess = self.currentCustomer?.ableToAccessMyAccount ?? false
-                let ableToAccessMyAccount = ableToAccess
-                self.defaults.set(ableToAccessMyAccount, forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)
-                let userEmail = self.currentCustomer?.email
-                let email = userEmail
-                if email == Constants.Literals.AdminEmail {
-                    self.performSegue(withIdentifier: Constants.Segues.AdminVC, sender: self)
-                    return
-                }
-                if (self.defaults.bool(forKey: Constants.DefaultsKeys.AbleToAccessMyAccount)) {
-                    self.performSegue(withIdentifier: Constants.Segues.MyAccountVC, sender: self)
-                    return
-                } else {
-                    self.performSegue(withIdentifier: Constants.Segues.ProfileVC, sender: self)
-                }
             } else {
                 let alertEmailVerification = UIAlertController(title: Constants.Alerts.Titles.EmailVerification, message: Constants.Alerts.Messages.CheckVerificationEmail, preferredStyle: .alert)
                 if let user = Auth.auth().currentUser, !user.isEmailVerified {

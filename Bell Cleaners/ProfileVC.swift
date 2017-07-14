@@ -25,6 +25,7 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     private var activeField: UITextField?
     private let alertProfile = PresentAlert()
+    private var currentCustomer: Customer?
     private var currentEmail = String()
     private var currentPassword = String()
     private let currentUserRef = DataService.instance.currentUserRef
@@ -52,31 +53,38 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        spinner.startAnimating()
-        databaseHandle = currentUserRef.observe(.value, with: { (snapshot) in
-            if let user = snapshot.value as? [String : AnyObject] {
-                let email = user[Constants.Literals.Email] ?? Constants.Literals.EmptyString as AnyObject
-                let firstName = user[Constants.Literals.FirstName] ?? Constants.Literals.EmptyString as AnyObject
-                let lastName = user[Constants.Literals.LastName] ?? Constants.Literals.EmptyString as AnyObject
-                let phoneNumber = user[Constants.Literals.PhoneNumber] ?? Constants.Literals.EmptyString as AnyObject
-                let pickupDelivery = user[Constants.Literals.PickupDelivery] ?? false as AnyObject
-                let address = user[Constants.Literals.Address] ?? Constants.Literals.EmptyString as AnyObject
-                let city = user[Constants.Literals.City] ?? Constants.Literals.EmptyString as AnyObject
-                let zipcode = user[Constants.Literals.Zipcode] ?? Constants.Literals.EmptyString as AnyObject
-                self.currentEmail = (email as! String)
+        self.spinner.startAnimating()
+        DataService.instance.cutomersRef.queryOrdered(byChild: Constants.Literals.UserID).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.spinner.stopAnimating()
+            let user = Auth.auth().currentUser
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                var customers = [Customer]()
+                for snap in snapshot {
+                    if let customerDict = snap.value as? DataService.StringAnyobjectDict {
+                        let key = snap.key
+                        let customer = Customer(ID: key, customerData: customerDict)
+                        customers.append(customer)
+                        if customer.userID == user?.uid {
+                            self.currentCustomer = customer
+                        }
+                    }
+                }
+            }
+            if let currentCustomer = self.currentCustomer {
+                self.currentEmail = currentCustomer.email
                 self.emailField.text = self.currentEmail
                 self.passwordField.formatWithSecureText(password: self.currentPassword, email: self.currentEmail, formattedTextField: self.passwordField)
-                self.firstNameField.text = (firstName as! String)
-                self.lastNameField.text = (lastName as! String)
-                self.phoneNumberField.text = (phoneNumber as! String)
-                self.pickupDeliverySwitch.isOn = (pickupDelivery as! Bool)
+                self.firstNameField.text = currentCustomer.firstName
+                self.lastNameField.text = currentCustomer.lastName
+                self.phoneNumberField.text = currentCustomer.phoneNumber
+                self.pickupDeliverySwitch.isOn = currentCustomer.pickupDelivery
                 if self.pickupDeliverySwitch.isOn {
                     self.addressField.isHidden = false
                     self.cityField.isHidden = false
                     self.zipcodeField.isHidden = false
-                    self.addressField.text = (address as! String)
-                    self.cityField.text = (city as! String)
-                    self.zipcodeField.text = (zipcode as! String)
+                    self.addressField.text = currentCustomer.address
+                    self.cityField.text = currentCustomer.city
+                    self.zipcodeField.text = currentCustomer.zipcode
                 } else {
                     self.addressField.isHidden = true
                     self.cityField.isHidden = true
@@ -84,7 +92,6 @@ class ProfileVC: UIViewController, UITextFieldDelegate {
                 }
             }
         })
-        spinner.stopAnimating()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

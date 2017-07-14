@@ -192,6 +192,7 @@ struct Constants {
         static let BellCleaners = "Bell Cleaners"
         static let City = "city"
         static let Comma = ","
+        static let CommaSpace = ", "
         static let CreateAccount = "Create Account"
         static let Customers = "customers"
         static let Date = "date"
@@ -252,7 +253,8 @@ struct Constants {
         struct Cell {
             
             struct Identifier {
-                static let Order = "OrderCell"
+                static let Customer = "CustomerCell"
+                static let Order = "OrderCell"                
             }            
         }
     }

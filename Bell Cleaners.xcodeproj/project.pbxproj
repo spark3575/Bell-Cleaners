@@ -22,6 +22,7 @@
 		B05749371ED12C970076310B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05749361ED12C970076310B /* GoogleService-Info.plist */; };
 		B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */; };
 		B05900B71EE24529009238EE /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05900B61EE24529009238EE /* TouchIDAuthentication.swift */; };
+		B059F5A21F1845E0004F43CE /* CustomerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059F5A11F1845E0004F43CE /* CustomerCell.swift */; };
 		B05A53C71F0D5AA10018CE45 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */; };
 		B05A53CB1F0D5F9C0018CE45 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CA1F0D5F9C0018CE45 /* OrderCell.swift */; };
 		B05A53CD1F0DC48A0018CE45 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A53CC1F0DC48A0018CE45 /* Order.swift */; };
@@ -63,6 +64,7 @@
 		B05749361ED12C970076310B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B05900B41EE2443E009238EE /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		B05900B61EE24529009238EE /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
+		B059F5A11F1845E0004F43CE /* CustomerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCell.swift; sourceTree = "<group>"; };
 		B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
 		B05A53CA1F0D5F9C0018CE45 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		B05A53CC1F0DC48A0018CE45 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -174,8 +176,8 @@
 		B0AECE6A1ED0D8D200097AE1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B00A97981ED336C900C32A88 /* ShadowButton.swift */,
 				B00A97961ED32D8800C32A88 /* ShadowView.swift */,
+				B00A97981ED336C900C32A88 /* ShadowButton.swift */,
 				B0B610AD1ED6928E001E3C6C /* BellLogoButton.swift */,
 				B0B610A51ED6608D001E3C6C /* CallBellButton.swift */,
 				B089569F1ED8765600736208 /* ShadowField.swift */,
@@ -184,6 +186,7 @@
 				B02C6FB11EE8931B00A2465E /* SegueFromLeft.swift */,
 				B06971D91F069D220006D7D0 /* KeyboardManager.swift */,
 				B05A53CA1F0D5F9C0018CE45 /* OrderCell.swift */,
+				B059F5A11F1845E0004F43CE /* CustomerCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				B003C3E11EFE929100C73996 /* UpdateEmailVC.swift in Sources */,
 				B04B37DE1EDD9C7300BF675B /* DataService.swift in Sources */,
 				B0616FFD1EF381ED001DB41D /* AdminVC.swift in Sources */,
+				B059F5A21F1845E0004F43CE /* CustomerCell.swift in Sources */,
 				B08956A21ED91FEF00736208 /* PresentAlert.swift in Sources */,
 				B0B610B01ED7BD49001E3C6C /* AccessAccountVC.swift in Sources */,
 				B08956A01ED8765600736208 /* ShadowField.swift in Sources */,

@@ -18,7 +18,7 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var shadowView: ShadowViewRounded!
     
-    var order: Order!
+    private var order: Order!
 
     func configureCell(order: Order) {                
         self.order = order
