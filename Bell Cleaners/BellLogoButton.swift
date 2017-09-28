@@ -11,6 +11,8 @@ import AVFoundation
 
 class BellLogoButton: UIButton {
     
+    private var audioPlayer = AVAudioPlayer()
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()
@@ -40,8 +42,6 @@ class BellLogoButton: UIButton {
         shake.repeatCount = Constants.Animations.Shake.RepeatCount
         self.layer.add(shake, forKey: nil)
     }
-    
-    private var audioPlayer = AVAudioPlayer()
     
     func playSound(file: String, ext: String) -> Void {
         do {

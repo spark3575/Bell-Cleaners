@@ -85,17 +85,10 @@ class PasswordField: ShadowField {
 }
 
 class CurrentPasswordField: ShadowField {}
-
 class NewPasswordField: ShadowField {}
-
 class FirstNameField: ShadowField {}
-
 class LastNameField: ShadowField {}
-
 class PhoneNumberField: ShadowField {}
-
 class AddressField: ShadowField {}
-
 class CityField: ShadowField {}
-
 class ZipcodeField: ShadowField {}

@@ -20,7 +20,7 @@ class ShadowButton: UIButton {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         layer.cornerRadius = Constants.Layers.CornerRadius
         layer.shadowColor = Constants.Layers.ShadowColor
         layer.shadowOffset = Constants.Layers.ShadowOffset
@@ -38,33 +38,15 @@ class ShadowButton: UIButton {
     }
 }
 
-class ShadowButtonRed: UIButton {
+class ShadowButtonRed: ShadowButton {
     
-    required init?(coder aDecoder:NSCoder) {
-        super.init(coder:aDecoder)
-        setup()
-    }
-    
-    override init(frame:CGRect) {
-        super.init(frame:frame)
-        setup()
-    }
-    
-    private func setup() {
+    override func setup() {
         layer.cornerRadius = Constants.Layers.CornerRadius
         layer.shadowColor = Constants.Layers.ShadowColor
         layer.shadowOffset = Constants.Layers.ShadowOffset
         layer.shadowOpacity = Constants.Layers.ShadowOpacity
         layer.shadowRadius = Constants.Layers.ShadowRadius
-        layer.backgroundColor = Constants.Colors.RedHeavy.cgColor
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.transform = CGAffineTransform(scaleX: Constants.Animations.Touch.ScaleX, y: Constants.Animations.Touch.ScaleY)
-        UIView.animate(withDuration: Constants.Animations.Touch.Duration) {
-            self.transform = CGAffineTransform.identity
-        }
-        super.touchesBegan(touches, with: event)
+        layer.backgroundColor = Constants.Colors.RedMedium.cgColor
     }
 }
 
@@ -72,8 +54,10 @@ class AccessAccountButton: ShadowButton {}
 class AddNewCustomerButton: ShadowButton {}
 class AddOrderButton: ShadowButton {}
 class CancelButton: ShadowButton {}
+class DeleteButton: ShadowButtonRed {}
 class CustomerSearchButton: ShadowButton {}
 class DirectionsButton: ShadowButton {}
+class EditCustomerProfile: ShadowButton {}
 class EditOrderButton: ShadowButton {}
 class MapButton: ShadowButton {}
 class OrdersButton: ShadowButton {}

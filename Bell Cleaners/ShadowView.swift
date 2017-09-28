@@ -20,7 +20,7 @@ class ShadowView: UIView {
         setup()
     }
     
-    private func setup() {
+    func setup() {
         layer.shadowColor = Constants.Layers.ShadowColor
         layer.shadowOffset = Constants.Layers.ShadowOffset
         layer.shadowOpacity = Constants.Layers.ShadowOpacity
@@ -31,17 +31,7 @@ class ShadowView: UIView {
 
 class ShadowViewBordered: ShadowView {
     
-    required init?(coder aDecoder:NSCoder) {
-        super.init(coder:aDecoder)
-        setup()
-    }
-    
-    override init(frame:CGRect) {
-        super.init(frame:frame)
-        setup()
-    }
-    
-    private func setup() {
+    override func setup() {
         layer.borderColor = Constants.Colors.GreenMedium.cgColor
         layer.borderWidth = Constants.Layers.BorderWidth
         layer.cornerRadius = Constants.Layers.CornerRadius
@@ -55,17 +45,7 @@ class ShadowViewBordered: ShadowView {
 
 class ShadowViewRounded: ShadowView {
     
-    required init?(coder aDecoder:NSCoder) {
-        super.init(coder:aDecoder)
-        setup()
-    }
-    
-    override init(frame:CGRect) {
-        super.init(frame:frame)
-        setup()
-    }
-    
-    private func setup() {
+    override func setup() {
         layer.cornerRadius = Constants.Layers.CornerRadius
         layer.shadowColor = Constants.Layers.ShadowColor
         layer.shadowOffset = Constants.Layers.ShadowOffsetForRounded
