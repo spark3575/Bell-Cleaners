@@ -82,7 +82,7 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     }
     
     private func passwordValidation(_ textField: UITextField) {
-        if (textField.text?.characters.count)! >= Constants.Validations.Password.MinimumLength {
+        if (textField.text?.count)! >= Constants.Validations.Password.MinimumLength {
             textField.resignFirstResponder()
         } else {
             textField.resignFirstResponder()

@@ -57,8 +57,8 @@ class EmailField: ShadowField {
     }
     
     func formatWithSecureText(email: String, formattedTextField: UITextField) {
-        var characters = Array(email.characters)
-        var count = email.characters.count
+        var characters = Array(email)
+        var count = email.count
         var replaceCount = 0
         for x in 4..<count {
             if x < 10 {
@@ -75,8 +75,8 @@ class EmailField: ShadowField {
 class PasswordField: ShadowField {
     
     func formatWithSecureText(password: String, email: String, formattedTextField: UITextField) {
-        var charactersInPassword = Array(password.characters)
-        let count = email.characters.count
+        var charactersInPassword = Array(password)
+        let count = email.count
         for _ in 0..<count {
             charactersInPassword.append(Constants.Literals.SecureText)
         }

@@ -140,6 +140,7 @@ struct Constants {
         static let InvalidPassword = "Invalid password"
         static let KeyChain = "Keychain Update Failed - "
         static let LAAuthentication = "Authentication Failed"
+        static let LABiometryNotAvailable = "Biometry Not Available"
         static let LACancel = "Touch ID cancelled"
         static let LADefault = "Touch ID Failed"
         static let LAPasscode = "Passcode needs to be set to use Touch ID"
