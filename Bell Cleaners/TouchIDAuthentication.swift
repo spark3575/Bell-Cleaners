@@ -12,6 +12,7 @@ import LocalAuthentication
 class TouchIDAuth {
     
     let context = LAContext()
+    var biometricsError: NSError?
     
     func canEvaluatePolicy() -> Bool {
         return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
@@ -30,17 +31,18 @@ class TouchIDAuth {
                     completion(nil)
                 }
             } else {
-                let errorMessage: String
+                var errorMessage = String()
                 
-                switch evaluateError {
-                case LAError.authenticationFailed?:
-                    errorMessage = Constants.ErrorMessages.LAAuthentication
-                case LAError.userCancel?:
-                    errorMessage = Constants.ErrorMessages.LACancel
-                case LAError.passcodeNotSet?:
-                    errorMessage = Constants.ErrorMessages.LAPasscode
-                default:
-                    errorMessage = Constants.ErrorMessages.LADefault
+                if self.biometricsError?.code == Int(kLAErrorBiometryNotAvailable) {
+                    errorMessage = Constants.ErrorMessages.LABiometryNotAvailable
+                }
+                
+                if self.biometricsError?.code == Int(kLAErrorBiometryNotEnrolled) {
+                    errorMessage = Constants.ErrorMessages.LABiometryNotEnrolled
+                }
+                
+                if self.biometricsError?.code == Int(kLAErrorBiometryLockout) {
+                    errorMessage = Constants.ErrorMessages.LABiometryLockout
                 }
                 completion(errorMessage)
             }
