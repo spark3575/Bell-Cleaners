@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -772,16 +772,15 @@
                                     <constraint firstItem="cYp-et-St3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="KD8-yG-Cl4" secondAttribute="leading" constant="80" id="yXv-z2-ftO"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zeg-Q2-f8G">
-                                <rect key="frame" x="0.0" y="83" width="320" height="430"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zeg-Q2-f8G">
+                                <rect key="frame" x="0.0" y="74" width="414" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" id="G5i-sk-zd2">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G5i-sk-zd2" id="Pe8-vT-Qxg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -790,9 +789,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG1-1h-oGr">
-                                <rect key="frame" x="137" y="530" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG1-1h-oGr">
+                                <rect key="frame" x="184" y="622" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="MVe-ja-vfP" userLabel="save &amp; signout">
@@ -846,6 +844,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MVe-ja-vfP" secondAttribute="trailing" constant="20" id="5Ns-QP-LrI"/>
+                            <constraint firstItem="UG1-1h-oGr" firstAttribute="top" secondItem="zeg-Q2-f8G" secondAttribute="bottom" constant="20" id="9nN-jq-Zcc"/>
+                            <constraint firstItem="zeg-Q2-f8G" firstAttribute="leading" secondItem="dCD-iQ-2Vv" secondAttribute="leading" id="CVI-S6-qeN"/>
+                            <constraint firstItem="UG1-1h-oGr" firstAttribute="centerX" secondItem="dCD-iQ-2Vv" secondAttribute="centerX" id="GTu-vi-HBC"/>
+                            <constraint firstItem="zeg-Q2-f8G" firstAttribute="top" secondItem="KD8-yG-Cl4" secondAttribute="bottom" constant="10" id="Jma-dI-dXd"/>
+                            <constraint firstItem="MVe-ja-vfP" firstAttribute="top" secondItem="UG1-1h-oGr" secondAttribute="bottom" constant="20" id="KA6-tV-IrY"/>
+                            <constraint firstAttribute="trailing" secondItem="zeg-Q2-f8G" secondAttribute="trailing" id="Qxq-P7-s5l"/>
                             <constraint firstItem="96f-1c-kzK" firstAttribute="top" secondItem="MVe-ja-vfP" secondAttribute="bottom" constant="20" id="SRU-Lb-o9k"/>
                             <constraint firstItem="KD8-yG-Cl4" firstAttribute="top" secondItem="dCD-iQ-2Vv" secondAttribute="top" id="Y57-Oo-c5z"/>
                             <constraint firstAttribute="trailing" secondItem="KD8-yG-Cl4" secondAttribute="trailing" id="eHa-NW-Es4"/>
@@ -2800,9 +2804,9 @@
         <image name="touch" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sTz-N8-jFO"/>
-        <segue reference="DAz-cr-tTc"/>
-        <segue reference="IIW-PH-uFB"/>
-        <segue reference="hri-hR-xyU"/>
+        <segue reference="q2M-gZ-L3S"/>
+        <segue reference="jCn-5g-XtA"/>
+        <segue reference="X4A-wU-AXb"/>
+        <segue reference="xiN-Ll-6Yj"/>
     </inferredMetricsTieBreakers>
 </document>

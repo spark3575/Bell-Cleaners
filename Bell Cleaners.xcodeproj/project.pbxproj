@@ -43,6 +43,7 @@
 		B0B610B01ED7BD49001E3C6C /* AccessAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B610AF1ED7BD49001E3C6C /* AccessAccountVC.swift */; };
 		B0C02F1F1EDB7CEF002C4F52 /* MyAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C02F1E1EDB7CEF002C4F52 /* MyAccountVC.swift */; };
 		B0C02F231EDB9EE8002C4F52 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C02F221EDB9EE8002C4F52 /* AuthService.swift */; };
+		B0CBD3321FD58D8D00DF73F8 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CBD3311FD58D8D00DF73F8 /* SearchVC.swift */; };
 		B0FE06C51F7D40EE00D621E0 /* OrderSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FE06C41F7D40EE00D621E0 /* OrderSearchVC.swift */; };
 		E2DB245DFC34F3F085473315 /* Pods_Bell_Cleaners.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,7 @@
 		B0B610AF1ED7BD49001E3C6C /* AccessAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessAccountVC.swift; sourceTree = "<group>"; };
 		B0C02F1E1EDB7CEF002C4F52 /* MyAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountVC.swift; sourceTree = "<group>"; };
 		B0C02F221EDB9EE8002C4F52 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		B0CBD3311FD58D8D00DF73F8 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		B0FE06C41F7D40EE00D621E0 /* OrderSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchVC.swift; sourceTree = "<group>"; };
 		E2969D99ED238CA6EBC78709 /* Pods_Bell_Cleaners.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bell_Cleaners.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -169,6 +171,7 @@
 				B0C02F1E1EDB7CEF002C4F52 /* MyAccountVC.swift */,
 				B05A53C61F0D5AA10018CE45 /* OrdersVC.swift */,
 				B0616FFC1EF381ED001DB41D /* AdminVC.swift */,
+				B0CBD3311FD58D8D00DF73F8 /* SearchVC.swift */,
 				B03A166F1F141A8C005A194A /* CustomerSearchVC.swift */,
 				B02F1A4A1F0FF79800C76D79 /* AddOrderVC.swift */,
 				B0FE06C41F7D40EE00D621E0 /* OrderSearchVC.swift */,
@@ -416,6 +419,7 @@
 				B08956A21ED91FEF00736208 /* PresentAlert.swift in Sources */,
 				B0B610B01ED7BD49001E3C6C /* AccessAccountVC.swift in Sources */,
 				B08956A01ED8765600736208 /* ShadowField.swift in Sources */,
+				B0CBD3321FD58D8D00DF73F8 /* SearchVC.swift in Sources */,
 				B05900B51EE2443E009238EE /* KeychainPasswordItem.swift in Sources */,
 				B0AECE561ED0D48F00097AE1 /* AppDelegate.swift in Sources */,
 				B02C6FB21EE8931B00A2465E /* SegueFromLeft.swift in Sources */,
