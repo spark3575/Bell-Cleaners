@@ -25,7 +25,6 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
     private let bellTouchSignIn = TouchIDAuth()
     private var currentCustomer: Customer?
     private let defaults = UserDefaults.standard
-    private var keyboardManager: KeyboardManager?
     private let notification = NotificationCenter.default
     private var passwordItems: [KeychainPasswordItem] = []
     private var securedTextEmail: String?
@@ -68,26 +67,20 @@ class AccessAccountVC: UIViewController, UITextFieldDelegate {
         notification.removeObserver(self)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {        
         if activeField != nil {
-            UIView.animate(withDuration: Constants.Animations.Keyboard.DurationHide, animations: {
-                if let originY = self.stackViewOriginY {
-                    self.stackView.frame.origin.y = originY
-                    self.view.layoutIfNeeded()
-                }
-            })
+            self.view.endEditing(true)
         }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
-        keyboardManager = KeyboardManager(observer: self, viewOfVC: [view], stackViewToMove: [stackView], textFieldToMove: [activeField!], notifyFromObject: nil)
-        keyboardManager?.viewMoveWhenKeyboardWillShow()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        activeField = nil
+        if emailField != nil && passwordField != nil {
+            activeField = nil
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -20,7 +20,6 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     private let alertUpdatePassword = PresentAlert()
     private var currentPassword: String?
     private let defaults = UserDefaults.standard
-    private var keyboardManager: KeyboardManager?
     private var newPassword: String?
     private let notification = NotificationCenter.default
     private var stackViewOriginY: CGFloat?
@@ -38,21 +37,13 @@ class UpdatePasswordVC: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
         if activeField != nil {
-            UIView.animate(withDuration: Constants.Animations.Keyboard.DurationHide, animations: {
-                if let originY = self.stackViewOriginY {
-                    self.stackView.frame.origin.y = originY
-                    self.view.layoutIfNeeded()
-                }
-            })
+            self.view.endEditing(true)
         }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
-        keyboardManager = KeyboardManager(observer: self, viewOfVC: [view], stackViewToMove: [stackView], textFieldToMove: [activeField!], notifyFromObject: nil)
-        keyboardManager?.viewMoveWhenKeyboardWillShow()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

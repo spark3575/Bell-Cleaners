@@ -21,7 +21,6 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     private let defaults = UserDefaults.standard
     private var enteredEmail: String?
     private var enteredPassword: String?
-    private var keyboardManager: KeyboardManager?
     private let notification = NotificationCenter.default
     private var stackViewOriginY: CGFloat?
     
@@ -38,21 +37,13 @@ class UpdateEmailVC: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
         if activeField != nil {
-            UIView.animate(withDuration: Constants.Animations.Keyboard.DurationHide, animations: {
-                if let originY = self.stackViewOriginY {
-                    self.stackView.frame.origin.y = originY
-                    self.view.layoutIfNeeded()
-                }
-            })
+            self.view.endEditing(true)
         }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
-        keyboardManager = KeyboardManager(observer: self, viewOfVC: [view], stackViewToMove: [stackView], textFieldToMove: [activeField!], notifyFromObject: nil)
-        keyboardManager?.viewMoveWhenKeyboardWillShow()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
