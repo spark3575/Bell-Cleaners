@@ -11,69 +11,65 @@ import MapKit
 import CoreLocation
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    @IBOutlet weak var mapView: MKMapView!
+    
     @IBOutlet weak var callBellButton: CallBellButton!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    private let alertAccessDenied = PresentAlert()
+    private var locationManager = CLLocationManager()
+    private var userLatitude = CLLocationDegrees()
+    private var userLongitude = CLLocationDegrees()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupBellCleanersMap()
     }
     
     private func setupBellCleanersMap() {
         mapView.delegate = self
-        mapView.showsScale = true
-        
-        let bellCoordinates = CLLocationCoordinate2DMake(bellLatitude, bellLongitude)
-        let bellSpan: MKCoordinateSpan = MKCoordinateSpanMake(bellSpanLatitudeDelta, bellSpanLongitudeDelta)
+        mapView.showsScale = true        
+        let bellCoordinates = CLLocationCoordinate2DMake(Constants.Coordinates.BellLatitude, Constants.Coordinates.BellLongitude)
+        let bellSpan: MKCoordinateSpan = MKCoordinateSpanMake(Constants.Coordinates.SpanLatitudeDelta, Constants.Coordinates.SpanLongitudeDelta)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(bellCoordinates, bellSpan)
-        
         mapView.setRegion(region, animated: true)
-        
         let annotation = MKPointAnnotation()
         annotation.coordinate = bellCoordinates
-        annotation.title = bellAnnotationTitle
-        annotation.subtitle = bellAnnotationSubtitle
+        annotation.title = Constants.Literals.BellCleaners
+        annotation.subtitle = Constants.Literals.ExpertGarmentCare
         mapView.addAnnotation(annotation)
         mapView.selectAnnotation(annotation, animated: true)
     }
     
-    private var locationManager = CLLocationManager()
-    private var userLocation: CLLocation!
-    private var userLatitude = userLat
-    private var userLongitude = userLon
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {        
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
         func setupAuthorizeWhenInUse() {
             manager.startUpdatingLocation()
-            manager.desiredAccuracy = kCLLocationAccuracyBest
-            let userCoordinates = (manager.location?.coordinate)!
-            
-            if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
+            manager.desiredAccuracy = kCLLocationAccuracyBest            
+            if let userCoordinates = manager.location?.coordinate {
                 userLatitude = userCoordinates.latitude
                 userLongitude = userCoordinates.longitude
             }
-            
-            if userCoordinates.latitude != 0 && userCoordinates.longitude != 0 {
-                let userLatitudeString = String(format: decimalPlacesFormat, userLatitude)
-                let userLongitudeString = String(format: decimalPlacesFormat, userLongitude)
-                
-                let userLocationString = userLatitudeString + separatingComma + userLongitudeString
-                let routeToBell = URL(string: routeToBellURLPrefix + userLocationString + routeToBellURLSuffix)
-                
-                manager.stopUpdatingLocation()
-                
-                guard let routeURL = routeToBell else { return }
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(routeURL, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(routeURL)
-                }
-            }
+            let userLatitudeString = String(format: Constants.Literals.DecimalPlaces, userLatitude)
+            let userLongitudeString = String(format: Constants.Literals.DecimalPlaces, userLongitude)
+            let userLocationString = userLatitudeString + Constants.Literals.Comma + userLongitudeString
+            let appleMapsRouteToBell = URL(string: Constants.URLs.AppleMaps.BellURLPrefix + userLocationString + Constants.URLs.AppleMaps.BellURLSuffix)
+            let googleMapsRouteToBell = URL(string: Constants.URLs.GoogleMaps.BellURLPrefix + userLocationString + Constants.URLs.GoogleMaps.BellURLSuffix)
+            manager.stopUpdatingLocation()
+            guard let appleMapsRouteURL = appleMapsRouteToBell else { return }
+            guard let googleMapsRouteURL = googleMapsRouteToBell else { return }
+            let alertMapChoice = UIAlertController(title: Constants.Alerts.Titles.MapAppsAvailable, message: nil, preferredStyle: .alert)
+            alertMapChoice.addAction(UIAlertAction(title: Constants.Alerts.Actions.AppleMaps, style: .default, handler: { (action) in
+                UIApplication.shared.open(appleMapsRouteURL, options: [:], completionHandler: nil)
+            }))
+            alertMapChoice.addAction(UIAlertAction(title: Constants.Alerts.Actions.GoogleMaps, style: .default, handler: { (action) in
+                UIApplication.shared.open(googleMapsRouteURL, options: [:], completionHandler: nil)
+            }))
+            if (UIApplication.shared.canOpenURL(URL(string:Constants.URLs.Google)!)) {
+                present(alertMapChoice, animated: true, completion: nil)
+                return
+            }            
+            UIApplication.shared.open(appleMapsRouteURL, options: [:], completionHandler: nil)
         }
-        
-        let alertDeniedAccess = PresentAlert()
-        
         switch status {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
@@ -82,18 +78,18 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         case .authorizedAlways:
             manager.startUpdatingLocation()
         case .restricted, .denied:
-            alertDeniedAccess.presentAlert(fromController: self, title: locationServiceAlertTitle,
-                         message: locationServiceAlertMessage,
-                         actionTitle: okAlertActionTitle)
+            alertAccessDenied.presentSettingsActionAlert(fromController: self, title: Constants.Alerts.Titles.Location,
+                         message: Constants.Alerts.Messages.Location,
+                         actionTitle: Constants.Alerts.Actions.OK)
         }
     }
     
-    @IBAction func directionsPressed(_ sender: DirectionsButton) {
+    @IBAction func didTapDirections(_ sender: DirectionsButton) {
         locationManager = CLLocationManager()
         locationManager.delegate = self
     }
-    
-    @IBAction func callBellPressed(_ sender: CallBellButton) {
+
+    @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
-    }
+    }    
 }

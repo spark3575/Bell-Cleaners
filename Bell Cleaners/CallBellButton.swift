@@ -9,8 +9,9 @@
 import UIKit
 
 class CallBellButton: ShadowButton {
+    
     func callBell() {
-        guard let number = bellPhoneNumberURL else { return }
+        guard let number = Constants.URLs.PhoneNumber else { return }
         UIApplication.shared.open(number, options: [:], completionHandler: nil)
     }
 }

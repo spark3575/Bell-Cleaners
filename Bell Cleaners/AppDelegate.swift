@@ -9,12 +9,15 @@
 import UIKit
 import Firebase
 import FirebaseInstanceID
-import FirebaseMessaging
-import UserNotifications
+//import FirebaseMessaging
+//import UserNotifications
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate {
+//class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -31,12 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
 //            application.registerUserNotificationSettings(settings)
 //        }
-//        
-//        application.registerForRemoteNotifications()
-//        
-//        FirebaseApp.configure()
         
         UIApplication.shared.statusBarStyle = .lightContent
+//        application.registerForRemoteNotifications()
+        FirebaseApp.configure()
+        Fabric.with([Crashlytics.self])
         return true
     }
 
@@ -66,18 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func tokenRefreshNotification(notification: NSNotification) {
-        let refreshedToken = InstanceID.instanceID().token()
-        print("InstanceID token: \(String(describing: refreshedToken))")
-        
+//    func tokenRefreshNotification(notification: NSNotification) {
+//        let refreshedToken = InstanceID.instanceID().token()
+//        print("InstanceID token: \(String(describing: refreshedToken))")
+//
 //        connectToFCM()
-    }
-    
-    func connectToFCM() {
-        Messaging.messaging().shouldEstablishDirectChannel = true
-    }
-    
-    func disconnect() {
-        Messaging.messaging().shouldEstablishDirectChannel = false
-    }
+//    }
+//    
+//    func connectToFCM() {
+//        Messaging.messaging().shouldEstablishDirectChannel = true
+//    }
+//    
+//    func disconnect() {
+//        Messaging.messaging().shouldEstablishDirectChannel = false
+//    }
 }

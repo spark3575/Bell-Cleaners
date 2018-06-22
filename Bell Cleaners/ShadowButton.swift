@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ShadowButton: UIButton {    
+class ShadowButton: UIButton {
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()
@@ -19,19 +20,53 @@ class ShadowButton: UIButton {
         setup()
     }
     
-    private func setup() {
-        layer.shadowColor = layerShadowColor
-        layer.shadowOffset = layerShadowOffset
-        layer.shadowOpacity = layerShadowOpacity
-        layer.shadowRadius = layerShadowRadius
-        layer.cornerRadius = layerCornerRadius
+    func setup() {
+        layer.cornerRadius = Constants.Layers.CornerRadius
+        layer.shadowColor = Constants.Layers.ShadowColor
+        layer.shadowOffset = Constants.Layers.ShadowOffset
+        layer.shadowOpacity = Constants.Layers.ShadowOpacity
+        layer.shadowRadius = Constants.Layers.ShadowRadius
+        layer.backgroundColor = Constants.Colors.GreenMedium.cgColor
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.transform = CGAffineTransform(scaleX: Constants.Animations.Touch.ScaleX, y: Constants.Animations.Touch.ScaleY)
+        UIView.animate(withDuration: Constants.Animations.Touch.Duration) {
+            self.transform = CGAffineTransform.identity
+        }
+        super.touchesBegan(touches, with: event)
     }
 }
 
-class MapButton: ShadowButton {}
+class ShadowButtonRed: ShadowButton {
+    
+    override func setup() {
+        layer.cornerRadius = Constants.Layers.CornerRadius
+        layer.shadowColor = Constants.Layers.ShadowColor
+        layer.shadowOffset = Constants.Layers.ShadowOffset
+        layer.shadowOpacity = Constants.Layers.ShadowOpacity
+        layer.shadowRadius = Constants.Layers.ShadowRadius
+        layer.backgroundColor = Constants.Colors.RedMedium.cgColor
+    }
+}
 
+class AccessAccountButton: ShadowButton {}
+class AddNewCustomerButton: ShadowButton {}
+class AddOrderButton: ShadowButton {}
+class CancelButton: ShadowButton {}
+class DeleteButton: ShadowButtonRed {}
+class CustomerSearchButton: ShadowButton {}
 class DirectionsButton: ShadowButton {}
-
-class LoginButton: ShadowButton {}
-
-class SignUpButton: ShadowButton {}
+class EditCustomerProfile: ShadowButton {}
+class EditOrderButton: ShadowButton {}
+class MapButton: ShadowButton {}
+class OrdersButton: ShadowButton {}
+class OrderSearchButton: ShadowButton {}
+class PickupDeliveryButton: ShadowButton {}
+class ProfileButton: ShadowButton {}
+class SaveButton: ShadowButton {}
+class SettingsButton: ShadowButton {}
+class SignInButton: ShadowButton {}
+class SignOutButton: ShadowButtonRed {}
+class SupportButton: ShadowButton {}
+class UpdateButton: ShadowButton {}

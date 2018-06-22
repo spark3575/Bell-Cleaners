@@ -8,8 +8,8 @@
 
 import UIKit
 
-@IBDesignable
 class ShadowField: UITextField {
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         setup()
@@ -21,38 +21,74 @@ class ShadowField: UITextField {
     }
     
     private func setup() {
-        layer.shadowColor = layerShadowColor
-        layer.shadowOffset = layerShadowOffset
-        layer.shadowOpacity = layerShadowOpacity
-        layer.shadowRadius = layerTextShadowRaius
-        layer.cornerRadius = layerCornerRadius
-        layer.borderColor = bellColor
-        layer.borderWidth = layerBorderWidth
+        layer.borderColor = Constants.Colors.GreenMedium.cgColor
+        layer.borderWidth = Constants.Layers.BorderWidth
+        layer.cornerRadius = Constants.Layers.CornerRadius
+        layer.shadowColor = Constants.Layers.ShadowColor
+        layer.shadowOffset = Constants.Layers.textFieldShadowOffset
+        layer.shadowOpacity = Constants.Layers.textFieldShadowOpacity
+        layer.shadowRadius = Constants.Layers.textFieldShadowRadius
+    }
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: Constants.CGRects.Dx, dy: Constants.CGRects.Dy)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: Constants.CGRects.Dx, dy: Constants.CGRects.Dy)
     }
 }
 
-class emailShadowField: ShadowField {
+class EmailField: ShadowField {
+    
     func validate(field: UITextField) -> String? {
         guard let trimmedText = field.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             return nil
         }
-        
         guard let dataDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
             return nil
         }
-        
-        let range = NSMakeRange(0, NSString(string: trimmedText).length)
-        let allMatches = dataDetector.matches(in: trimmedText,
-                                              options: [],
-                                              range: range)
-        
-        if allMatches.count == 1,
-            allMatches.first?.url?.absoluteString.contains("mailto:") == true
-        {
+        let range = NSMakeRange(Constants.Validations.Email.RangeLocation, NSString(string: trimmedText).length)
+        let allMatches = dataDetector.matches(in: trimmedText, options: [], range: range)
+        if allMatches.count == Constants.Validations.Email.MatchesCount, allMatches.first?.url?.absoluteString.contains(Constants.Literals.MailTo) == true {
             return trimmedText
         }
         return nil
     }
+    
+    func formatWithSecureText(email: String, formattedTextField: UITextField) {
+        var characters = Array(email)
+        var count = email.count
+        var replaceCount = 0
+        for x in 4..<count {
+            if x < 10 {
+                characters[x] = Constants.Literals.SecureText
+            } else {
+                replaceCount += 1
+            }
+        }
+        count -= replaceCount
+        formattedTextField.text = String(characters[0..<count])
+    }
 }
 
-class passwordShadowField: ShadowField {}
+class PasswordField: ShadowField {
+    
+    func formatWithSecureText(password: String, email: String, formattedTextField: UITextField) {
+        var charactersInPassword = Array(password)
+        let count = email.count
+        for _ in 0..<count {
+            charactersInPassword.append(Constants.Literals.SecureText)
+        }
+        formattedTextField.text = String(charactersInPassword[0..<count])
+    }
+}
+
+class CurrentPasswordField: ShadowField {}
+class NewPasswordField: ShadowField {}
+class FirstNameField: ShadowField {}
+class LastNameField: ShadowField {}
+class PhoneNumberField: ShadowField {}
+class AddressField: ShadowField {}
+class CityField: ShadowField {}
+class ZipcodeField: ShadowField {}

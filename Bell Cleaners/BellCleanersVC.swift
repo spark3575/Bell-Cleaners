@@ -7,34 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
 class BellCleanersVC: UIViewController {
+    
     @IBOutlet weak var bellLogoButton: BellLogoButton!
     @IBOutlet weak var callBellButton: CallBellButton!
     
-    private func shakeAndPlaySound() {
-        bellLogoButton.shake()
-        bellLogoButton.playSound(file: bellSound, ext: mp3)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        Timer.scheduledTimer(withTimeInterval: Constants.TimerIntervals.BellShakeDelay, repeats: false) { [weak self] (timer) in
+//            self?.bellLogoButton.shakeAndPlaySound()
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Timer.scheduledTimer(withTimeInterval: delayAfterViewAppears, repeats: false) {
-            [weak self] timer in
-            self?.shakeAndPlaySound()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         bellLogoButton.imageView?.contentMode = .scaleAspectFit
     }
     
-    @IBAction func bellPressed(_ sender: BellLogoButton) {
-        shakeAndPlaySound()
+    @IBAction func didTapAccessAccount(_ sender: AccessAccountButton) {
+        self.performSegue(withIdentifier: Constants.Segues.AccessAccountVC, sender: self)
     }
     
-    @IBAction func callBellPressed(_ sender: CallBellButton) {
+    @IBAction func didTapBell(_ sender: BellLogoButton) {
+        bellLogoButton.shakeAndPlaySound()
+    }
+    
+    @IBAction func didTapCallBell(_ sender: CallBellButton) {
         callBellButton.callBell()
     }
+    
+    @IBAction func unwindToBellCleanersVC(segue:UIStoryboardSegue) { }
 }
